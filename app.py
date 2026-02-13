@@ -14,6 +14,8 @@ STATS_FILE = BASE_DIR / "stats.json"
 VERSION_FILE = BASE_DIR / "VERSION.txt"
 
 app = Flask(__name__)
+# Zwiększ limit uploadu do 50MB (domyślnie Flask ma 16MB)
+app.config['MAX_CONTENT_LENGTH'] = 50 * 1024 * 1024
 _DATA_CACHE: Dict[str, Any] = {"mtime": None, "products": []}
 
 # Import history manager
