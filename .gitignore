@@ -12,3 +12,7 @@ ENV/
 backups/
 history/
 *.json.backup
+
+# Backup files (all variants)
+backup_before_*.json
+stats.json
