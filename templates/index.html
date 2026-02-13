@@ -1,0 +1,1963 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Master Data – produkty</title>
+    <meta name="version" content="{{ version }}" />
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}" />
+    <!-- Bootstrap CSS z CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    />
+    <style>
+      body {
+        background-color: #f4f6f8;
+      }
+      .page-wrap {
+        margin-left: 50px;
+        margin-right: 50px;
+      }
+      .stat-number {
+        font-size: 16px;
+        font-weight: 500;
+      }
+      .stat-label {
+        font-size: 11px;
+        color: #000;
+      }
+      .text-warning {
+        color: #dc3545 !important;
+      }
+      /* Rozmiary czcionek w tabeli */
+      table.products-table {
+        table-layout: fixed;
+        width: 100%;
+      }
+      table.products-table th[data-col],
+      table.products-table td[data-col] {
+        width: 80px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      table.products-table th[data-col="Nazwa"],
+      table.products-table td[data-col="Nazwa"] {
+        width: 280px;
+      }
+      table.products-table th[data-col="Nazwa_producenta"],
+      table.products-table td[data-col="Nazwa_producenta"] {
+        width: 180px;
+      }
+      table.products-table th[data-col="Grupa_produktu"],
+      table.products-table td[data-col="Grupa_produktu"],
+      table.products-table th[data-col="Rodzaj_produktu"],
+      table.products-table td[data-col="Rodzaj_produktu"] {
+        width: 100px;
+      }
+      table.products-table tbody td {
+        font-size: 12px;
+      }
+      table.products-table tbody td[data-field]:not([data-field="ID_produktu"]) {
+        cursor: pointer;
+      }
+      table.products-table thead th {
+        font-size: 10px;
+        text-transform: none;
+        font-weight: 400;
+      }
+      th.select-col,
+      td.select-col {
+        width: 42px !important;
+        text-align: center;
+      }
+      /* Stała szerokość dla kolumn wymiarów/jm/obj/masa */
+      th[data-col="Szerokosc"],
+      th[data-col="Wysokosc"],
+      th[data-col="Dlugosc"],
+      th[data-col="JM_wymiaru"],
+      th[data-col="JM_objetosci"],
+      th[data-col="JM_sprzedazy"],
+      th[data-col="Objetosc_produktu"],
+      th[data-col="Waga_brutto"],
+      th[data-col="JM_wagi"],
+      td[data-col="Szerokosc"],
+      td[data-col="Wysokosc"],
+      td[data-col="Dlugosc"],
+      td[data-col="JM_wymiaru"],
+      td[data-col="JM_objetosci"],
+      td[data-col="JM_sprzedazy"],
+      td[data-col="Objetosc_produktu"],
+      td[data-col="Waga_brutto"],
+      td[data-col="JM_wagi"] {
+        width: 70px;
+        white-space: nowrap;
+      }
+      .select-col .btn {
+        border: none;
+        background: transparent;
+        box-shadow: none;
+        padding: 0;
+      }
+      .select-col .btn:focus {
+        box-shadow: none;
+      }
+      .select-col .btn i {
+        font-size: 14px;
+        color: #6c757d;
+      }
+      .select-col .btn:hover i {
+        color: #0d6efd;
+      }
+      .select-col .btn.delete-selected i {
+        color: #dc3545;
+      }
+      .select-col .btn.delete-selected:hover i {
+        color: #f86c6f;
+      }
+      .columns-toolbar {
+        display: grid;
+        /* 5 kolumn x 6 wierszy => 30 przycisków, 6 w pionie */
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        grid-template-rows: repeat(6, auto);
+        grid-auto-flow: column;
+        gap: 4px;
+        margin-bottom: 10px;
+      }
+      .columns-toolbar .btn {
+        width: 100%;
+        font-size: 10px;
+        text-transform: uppercase;
+        padding: 2px 6px;
+      }
+      .view-controls {
+        font-size: 10px;
+      }
+      .view-controls .form-control-sm,
+      .view-controls .form-select-sm {
+        font-size: 12px;
+        padding-top: 0.05rem;
+        padding-bottom: 0.05rem;
+        height: 1.5rem;
+      }
+      .form-select-sm {
+        font-size: 12px;
+      }
+      .view-controls .btn-sm {
+        font-size: 10px;
+        padding: 0.15rem 0.4rem;
+      }
+      .view-controls-main {
+        flex: 1 1 auto;
+        flex-wrap: nowrap;
+      }
+      .middle-filters .btn {
+        width: 100%;
+        margin-bottom: 2px;
+        font-size: 12px;
+        padding-top: 0.15rem;
+        padding-bottom: 0.15rem;
+      }
+      .middle-filters .filter-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 4px;
+        margin-bottom: 2px;
+        font-size: 10px;
+      }
+      .middle-filters .filter-count {
+        white-space: nowrap;
+        min-width: 40px;
+        text-align: right;
+        color: #666;
+      }
+      .middle-filters .filter-count-btn {
+        font-size: 12px;
+        padding-top: 0.15rem;
+        padding-bottom: 0.15rem;
+        border-color: transparent;
+        background-color: transparent;
+        color: transparent;
+      }
+      .middle-filters .filter-count-btn.has-count {
+        border-color: #6c757d;
+        background-color: #6c757d;
+        color: #fff;
+      }
+      .select-all-btn {
+        background-color: #198754;
+        border: none;
+        color: #fff;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        font-size: 10px;
+        text-transform: uppercase;
+        padding: 0.2rem 1rem;
+        width: 100%;
+        max-width: 120px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.3rem;
+      }
+      .select-all-btn .btn-text {
+        display: inline-block;
+      }
+      .select-all-btn .btn-check-icon {
+        font-size: 12px;
+        flex-shrink: 0;
+      }
+      .select-all-btn::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.15) 50%, transparent 70%);
+        transform: translateX(-100%) translateY(-100%);
+        transition: transform 0.6s ease;
+      }
+      .select-all-btn:hover {
+        background-color: #157347;
+        border: none;
+        color: #fff;
+        box-shadow: 0 4px 8px rgba(25, 135, 84, 0.3);
+      }
+      .select-all-btn:hover::before {
+        transform: translateX(100%) translateY(100%);
+      }
+      .select-all-btn.active {
+        background-color: #2f7cfd;
+        border: none;
+        color: #fff;
+      }
+      .select-all-btn.active .btn-text {
+        display: inline-block;
+      }
+      .select-all-btn.active .btn-check-icon {
+        display: inline-block !important;
+      }
+      .select-all-btn.active:hover {
+        background-color: #2f7cfd;
+        border: none;
+        color: #fff;
+        box-shadow: 0 4px 8px rgba(47, 124, 253, 0.3);
+      }
+      .select-all-btn.active:hover::before {
+        transform: translateX(100%) translateY(100%);
+      }
+      .pagination-btn {
+        background-color: #0d6efd;
+        border-color: #0d6efd;
+        color: #fff;
+        min-width: 60px;
+      }
+      .pagination-btn:hover:not(:disabled) {
+        background-color: #0b5ed7;
+        border-color: #0a58ca;
+        color: #fff;
+      }
+      .pagination-btn:disabled {
+        background-color: #6c757d;
+        border-color: #d0d0d0;
+        color: #fff;
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+      .row-modified,
+      table.products-table tbody tr.row-modified {
+        background-color: #d4edda !important;
+        transition: background-color 0.5s ease-out;
+      }
+      .row-modified td,
+      table.products-table tbody tr.row-modified td {
+        background-color: #d4edda !important;
+        transition: background-color 0.5s ease-out;
+      }
+      table.products-table tbody tr.row-modified:hover {
+        background-color: #c3e6cb !important;
+      }
+      table.products-table tbody tr.row-modified:hover td {
+        background-color: #c3e6cb !important;
+      }
+      table.products-table tbody tr:not(.row-modified) {
+        transition: background-color 0.5s ease-out;
+      }
+      table.products-table tbody tr:not(.row-modified) td {
+        transition: background-color 0.5s ease-out;
+      }
+      @keyframes blink-twice {
+        0%, 100% {
+          background-color: #d4edda !important;
+        }
+        25%, 75% {
+          background-color: #fff !important;
+        }
+        50% {
+          background-color: #d4edda !important;
+        }
+      }
+      .row-modified-blink,
+      table.products-table tbody tr.row-modified-blink {
+        animation: blink-twice 1s ease-in-out 2;
+      }
+      .row-modified-blink td,
+      table.products-table tbody tr      .row-modified-blink td {
+        animation: blink-twice 1s ease-in-out 2;
+      }
+      .view-author-display:hover {
+        background-color: #f8f9fa;
+        border-color: #dee2e6;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-wrap mb-4 mt-3">
+      <!-- Blok przycisków + blok liczników w jednym wierszu -->
+      <div class="row g-3 mb-3">
+        <div class="col-12 col-lg-5">
+          <div class="p-3 bg-white rounded-3 shadow-sm h-100">
+            <div class="columns-toolbar mb-2">
+              <button type="button" class="btn btn-success btn-sm" data-col="ID_produktu" title="ID_produktu">ID</button>
+              <button type="button" class="btn btn-success btn-sm" data-col="Nazwa" title="Nazwa">Nazwa</button>
+              <button type="button" class="btn btn-success btn-sm" data-col="EAN" title="EAN">EAN</button>
+              <button type="button" class="btn btn-success btn-sm" data-col="SKU" title="SKU">SKU</button>
+              <button type="button" class="btn btn-success btn-sm" data-col="Nazwa_producenta" title="Nazwa_producenta">Producent</button>
+              <button type="button" class="btn btn-success btn-sm" data-col="ID_producenta" title="ID_producenta">id</button>
+              <button type="button" class="btn btn-success btn-sm" data-col="Grupa_produktu" title="Grupa_produktu">Grupa</button>
+              <button type="button" class="btn btn-success btn-sm" data-col="Rodzaj_produktu" title="Rodzaj_produktu">Rodzaj</button>
+              <button type="button" class="btn btn-success btn-sm" data-col="Szerokosc" title="Szerokosc">szer</button>
+              <button type="button" class="btn btn-success btn-sm" data-col="Wysokosc" title="Wysokosc">wys</button>
+              <button type="button" class="btn btn-success btn-sm" data-col="Dlugosc" title="Dlugosc">dł</button>
+              <button type="button" class="btn btn-success btn-sm" data-col="JM_wymiaru" title="JM_wymiaru">jm</button>
+              <button type="button" class="btn btn-success btn-sm" data-col="JM_objetosci" title="JM_objetosci">jm</button>
+              <button type="button" class="btn btn-success btn-sm" data-col="JM_sprzedazy" title="JM_sprzedazy">jm</button>
+              <button type="button" class="btn btn-success btn-sm" data-col="Objetosc_produktu" title="Objetosc_produktu">obj.</button>
+              <button type="button" class="btn btn-success btn-sm" data-col="Waga_brutto" title="Waga_brutto">Waga</button>
+              <button type="button" class="btn btn-success btn-sm" data-col="JM_wagi" title="JM_wagi">jm.</button>
+              <button type="button" class="btn btn-success btn-sm" data-col="Rodzaj_opakowania" title="Rodzaj_opakowania">Opakowanie</button>
+              <button type="button" class="btn btn-success btn-sm" data-col="Cena_sprzedazy_brutto" title="Cena_sprzedazy_brutto">Sprzedaż brutto</button>
+              <button type="button" class="btn btn-success btn-sm" data-col="Cena_sprzedazy_netto" title="Cena_sprzedazy_netto">Sprzedaż netto</button>
+              <button type="button" class="btn btn-success btn-sm" data-col="Cena_zakupu_brutto" title="Cena_zakupu_brutto">Zakup brutto</button>
+              <button type="button" class="btn btn-success btn-sm" data-col="Cena_zakupu_netto" title="Cena_zakupu_netto">Zakup netto</button>
+              <button type="button" class="btn btn-success btn-sm" data-col="Nazwa_Cennika" title="Nazwa_Cennika">cennik</button>
+              <button type="button" class="btn btn-success btn-sm" data-col="Dostepnosc" title="Dostepnosc">Dostepnosc</button>
+              <button type="button" class="btn btn-success btn-sm" data-col="Stan_magazynowy" title="Stan_magazynowy">Stan</button>
+              <button type="button" class="btn btn-success btn-sm" data-col="Status_produktu" title="Status_produktu">Status</button>
+              <button type="button" class="btn btn-success btn-sm" data-col="Waluta_sprzedazy" title="Waluta_sprzedazy">waluta sprz</button>
+              <button type="button" class="btn btn-success btn-sm" data-col="Waluta_zakupu" title="Waluta_zakupu">waluta zak</button>
+              <button type="button" class="btn btn-success btn-sm" data-col="URL_Miniatura" title="URL_Miniatura">miniatura</button>
+              <button type="button" class="btn btn-success btn-sm" data-col="Rezerwacja" title="Rezerwacja">Rezerwacja</button>
+            </div>
+            <div class="d-flex flex-nowrap align-items-center justify-content-start gap-2 mt-2 view-controls">
+              <div class="d-flex align-items-center gap-1 view-controls-main">
+                <div id="viewAuthorContainer" style="position: relative; max-width: 120px;">
+                  <span id="viewAuthorDisplay" class="view-author-display" style="display: inline-block; padding: 0.25rem 0.5rem; border: 1px solid transparent; border-radius: 0.25rem; cursor: pointer; min-width: 80px; font-size: 12px; color: #6c757d;">imię</span>
+                  <input
+                    type="text"
+                    id="viewAuthor"
+                    class="form-control form-control-sm d-none"
+                    placeholder="imię"
+                    style="max-width: 120px;"
+                  />
+                </div>
+                <select id="viewSelect" class="form-select form-select-sm" style="max-width: 180px;">
+                  <option value="">wybierz widok</option>
+                </select>
+                <button type="button" id="saveViewBtn" class="btn btn-sm btn-outline-primary">
+                  zapisz widok
+                </button>
+                <button type="button" id="resetViewBtn" class="btn btn-sm btn-outline-secondary">
+                  resetuj widok
+                </button>
+              </div>
+            </div>
+            <div class="mt-2 d-flex align-items-center gap-2" style="font-size: 10px;">
+              <span class="text-muted">Wersja: <strong id="versionDisplay">{{ version }}</strong></span>
+              <button type="button" id="createBackupBtn" class="btn btn-sm" style="font-size: 9px; padding: 0.15rem 0.4rem; background-color: #495057; border-color: #495057; color: #fff;">
+                zrób kopię
+              </button>
+              <button type="button" id="createStableBtn" class="btn btn-sm" style="font-size: 9px; padding: 0.15rem 0.4rem; background-color: #495057; border-color: #495057; color: #fff;">
+                wersja stabilna
+              </button>
+              <button type="button" id="uploadDbBtn" class="btn btn-sm" style="font-size: 9px; padding: 0.15rem 0.4rem; background-color: #75118c; border-color: #75118c; color: #fff;" title="Dodaj nową bazę">
+                dodaj nową bazę
+              </button>
+              <input type="file" id="dbFileInput" accept=".json" style="display: none;" />
+              <button type="button" id="clearDbBtn" class="btn btn-sm" style="font-size: 9px; padding: 0.15rem 0.4rem; background-color: #75118c; border-color: #75118c; color: #fff;" title="Wyzeruj bazę">
+                wyzeruj bazę
+              </button>
+              <button type="button" id="saveCurrentDbBtn" class="btn btn-sm btn-primary" style="font-size: 9px; padding: 0.15rem 0.4rem;" title="Zapisz aktualną bazę">
+                zapisz aktualną bazę
+              </button>
+              <button type="button" id="undoBtn" class="btn btn-sm btn-success" style="font-size: 9px; padding: 0.15rem 0.4rem;" title="Cofnij ostatnią zmianę (Ctrl+Z)">
+                <i class="bi bi-arrow-counterclockwise"></i> cofnij
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-lg-4">
+          <div class="p-3 bg-white rounded-3 shadow-sm h-100 d-flex flex-column justify-content-start">
+            <div class="row g-2">
+              <div class="col-4">
+                <div class="stat-number">{{ total_count }}</div>
+                <div class="stat-label">produktów łącznie</div>
+              </div>
+              <div class="col-4">
+                <div class="stat-number" id="selectedCountValue">{{ selected_count }}</div>
+                <div class="stat-label">wybranych</div>
+              </div>
+              <div class="col-4">
+                <div class="stat-number" id="modifiedCountValue">{{ modified_count }}</div>
+                <div class="stat-label">zmodyfikowane</div>
+              </div>
+            </div>
+            <div class="row g-2 mt-2">
+              <div class="col-4">
+                <div class="stat-number text-warning">{{ missing_producer }}</div>
+                <div class="stat-label text-muted">brak producenta</div>
+              </div>
+              <div class="col-4">
+                <div class="stat-number text-warning">{{ missing_sku }}</div>
+                <div class="stat-label text-muted">brak SKU</div>
+              </div>
+              <div class="col-4">
+                <div class="stat-number text-warning">{{ missing_ean }}</div>
+                <div class="stat-label text-muted">brak EAN</div>
+              </div>
+            </div>
+            <div class="mt-2">
+              <input
+                type="text"
+                id="searchInput"
+                class="form-control form-control-sm"
+                placeholder="szukaj po nazwie (np. 3x4, pergola 3x4)"
+                autocomplete="off"
+              />
+            </div>
+            <div class="mt-2 d-flex align-items-center gap-2">
+              <button type="button" id="selectAllRecordsBtn" class="btn btn-sm select-all-btn">
+                <span class="btn-text">zaznacz</span>
+                <i class="bi bi-check-lg btn-check-icon d-none"></i>
+              </button>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="selectAllPagesCheckbox" />
+                <label class="form-check-label" for="selectAllPagesCheckbox" style="font-size: 11px;">
+                  wszystko
+                </label>
+              </div>
+              <button
+                type="button"
+                id="deleteSelectedBtn"
+                class="btn btn-sm btn-danger"
+                style="font-size: 10px; padding: 0.2rem 0.6rem; text-transform: uppercase;"
+                title="usuń zaznaczone"
+              >
+                usuń
+              </button>
+              <button
+                type="button"
+                id="batchEditBtn"
+                class="btn btn-sm btn-primary"
+                style="font-size: 10px; padding: 0.2rem 0.6rem; text-transform: uppercase;"
+                title="masowa edycja"
+              >
+                edytuj
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-lg-3">
+          <div class="p-3 bg-white rounded-3 shadow-sm h-100 middle-filters d-flex flex-column justify-content-start">
+            <div class="filter-row">
+              <button type="button" class="btn btn-outline-secondary btn-sm flex-grow-1" data-filter="missing_producer">brak producenta</button>
+              <button type="button" class="btn btn-sm flex-grow-1 filter-count-btn" data-filter-count="missing_producer"></button>
+            </div>
+            <div class="filter-row">
+              <button type="button" class="btn btn-outline-secondary btn-sm flex-grow-1" data-filter="missing_sku">brak SKU</button>
+              <button type="button" class="btn btn-sm flex-grow-1 filter-count-btn" data-filter-count="missing_sku"></button>
+            </div>
+            <div class="filter-row">
+              <button type="button" class="btn btn-outline-secondary btn-sm flex-grow-1" data-filter="missing_ean">brak EAN</button>
+              <button type="button" class="btn btn-sm flex-grow-1 filter-count-btn" data-filter-count="missing_ean"></button>
+            </div>
+            <div class="filter-row">
+              <button type="button" class="btn btn-outline-secondary btn-sm flex-grow-1" data-filter="missing_weight">brak waga</button>
+              <button type="button" class="btn btn-sm flex-grow-1 filter-count-btn" data-filter-count="missing_weight"></button>
+            </div>
+            <div class="filter-row">
+              <select id="producerFilterSelect" class="form-select form-select-sm flex-grow-1">
+                <option value="">wybierz producenta</option>
+              </select>
+              <button type="button" id="producerFilterBtn" class="btn btn-sm btn-outline-secondary">
+                wyświetl
+              </button>
+            </div>
+            <div class="filter-row">
+              <select id="producerExcludeSelect" class="form-select form-select-sm flex-grow-1">
+                <option value="">wyklucz producenta</option>
+              </select>
+              <button type="button" id="producerExcludeBtn" class="btn btn-sm btn-outline-secondary">
+                wyklucz
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Paginacja -->
+      <div class="d-flex justify-content-center align-items-center gap-2 mb-2">
+        <button type="button" id="prevPageBtn" class="btn btn-sm pagination-btn" style="font-size: 11px; padding: 0.15rem 0.8rem;">
+          <i class="bi bi-chevron-left"></i>
+        </button>
+        <div class="small text-muted" id="pageInfo" style="font-size: 11px; min-width: 50px; text-align: center;">Ładowanie...</div>
+        <button type="button" id="nextPageBtn" class="btn btn-sm pagination-btn" style="font-size: 11px; padding: 0.15rem 0.8rem;">
+          <i class="bi bi-chevron-right"></i>
+        </button>
+      </div>
+
+      <!-- Tabela produktów -->
+      <div class="bg-white rounded-3 shadow-sm">
+        <div class="table-responsive" style="max-height: 75vh;">
+          <table class="table table-sm table-hover align-middle mb-0 products-table">
+            <thead class="table-light sticky-top">
+              <tr>
+                <th class="select-col">
+                </th>
+                <th data-col="ID_produktu" title="ID_produktu">id</th>
+                <th data-col="Nazwa" title="Nazwa">nazwa</th>
+                <th data-col="EAN" title="EAN">ean</th>
+                <th data-col="SKU" title="SKU">sku</th>
+                <th data-col="Nazwa_producenta" title="Nazwa_producenta">producent</th>
+                <th data-col="ID_producenta" title="ID_producenta">id</th>
+                <th data-col="Grupa_produktu" title="Grupa_produktu">grupa</th>
+                <th data-col="Rodzaj_produktu" title="Rodzaj_produktu">rodzaj</th>
+                <th data-col="Szerokosc" title="Szerokosc">szer</th>
+                <th data-col="Wysokosc" title="Wysokosc">wys</th>
+                <th data-col="Dlugosc" title="Dlugosc">dł</th>
+                <th data-col="JM_wymiaru" title="JM_wymiaru">jm</th>
+                <th data-col="JM_objetosci" title="JM_objetosci">jm</th>
+                <th data-col="JM_sprzedazy" title="JM_sprzedazy">jm</th>
+                <th data-col="Objetosc_produktu" title="Objetosc_produktu">obj.</th>
+                <th data-col="Waga_brutto" title="Waga_brutto">waga</th>
+                <th data-col="JM_wagi" title="JM_wagi">jm.</th>
+                <th data-col="Rodzaj_opakowania" title="Rodzaj_opakowania">opakowanie</th>
+                <th data-col="Cena_sprzedazy_brutto" title="Cena_sprzedazy_brutto">sprzedaż brutto</th>
+                <th data-col="Cena_sprzedazy_netto" title="Cena_sprzedazy_netto">sprzedaż netto</th>
+                <th data-col="Cena_zakupu_brutto" title="Cena_zakupu_brutto">zakup brutto</th>
+                <th data-col="Cena_zakupu_netto" title="Cena_zakupu_netto">zakup netto</th>
+                <th data-col="Nazwa_Cennika" title="Nazwa_Cennika">cennik</th>
+                <th data-col="Dostepnosc" title="Dostepnosc">dostepnosc</th>
+                <th data-col="Stan_magazynowy" title="Stan_magazynowy">stan</th>
+                <th data-col="Status_produktu" title="Status_produktu">status</th>
+                <th data-col="Waluta_sprzedazy" title="Waluta_sprzedazy">waluta sprz</th>
+                <th data-col="Waluta_zakupu" title="Waluta_zakupu">waluta zak</th>
+                <th data-col="URL_Miniatura" title="URL_Miniatura">miniatura</th>
+                <th data-col="Rezerwacja" title="Rezerwacja">rezerwacja</th>
+              </tr>
+            </thead>
+            <tbody id="productsTbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS (opcjonalnie, np. dla komponentów interaktywnych) -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Modal potwierdzenia usuwania -->
+    <div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-labelledby="deleteConfirmModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="deleteConfirmModalLabel">Potwierdzenie usunięcia</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Czy na pewno chcesz usunąć <strong id="deleteCount">0</strong> zaznaczonych rekordów?</p>
+            <p class="text-danger">Ta operacja jest nieodwracalna.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Anuluj</button>
+            <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Usuń</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal komunikatów -->
+    <div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="messageModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="messageModalLabel">Komunikat</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p id="messageModalText" class="mb-0"></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="messageModalOkBtn">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal masowej edycji -->
+    <div class="modal fade" id="batchEditModal" tabindex="-1" aria-labelledby="batchEditModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="batchEditModalLabel">Masowa edycja</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div id="batchEditForm">
+              <p class="mb-3">Zaktualizujesz <strong id="batchEditCount">0</strong> zaznaczonych rekordów.</p>
+              <div class="mb-3">
+                <label for="batchEditField" class="form-label">Wybierz pole:</label>
+                <select id="batchEditField" class="form-select">
+                  <option value="">-- wybierz pole --</option>
+                  <option value="Nazwa_producenta">Producent</option>
+                  <option value="SKU">SKU</option>
+                  <option value="EAN">EAN</option>
+                  <option value="Grupa_produktu">Grupa produktu</option>
+                  <option value="Rodzaj_produktu">Rodzaj produktu</option>
+                  <option value="Szerokosc">Szerokość</option>
+                  <option value="Wysokosc">Wysokość</option>
+                  <option value="Dlugosc">Długość</option>
+                  <option value="JM_wymiaru">JM wymiaru</option>
+                  <option value="JM_objetosci">JM objętości</option>
+                  <option value="JM_sprzedazy">JM sprzedaży</option>
+                  <option value="Objetosc_produktu">Objętość produktu</option>
+                  <option value="Waga_brutto">Waga brutto</option>
+                  <option value="JM_wagi">JM wagi</option>
+                  <option value="Rodzaj_opakowania">Rodzaj opakowania</option>
+                  <option value="Cena_sprzedazy_brutto">Cena sprzedaży brutto</option>
+                  <option value="Cena_sprzedazy_netto">Cena sprzedaży netto</option>
+                  <option value="Cena_zakupu_brutto">Cena zakupu brutto</option>
+                  <option value="Cena_zakupu_netto">Cena zakupu netto</option>
+                  <option value="Nazwa_Cennika">Nazwa cennika</option>
+                  <option value="Dostepnosc">Dostępność</option>
+                  <option value="Stan_magazynowy">Stan magazynowy</option>
+                  <option value="Status_produktu">Status produktu</option>
+                  <option value="Waluta_sprzedazy">Waluta sprzedaży</option>
+                  <option value="Waluta_zakupu">Waluta zakupu</option>
+                  <option value="URL_Miniatura">URL miniatura</option>
+                  <option value="Rezerwacja">Rezerwacja</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="batchEditValue" class="form-label">Wartość:</label>
+                <input type="text" id="batchEditValue" class="form-control" placeholder="Wprowadź wartość" />
+              </div>
+            </div>
+            <div id="batchEditSuccess" class="d-none text-center py-4">
+              <div class="mb-3">
+                <i class="bi bi-check-circle-fill text-success" style="font-size: 3rem;"></i>
+              </div>
+              <h5 class="text-success mb-2">Sukces!</h5>
+              <p class="mb-0" id="batchEditSuccessMessage">Zaktualizowano <strong>0</strong> rekordów.</p>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="batchEditCancelBtn">Anuluj</button>
+            <button type="button" class="btn btn-primary d-none" id="batchEditCloseBtn" data-bs-dismiss="modal">Zamknij</button>
+            <button type="button" class="btn btn-primary" id="confirmBatchEditBtn">Zastosuj</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const STORAGE_KEY = "masterdata_column_visibility";
+        const columnButtons = document.querySelectorAll(".columns-toolbar [data-col]");
+        const viewAuthorInput = document.getElementById("viewAuthor");
+        const viewAuthorDisplay = document.getElementById("viewAuthorDisplay");
+        const viewAuthorContainer = document.getElementById("viewAuthorContainer");
+        const viewSelect = document.getElementById("viewSelect");
+        const saveViewBtn = document.getElementById("saveViewBtn");
+        
+        // Wczytaj zapisane imię z localStorage
+        const AUTHOR_STORAGE_KEY = "masterdata_author_name";
+        try {
+          const savedAuthor = localStorage.getItem(AUTHOR_STORAGE_KEY);
+          if (savedAuthor && viewAuthorDisplay) {
+            viewAuthorDisplay.textContent = savedAuthor || "imię";
+            if (viewAuthorDisplay.textContent === "imię") {
+              viewAuthorDisplay.style.color = "#6c757d";
+            } else {
+              viewAuthorDisplay.style.color = "#000";
+            }
+          }
+        } catch (e) {
+          console.warn("Cannot load author name", e);
+        }
+        
+        // Inline edit dla pola "imię"
+        if (viewAuthorDisplay && viewAuthorInput) {
+          viewAuthorDisplay.addEventListener("click", () => {
+            if (viewAuthorInput.classList.contains("d-none")) {
+              viewAuthorDisplay.classList.add("d-none");
+              viewAuthorInput.classList.remove("d-none");
+              viewAuthorInput.value = viewAuthorDisplay.textContent === "imię" ? "" : viewAuthorDisplay.textContent;
+              viewAuthorInput.focus();
+              viewAuthorInput.select();
+            }
+          });
+          
+          viewAuthorInput.addEventListener("blur", () => {
+            const newValue = viewAuthorInput.value.trim();
+            const displayValue = newValue || "imię";
+            
+            viewAuthorInput.classList.add("d-none");
+            viewAuthorDisplay.classList.remove("d-none");
+            viewAuthorDisplay.textContent = displayValue;
+            
+            if (displayValue === "imię") {
+              viewAuthorDisplay.style.color = "#6c757d";
+            } else {
+              viewAuthorDisplay.style.color = "#000";
+            }
+            
+            // Zapisz do localStorage
+            try {
+              if (newValue) {
+                localStorage.setItem(AUTHOR_STORAGE_KEY, newValue);
+              } else {
+                localStorage.removeItem(AUTHOR_STORAGE_KEY);
+              }
+            } catch (e) {
+              console.warn("Cannot save author name", e);
+            }
+          });
+          
+          viewAuthorInput.addEventListener("keydown", (e) => {
+            if (e.key === "Enter") {
+              viewAuthorInput.blur();
+            } else if (e.key === "Escape") {
+              viewAuthorInput.value = viewAuthorDisplay.textContent === "imię" ? "" : viewAuthorDisplay.textContent;
+              viewAuthorInput.blur();
+            }
+          });
+        }
+        const filterButtons = document.querySelectorAll(".middle-filters [data-filter]");
+        const filterCounts = document.querySelectorAll(".middle-filters [data-filter-count]");
+        const producerFilterSelect = document.getElementById("producerFilterSelect");
+        const producerFilterBtn = document.getElementById("producerFilterBtn");
+        const producerExcludeSelect = document.getElementById("producerExcludeSelect");
+        const producerExcludeBtn = document.getElementById("producerExcludeBtn");
+        const tableBody = document.getElementById("productsTbody");
+        const selectedCountValue = document.getElementById("selectedCountValue");
+        const prevPageBtn = document.getElementById("prevPageBtn");
+        const nextPageBtn = document.getElementById("nextPageBtn");
+        const pageInfo = document.getElementById("pageInfo");
+        const selectAllBtn = document.getElementById("selectAllBtn");
+        const clearAllBtn = document.getElementById("clearAllBtn");
+        const selectAllRecordsBtn = document.getElementById("selectAllRecordsBtn");
+        const selectAllPagesCheckbox = document.getElementById("selectAllPagesCheckbox");
+        let viewsById = {};
+        
+        // Uniwersalny modal komunikatów
+        const messageModal = document.getElementById("messageModal");
+        const messageModalText = document.getElementById("messageModalText");
+        const messageModalLabel = document.getElementById("messageModalLabel");
+        let messageModalInstance = null;
+        
+        function showMessage(title, message, type = "info", autoClose = false) {
+          if (!messageModal || !messageModalText || !messageModalLabel) return;
+          
+          if (!messageModalInstance) {
+            messageModalInstance = new bootstrap.Modal(messageModal);
+          }
+          
+          messageModalLabel.textContent = title || "Komunikat";
+          messageModalText.textContent = message;
+          
+          // Zmień kolor nagłówka w zależności od typu
+          const modalHeader = messageModal.querySelector(".modal-header");
+          if (modalHeader) {
+            modalHeader.className = "modal-header";
+            if (type === "success") {
+              modalHeader.classList.add("bg-success", "text-white");
+            } else if (type === "error" || type === "danger") {
+              modalHeader.classList.add("bg-danger", "text-white");
+            } else if (type === "warning") {
+              modalHeader.classList.add("bg-warning");
+            } else {
+              modalHeader.classList.add("bg-primary", "text-white");
+            }
+          }
+          
+          messageModalInstance.show();
+          
+          // Automatyczne zamknięcie dla komunikatów sukcesu (jeśli autoClose = true)
+          if (autoClose || type === "success") {
+            setTimeout(() => {
+              if (messageModalInstance) {
+                messageModalInstance.hide();
+              }
+            }, 2000); // 2 sekundy
+          }
+        }
+
+        const state = {
+          page: 1,
+          page_size: 200,
+          total_filtered: 0,
+          total_pages: 1,
+          missing: new Set(),
+          producer: "",
+          exclude_producer: "",
+          searchQuery: "",
+          lastFilterMode: "",
+          selected_ids: new Set(),
+          modified_ids: new Set(), // ID rekordów zmienionych przez masową edycję
+        };
+
+        function escapeHtml(value) {
+          return String(value ?? "")
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#39;");
+        }
+
+        function producerShort(name) {
+          const raw = String(name ?? "").trim();
+          const up = raw.toUpperCase();
+          if (up === "SALAG SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ") return "SALAG";
+          if (up === "CERAMIKA ILONA PIETRZAK") return "Ceramika";
+          return raw;
+        }
+
+        function fmtNum(value) {
+          if (value === null || value === undefined || value === "") return "";
+          const n = Number(value);
+          if (!Number.isNaN(n) && Number.isInteger(n)) return String(n);
+          return String(value);
+        }
+
+        function displayValue(field, rawValue) {
+          if (field === "Nazwa_producenta") return producerShort(rawValue);
+          if (
+            field === "Szerokosc" ||
+            field === "Wysokosc" ||
+            field === "Dlugosc" ||
+            field === "Waga_brutto" ||
+            field === "Dostepnosc" ||
+            field === "Stan_magazynowy" ||
+            field === "Rezerwacja"
+          ) {
+            return fmtNum(rawValue);
+          }
+          return rawValue ?? "";
+        }
+
+        function buildCurrentProfile() {
+          const profile = {};
+          columnButtons.forEach((btn) => {
+            const col = btn.getAttribute("data-col");
+            profile[col] = btn.classList.contains("btn-success");
+          });
+          return profile;
+        }
+
+        function buildFullProfile() {
+          const profile = {};
+          columnButtons.forEach((btn) => {
+            profile[btn.getAttribute("data-col")] = true;
+          });
+          return profile;
+        }
+
+        function applyVisibilityFromProfile(profile) {
+          columnButtons.forEach((btn) => {
+            const col = btn.getAttribute("data-col");
+            const visible = profile[col] !== false;
+            const cells = document.querySelectorAll(
+              'th[data-col="' + col + '"], td[data-col="' + col + '"]'
+            );
+            if (visible) {
+              btn.classList.add("btn-success");
+              btn.classList.remove("btn-outline-secondary");
+              cells.forEach((cell) => (cell.style.display = ""));
+            } else {
+              btn.classList.remove("btn-success");
+              btn.classList.add("btn-outline-secondary");
+              cells.forEach((cell) => (cell.style.display = "none"));
+            }
+          });
+        }
+
+        function loadViews() {
+          if (!viewSelect) return;
+          fetch("/column-views")
+            .then((res) => res.json())
+            .then((data) => {
+              const views = data.views || [];
+              viewsById = {};
+              while (viewSelect.options.length > 1) {
+                viewSelect.remove(1);
+              }
+              views.forEach((v) => {
+                viewsById[v.id] = v;
+                const opt = document.createElement("option");
+                opt.value = v.id;
+                opt.textContent = v.label;
+                viewSelect.appendChild(opt);
+              });
+            })
+            .catch((e) => console.warn("Cannot load column views", e));
+        }
+
+        function buildProductsUrl() {
+          const params = new URLSearchParams();
+          params.set("page", String(state.page));
+          params.set("page_size", String(state.page_size));
+          if (state.missing.size > 0) {
+            params.set("missing", Array.from(state.missing).join(","));
+          }
+          if (state.producer) params.set("producer", state.producer);
+          if (state.exclude_producer) params.set("exclude_producer", state.exclude_producer);
+          if (state.searchQuery.trim()) params.set("search", state.searchQuery.trim());
+          return "/api/products?" + params.toString();
+        }
+
+        function renderProducts(items) {
+          if (!tableBody) return;
+          if (!items || items.length === 0) {
+            tableBody.innerHTML =
+              '<tr><td colspan="31" class="text-center text-muted py-3">brak danych dla wybranych filtrów</td></tr>';
+            return;
+          }
+          function cell(field, rawValue) {
+            const display = displayValue(field, rawValue);
+            return `<td data-col="${field}" data-field="${field}" data-raw="${escapeHtml(
+              rawValue ?? ""
+            )}">${escapeHtml(display)}</td>`;
+          }
+          tableBody.innerHTML = items
+            .map(
+              (p) => {
+                const productId = String(p.ID_produktu);
+                const isModified = state.modified_ids.has(productId);
+                return `
+              <tr data-id="${escapeHtml(p.ID_produktu)}" ${isModified ? 'class="row-modified"' : ''}>
+                <td class="select-col">
+                  <input type="checkbox" class="form-check-input row-select" data-id="${escapeHtml(
+                    p.ID_produktu
+                  )}" ${state.selected_ids.has(productId) ? "checked" : ""} />
+                </td>
+                ${cell("ID_produktu", p.ID_produktu)}
+                ${cell("Nazwa", p.Nazwa)}
+                ${cell("EAN", p.EAN)}
+                ${cell("SKU", p.SKU)}
+                ${cell("Nazwa_producenta", p.Nazwa_producenta)}
+                ${cell("ID_producenta", p.ID_producenta)}
+                ${cell("Grupa_produktu", p.Grupa_produktu)}
+                ${cell("Rodzaj_produktu", p.Rodzaj_produktu)}
+                ${cell("Szerokosc", p.Szerokosc)}
+                ${cell("Wysokosc", p.Wysokosc)}
+                ${cell("Dlugosc", p.Dlugosc)}
+                ${cell("JM_wymiaru", p.JM_wymiaru)}
+                ${cell("JM_objetosci", p.JM_objetosci)}
+                ${cell("JM_sprzedazy", p.JM_sprzedazy)}
+                ${cell("Objetosc_produktu", p.Objetosc_produktu)}
+                ${cell("Waga_brutto", p.Waga_brutto)}
+                ${cell("JM_wagi", p.JM_wagi)}
+                ${cell("Rodzaj_opakowania", p.Rodzaj_opakowania)}
+                ${cell("Cena_sprzedazy_brutto", p.Cena_sprzedazy_brutto)}
+                ${cell("Cena_sprzedazy_netto", p.Cena_sprzedazy_netto)}
+                ${cell("Cena_zakupu_brutto", p.Cena_zakupu_brutto)}
+                ${cell("Cena_zakupu_netto", p.Cena_zakupu_netto)}
+                ${cell("Nazwa_Cennika", p.Nazwa_Cennika)}
+                ${cell("Dostepnosc", p.Dostepnosc)}
+                ${cell("Stan_magazynowy", p.Stan_magazynowy)}
+                ${cell("Status_produktu", p.Status_produktu)}
+                ${cell("Waluta_sprzedazy", p.Waluta_sprzedazy)}
+                ${cell("Waluta_zakupu", p.Waluta_zakupu)}
+                ${cell("URL_Miniatura", p.URL_Miniatura)}
+                ${cell("Rezerwacja", p.Rezerwacja)}
+              </tr>`;
+              }
+            )
+            .join("");
+        }
+
+        function updateFilterStyles() {
+          filterButtons.forEach((b) => {
+            const m = b.getAttribute("data-filter");
+            if (m && state.missing.has(m)) {
+              b.classList.remove("btn-outline-secondary");
+              b.classList.add("btn-primary");
+            } else {
+              b.classList.remove("btn-primary");
+              b.classList.add("btn-outline-secondary");
+            }
+          });
+        }
+
+        function updateFilterCountButtons() {
+          filterCounts.forEach((btnCount) => {
+            const mode = btnCount.getAttribute("data-filter-count");
+            if (mode === state.lastFilterMode && state.total_filtered > 0) {
+              btnCount.textContent = `${state.total_filtered} szt`;
+              btnCount.classList.add("has-count");
+            } else {
+              btnCount.textContent = "";
+              btnCount.classList.remove("has-count");
+            }
+          });
+        }
+
+        function updatePaginationUi() {
+          if (pageInfo) {
+            pageInfo.textContent = `${state.page}/${Math.max(1, state.total_pages)}`;
+          }
+          if (prevPageBtn) prevPageBtn.disabled = state.page <= 1;
+          if (nextPageBtn) nextPageBtn.disabled = state.page >= state.total_pages;
+          if (selectedCountValue) selectedCountValue.textContent = String(state.selected_ids.size);
+          
+          // Sprawdź czy wszystkie rekordy na bieżącej stronie są zaznaczone
+          if (selectAllRecordsBtn && tableBody) {
+            const checkboxes = tableBody.querySelectorAll("input.row-select");
+            if (checkboxes.length === 0) {
+              selectAllRecordsBtn.classList.remove("active");
+            } else {
+              const allChecked = Array.from(checkboxes).every((cb) => cb.checked);
+              if (allChecked && checkboxes.length > 0) {
+                selectAllRecordsBtn.classList.add("active");
+              } else {
+                selectAllRecordsBtn.classList.remove("active");
+              }
+            }
+          }
+        }
+
+        function loadProducts() {
+          fetch(buildProductsUrl())
+            .then((res) => res.json())
+            .then((data) => {
+              state.total_filtered = data.total_filtered || 0;
+              state.total_pages = data.total_pages || 1;
+              renderProducts(data.items || []);
+              applyVisibilityFromProfile(buildCurrentProfile());
+              updateFilterCountButtons();
+              updatePaginationUi();
+            })
+            .catch((e) => {
+              console.error("Cannot load products page", e);
+              if (tableBody) {
+                tableBody.innerHTML =
+                  '<tr><td colspan="31" class="text-center text-danger py-3">błąd ładowania danych</td></tr>';
+              }
+            });
+        }
+
+        function loadProducerOptions() {
+          fetch("/api/producers")
+            .then((res) => res.json())
+            .then((data) => {
+              const producers = data.producers || [];
+              function fillSelect(select, placeholder) {
+                if (!select) return;
+                select.innerHTML = "";
+                const base = document.createElement("option");
+                base.value = "";
+                base.textContent = placeholder;
+                select.appendChild(base);
+                producers.forEach((name) => {
+                  const opt = document.createElement("option");
+                  opt.value = name;
+                  opt.textContent = name;
+                  select.appendChild(opt);
+                });
+              }
+              fillSelect(producerFilterSelect, "wybierz producenta");
+              fillSelect(producerExcludeSelect, "wyklucz producenta");
+            })
+            .catch((e) => console.warn("Cannot load producers", e));
+        }
+
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          if (raw) applyVisibilityFromProfile(JSON.parse(raw));
+        } catch (e) {
+          console.warn("Cannot restore column visibility profile", e);
+        }
+
+        columnButtons.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const isActive = btn.classList.contains("btn-success");
+            if (isActive) {
+              btn.classList.remove("btn-success");
+              btn.classList.add("btn-outline-secondary");
+            } else {
+              btn.classList.remove("btn-outline-secondary");
+              btn.classList.add("btn-success");
+            }
+            applyVisibilityFromProfile(buildCurrentProfile());
+            try {
+              localStorage.setItem(STORAGE_KEY, JSON.stringify(buildCurrentProfile()));
+            } catch (e) {
+              console.warn("Cannot save column visibility profile", e);
+            }
+          });
+        });
+
+        filterButtons.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const mode = btn.getAttribute("data-filter");
+            if (!mode) return;
+            if (state.missing.has(mode)) state.missing.delete(mode);
+            else state.missing.add(mode);
+            state.lastFilterMode = mode;
+            state.page = 1;
+            updateFilterStyles();
+            loadProducts();
+          });
+        });
+
+        let searchDebounceTimer;
+        const searchInput = document.getElementById("searchInput");
+        if (searchInput) {
+          searchInput.addEventListener("input", () => {
+            clearTimeout(searchDebounceTimer);
+            searchDebounceTimer = setTimeout(() => {
+              state.searchQuery = searchInput.value;
+              state.page = 1;
+              loadProducts();
+            }, 280);
+          });
+        }
+
+        if (producerFilterBtn && producerFilterSelect) {
+          producerFilterBtn.addEventListener("click", () => {
+            state.producer = (producerFilterSelect.value || "").trim();
+            state.exclude_producer = "";
+            if (producerExcludeSelect) producerExcludeSelect.value = "";
+            state.lastFilterMode = "";
+            state.page = 1;
+            updateFilterCountButtons();
+            loadProducts();
+          });
+        }
+
+        if (producerExcludeBtn && producerExcludeSelect) {
+          producerExcludeBtn.addEventListener("click", () => {
+            state.exclude_producer = (producerExcludeSelect.value || "").trim();
+            state.producer = "";
+            if (producerFilterSelect) producerFilterSelect.value = "";
+            state.lastFilterMode = "";
+            state.page = 1;
+            updateFilterCountButtons();
+            loadProducts();
+          });
+        }
+
+        // Funkcja pomocnicza do pobrania imienia
+        function getAuthorName() {
+          if (viewAuthorDisplay && viewAuthorDisplay.textContent !== "imię") {
+            return viewAuthorDisplay.textContent.trim();
+          }
+          if (viewAuthorInput && !viewAuthorInput.classList.contains("d-none")) {
+            return viewAuthorInput.value.trim();
+          }
+          return "";
+        }
+        
+        if (saveViewBtn) {
+          saveViewBtn.addEventListener("click", () => {
+            const author = getAuthorName();
+            if (!author) {
+              showMessage("Uwaga", "Podaj swoje imię przed zapisaniem widoku.", "warning");
+              return;
+            }
+            const profile = buildCurrentProfile();
+            fetch("/column-views", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ author, profile }),
+            })
+              .then((res) => {
+                if (!res.ok) throw new Error("HTTP " + res.status);
+                return res.json();
+              })
+              .then((view) => {
+                if (!viewSelect) return;
+                viewsById[view.id] = view;
+                const opt = document.createElement("option");
+                opt.value = view.id;
+                opt.textContent = view.label;
+                viewSelect.appendChild(opt);
+                viewSelect.value = view.id;
+              })
+              .catch((e) => {
+                console.error("Nie udało się zapisać widoku", e);
+                showMessage("Błąd", "Nie udało się zapisać widoku.", "error");
+              });
+          });
+        }
+
+        if (viewSelect) {
+          viewSelect.addEventListener("change", () => {
+            const id = viewSelect.value;
+            if (!id || !viewsById[id]) return;
+            applyVisibilityFromProfile(viewsById[id].profile || {});
+            try {
+              localStorage.setItem(STORAGE_KEY, JSON.stringify(viewsById[id].profile || {}));
+            } catch (e) {
+              console.warn("Cannot save selected view profile", e);
+            }
+          });
+        }
+
+        const resetViewBtn = document.getElementById("resetViewBtn");
+        if (resetViewBtn) {
+          resetViewBtn.addEventListener("click", () => {
+            const fullProfile = buildFullProfile();
+            applyVisibilityFromProfile(fullProfile);
+            try {
+              localStorage.setItem(STORAGE_KEY, JSON.stringify(fullProfile));
+            } catch (e) {
+              console.warn("Cannot save reset profile", e);
+            }
+            if (viewSelect) viewSelect.value = "";
+          });
+        }
+
+        if (prevPageBtn) {
+          prevPageBtn.addEventListener("click", () => {
+            if (state.page <= 1) return;
+            state.page -= 1;
+            loadProducts();
+          });
+        }
+        if (nextPageBtn) {
+          nextPageBtn.addEventListener("click", () => {
+            if (state.page >= state.total_pages) return;
+            state.page += 1;
+            loadProducts();
+          });
+        }
+
+        // Zaznaczanie rekordów
+        if (tableBody) {
+          tableBody.addEventListener("change", (event) => {
+            const cb = event.target.closest("input.row-select");
+            if (!cb) return;
+            const id = String(cb.getAttribute("data-id") || "");
+            if (!id) return;
+            if (cb.checked) {
+              state.selected_ids.add(id);
+            } else {
+              state.selected_ids.delete(id);
+              if (selectAllRecordsBtn) selectAllRecordsBtn.classList.remove("active");
+              // Usuń zielone tło po odznaczeniu (płynnie)
+              if (state.modified_ids.has(id)) {
+                state.modified_ids.delete(id);
+                const row = cb.closest("tr");
+                if (row) {
+                  row.classList.remove("row-modified-blink");
+                  // Opóźnienie aby transition zadziałał
+                  setTimeout(() => {
+                    row.classList.remove("row-modified");
+                  }, 10);
+                }
+              }
+            }
+            updatePaginationUi();
+          });
+        }
+
+        if (selectAllBtn) {
+          selectAllBtn.addEventListener("click", () => {
+            const checkboxes = tableBody
+              ? tableBody.querySelectorAll("input.row-select")
+              : [];
+            checkboxes.forEach((cb) => {
+              cb.checked = true;
+              const id = String(cb.getAttribute("data-id") || "");
+              if (id) state.selected_ids.add(id);
+            });
+            updatePaginationUi();
+          });
+        }
+
+        if (clearAllBtn) {
+          clearAllBtn.addEventListener("click", () => {
+            const checkboxes = tableBody
+              ? tableBody.querySelectorAll("input.row-select")
+              : [];
+            checkboxes.forEach((cb) => {
+              cb.checked = false;
+            });
+            state.selected_ids.clear();
+            updatePaginationUi();
+            if (selectAllRecordsBtn) selectAllRecordsBtn.classList.remove("active");
+          });
+        }
+
+        async function selectAllRecords(allPages = false) {
+          if (allPages) {
+            // Pobierz wszystkie produkty (używając bardzo dużego page_size)
+            const params = new URLSearchParams();
+            params.set("page", "1");
+            params.set("page_size", "10000");
+            if (state.missing.size > 0) {
+              params.set("missing", Array.from(state.missing).join(","));
+            }
+            if (state.producer) params.set("producer", state.producer);
+            if (state.exclude_producer) params.set("exclude_producer", state.exclude_producer);
+            if (state.searchQuery.trim()) params.set("search", state.searchQuery.trim());
+            
+            try {
+              const response = await fetch("/api/products?" + params.toString());
+              const data = await response.json();
+              const items = data.items || [];
+              items.forEach((p) => {
+                state.selected_ids.add(String(p.ID_produktu));
+              });
+            } catch (e) {
+              console.error("Błąd podczas pobierania wszystkich produktów", e);
+              showMessage("Błąd", "Nie udało się pobrać wszystkich produktów.", "error");
+              return;
+            }
+          } else {
+            // Zaznacz tylko na bieżącej stronie
+            const checkboxes = tableBody
+              ? tableBody.querySelectorAll("input.row-select")
+              : [];
+            checkboxes.forEach((cb) => {
+              cb.checked = true;
+              const id = String(cb.getAttribute("data-id") || "");
+              if (id) state.selected_ids.add(id);
+            });
+          }
+          // Odśwież checkboxy na bieżącej stronie
+          const checkboxes = tableBody
+            ? tableBody.querySelectorAll("input.row-select")
+            : [];
+          checkboxes.forEach((cb) => {
+            const id = String(cb.getAttribute("data-id") || "");
+            if (id && state.selected_ids.has(id)) {
+              cb.checked = true;
+            }
+          });
+          updatePaginationUi();
+          if (selectAllRecordsBtn) selectAllRecordsBtn.classList.add("active");
+        }
+
+        async function deselectAllRecords(allPages = false) {
+          if (allPages) {
+            // Odznacz wszystkie produkty
+            state.selected_ids.clear();
+          } else {
+            // Odznacz tylko na bieżącej stronie
+            const checkboxes = tableBody
+              ? tableBody.querySelectorAll("input.row-select")
+              : [];
+            checkboxes.forEach((cb) => {
+              cb.checked = false;
+              const id = String(cb.getAttribute("data-id") || "");
+              if (id) state.selected_ids.delete(id);
+            });
+          }
+          // Odśwież checkboxy na bieżącej stronie
+          const checkboxes = tableBody
+            ? tableBody.querySelectorAll("input.row-select")
+            : [];
+          checkboxes.forEach((cb) => {
+            const id = String(cb.getAttribute("data-id") || "");
+            if (id && !state.selected_ids.has(id)) {
+              cb.checked = false;
+            }
+          });
+          updatePaginationUi();
+          if (selectAllRecordsBtn) selectAllRecordsBtn.classList.remove("active");
+        }
+
+        if (selectAllRecordsBtn) {
+          selectAllRecordsBtn.addEventListener("click", async () => {
+            const isActive = selectAllRecordsBtn.classList.contains("active");
+            const allPages = selectAllPagesCheckbox && selectAllPagesCheckbox.checked;
+            
+            if (isActive) {
+              // Odznacz
+              await deselectAllRecords(allPages);
+            } else {
+              // Zaznacz
+              await selectAllRecords(allPages);
+            }
+          });
+        }
+
+        // Obsługa usuwania zaznaczonych rekordów
+        const deleteSelectedBtn = document.getElementById("deleteSelectedBtn");
+        const deleteConfirmModal = document.getElementById("deleteConfirmModal");
+        const deleteCount = document.getElementById("deleteCount");
+        const confirmDeleteBtn = document.getElementById("confirmDeleteBtn");
+        const batchEditBtn = document.getElementById("batchEditBtn");
+        const batchEditModal = document.getElementById("batchEditModal");
+        const batchEditCount = document.getElementById("batchEditCount");
+        const batchEditField = document.getElementById("batchEditField");
+        const batchEditValue = document.getElementById("batchEditValue");
+        const confirmBatchEditBtn = document.getElementById("confirmBatchEditBtn");
+        let deleteModal;
+        let batchEditModalInstance;
+
+        if (deleteSelectedBtn && deleteConfirmModal) {
+          deleteModal = new bootstrap.Modal(deleteConfirmModal);
+          
+          deleteSelectedBtn.addEventListener("click", () => {
+            const selectedCount = state.selected_ids.size;
+            if (selectedCount === 0) {
+              showMessage("Uwaga", "Nie zaznaczono żadnych rekordów do usunięcia.", "warning");
+              return;
+            }
+            
+            deleteCount.textContent = selectedCount;
+            deleteModal.show();
+          });
+
+          if (confirmDeleteBtn) {
+            confirmDeleteBtn.addEventListener("click", async () => {
+              const selectedIds = Array.from(state.selected_ids).map(id => parseInt(id));
+              const userId = getAuthorName();
+              
+              try {
+                const response = await fetch("/api/products/batch-delete", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({ ids: selectedIds, user_id: userId }),
+                });
+
+                if (response.ok) {
+                  const result = await response.json();
+                  state.selected_ids.clear();
+                  deleteModal.hide();
+                  loadProducts(); // Przeładuj tabelę
+                  showMessage("Sukces", `Usunięto ${result.deleted} rekordów.`, "success", true);
+                } else {
+                  const error = await response.json();
+                  showMessage("Błąd", `Błąd podczas usuwania: ${error.error || "Nieznany błąd"}`, "error");
+                }
+              } catch (err) {
+                console.error("Błąd usuwania:", err);
+                showMessage("Błąd", "Wystąpił błąd podczas usuwania rekordów.", "error");
+              }
+            });
+          }
+        }
+
+        // Masowa edycja
+        const batchEditForm = document.getElementById("batchEditForm");
+        const batchEditSuccess = document.getElementById("batchEditSuccess");
+        const batchEditSuccessMessage = document.getElementById("batchEditSuccessMessage");
+        const batchEditCancelBtn = document.getElementById("batchEditCancelBtn");
+        const batchEditCloseBtn = document.getElementById("batchEditCloseBtn");
+        
+        if (batchEditBtn && batchEditModal) {
+          batchEditModalInstance = new bootstrap.Modal(batchEditModal);
+          
+          // Reset modala przy otwarciu
+          batchEditModal.addEventListener("show.bs.modal", () => {
+            if (batchEditForm) batchEditForm.classList.remove("d-none");
+            if (batchEditSuccess) batchEditSuccess.classList.add("d-none");
+            if (confirmBatchEditBtn) confirmBatchEditBtn.classList.remove("d-none");
+            if (batchEditCloseBtn) batchEditCloseBtn.classList.add("d-none");
+            if (batchEditCancelBtn) batchEditCancelBtn.classList.remove("d-none");
+          });
+          
+          batchEditBtn.addEventListener("click", () => {
+            const selectedCount = state.selected_ids.size;
+            if (selectedCount === 0) {
+              showMessage("Uwaga", "Nie zaznaczono żadnych rekordów do edycji.", "warning");
+              return;
+            }
+            
+            if (batchEditCount) batchEditCount.textContent = selectedCount;
+            if (batchEditField) batchEditField.value = "";
+            if (batchEditValue) batchEditValue.value = "";
+            batchEditModalInstance.show();
+          });
+
+          if (confirmBatchEditBtn) {
+            confirmBatchEditBtn.addEventListener("click", async () => {
+              const field = batchEditField ? batchEditField.value.trim() : "";
+              const value = batchEditValue ? batchEditValue.value.trim() : "";
+              
+              if (!field) {
+                showMessage("Uwaga", "Wybierz pole do edycji.", "warning");
+                return;
+              }
+              
+              const selectedIds = Array.from(state.selected_ids).map(id => parseInt(id));
+              const userId = getAuthorName();
+              
+              try {
+                const response = await fetch("/api/products/batch-update", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({ ids: selectedIds, field, value, user_id: userId }),
+                });
+
+                if (response.ok) {
+                  const result = await response.json();
+                  const updatedIds = result.updated_ids || [];
+                  
+                  // Zapisz ID zmienionych rekordów w state
+                  updatedIds.forEach((id) => {
+                    state.modified_ids.add(String(id));
+                  });
+                  
+                  // Pokaż komunikat sukcesu w modalu
+                  if (batchEditForm) batchEditForm.classList.add("d-none");
+                  if (batchEditSuccess) batchEditSuccess.classList.remove("d-none");
+                  if (batchEditSuccessMessage) {
+                    batchEditSuccessMessage.innerHTML = `Zaktualizowano <strong>${result.updated}</strong> rekordów.`;
+                  }
+                  if (confirmBatchEditBtn) confirmBatchEditBtn.classList.add("d-none");
+                  if (batchEditCloseBtn) batchEditCloseBtn.classList.remove("d-none");
+                  if (batchEditCancelBtn) batchEditCancelBtn.classList.add("d-none");
+                  
+                  // Odśwież tabelę aby pokazać zmiany (zachowa zielone tło dzięki state.modified_ids)
+                  loadProducts();
+                  
+                  // Pokaż komunikat sukcesu (automatycznie zniknie po 2 sekundach)
+                  showMessage("Sukces", `Zaktualizowano ${result.updated} rekordów.`, "success", true);
+                  
+                  // Dodaj animację mrugania do zmienionych wierszy po zamknięciu modala
+                  setTimeout(() => {
+                    updatedIds.forEach((id) => {
+                      const row = tableBody ? tableBody.querySelector(`tr[data-id="${id}"]`) : null;
+                      if (row) {
+                        row.classList.add("row-modified-blink");
+                        // Po zakończeniu animacji usuń klasę blink, zostaw tylko modified
+                        setTimeout(() => {
+                          row.classList.remove("row-modified-blink");
+                        }, 2000); // 2 sekundy = 2x mruganie (1s animacja x 2)
+                      }
+                    });
+                  }, 500); // Małe opóźnienie
+                } else {
+                  const error = await response.json();
+                  showMessage("Błąd", `Błąd podczas aktualizacji: ${error.error || "Nieznany błąd"}`, "error");
+                }
+              } catch (err) {
+                console.error("Błąd masowej edycji:", err);
+                showMessage("Błąd", "Wystąpił błąd podczas aktualizacji rekordów.", "error");
+              }
+            });
+          }
+        }
+
+        // Inline edit: klik komórki -> input, blur -> zapis
+        if (tableBody) {
+          tableBody.addEventListener("click", (event) => {
+            const td = event.target.closest("td[data-field]");
+            if (!td) return;
+            const field = td.getAttribute("data-field");
+            if (!field || field === "ID_produktu") return;
+            if (td.querySelector("input")) return;
+
+            const tr = td.closest("tr");
+            const productId = tr ? tr.getAttribute("data-id") : "";
+            if (!productId) return;
+
+            const originalRaw = td.getAttribute("data-raw") ?? "";
+            const input = document.createElement("input");
+            input.type = "text";
+            input.className = "form-control form-control-sm";
+            input.value = originalRaw;
+            td.innerHTML = "";
+            td.appendChild(input);
+            input.focus();
+            input.select();
+
+            let cancelled = false;
+            let saved = false;
+
+            input.addEventListener("keydown", (e) => {
+              if (e.key === "Escape") {
+                cancelled = true;
+                td.textContent = displayValue(field, originalRaw);
+                td.setAttribute("data-raw", originalRaw);
+                return;
+              }
+              if (e.key === "Enter") {
+                input.blur();
+              }
+            });
+
+            input.addEventListener("blur", () => {
+              if (saved || cancelled) return;
+              saved = true;
+              const newRaw = input.value.trim();
+
+              const userId = getAuthorName();
+              fetch(`/api/products/${productId}`, {
+                method: "PATCH",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ field, value: newRaw, user_id: userId }),
+              })
+                .then((res) => {
+                  if (!res.ok) throw new Error("HTTP " + res.status);
+                  return res.json();
+                })
+                .then((data) => {
+                  const value = data.value ?? "";
+                  td.textContent = displayValue(field, value);
+                  td.setAttribute("data-raw", value);
+                  // Odśwież licznik zmodyfikowanych
+                  if (data.modified_count !== undefined) {
+                    const modifiedCountEl = document.getElementById("modifiedCountValue");
+                    if (modifiedCountEl) {
+                      modifiedCountEl.textContent = String(data.modified_count);
+                    }
+                  }
+                })
+                .catch((err) => {
+                  console.error("Edycja nieudana", err);
+                  td.textContent = displayValue(field, originalRaw);
+                  td.setAttribute("data-raw", originalRaw);
+                  showMessage("Błąd", "Nie udało się zapisać zmiany.", "error");
+                });
+            });
+          });
+        }
+
+        // Backup i wersjonowanie
+        const createBackupBtn = document.getElementById("createBackupBtn");
+        const createStableBtn = document.getElementById("createStableBtn");
+        const versionDisplay = document.getElementById("versionDisplay");
+
+        async function createBackup(stable = false) {
+          const btn = stable ? createStableBtn : createBackupBtn;
+          const originalText = btn.textContent;
+          btn.disabled = true;
+          btn.textContent = "tworzenie...";
+          
+          try {
+            const response = await fetch("/api/backup", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ type: stable ? "stable" : "backup" }),
+            });
+            
+            const data = await response.json();
+            
+            if (data.success) {
+              if (versionDisplay) versionDisplay.textContent = data.version;
+              showMessage("Sukces", data.message, "success", true);
+            } else {
+              showMessage("Błąd", `Błąd: ${data.error || "Nieznany błąd"}`, "error");
+            }
+          } catch (err) {
+            console.error("Błąd backupu:", err);
+            showMessage("Błąd", "Wystąpił błąd podczas tworzenia backupu.", "error");
+          } finally {
+            btn.disabled = false;
+            btn.textContent = originalText;
+          }
+        }
+
+        if (createBackupBtn) {
+          createBackupBtn.addEventListener("click", () => createBackup(false));
+        }
+        if (createStableBtn) {
+          createStableBtn.addEventListener("click", () => createBackup(true));
+        }
+
+        // Upload i wyzerowanie bazy
+        const uploadDbBtn = document.getElementById("uploadDbBtn");
+        const dbFileInput = document.getElementById("dbFileInput");
+        const clearDbBtn = document.getElementById("clearDbBtn");
+        
+        if (uploadDbBtn && dbFileInput) {
+          uploadDbBtn.addEventListener("click", () => {
+            dbFileInput.click();
+          });
+          
+          dbFileInput.addEventListener("change", async (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+            
+            if (!file.name.endsWith(".json")) {
+              showMessage("Błąd", "Plik musi mieć rozszerzenie .json", "error");
+              dbFileInput.value = "";
+              return;
+            }
+            
+            // Potwierdzenie przez modal
+            const uploadConfirmModal = document.createElement("div");
+            uploadConfirmModal.className = "modal fade";
+            uploadConfirmModal.id = "uploadConfirmModal";
+            uploadConfirmModal.setAttribute("tabindex", "-1");
+            uploadConfirmModal.innerHTML = `
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header bg-warning">
+                    <h5 class="modal-title">Potwierdzenie uploadu</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <p>Czy na pewno chcesz zastąpić obecną bazę plikiem <strong>"${file.name}"</strong>?</p>
+                    <p>Obecna baza zostanie zapisana jako backup.</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Anuluj</button>
+                    <button type="button" class="btn btn-warning" id="confirmUploadBtn">Zastąp bazę</button>
+                  </div>
+                </div>
+              </div>
+            `;
+            document.body.appendChild(uploadConfirmModal);
+            const uploadModalInstance = new bootstrap.Modal(uploadConfirmModal);
+            uploadModalInstance.show();
+            
+            const confirmUploadBtn = document.getElementById("confirmUploadBtn");
+            if (confirmUploadBtn) {
+              confirmUploadBtn.addEventListener("click", () => {
+                uploadModalInstance.hide();
+                setTimeout(() => uploadConfirmModal.remove(), 300);
+                
+                uploadDbBtn.disabled = true;
+                uploadDbBtn.textContent = "ładowanie...";
+                
+                const formData = new FormData();
+                formData.append("file", file);
+                
+                fetch("/api/database/upload", {
+                  method: "POST",
+                  body: formData,
+                })
+                  .then((response) => response.json())
+                  .then((data) => {
+                    if (data.success) {
+                      showMessage("Sukces", data.message, "success", true);
+                      setTimeout(() => {
+                        window.location.reload();
+                      }, 2000);
+                    } else {
+                      showMessage("Błąd", data.error || "Nieznany błąd", "error");
+                    }
+                  })
+                  .catch((err) => {
+                    console.error("Błąd uploadu:", err);
+                    showMessage("Błąd", "Wystąpił błąd podczas uploadowania pliku.", "error");
+                  })
+                  .finally(() => {
+                    uploadDbBtn.disabled = false;
+                    uploadDbBtn.textContent = "dodaj nową bazę";
+                    dbFileInput.value = "";
+                  });
+              });
+            }
+            
+            // Jeśli anulowano, wyczyść input
+            uploadConfirmModal.addEventListener("hidden.bs.modal", () => {
+              dbFileInput.value = "";
+              setTimeout(() => uploadConfirmModal.remove(), 300);
+            });
+            
+            return;
+            
+          });
+        }
+        
+        // Modal potwierdzenia wyzerowania bazy
+        const clearDbConfirmModal = document.createElement("div");
+        clearDbConfirmModal.className = "modal fade";
+        clearDbConfirmModal.id = "clearDbConfirmModal";
+        clearDbConfirmModal.setAttribute("tabindex", "-1");
+        clearDbConfirmModal.innerHTML = `
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title">Potwierdzenie wyzerowania bazy</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <p>Czy na pewno chcesz wyzerować bazę danych?</p>
+                <p><strong>Wszystkie produkty zostaną usunięte.</strong></p>
+                <p>Obecna baza zostanie zapisana jako backup.</p>
+                <p class="text-danger mb-0"><strong>Ta operacja jest nieodwracalna!</strong></p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Anuluj</button>
+                <button type="button" class="btn btn-danger" id="confirmClearDbBtn">Wyzeruj bazę</button>
+              </div>
+            </div>
+          </div>
+        `;
+        document.body.appendChild(clearDbConfirmModal);
+        const clearDbModalInstance = new bootstrap.Modal(clearDbConfirmModal);
+        
+        if (clearDbBtn) {
+          clearDbBtn.addEventListener("click", () => {
+            const userId = getAuthorName();
+            if (!userId) {
+              showMessage("Uwaga", "Podaj swoje imię przed wyzerowaniem bazy.", "warning");
+              return;
+            }
+            
+            clearDbModalInstance.show();
+          });
+          
+          // Event listener dla przycisku potwierdzenia w modalu
+          clearDbConfirmModal.addEventListener("click", (e) => {
+            if (e.target && e.target.id === "confirmClearDbBtn") {
+              const userId = getAuthorName();
+              clearDbModalInstance.hide();
+              
+              clearDbBtn.disabled = true;
+              clearDbBtn.textContent = "wyzerowywanie...";
+              
+              fetch("/api/database/clear", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ user_id: userId, confirm: true }),
+              })
+                .then((res) => res.json())
+                .then((data) => {
+                  if (data.success) {
+                    showMessage("Sukces", data.message, "success", true);
+                    // Odśwież stronę po 2 sekundach
+                    setTimeout(() => {
+                      window.location.reload();
+                    }, 2000);
+                  } else {
+                    showMessage("Błąd", data.error || "Nieznany błąd", "error");
+                  }
+                })
+                .catch((err) => {
+                  console.error("Błąd wyzerowania:", err);
+                  showMessage("Błąd", "Wystąpił błąd podczas wyzerowania bazy.", "error");
+                })
+                .finally(() => {
+                  clearDbBtn.disabled = false;
+                  clearDbBtn.textContent = "wyzeruj bazę";
+                });
+            }
+          });
+        }
+        
+        // Zapisz aktualną bazę
+        const saveCurrentDbBtn = document.getElementById("saveCurrentDbBtn");
+        if (saveCurrentDbBtn) {
+          saveCurrentDbBtn.addEventListener("click", () => {
+            const userId = getAuthorName();
+            if (!userId) {
+              showMessage("Uwaga", "Podaj swoje imię przed zapisaniem bazy.", "warning");
+              return;
+            }
+            
+            saveCurrentDbBtn.disabled = true;
+            saveCurrentDbBtn.textContent = "zapisywanie...";
+            
+            // Pobierz plik
+            const url = `/api/database/download?user_id=${encodeURIComponent(userId)}`;
+            const link = document.createElement("a");
+            link.href = url;
+            link.download = `AsortymentyMasterData_${new Date().toISOString().slice(0, 19).replace(/:/g, "-")}.json`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            setTimeout(() => {
+              saveCurrentDbBtn.disabled = false;
+              saveCurrentDbBtn.textContent = "zapisz aktualną bazę";
+              showMessage("Sukces", "Baza została zapisana w katalogu work.", "success", true);
+            }, 500);
+          });
+        }
+
+        // Undo/Redo system
+        const undoBtn = document.getElementById("undoBtn");
+        
+        async function performUndo() {
+          const userId = getAuthorName();
+          if (!userId) {
+            showMessage("Uwaga", "Podaj swoje imię w polu 'imię' aby móc cofać zmiany.", "warning");
+            return;
+          }
+          
+          if (undoBtn) {
+            undoBtn.disabled = true;
+            undoBtn.innerHTML = '<i class="bi bi-hourglass-split"></i> cofanie...';
+          }
+          
+          try {
+            const response = await fetch("/api/history/undo", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ user_id: userId }),
+            });
+            
+            const data = await response.json();
+            
+            if (response.ok && data.success) {
+              // Odśwież tabelę
+              loadProducts();
+              showMessage("Sukces", "Zmiany cofnięte.", "success", true);
+            } else {
+              const errorMsg = data.error === "no_history" 
+                ? "Brak historii zmian do cofnięcia." 
+                : `Błąd: ${data.error || "Nieznany błąd"}`;
+              showMessage("Błąd", errorMsg, data.error === "no_history" ? "warning" : "error");
+            }
+          } catch (err) {
+            console.error("Błąd cofania:", err);
+            showMessage("Błąd", "Wystąpił błąd podczas cofania zmian.", "error");
+          } finally {
+            if (undoBtn) {
+              undoBtn.disabled = false;
+              undoBtn.innerHTML = '<i class="bi bi-arrow-counterclockwise"></i> cofnij';
+            }
+          }
+        }
+
+        if (undoBtn) {
+          undoBtn.addEventListener("click", performUndo);
+        }
+
+        // Skrót klawiszowy Ctrl+Z
+        document.addEventListener("keydown", (e) => {
+          if ((e.ctrlKey || e.metaKey) && e.key === "z" && !e.shiftKey) {
+            const activeElement = document.activeElement;
+            // Nie cofaj jeśli użytkownik edytuje tekst w input/textarea
+            if (activeElement && (activeElement.tagName === "INPUT" || activeElement.tagName === "TEXTAREA")) {
+              return;
+            }
+            e.preventDefault();
+            performUndo();
+          }
+        });
+
+        loadViews();
+        loadProducerOptions();
+        updateFilterStyles();
+        loadProducts();
+      });
+    </script>
+  </body>
+  </html>
