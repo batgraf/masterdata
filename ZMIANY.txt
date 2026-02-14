@@ -11,3 +11,4 @@
 8. 2026-02-14 17:28 - wszystkie przyciski DUŻYMI LITERAMI, czcionka 10px jak edytuj/usuń
 9. 2026-02-14 17:30 - wszystkie przyciski czcionka 11px (cofnij bez inline 9px)
 10. 2026-02-14 17:32 - cofnij: większy padding boki, odstęp między ikoną a tekstem
+11. 2026-02-14 17:35 - cofnij większy boczny padding (1rem), imię 16px
