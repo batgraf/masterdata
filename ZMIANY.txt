@@ -9,3 +9,4 @@
 6. 2026-02-14 17:18 - wyszukiwarka i przyciski zaznacz/wszystko/usuń/edytuj do Blok1 wiersz2 (6/12 + 6/12)
 7. 2026-02-14 17:25 - ujednolicenie przycisków, list i wyszukiwarki (wysokość 2rem, czcionka 12px)
 8. 2026-02-14 17:28 - wszystkie przyciski DUŻYMI LITERAMI, czcionka 10px jak edytuj/usuń
+9. 2026-02-14 17:30 - wszystkie przyciski czcionka 11px (cofnij bez inline 9px)
