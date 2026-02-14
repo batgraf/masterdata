@@ -25,6 +25,38 @@
         margin-left: 50px;
         margin-right: 50px;
       }
+      /* Ujednolicone: przyciski, listy, wyszukiwarka (Blok1, Blok2) – ta sama wysokość i czcionka */
+      .page-wrap > .row.g-3 .btn.btn-sm,
+      .page-wrap > .row.g-3 .form-control,
+      .page-wrap > .row.g-3 .form-control-sm,
+      .page-wrap > .row.g-3 .form-select,
+      .page-wrap > .row.g-3 .form-select-sm {
+        height: 2rem;
+        min-height: 2rem;
+        font-size: 12px;
+        padding: 0.25rem 0.5rem;
+        line-height: 1.25;
+        box-sizing: border-box;
+      }
+      .page-wrap > .row.g-3 .btn.btn-sm {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .page-wrap > .row.g-3 .form-control-sm,
+      .page-wrap > .row.g-3 .form-select-sm {
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+      }
+      .page-wrap > .row.g-3 .view-author-display {
+        height: 2rem;
+        min-height: 2rem;
+        line-height: 1.25;
+        padding: 0.25rem 0.5rem;
+        font-size: 12px;
+        display: inline-flex;
+        align-items: center;
+      }
       .stat-number {
         font-size: 16px;
         font-weight: 500;
