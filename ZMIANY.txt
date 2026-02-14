@@ -12,3 +12,4 @@
 9. 2026-02-14 17:30 - wszystkie przyciski czcionka 11px (cofnij bez inline 9px)
 10. 2026-02-14 17:32 - cofnij: większy padding boki, odstęp między ikoną a tekstem
 11. 2026-02-14 17:35 - cofnij większy boczny padding (1rem), imię 16px
+12. 2026-02-14 17:38 - ikony cofnij/zapisz widok/resetuj/opcje widoku, kolory, padding 1rem

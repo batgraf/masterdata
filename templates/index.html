@@ -38,10 +38,24 @@
         align-items: center;
         justify-content: center;
       }
-      #undoBtn {
+      /* Przyciski z ikoną w Blok1 – padding jak „zaznacz” (1rem boki), odstęp ikona–tekst */
+      #undoBtn,
+      #saveViewBtn,
+      #resetViewBtn,
+      #viewOptionsBtn {
         padding-left: 1rem;
         padding-right: 1rem;
         gap: 0.35rem;
+      }
+      #viewOptionsBtn {
+        background-color: #4a148c;
+        border-color: #4a148c;
+        color: #fff;
+      }
+      #viewOptionsBtn:hover {
+        background-color: #6a1bac;
+        border-color: #6a1bac;
+        color: #fff;
       }
       .page-wrap > .row.g-3 .form-control,
       .page-wrap > .row.g-3 .form-control-sm,
@@ -439,7 +453,7 @@
               <div class="col-12">
                 <div class="d-flex flex-wrap align-items-center justify-content-start gap-2 view-controls">
                   <button type="button" id="undoBtn" class="btn btn-sm btn-success" title="Cofnij ostatnią zmianę (Ctrl+Z)">
-                    <i class="bi bi-arrow-counterclockwise"></i> cofnij
+                    <i class="bi bi-arrow-left-square-fill"></i> cofnij
                   </button>
                   <div class="d-flex align-items-center gap-1 view-controls-main flex-wrap">
                     <div id="viewAuthorContainer" style="position: relative; max-width: 120px;">
@@ -455,14 +469,14 @@
                     <select id="viewSelect" class="form-select form-select-sm" style="max-width: 180px;">
                       <option value="">wybierz widok</option>
                     </select>
-                    <button type="button" id="saveViewBtn" class="btn btn-sm btn-outline-primary">
-                      zapisz widok
+                    <button type="button" id="saveViewBtn" class="btn btn-sm btn-primary" title="Zapisz widok">
+                      <i class="bi bi-floppy2-fill"></i> zapisz widok
                     </button>
-                    <button type="button" id="resetViewBtn" class="btn btn-sm btn-outline-secondary">
-                      resetuj widok
+                    <button type="button" id="resetViewBtn" class="btn btn-sm btn-danger" title="Resetuj widok">
+                      <i class="bi bi-r-circle-fill"></i> resetuj widok
                     </button>
-                    <button type="button" id="viewOptionsBtn" class="btn btn-sm btn-primary">
-                      opcje widoku
+                    <button type="button" id="viewOptionsBtn" class="btn btn-sm" title="Opcje widoku">
+                      <i class="bi bi-gear-fill"></i> opcje widoku
                     </button>
                   </div>
                 </div>
@@ -2305,7 +2319,7 @@
           } finally {
             if (undoBtn) {
               undoBtn.disabled = false;
-              undoBtn.innerHTML = '<i class="bi bi-arrow-counterclockwise"></i> cofnij';
+              undoBtn.innerHTML = '<i class="bi bi-arrow-left-square-fill"></i> cofnij';
             }
           }
         }
