@@ -1,0 +1,4 @@
+# Rejestr zmian (ostatnie 10: tail -10 ZMIANY.txt)
+# Przywracanie: commit z komunikatem "zmiana N: opis", potem: git checkout $(git log -1 --format=%H --grep="zmiana N")
+#
+1. 2026-02-14 16:50 - utworzenie rejestru zmian
