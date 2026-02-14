@@ -5,3 +5,4 @@
 2. 2026-02-14 17:05 - zapisz/wczytaj pracę w modalu (3. blok drugiego wiersza)
 3. 2026-02-14 17:10 - tekst nad zapisz bieżącą pracę: zapisz lub wczytaj swoją pracę
 4. 2026-02-14 17:12 - pod kryteria: Wybierz jakie dane będą wyświetlane, wszystkie opisy wyśrodkowane
+5. 2026-02-14 17:15 - Blok1: cofnij przed imię, struktura wiersz1 12/12, wiersz2 6/12+6/12

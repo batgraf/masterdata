@@ -392,36 +392,44 @@
       <div class="row g-3 mb-3">
         <div class="col-12 col-lg-6">
           <div class="p-3 bg-white rounded-3 shadow-sm h-100">
-            <div class="d-flex flex-wrap align-items-center justify-content-start gap-2 view-controls">
-              <div class="d-flex align-items-center gap-1 view-controls-main flex-wrap">
-                <div id="viewAuthorContainer" style="position: relative; max-width: 120px;">
-                  <span id="viewAuthorDisplay" class="view-author-display" style="display: inline-block; padding: 0.25rem 0.5rem; border: 1px solid transparent; border-radius: 0.25rem; cursor: pointer; min-width: 80px; font-size: 12px; color: #6c757d;">imię</span>
-                  <input
-                    type="text"
-                    id="viewAuthor"
-                    class="form-control form-control-sm d-none"
-                    placeholder="imię"
-                    style="max-width: 120px;"
-                  />
+            <div class="row g-2">
+              <div class="col-12">
+                <div class="d-flex flex-wrap align-items-center justify-content-start gap-2 view-controls">
+                  <button type="button" id="undoBtn" class="btn btn-sm btn-success" style="font-size: 9px; padding: 0.15rem 0.4rem;" title="Cofnij ostatnią zmianę (Ctrl+Z)">
+                    <i class="bi bi-arrow-counterclockwise"></i> cofnij
+                  </button>
+                  <div class="d-flex align-items-center gap-1 view-controls-main flex-wrap">
+                    <div id="viewAuthorContainer" style="position: relative; max-width: 120px;">
+                      <span id="viewAuthorDisplay" class="view-author-display" style="display: inline-block; padding: 0.25rem 0.5rem; border: 1px solid transparent; border-radius: 0.25rem; cursor: pointer; min-width: 80px; font-size: 12px; color: #6c757d;">imię</span>
+                      <input
+                        type="text"
+                        id="viewAuthor"
+                        class="form-control form-control-sm d-none"
+                        placeholder="imię"
+                        style="max-width: 120px;"
+                      />
+                    </div>
+                    <select id="viewSelect" class="form-select form-select-sm" style="max-width: 180px;">
+                      <option value="">wybierz widok</option>
+                    </select>
+                    <button type="button" id="saveViewBtn" class="btn btn-sm btn-outline-primary">
+                      zapisz widok
+                    </button>
+                    <button type="button" id="resetViewBtn" class="btn btn-sm btn-outline-secondary">
+                      resetuj widok
+                    </button>
+                    <button type="button" id="viewOptionsBtn" class="btn btn-sm btn-primary">
+                      opcje widoku
+                    </button>
+                  </div>
                 </div>
-                <select id="viewSelect" class="form-select form-select-sm" style="max-width: 180px;">
-                  <option value="">wybierz widok</option>
-                </select>
-                <button type="button" id="saveViewBtn" class="btn btn-sm btn-outline-primary">
-                  zapisz widok
-                </button>
-                <button type="button" id="resetViewBtn" class="btn btn-sm btn-outline-secondary">
-                  resetuj widok
-                </button>
-                <button type="button" id="viewOptionsBtn" class="btn btn-sm btn-primary">
-                  opcje widoku
-                </button>
               </div>
-            </div>
-            <div class="mt-2 d-flex flex-wrap align-items-center gap-2" style="font-size: 10px;">
-              <button type="button" id="undoBtn" class="btn btn-sm btn-success" style="font-size: 9px; padding: 0.15rem 0.4rem;" title="Cofnij ostatnią zmianę (Ctrl+Z)">
-                <i class="bi bi-arrow-counterclockwise"></i> cofnij
-              </button>
+              <div class="col-12 col-lg-6">
+                <!-- wiersz 2 lewa połowa -->
+              </div>
+              <div class="col-12 col-lg-6">
+                <!-- wiersz 2 prawa połowa -->
+              </div>
             </div>
           </div>
         </div>
