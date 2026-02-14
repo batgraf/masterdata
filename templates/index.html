@@ -26,7 +26,18 @@
         margin-right: 50px;
       }
       /* Ujednolicone: przyciski, listy, wyszukiwarka (Blok1, Blok2) – ta sama wysokość i czcionka */
-      .page-wrap > .row.g-3 .btn.btn-sm,
+      .page-wrap > .row.g-3 .btn.btn-sm {
+        height: 2rem;
+        min-height: 2rem;
+        font-size: 10px;
+        text-transform: uppercase;
+        padding: 0.25rem 0.5rem;
+        line-height: 1.25;
+        box-sizing: border-box;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
       .page-wrap > .row.g-3 .form-control,
       .page-wrap > .row.g-3 .form-control-sm,
       .page-wrap > .row.g-3 .form-select,
@@ -37,11 +48,6 @@
         padding: 0.25rem 0.5rem;
         line-height: 1.25;
         box-sizing: border-box;
-      }
-      .page-wrap > .row.g-3 .btn.btn-sm {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
       }
       .page-wrap > .row.g-3 .form-control-sm,
       .page-wrap > .row.g-3 .form-select-sm {
@@ -481,7 +487,6 @@
                     type="button"
                     id="deleteSelectedBtn"
                     class="btn btn-sm btn-danger"
-                    style="font-size: 10px; padding: 0.2rem 0.6rem; text-transform: uppercase;"
                     title="usuń zaznaczone"
                   >
                     usuń
@@ -490,7 +495,6 @@
                     type="button"
                     id="batchEditBtn"
                     class="btn btn-sm btn-primary"
-                    style="font-size: 10px; padding: 0.2rem 0.6rem; text-transform: uppercase;"
                     title="masowa edycja"
                   >
                     edytuj
