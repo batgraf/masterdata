@@ -380,6 +380,10 @@
         background-color: #0d6efd;
         color: #fff;
       }
+      #viewOptionsModal .view-options-row-2 .view-options-desc {
+        font-size: 10px;
+        text-align: center;
+      }
     </style>
   </head>
   <body>
@@ -716,6 +720,9 @@
                 <h3 class="modal-section-title">
                   <span class="title-text">kryteria wyświetlania</span>
                 </h3>
+                <div class="view-options-desc mb-2">
+                  <span class="text-muted">Wybierz jakie dane będą wyświetlane</span>
+                </div>
                 <div class="middle-filters">
                   <div class="filter-row">
                     <button type="button" class="btn btn-primary btn-sm flex-grow-1" data-filter="missing_producer">brak producenta</button>
@@ -755,7 +762,7 @@
                 <h3 class="modal-section-title">
                   <span class="title-text">Wersja aplikacji</span>
                 </h3>
-                <div class="mb-2" style="font-size: 10px;">
+                <div class="view-options-desc mb-2">
                   <span class="text-muted">wersja: <strong id="versionDisplay">{{ version }}</strong></span>
                 </div>
                 <div class="d-flex flex-wrap gap-1 mb-3">
@@ -786,7 +793,7 @@
                 <h3 class="modal-section-title">
                   <span class="title-text">praca</span>
                 </h3>
-                <div class="mb-2" style="font-size: 10px;">
+                <div class="view-options-desc mb-2">
                   <span class="text-muted">zapisz lub wczytaj swoją pracę</span>
                 </div>
                 <button
