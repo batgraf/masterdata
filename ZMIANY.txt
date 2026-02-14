@@ -2,3 +2,4 @@
 # Przywracanie: commit z komunikatem "zmiana N: opis", potem: git checkout $(git log -1 --format=%H --grep="zmiana N")
 #
 1. 2026-02-14 16:50 - utworzenie rejestru zmian
+2. 2026-02-14 17:05 - zapisz/wczytaj pracę w modalu (3. blok drugiego wiersza)

@@ -319,48 +319,77 @@
         background-color: #f8f9fa;
         border-color: #dee2e6;
       }
+      /* Nagłówki sekcji w modalu opcji widoku */
+      #viewOptionsModal .modal-section-title {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 1rem 0 0.5rem 0;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        text-align: center;
+      }
+      #viewOptionsModal .modal-section-title:first-of-type {
+        margin-top: 0;
+      }
+      #viewOptionsModal .modal-section-title .title-text {
+        white-space: nowrap;
+      }
+      #viewOptionsModal .view-options-separator {
+        margin: 1rem 0;
+        border: none;
+        border-top: 1px solid #dee2e6;
+      }
+      #viewOptionsModal .view-options-row-2 .col-lg-4 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      #viewOptionsModal .view-options-row-2 .col-lg-4 .modal-section-title,
+      #viewOptionsModal .view-options-row-2 .col-lg-4 .middle-filters,
+      #viewOptionsModal .view-options-row-2 .col-lg-4 .mb-2,
+      #viewOptionsModal .view-options-row-2 .col-lg-4 > .d-flex.flex-wrap {
+        width: 100%;
+      }
+      #viewOptionsModal .view-options-row-2 .col-lg-4 > .d-flex.flex-wrap {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      #viewOptionsModal .view-options-row-2 .col-lg-4 > .d-flex.flex-wrap .btn {
+        width: 100%;
+      }
+      /* Wszystkie przyciski w drugim wierszu modala: duże litery, 10px, padding 4px */
+      #viewOptionsModal .view-options-row-2 .btn {
+        font-size: 10px !important;
+        text-transform: uppercase !important;
+        padding-top: 4px !important;
+        padding-bottom: 4px !important;
+      }
+      /* Kryteria – przyciski brak producenta/SKU/EAN/waga tak samo jak reszta */
+      #viewOptionsModal .view-options-row-2 .middle-filters .btn,
+      #viewOptionsModal .view-options-row-2 .middle-filters .filter-count-btn {
+        font-size: 10px !important;
+        text-transform: uppercase !important;
+        padding-top: 4px !important;
+        padding-bottom: 4px !important;
+      }
+      /* W modalu przyciski z licznikiem też niebieskie */
+      #viewOptionsModal .filter-count-btn.has-count {
+        border-color: #0d6efd;
+        background-color: #0d6efd;
+        color: #fff;
+      }
     </style>
   </head>
   <body>
     <div class="page-wrap mb-4 mt-3">
       <!-- Blok przycisków + blok liczników w jednym wierszu -->
       <div class="row g-3 mb-3">
-        <div class="col-12 col-lg-5">
+        <div class="col-12 col-lg-6">
           <div class="p-3 bg-white rounded-3 shadow-sm h-100">
-            <div class="columns-toolbar mb-2">
-              <button type="button" class="btn btn-success btn-sm" data-col="ID_produktu" title="ID_produktu">ID</button>
-              <button type="button" class="btn btn-success btn-sm" data-col="Nazwa" title="Nazwa">Nazwa</button>
-              <button type="button" class="btn btn-success btn-sm" data-col="EAN" title="EAN">EAN</button>
-              <button type="button" class="btn btn-success btn-sm" data-col="SKU" title="SKU">SKU</button>
-              <button type="button" class="btn btn-success btn-sm" data-col="Nazwa_producenta" title="Nazwa_producenta">Producent</button>
-              <button type="button" class="btn btn-success btn-sm" data-col="ID_producenta" title="ID_producenta">id</button>
-              <button type="button" class="btn btn-success btn-sm" data-col="Grupa_produktu" title="Grupa_produktu">Grupa</button>
-              <button type="button" class="btn btn-success btn-sm" data-col="Rodzaj_produktu" title="Rodzaj_produktu">Rodzaj</button>
-              <button type="button" class="btn btn-success btn-sm" data-col="Szerokosc" title="Szerokosc">szer</button>
-              <button type="button" class="btn btn-success btn-sm" data-col="Wysokosc" title="Wysokosc">wys</button>
-              <button type="button" class="btn btn-success btn-sm" data-col="Dlugosc" title="Dlugosc">dł</button>
-              <button type="button" class="btn btn-success btn-sm" data-col="JM_wymiaru" title="JM_wymiaru">jm</button>
-              <button type="button" class="btn btn-success btn-sm" data-col="JM_objetosci" title="JM_objetosci">jm</button>
-              <button type="button" class="btn btn-success btn-sm" data-col="JM_sprzedazy" title="JM_sprzedazy">jm</button>
-              <button type="button" class="btn btn-success btn-sm" data-col="Objetosc_produktu" title="Objetosc_produktu">obj.</button>
-              <button type="button" class="btn btn-success btn-sm" data-col="Waga_brutto" title="Waga_brutto">Waga</button>
-              <button type="button" class="btn btn-success btn-sm" data-col="JM_wagi" title="JM_wagi">jm.</button>
-              <button type="button" class="btn btn-success btn-sm" data-col="Rodzaj_opakowania" title="Rodzaj_opakowania">Opakowanie</button>
-              <button type="button" class="btn btn-success btn-sm" data-col="Cena_sprzedazy_brutto" title="Cena_sprzedazy_brutto">Sprzedaż brutto</button>
-              <button type="button" class="btn btn-success btn-sm" data-col="Cena_sprzedazy_netto" title="Cena_sprzedazy_netto">Sprzedaż netto</button>
-              <button type="button" class="btn btn-success btn-sm" data-col="Cena_zakupu_brutto" title="Cena_zakupu_brutto">Zakup brutto</button>
-              <button type="button" class="btn btn-success btn-sm" data-col="Cena_zakupu_netto" title="Cena_zakupu_netto">Zakup netto</button>
-              <button type="button" class="btn btn-success btn-sm" data-col="Nazwa_Cennika" title="Nazwa_Cennika">cennik</button>
-              <button type="button" class="btn btn-success btn-sm" data-col="Dostepnosc" title="Dostepnosc">Dostepnosc</button>
-              <button type="button" class="btn btn-success btn-sm" data-col="Stan_magazynowy" title="Stan_magazynowy">Stan</button>
-              <button type="button" class="btn btn-success btn-sm" data-col="Status_produktu" title="Status_produktu">Status</button>
-              <button type="button" class="btn btn-success btn-sm" data-col="Waluta_sprzedazy" title="Waluta_sprzedazy">waluta sprz</button>
-              <button type="button" class="btn btn-success btn-sm" data-col="Waluta_zakupu" title="Waluta_zakupu">waluta zak</button>
-              <button type="button" class="btn btn-success btn-sm" data-col="URL_Miniatura" title="URL_Miniatura">miniatura</button>
-              <button type="button" class="btn btn-success btn-sm" data-col="Rezerwacja" title="Rezerwacja">Rezerwacja</button>
-            </div>
-            <div class="d-flex flex-nowrap align-items-center justify-content-start gap-2 mt-2 view-controls">
-              <div class="d-flex align-items-center gap-1 view-controls-main">
+            <div class="d-flex flex-wrap align-items-center justify-content-start gap-2 view-controls">
+              <div class="d-flex align-items-center gap-1 view-controls-main flex-wrap">
                 <div id="viewAuthorContainer" style="position: relative; max-width: 120px;">
                   <span id="viewAuthorDisplay" class="view-author-display" style="display: inline-block; padding: 0.25rem 0.5rem; border: 1px solid transparent; border-radius: 0.25rem; cursor: pointer; min-width: 80px; font-size: 12px; color: #6c757d;">imię</span>
                   <input
@@ -380,26 +409,12 @@
                 <button type="button" id="resetViewBtn" class="btn btn-sm btn-outline-secondary">
                   resetuj widok
                 </button>
+                <button type="button" id="viewOptionsBtn" class="btn btn-sm btn-primary">
+                  opcje widoku
+                </button>
               </div>
             </div>
-            <div class="mt-2 d-flex align-items-center gap-2" style="font-size: 10px;">
-              <span class="text-muted">Wersja: <strong id="versionDisplay">{{ version }}</strong></span>
-              <button type="button" id="createBackupBtn" class="btn btn-sm" style="font-size: 9px; padding: 0.15rem 0.4rem; background-color: #495057; border-color: #495057; color: #fff;">
-                zrób kopię
-              </button>
-              <button type="button" id="createStableBtn" class="btn btn-sm" style="font-size: 9px; padding: 0.15rem 0.4rem; background-color: #495057; border-color: #495057; color: #fff;">
-                wersja stabilna
-              </button>
-              <button type="button" id="uploadDbBtn" class="btn btn-sm" style="font-size: 9px; padding: 0.15rem 0.4rem; background-color: #75118c; border-color: #75118c; color: #fff;" title="Dodaj nową bazę">
-                dodaj nową bazę
-              </button>
-              <input type="file" id="dbFileInput" accept=".json" style="display: none;" />
-              <button type="button" id="clearDbBtn" class="btn btn-sm" style="font-size: 9px; padding: 0.15rem 0.4rem; background-color: #75118c; border-color: #75118c; color: #fff;" title="Wyzeruj bazę">
-                wyzeruj bazę
-              </button>
-              <button type="button" id="saveCurrentDbBtn" class="btn btn-sm btn-primary" style="font-size: 9px; padding: 0.15rem 0.4rem;" title="Zapisz aktualną bazę">
-                zapisz aktualną bazę
-              </button>
+            <div class="mt-2 d-flex flex-wrap align-items-center gap-2" style="font-size: 10px;">
               <button type="button" id="undoBtn" class="btn btn-sm btn-success" style="font-size: 9px; padding: 0.15rem 0.4rem;" title="Cofnij ostatnią zmianę (Ctrl+Z)">
                 <i class="bi bi-arrow-counterclockwise"></i> cofnij
               </button>
@@ -407,7 +422,7 @@
           </div>
         </div>
 
-        <div class="col-12 col-lg-4">
+        <div class="col-12 col-lg-6">
           <div class="p-3 bg-white rounded-3 shadow-sm h-100 d-flex flex-column justify-content-start">
             <div class="row g-2">
               <div class="col-4">
@@ -479,42 +494,6 @@
           </div>
         </div>
 
-        <div class="col-12 col-lg-3">
-          <div class="p-3 bg-white rounded-3 shadow-sm h-100 middle-filters d-flex flex-column justify-content-start">
-            <div class="filter-row">
-              <button type="button" class="btn btn-outline-secondary btn-sm flex-grow-1" data-filter="missing_producer">brak producenta</button>
-              <button type="button" class="btn btn-sm flex-grow-1 filter-count-btn" data-filter-count="missing_producer"></button>
-            </div>
-            <div class="filter-row">
-              <button type="button" class="btn btn-outline-secondary btn-sm flex-grow-1" data-filter="missing_sku">brak SKU</button>
-              <button type="button" class="btn btn-sm flex-grow-1 filter-count-btn" data-filter-count="missing_sku"></button>
-            </div>
-            <div class="filter-row">
-              <button type="button" class="btn btn-outline-secondary btn-sm flex-grow-1" data-filter="missing_ean">brak EAN</button>
-              <button type="button" class="btn btn-sm flex-grow-1 filter-count-btn" data-filter-count="missing_ean"></button>
-            </div>
-            <div class="filter-row">
-              <button type="button" class="btn btn-outline-secondary btn-sm flex-grow-1" data-filter="missing_weight">brak waga</button>
-              <button type="button" class="btn btn-sm flex-grow-1 filter-count-btn" data-filter-count="missing_weight"></button>
-            </div>
-            <div class="filter-row">
-              <select id="producerFilterSelect" class="form-select form-select-sm flex-grow-1">
-                <option value="">wybierz producenta</option>
-              </select>
-              <button type="button" id="producerFilterBtn" class="btn btn-sm btn-outline-secondary">
-                wyświetl
-              </button>
-            </div>
-            <div class="filter-row">
-              <select id="producerExcludeSelect" class="form-select form-select-sm flex-grow-1">
-                <option value="">wyklucz producenta</option>
-              </select>
-              <button type="button" id="producerExcludeBtn" class="btn btn-sm btn-outline-secondary">
-                wyklucz
-              </button>
-            </div>
-          </div>
-        </div>
       </div>
 
       <!-- Paginacja -->
@@ -679,6 +658,162 @@
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="batchEditCancelBtn">Anuluj</button>
             <button type="button" class="btn btn-primary d-none" id="batchEditCloseBtn" data-bs-dismiss="modal">Zamknij</button>
             <button type="button" class="btn btn-primary" id="confirmBatchEditBtn">Zastosuj</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal opcji widoku -->
+    <div class="modal fade" id="viewOptionsModal" tabindex="-1" aria-labelledby="viewOptionsModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <div class="modal-header border-0 pb-0">
+            <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-12 col-lg-12">
+                <h3 class="modal-section-title">
+                  <span class="title-text">wybierz które kolumny będą wyświetlane</span>
+                </h3>
+                <div class="columns-toolbar mb-2">
+                  <button type="button" class="btn btn-success btn-sm" data-col="ID_produktu" title="ID_produktu">ID</button>
+                  <button type="button" class="btn btn-success btn-sm" data-col="Nazwa" title="Nazwa">Nazwa</button>
+                  <button type="button" class="btn btn-success btn-sm" data-col="EAN" title="EAN">EAN</button>
+                  <button type="button" class="btn btn-success btn-sm" data-col="SKU" title="SKU">SKU</button>
+                  <button type="button" class="btn btn-success btn-sm" data-col="Nazwa_producenta" title="Nazwa_producenta">Producent</button>
+                  <button type="button" class="btn btn-success btn-sm" data-col="ID_producenta" title="ID_producenta">id</button>
+                  <button type="button" class="btn btn-success btn-sm" data-col="Grupa_produktu" title="Grupa_produktu">Grupa</button>
+                  <button type="button" class="btn btn-success btn-sm" data-col="Rodzaj_produktu" title="Rodzaj_produktu">Rodzaj</button>
+                  <button type="button" class="btn btn-success btn-sm" data-col="Szerokosc" title="Szerokosc">szer</button>
+                  <button type="button" class="btn btn-success btn-sm" data-col="Wysokosc" title="Wysokosc">wys</button>
+                  <button type="button" class="btn btn-success btn-sm" data-col="Dlugosc" title="Dlugosc">dł</button>
+                  <button type="button" class="btn btn-success btn-sm" data-col="JM_wymiaru" title="JM_wymiaru">jm</button>
+                  <button type="button" class="btn btn-success btn-sm" data-col="JM_objetosci" title="JM_objetosci">jm</button>
+                  <button type="button" class="btn btn-success btn-sm" data-col="JM_sprzedazy" title="JM_sprzedazy">jm</button>
+                  <button type="button" class="btn btn-success btn-sm" data-col="Objetosc_produktu" title="Objetosc_produktu">obj.</button>
+                  <button type="button" class="btn btn-success btn-sm" data-col="Waga_brutto" title="Waga_brutto">Waga</button>
+                  <button type="button" class="btn btn-success btn-sm" data-col="JM_wagi" title="JM_wagi">jm.</button>
+                  <button type="button" class="btn btn-success btn-sm" data-col="Rodzaj_opakowania" title="Rodzaj_opakowania">Opakowanie</button>
+                  <button type="button" class="btn btn-success btn-sm" data-col="Cena_sprzedazy_brutto" title="Cena_sprzedazy_brutto">Sprzedaż brutto</button>
+                  <button type="button" class="btn btn-success btn-sm" data-col="Cena_sprzedazy_netto" title="Cena_sprzedazy_netto">Sprzedaż netto</button>
+                  <button type="button" class="btn btn-success btn-sm" data-col="Cena_zakupu_brutto" title="Cena_zakupu_brutto">Zakup brutto</button>
+                  <button type="button" class="btn btn-success btn-sm" data-col="Cena_zakupu_netto" title="Cena_zakupu_netto">Zakup netto</button>
+                  <button type="button" class="btn btn-success btn-sm" data-col="Nazwa_Cennika" title="Nazwa_Cennika">cennik</button>
+                  <button type="button" class="btn btn-success btn-sm" data-col="Dostepnosc" title="Dostepnosc">Dostepnosc</button>
+                  <button type="button" class="btn btn-success btn-sm" data-col="Stan_magazynowy" title="Stan_magazynowy">Stan</button>
+                  <button type="button" class="btn btn-success btn-sm" data-col="Status_produktu" title="Status_produktu">Status</button>
+                  <button type="button" class="btn btn-success btn-sm" data-col="Waluta_sprzedazy" title="Waluta_sprzedazy">waluta sprz</button>
+                  <button type="button" class="btn btn-success btn-sm" data-col="Waluta_zakupu" title="Waluta_zakupu">waluta zak</button>
+                  <button type="button" class="btn btn-success btn-sm" data-col="URL_Miniatura" title="URL_Miniatura">miniatura</button>
+                  <button type="button" class="btn btn-success btn-sm" data-col="Rezerwacja" title="Rezerwacja">Rezerwacja</button>
+                </div>
+              </div>
+            </div>
+            <hr class="view-options-separator" />
+            <div class="row view-options-row-2">
+              <div class="col-12 col-lg-4">
+                <h3 class="modal-section-title">
+                  <span class="title-text">kryteria wyświetlania</span>
+                </h3>
+                <div class="middle-filters">
+                  <div class="filter-row">
+                    <button type="button" class="btn btn-primary btn-sm flex-grow-1" data-filter="missing_producer">brak producenta</button>
+                    <button type="button" class="btn btn-primary btn-sm flex-grow-1 filter-count-btn" data-filter-count="missing_producer"></button>
+                  </div>
+                  <div class="filter-row">
+                    <button type="button" class="btn btn-primary btn-sm flex-grow-1" data-filter="missing_sku">brak SKU</button>
+                    <button type="button" class="btn btn-primary btn-sm flex-grow-1 filter-count-btn" data-filter-count="missing_sku"></button>
+                  </div>
+                  <div class="filter-row">
+                    <button type="button" class="btn btn-primary btn-sm flex-grow-1" data-filter="missing_ean">brak EAN</button>
+                    <button type="button" class="btn btn-primary btn-sm flex-grow-1 filter-count-btn" data-filter-count="missing_ean"></button>
+                  </div>
+                  <div class="filter-row">
+                    <button type="button" class="btn btn-primary btn-sm flex-grow-1" data-filter="missing_weight">brak waga</button>
+                    <button type="button" class="btn btn-primary btn-sm flex-grow-1 filter-count-btn" data-filter-count="missing_weight"></button>
+                  </div>
+                  <div class="filter-row">
+                    <select id="producerFilterSelect" class="form-select form-select-sm flex-grow-1">
+                      <option value="">producent</option>
+                    </select>
+                    <button type="button" id="producerFilterBtn" class="btn btn-primary btn-sm">
+                      wyświetl
+                    </button>
+                  </div>
+                  <div class="filter-row">
+                    <select id="producerExcludeSelect" class="form-select form-select-sm flex-grow-1">
+                      <option value="">producent</option>
+                    </select>
+                    <button type="button" id="producerExcludeBtn" class="btn btn-primary btn-sm">
+                      wyklucz
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-lg-4">
+                <h3 class="modal-section-title">
+                  <span class="title-text">Wersja aplikacji</span>
+                </h3>
+                <div class="mb-2" style="font-size: 10px;">
+                  <span class="text-muted">wersja: <strong id="versionDisplay">{{ version }}</strong></span>
+                </div>
+                <div class="d-flex flex-wrap gap-1 mb-3">
+                  <button type="button" id="createBackupBtn" class="btn btn-primary btn-sm">
+                    zrób kopię
+                  </button>
+                  <button type="button" id="createStableBtn" class="btn btn-primary btn-sm">
+                    wersja stabilna
+                  </button>
+                </div>
+                <h3 class="modal-section-title">
+                  <span class="title-text">baza rekordów</span>
+                </h3>
+                <div class="d-flex flex-wrap gap-1">
+                  <button type="button" id="uploadDbBtn" class="btn btn-primary btn-sm" title="Dodaj nową bazę">
+                    dodaj nową bazę
+                  </button>
+                  <input type="file" id="dbFileInput" accept=".json" style="display: none;" />
+                  <button type="button" id="clearDbBtn" class="btn btn-primary btn-sm" title="Wyzeruj bazę">
+                    wyzeruj bazę
+                  </button>
+                  <button type="button" id="saveCurrentDbBtn" class="btn btn-primary btn-sm" title="Zapisz aktualną bazę">
+                    zapisz aktualną bazę
+                  </button>
+                </div>
+              </div>
+              <div class="col-12 col-lg-4">
+                <h3 class="modal-section-title">
+                  <span class="title-text">praca</span>
+                </h3>
+                <button
+                  type="button"
+                  id="saveWorkBtn"
+                  class="btn btn-primary btn-sm w-100 mb-2"
+                  style="font-size: 10px; padding: 4px 0.4rem; text-transform: uppercase;"
+                  title="Zapisz bieżącą pracę"
+                >
+                  zapisz bieżącą pracę
+                </button>
+                <select
+                  id="workFilesSelect"
+                  class="form-select form-select-sm w-100 mb-2"
+                  style="font-size: 10px;"
+                >
+                  <option value="">wybierz plik...</option>
+                </select>
+                <button
+                  type="button"
+                  id="loadWorkBtn"
+                  class="btn btn-primary btn-sm w-100"
+                  style="font-size: 10px; padding: 4px 0.4rem; text-transform: uppercase;"
+                  title="Wczytaj zapisaną pracę"
+                  disabled
+                >
+                  wczytaj
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -1091,8 +1226,8 @@
                   select.appendChild(opt);
                 });
               }
-              fillSelect(producerFilterSelect, "wybierz producenta");
-              fillSelect(producerExcludeSelect, "wyklucz producenta");
+              fillSelect(producerFilterSelect, "producent");
+              fillSelect(producerExcludeSelect, "producent");
             })
             .catch((e) => console.warn("Cannot load producers", e));
         }
@@ -1227,6 +1362,16 @@
             } catch (e) {
               console.warn("Cannot save selected view profile", e);
             }
+          });
+        }
+
+        // Otwórz modal opcji widoku (siatka kolumn)
+        const viewOptionsBtn = document.getElementById("viewOptionsBtn");
+        const viewOptionsModal = document.getElementById("viewOptionsModal");
+        if (viewOptionsBtn && viewOptionsModal) {
+          const viewOptionsModalInstance = new bootstrap.Modal(viewOptionsModal);
+          viewOptionsBtn.addEventListener("click", () => {
+            viewOptionsModalInstance.show();
           });
         }
 
@@ -1889,6 +2034,180 @@
               showMessage("Sukces", "Baza została zapisana w katalogu work.", "success", true);
             }, 500);
           });
+        }
+
+        // Zapisz/Wczytaj pracę
+        const saveWorkBtn = document.getElementById("saveWorkBtn");
+        const workFilesSelect = document.getElementById("workFilesSelect");
+        const loadWorkBtn = document.getElementById("loadWorkBtn");
+        
+        // Funkcja do ładowania listy plików pracy
+        async function loadWorkFiles() {
+          const userId = getAuthorName();
+          if (!userId || !workFilesSelect) return;
+          
+          try {
+            const response = await fetch(`/api/work/list?user_id=${encodeURIComponent(userId)}`);
+            const data = await response.json();
+            
+            // Wyczyść opcje (zostaw pierwszą "wybierz plik...")
+            while (workFilesSelect.options.length > 1) {
+              workFilesSelect.remove(1);
+            }
+            
+            if (data.files && data.files.length > 0) {
+              data.files.forEach(file => {
+                const option = document.createElement("option");
+                option.value = file.filename;
+                option.textContent = `${file.filename} (${(file.size / 1024).toFixed(1)} KB)`;
+                workFilesSelect.appendChild(option);
+              });
+            }
+            
+            // Aktualizuj stan przycisku wczytaj
+            if (loadWorkBtn) {
+              loadWorkBtn.disabled = workFilesSelect.value === "";
+            }
+          } catch (err) {
+            console.error("Błąd ładowania listy plików:", err);
+          }
+        }
+        
+        // Zapisz bieżącą pracę
+        if (saveWorkBtn) {
+          saveWorkBtn.addEventListener("click", async () => {
+            const userId = getAuthorName();
+            if (!userId) {
+              showMessage("Uwaga", "Podaj swoje imię przed zapisaniem pracy.", "warning");
+              return;
+            }
+            
+            saveWorkBtn.disabled = true;
+            saveWorkBtn.textContent = "zapisywanie...";
+            
+            try {
+              const response = await fetch("/api/work/save", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ user_id: userId }),
+              });
+              
+              const data = await response.json();
+              
+              if (data.success) {
+                showMessage("Sukces", data.message, "success", true);
+                // Odśwież listę plików
+                await loadWorkFiles();
+              } else {
+                showMessage("Błąd", data.error || "Nieznany błąd", "error");
+              }
+            } catch (err) {
+              console.error("Błąd zapisu pracy:", err);
+              showMessage("Błąd", "Wystąpił błąd podczas zapisywania pracy.", "error");
+            } finally {
+              saveWorkBtn.disabled = false;
+              saveWorkBtn.textContent = "zapisz bieżącą pracę";
+            }
+          });
+        }
+        
+        // Aktualizuj stan przycisku wczytaj przy zmianie selecta
+        if (workFilesSelect) {
+          workFilesSelect.addEventListener("change", () => {
+            if (loadWorkBtn) {
+              loadWorkBtn.disabled = workFilesSelect.value === "";
+            }
+          });
+        }
+        
+        // Wczytaj zapisaną pracę
+        if (loadWorkBtn) {
+          loadWorkBtn.addEventListener("click", async () => {
+            const userId = getAuthorName();
+            if (!userId) {
+              showMessage("Uwaga", "Podaj swoje imię przed wczytaniem pracy.", "warning");
+              return;
+            }
+            
+            const filename = workFilesSelect.value;
+            if (!filename) {
+              showMessage("Uwaga", "Wybierz plik do wczytania.", "warning");
+              return;
+            }
+            
+            // Potwierdzenie przez modal
+            const loadConfirmModal = document.createElement("div");
+            loadConfirmModal.className = "modal fade";
+            loadConfirmModal.id = "loadConfirmModal";
+            loadConfirmModal.setAttribute("tabindex", "-1");
+            loadConfirmModal.innerHTML = `
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header bg-warning">
+                    <h5 class="modal-title">Potwierdzenie wczytania</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <p>Czy na pewno chcesz wczytać plik <strong>"${filename}"</strong>?</p>
+                    <p>Obecna baza zostanie zastąpiona. Zostanie utworzony backup przed wczytaniem.</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Anuluj</button>
+                    <button type="button" class="btn btn-warning" id="confirmLoadBtn">Wczytaj</button>
+                  </div>
+                </div>
+              </div>
+            `;
+            document.body.appendChild(loadConfirmModal);
+            const loadModalInstance = new bootstrap.Modal(loadConfirmModal);
+            loadModalInstance.show();
+            
+            const confirmLoadBtn = document.getElementById("confirmLoadBtn");
+            if (confirmLoadBtn) {
+              confirmLoadBtn.addEventListener("click", async () => {
+                loadModalInstance.hide();
+                setTimeout(() => loadConfirmModal.remove(), 300);
+                
+                loadWorkBtn.disabled = true;
+                loadWorkBtn.textContent = "wczytywanie...";
+                
+                try {
+                  const response = await fetch("/api/work/load", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ user_id: userId, filename: filename }),
+                  });
+                  
+                  const data = await response.json();
+                  
+                  if (data.success) {
+                    showMessage("Sukces", data.message, "success", true);
+                    setTimeout(() => {
+                      window.location.reload();
+                    }, 2000);
+                  } else {
+                    showMessage("Błąd", data.error || "Nieznany błąd", "error");
+                  }
+                } catch (err) {
+                  console.error("Błąd wczytywania pracy:", err);
+                  showMessage("Błąd", "Wystąpił błąd podczas wczytywania pracy.", "error");
+                } finally {
+                  loadWorkBtn.disabled = false;
+                  loadWorkBtn.textContent = "wczytaj";
+                }
+              });
+            }
+            
+            // Jeśli anulowano, wyczyść modal
+            loadConfirmModal.addEventListener("hidden.bs.modal", () => {
+              setTimeout(() => loadConfirmModal.remove(), 300);
+            });
+          });
+        }
+        
+        // Załaduj listę plików przy starcie
+        if (workFilesSelect) {
+          loadWorkFiles();
         }
 
         // Undo/Redo system
