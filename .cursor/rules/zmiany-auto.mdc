@@ -1,0 +1,20 @@
+---
+description: Automatyczny rejestr zmian ZMIANY.txt i commit po każdej edycji
+alwaysApply: true
+---
+
+# Rejestr zmian (ZMIANY.txt) – automatycznie
+
+Po **każdej** zmianie w projekcie (edycja plików w repo):
+
+1. **Dopisz linię do ZMIANY.txt**
+   - Odczytaj plik, znajdź ostatni numer (linia `N. DATA - opis`). Następny numer = N+1.
+   - Dopisz linię: `N+1. RRRR-MM-DD GG:MM - krótki opis zmiany` (data/czas aktualne, opis zwięzły).
+
+2. **Zrób commit**
+   - `git add -A`
+   - `git commit -m "zmiana N+1: krótki opis"` (ten sam opis co w ZMIANY.txt).
+
+Wyjątki: nie dopisuj do ZMIANY.txt ani nie commituj, jeśli jedyna zmiana to dopisanie linii do ZMIANY.txt i commit (żeby uniknąć pętli). Przy przywracaniu wersji (`git checkout`) nie traktuj tego jako „zwykłej zmiany” – nie twórz nowego wpisu.
+
+Format linii w ZMIANY.txt: `NUMER. YYYY-MM-DD HH:MM - opis` (bez # na początku dla linii z numerem).

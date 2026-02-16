@@ -16,3 +16,9 @@ history/
 # Backup files (all variants)
 backup_before_*.json
 stats.json
+
+# Lokalna konfiguracja (haslo do bazy)
+.env
+
+# Dane dostępowe VPS (ścieżki, host – uzupełniane lokalnie)
+DOSTEP_VPS.md
