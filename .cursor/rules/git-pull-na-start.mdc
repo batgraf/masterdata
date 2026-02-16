@@ -1,0 +1,13 @@
+---
+description: Przed pracą – przypomnij o git pull (ochrona przed nadpisaniem)
+alwaysApply: true
+---
+
+# Git – pull przed pracą
+
+Zanim użytkownik zacznie edytować w tym projekcie (lub zanim zaproponujesz zmiany w plikach):
+
+1. **Przypomnij:** „Zrób najpierw **git pull origin main** w katalogu projektu – żeby mieć najnowszą wersję z GitHubu.”
+2. Nie proponuj edycji ani commitów, dopóki użytkownik nie potwierdzi, że zrobił pull (albo nie zignoruje przypomnienia).
+
+Projekt jest rozwijany w dwóch miejscach (serwer i comp2); bez pull na start łatwo nadpisać zmiany z drugiego miejsca. Pull przed push = zawsze najpierw pull, potem ewentualnie push.
