@@ -121,6 +121,11 @@
       table.products-table td[data-col="Nazwa_producenta"] {
         min-width: 100px;
       }
+      table.products-table th[data-col="Zrodlo_danych"],
+      table.products-table td[data-col="Zrodlo_danych"] {
+        min-width: 60px;
+        text-align: center;
+      }
       table.products-table th[data-col="Grupa_produktu"],
       table.products-table td[data-col="Grupa_produktu"],
       table.products-table th[data-col="Rodzaj_produktu"],
@@ -135,7 +140,7 @@
       }
       table.products-table th[data-col="Tryb"],
       table.products-table td[data-col="Tryb"] {
-        min-width: 100px;
+        min-width: 70px;
         overflow: visible;
       }
       table.products-table td[data-col="Tryb"] .tryb-pill-wrap {
@@ -178,6 +183,23 @@
         text-transform: none;
         font-weight: 400;
       }
+      /* Wymagane kolumny - kolor tła nagłówka */
+      table.products-table thead th[data-col="Nazwa"],
+      table.products-table thead th[data-col="Nazwa_producenta"],
+      table.products-table thead th[data-col="Grupa_produktu"],
+      table.products-table thead th[data-col="EAN"],
+      table.products-table thead th[data-col="SKU"],
+      table.products-table thead th[data-col="Cena_zakupu_brutto"],
+      table.products-table thead th[data-col="Cena_zakupu_netto"],
+      table.products-table thead th[data-col="Cena_sprzedazy_brutto"],
+      table.products-table thead th[data-col="Cena_sprzedazy_netto"],
+      table.products-table thead th[data-col="Waga_brutto"],
+      table.products-table thead th[data-col="Szerokosc"],
+      table.products-table thead th[data-col="Wysokosc"],
+      table.products-table thead th[data-col="Dlugosc"],
+      table.products-table thead th[data-col="Rodzaj_opakowania"] {
+        background-color: #ffe9d9 !important;
+      }
       table.products-table thead th[data-col] {
         cursor: pointer;
         user-select: none;
@@ -186,8 +208,17 @@
         background-color: #e9ecef;
       }
       table.products-table thead th[data-col] .sort-indicator {
-        font-size: 10px;
-        opacity: 0.7;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        opacity: 0.85;
+      }
+      .sort-indicator .bi-filter.sort-asc {
+        transform: rotate(0deg);
+      }
+      .sort-indicator .bi-filter.sort-desc {
+        transform: rotate(180deg);
       }
       th.select-col,
       td.select-col {
@@ -574,13 +605,18 @@
                 </div>
               </div>
               <div class="col-12 col-lg-6">
-                <input
-                  type="text"
-                  id="searchInput"
-                  class="form-control form-control-sm"
-                  placeholder="szukaj po nazwie (np. 3x4, pergola 3x4)"
-                  autocomplete="off"
-                />
+                <div class="d-flex align-items-center gap-2">
+                  <input
+                    type="text"
+                    id="searchInput"
+                    class="form-control form-control-sm flex-grow-1"
+                    placeholder="szukaj po nazwie (np. 3x4, pergola 3x4)"
+                    autocomplete="off"
+                  />
+                  <button type="button" id="searchClearBtn" class="btn btn-sm btn-outline-secondary" title="Wyczyść wyszukiwarkę" style="font-size: 11px; white-space: nowrap;">
+                    wyczyść
+                  </button>
+                </div>
               </div>
               <div class="col-12 col-lg-6">
                 <div class="d-flex align-items-center gap-2 flex-wrap">
@@ -621,7 +657,7 @@
 
         <div class="col-12 col-lg-6">
           <div class="p-3 bg-white rounded-3 shadow-sm h-100 d-flex flex-column justify-content-start position-relative">
-            <a href="#" id="changeLogBtn" class="position-absolute top-0 end-0 p-2 text-secondary" title="Dziennik zmian" style="text-decoration: none; font-size: 1.1rem;"><i class="bi bi-journal-text"></i></a>
+            <a href="#" id="changeLogBtn" class="position-absolute top-0 end-0 p-2 text-primary" title="Dziennik zmian" style="text-decoration: none; font-size: 1.1rem;"><i class="bi bi-journal-text"></i></a>
             <div class="row g-2">
               <div class="col-3">
                 <div class="stat-number">{{ total_count }}</div>
@@ -697,6 +733,7 @@
                 </th>
                 <th data-col="ID_produktu" title="ID_produktu">id</th>
                 <th data-col="Tryb" title="Tryb">tryb</th>
+                <th data-col="Zrodlo_danych" title="Zrodlo_danych">źródło</th>
                 <th data-col="Nazwa" title="Nazwa">nazwa</th>
                 <th data-col="EAN" title="EAN">ean</th>
                 <th data-col="SKU" title="SKU">sku</th>
@@ -739,18 +776,16 @@
     <!-- Modal potwierdzenia usuwania -->
     <div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-labelledby="deleteConfirmModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="deleteConfirmModalLabel">Potwierdzenie usunięcia</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-content bg-dark text-white border border-1 border-secondary">
+          <div class="modal-header border-0 pb-0">
+            <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body">
-            <p>Czy na pewno chcesz usunąć <strong id="deleteCount">0</strong> zaznaczonych rekordów?</p>
-            <p class="text-danger">Ta operacja jest nieodwracalna.</p>
+          <div class="modal-body pt-0 text-center">
+            <p class="fs-5 mb-3">Usuwam <strong id="deleteCount">0</strong> rekordów.</p>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Anuluj</button>
-            <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Usuń</button>
+          <div class="modal-footer border-0 justify-content-center pt-0">
+            <button type="button" class="btn btn-sm btn-secondary px-3 me-2" data-bs-dismiss="modal">Anuluj</button>
+            <button type="button" class="btn btn-sm btn-danger px-3" id="confirmDeleteBtn">Usuń</button>
           </div>
         </div>
       </div>
@@ -869,6 +904,7 @@
                 <div class="columns-toolbar mb-2">
                   <button type="button" class="btn btn-success btn-sm" data-col="ID_produktu" title="ID_produktu">ID</button>
                   <button type="button" class="btn btn-success btn-sm" data-col="Tryb" title="Tryb">Tryb</button>
+                  <button type="button" class="btn btn-success btn-sm" data-col="Zrodlo_danych" title="Zrodlo_danych">źródło</button>
                   <button type="button" class="btn btn-success btn-sm" data-col="Nazwa" title="Nazwa">Nazwa</button>
                   <button type="button" class="btn btn-success btn-sm" data-col="EAN" title="EAN">EAN</button>
                   <button type="button" class="btn btn-success btn-sm" data-col="SKU" title="SKU">SKU</button>
@@ -1056,6 +1092,24 @@
         const STORAGE_KEY = "masterdata_column_visibility";
         const TRYB_OPTIONS = ["nowe", "w trakcie", "gotowe"];
         const TRYB_COLORS = { "nowe": "#deedff", "w trakcie": "#fffca3", "gotowe": "#d4fec9" };
+        
+        // Funkcja normalizująca wartość Tryb - wyciąga pierwszą część przed spacją i sprawdza czy jest w TRYB_OPTIONS
+        function normalizeTrybValue(value) {
+          if (!value) return "";
+          const str = String(value).trim();
+          // Sprawdź dokładne dopasowanie
+          if (TRYB_OPTIONS.includes(str)) return str;
+          // Wyciągnij pierwszą część przed spacją
+          const firstPart = str.split(/\s+/)[0].trim().toLowerCase();
+          // Sprawdź czy pierwsza część pasuje do którejś opcji
+          for (const opt of TRYB_OPTIONS) {
+            if (opt.toLowerCase() === firstPart || opt.toLowerCase().startsWith(firstPart) || firstPart.startsWith(opt.toLowerCase())) {
+              return opt;
+            }
+          }
+          // Jeśli nie znaleziono dopasowania, zwróć pusty string (domyślnie "nowe")
+          return "";
+        }
         const columnButtons = document.querySelectorAll(".columns-toolbar [data-col]");
         const viewAuthorInput = document.getElementById("viewAuthor");
         const viewAuthorDisplay = document.getElementById("viewAuthorDisplay");
@@ -1398,13 +1452,35 @@
           }
           function cell(field, rawValue, p) {
             if (field === "Tryb") {
-              const val = (rawValue && TRYB_OPTIONS.includes(String(rawValue).trim())) ? String(rawValue).trim() : "";
+              const val = normalizeTrybValue(rawValue);
               const pillColor = val ? (TRYB_COLORS[val] || "#e9ecef") : TRYB_COLORS["nowe"];
               const pillText = val || "nowe";
               const opts = TRYB_OPTIONS.map((s) =>
                 `<button type="button" class="tryb-option" data-tryb-value="${escapeHtml(s)}" style="background-color:${TRYB_COLORS[s]}">${escapeHtml(s)}</button>`
               ).join("");
               return `<td data-col="${field}" data-field="${field}" data-raw="${escapeHtml(val)}"><div class="tryb-pill-wrap"><button type="button" class="tryb-pill rounded-pill" style="background-color:${pillColor}" data-field="Tryb">${escapeHtml(pillText)}</button><div class="tryb-dropdown d-none">${opts}</div></div></td>`;
+            }
+            if (field === "Zrodlo_danych") {
+              const v = (rawValue || "").toString().toLowerCase();
+              let iconClass = "";
+              let color = "";
+              let title = "";
+              if (v === "json") {
+                iconClass = "bi-filetype-json";
+                color = "#198754"; // zielony
+                title = "źródło: JSON";
+              } else if (v === "xml") {
+                iconClass = "bi-filetype-xml";
+                color = "#dc3545"; // czerwony
+                title = "źródło: XML";
+              } else {
+                iconClass = "bi-question-circle";
+                color = "#6c757d"; // szary
+                title = "źródło: nieznane";
+              }
+              return `<td data-col="${field}" data-field="${field}" data-raw="${escapeHtml(v)}" class="text-center">
+                <i class="bi ${iconClass}" style="color:${color}; font-size: 1.1rem;" title="${escapeHtml(title)}"></i>
+              </td>`;
             }
             var unit = unitFromProduct(field, p);
             var display = displayValue(field, rawValue);
@@ -1420,7 +1496,7 @@
                 const rowId = p.id != null ? p.id : p.ID_produktu;
                 const productId = String(rowId);
                 const isModified = state.modified_ids.has(productId);
-                const trybVal = (p.Tryb && TRYB_OPTIONS.includes(String(p.Tryb).trim())) ? String(p.Tryb).trim() : "nowe";
+                const trybVal = normalizeTrybValue(p.Tryb) || "nowe";
                 const trybColor = TRYB_COLORS[trybVal];
                 return `
               <tr data-id="${escapeHtml(productId)}" data-id-produktu="${escapeHtml(String(p.ID_produktu != null ? p.ID_produktu : ''))}" data-tryb="${escapeHtml(trybVal)}" ${isModified ? 'class="row-modified"' : ''} style="background-color: ${trybColor}">
@@ -1431,6 +1507,7 @@
                 </td>
                 ${cell("ID_produktu", p.ID_produktu, p)}
                 ${cell("Tryb", p.Tryb, p)}
+                ${cell("Zrodlo_danych", p.Zrodlo_danych, p)}
                 ${cell("Nazwa", p.Nazwa, p)}
                 ${cell("EAN", p.EAN, p)}
                 ${cell("SKU", p.SKU, p)}
@@ -1527,7 +1604,9 @@
             if (state.sort_by && state.sort_by === col) {
               const span = document.createElement("span");
               span.className = "sort-indicator ms-1";
-              span.textContent = state.sort_order === "asc" ? "↑" : "↓";
+              const icon = document.createElement("i");
+              icon.className = "bi bi-filter " + (state.sort_order === "asc" ? "sort-asc" : "sort-desc");
+              span.appendChild(icon);
               th.appendChild(span);
             }
           });
@@ -1537,6 +1616,14 @@
           fetch(buildProductsUrl())
             .then((res) => res.json())
             .then((data) => {
+              // Inicjalizuj lastChangeId po pierwszym załadowaniu, aby nie pokazywać starych zmian
+              if (!liveUpdateInitialized && data.changes && data.changes.length > 0) {
+                const maxChangeId = Math.max(...data.changes.map(c => c.id || 0));
+                if (maxChangeId > 0) {
+                  lastChangeId = maxChangeId;
+                  liveUpdateInitialized = true;
+                }
+              }
               state.total_filtered = data.total_filtered || 0;
               state.total_pages = data.total_pages || 1;
               const filteredCountEl = document.getElementById("filteredCountValue");
@@ -1545,6 +1632,25 @@
               applyVisibilityFromProfile(buildCurrentProfile());
               updateFilterCountButtons();
               updatePaginationUi();
+              
+              // Inicjalizuj lastChangeId po pierwszym załadowaniu, aby nie pokazywać starych zmian
+              if (!liveUpdateInitialized) {
+                fetch("/api/changes-since?after_id=0")
+                  .then(function(r) { return r.json(); })
+                  .then(function(data) {
+                    const changes = data.changes || [];
+                    if (changes.length > 0) {
+                      const maxChangeId = Math.max(...changes.map(c => c.id || 0));
+                      if (maxChangeId > 0) {
+                        lastChangeId = maxChangeId;
+                      }
+                    }
+                    liveUpdateInitialized = true;
+                  })
+                  .catch(function() {
+                    liveUpdateInitialized = true;
+                  });
+              }
             })
             .catch((e) => {
               console.error("Cannot load products page", e);
@@ -1725,6 +1831,7 @@
 
         let searchDebounceTimer;
         const searchInput = document.getElementById("searchInput");
+        const searchClearBtn = document.getElementById("searchClearBtn");
         if (searchInput) {
           searchInput.addEventListener("input", () => {
             clearTimeout(searchDebounceTimer);
@@ -1733,6 +1840,15 @@
               state.page = 1;
               loadProducts();
             }, 280);
+          });
+        }
+        if (searchClearBtn && searchInput) {
+          searchClearBtn.addEventListener("click", () => {
+            searchInput.value = "";
+            state.searchQuery = "";
+            state.page = 1;
+            loadProducts();
+            searchInput.focus();
           });
         }
 
@@ -1926,7 +2042,9 @@
         }
 
         // Odświeżanie na żywo – zmiany z innych okien + komunikat (toast)
+        // Inicjalizuj lastChangeId po załadowaniu strony, aby nie pokazywać starych zmian
         let lastChangeId = 0;
+        let liveUpdateInitialized = false;
         const liveChangeToastsEl = document.getElementById("liveChangeToasts");
         function showChangeToast(message) {
           if (!liveChangeToastsEl) return;
@@ -1941,11 +2059,30 @@
         }
         setInterval(function() {
           if (!tableBody) return;
+          // 1) Pierwsze uruchomienie: ustaw lastChangeId na "teraz" i NIE pokazuj starych zmian
+          if (!liveUpdateInitialized) {
+            fetch("/api/changes-since?after_id=0")
+              .then(function(r) { return r.json(); })
+              .then(function(data) {
+                const changes = data.changes || [];
+                let maxId = 0;
+                changes.forEach(function(c) {
+                  if (c && typeof c.id === "number" && c.id > maxId) maxId = c.id;
+                });
+                if (maxId > 0) lastChangeId = maxId;
+                liveUpdateInitialized = true;
+              })
+              .catch(function() {
+                liveUpdateInitialized = true;
+              });
+            return;
+          }
           fetch("/api/changes-since?after_id=" + lastChangeId)
             .then(function(r) { return r.json(); })
             .then(function(data) {
               const changes = data.changes || [];
               let maxId = lastChangeId;
+              const userName = typeof getAuthorName === "function" ? (getAuthorName() || "").trim() : "";
               changes.forEach(function(c) {
                 if (c.id > maxId) maxId = c.id;
                 const idProd = String(c.id_produktu != null ? c.id_produktu : "");
@@ -1955,16 +2092,32 @@
                 if (!row) return;
                 const td = row.querySelector("td[data-field=\"" + field.replace(/"/g, "\\\"") + "\"]");
                 if (!td) return;
-                td.setAttribute("data-raw", val);
-                if (typeof displayWithUnit === "function") {
-                  td.textContent = displayWithUnit(td, field, val);
+                
+                // Specjalna obsługa dla pola "Tryb" - renderuj jako pill
+                if (field === "Tryb") {
+                  const normalizedVal = normalizeTrybValue(val);
+                  const pillColor = normalizedVal ? (TRYB_COLORS[normalizedVal] || "#e9ecef") : TRYB_COLORS["nowe"];
+                  const pillText = normalizedVal || "nowe";
+                  const opts = TRYB_OPTIONS.map((s) =>
+                    `<button type="button" class="tryb-option" data-tryb-value="${escapeHtml(s)}" style="background-color:${TRYB_COLORS[s]}">${escapeHtml(s)}</button>`
+                  ).join("");
+                  td.innerHTML = `<div class="tryb-pill-wrap"><button type="button" class="tryb-pill rounded-pill" style="background-color:${pillColor}" data-field="Tryb">${escapeHtml(pillText)}</button><div class="tryb-dropdown d-none">${opts}</div></div>`;
+                  td.setAttribute("data-raw", normalizedVal);
+                  row.setAttribute("data-tryb", normalizedVal || "nowe");
+                  row.style.backgroundColor = TRYB_COLORS[normalizedVal] || TRYB_COLORS["nowe"];
                 } else {
-                  td.textContent = val;
+                  td.setAttribute("data-raw", val);
+                  if (typeof displayWithUnit === "function") {
+                    td.textContent = displayWithUnit(td, field, val);
+                  } else {
+                    td.textContent = val;
+                  }
                 }
-                const userName = (c.user_id || "?").trim();
-                const me = typeof getAuthorName === "function" ? (getAuthorName() || "").trim() : "";
-                if (userName && userName.toLowerCase() !== me.toLowerCase()) {
-                  showChangeToast(userName + " zmienił(a) " + field + " w rekordzie " + idProd);
+                
+                const changeUserName = (c.user_id || "?").trim();
+                // Wyświetl komunikat tylko jeśli zmiana pochodzi od innego użytkownika i użytkownik jest zalogowany
+                if (changeUserName && userName && changeUserName.toLowerCase() !== userName.toLowerCase()) {
+                  showChangeToast(changeUserName + " zmienił(a) " + field + " w rekordzie " + idProd);
                 }
               });
               lastChangeId = maxId;
@@ -2287,7 +2440,6 @@
                   state.selected_ids.clear();
                   deleteModal.hide();
                   loadProducts(); // Przeładuj tabelę
-                  showMessage("Sukces", `Usunięto ${result.deleted} rekordów.`, "success", true);
                 } else {
                   const error = await response.json();
                   showMessage("Błąd", `Błąd podczas usuwania: ${error.error || "Nieznany błąd"}`, "error");
@@ -2489,7 +2641,8 @@
             const td = wrap.closest("td[data-field]");
             const tr = wrap.closest("tr");
             if (option) {
-              const value = (option.getAttribute("data-tryb-value") || "").trim();
+              const rawValue = (option.getAttribute("data-tryb-value") || "").trim();
+              const value = normalizeTrybValue(rawValue); // Normalizuj wartość przed użyciem
               const productId = tr ? tr.getAttribute("data-id") : "";
               if (!productId || !td) return;
               document.querySelectorAll(".tryb-dropdown").forEach((d) => d.classList.add("d-none"));
@@ -2513,7 +2666,8 @@
                   return res.json();
                 })
                 .then((data) => {
-                  const newVal = data.value ?? "";
+                  const rawValue = data.value ?? "";
+                  const newVal = normalizeTrybValue(rawValue);
                   td.setAttribute("data-raw", newVal);
                   if (pillBtn) {
                     pillBtn.textContent = newVal || "nowe";

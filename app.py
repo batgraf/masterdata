@@ -43,13 +43,39 @@ try:
 except ImportError:
     _DB_AVAILABLE = False
     PRODUCT_KEYS = [
-        "ID_produktu", "Tryb", "Status_produktu", "SKU", "Nazwa", "URL_Miniatura",
-        "Rodzaj_produktu", "Grupa_produktu", "EAN", "JM_sprzedazy", "Waga_brutto",
-        "JM_wagi", "Dlugosc", "Szerokosc", "Wysokosc", "JM_wymiaru",
-        "Objetosc_produktu", "JM_objetosci", "Rodzaj_opakowania", "ID_producenta",
-        "Nazwa_producenta", "Cena_zakupu_netto", "Cena_zakupu_brutto", "Waluta_zakupu",
-        "Nazwa_Cennika", "Cena_sprzedazy_netto", "Cena_sprzedazy_brutto", "Waluta_sprzedazy",
-        "Stan_magazynowy", "Rezerwacja", "Dostepnosc",
+        "ID_produktu",
+        "Tryb",
+        "Status_produktu",
+        "SKU",
+        "Nazwa",
+        "URL_Miniatura",
+        "Rodzaj_produktu",
+        "Grupa_produktu",
+        "EAN",
+        "JM_sprzedazy",
+        "Waga_brutto",
+        "JM_wagi",
+        "Dlugosc",
+        "Szerokosc",
+        "Wysokosc",
+        "JM_wymiaru",
+        "Objetosc_produktu",
+        "JM_objetosci",
+        "Rodzaj_opakowania",
+        "ID_producenta",
+        "Nazwa_producenta",
+        "Cena_zakupu_netto",
+        "Cena_zakupu_brutto",
+        "Waluta_zakupu",
+        "Nazwa_Cennika",
+        "Cena_sprzedazy_netto",
+        "Cena_sprzedazy_brutto",
+        "Waluta_sprzedazy",
+        "Stan_magazynowy",
+        "Rezerwacja",
+        "Dostepnosc",
+        # nowe pole – źródło danych (json/xml)
+        "Zrodlo_danych",
     ]
     DB_NUMERIC_KEYS = {"ID_produktu", "ID_producenta", "Waga_brutto", "Dlugosc", "Szerokosc", "Wysokosc", "Objetosc_produktu", "Cena_zakupu_netto", "Cena_zakupu_brutto", "Cena_sprzedazy_netto", "Cena_sprzedazy_brutto", "Stan_magazynowy", "Rezerwacja"}
 
@@ -174,7 +200,14 @@ def load_products():
     """Wczytuje listę produktów z pliku JSON lub z bazy (gdy DATABASE_URL)."""
     if _use_db():
         with get_connection() as conn:
-            return get_all_products(conn)
+            products = get_all_products(conn)
+        # Zmapuj kolumnę DB 'source' (json/xml) na pole używane w UI: 'Zrodlo_danych'
+        for p in products:
+            if isinstance(p, dict) and "Zrodlo_danych" not in p:
+                src = (p.get("source") or "").strip().lower()
+                if src in ("json", "xml"):
+                    p["Zrodlo_danych"] = src
+        return products
     mtime = DATA_FILE.stat().st_mtime
     if _DATA_CACHE["mtime"] == mtime and _DATA_CACHE["products"]:
         return _DATA_CACHE["products"]
@@ -228,6 +261,43 @@ def parse_bool(value: str) -> bool:
     return str(value).strip().lower() in {"1", "true", "yes", "on"}
 
 
+def normalize_tryb_value(value: Any) -> str:
+    """
+    Normalizuje wartość Tryb do jednej z dozwolonych wartości: "nowe", "w trakcie", "gotowe".
+    Jeśli wartość nie pasuje, zwraca pusty string (domyślnie "nowe").
+    """
+    TRYB_OPTIONS = ["nowe", "w trakcie", "gotowe"]
+    
+    if not value:
+        return ""
+    
+    str_value = str(value).strip()
+    
+    # Sprawdź dokładne dopasowanie
+    if str_value in TRYB_OPTIONS:
+        return str_value
+    
+    str_lower = str_value.lower()
+    
+    # Sprawdź czy wartość zaczyna się od którejś opcji
+    for opt in TRYB_OPTIONS:
+        opt_lower = opt.lower()
+        if str_lower.startswith(opt_lower) or opt_lower.startswith(str_lower):
+            return opt
+    
+    # Wyciągnij pierwszą część przed spacją
+    first_part = str_value.split()[0].strip().lower() if str_value else ""
+    
+    # Sprawdź czy pierwsza część pasuje do którejś opcji
+    for opt in TRYB_OPTIONS:
+        opt_lower = opt.lower()
+        if opt_lower == first_part or opt_lower.startswith(first_part) or first_part.startswith(opt_lower):
+            return opt
+    
+    # Jeśli nie znaleziono dopasowania, zwróć pusty string (domyślnie "nowe")
+    return ""
+
+
 def _normalize_for_search(text: str) -> str:
     """Usuwa spacje, do dopasowania fraz (np. '3 x 4' = '3x4')."""
     if not text or not isinstance(text, str):
@@ -238,21 +308,86 @@ def _normalize_for_search(text: str) -> str:
 def _product_matches_search(product: Dict[str, Any], query: str) -> bool:
     """
     Sprawdza, czy produkt pasuje do frazy wyszukiwania.
-    Nazwa jest przeszukiwana; fraza jest dzielona na tokeny (spacje);
-    każdy token po normalizacji (bez spacji) musi wystąpić w znormalizowanej nazwie.
-    Np. 'pergola 3x4' lub '3 x 4' znajdzie 'pergola skyline 3x4'.
+
+    Domyślnie szukamy „po wszystkim”, ale z priorytetem:
+    - po numerach (EAN, SKU, ID_produktu),
+    - po tekście w kilku kluczowych polach (Nazwa, producent, grupa, rodzaj, opakowanie).
+
+    Reguły:
+    - jeśli zapytanie wygląda na numer (głównie cyfry) → porównujemy z polami
+      liczbowymi (EAN/SKU/ID) po usunięciu spacji i innych znaków,
+    - w pozostałych przypadkach dzielimy frazę na tokeny i każdy token
+      musi wystąpić w choć jednym z tekstowych pól produktu.
     """
     if not query or not query.strip():
         return True
+
+    q_raw = query.strip()
+
+    # 1) Czy wygląda jak zapytanie numeryczne (EAN / SKU / ID)?
+    is_numeric_query = all(
+        (ch.isdigit() or ch.isspace() or ch in "-_/.,")
+        for ch in q_raw
+    )
+    q_digits = "".join(ch for ch in q_raw if ch.isdigit())
+
+    def digits(val: Any) -> str:
+        return "".join(ch for ch in str(val or "") if ch.isdigit())
+
+    ean_digits = digits(product.get("EAN"))
+    sku_digits = digits(product.get("SKU"))
+    id_digits = digits(product.get("ID_produktu"))
+
+    if q_digits:
+        # tryb „numeryczny”: szukamy tylko po EAN/SKU/ID
+        if is_numeric_query:
+            for field_digits in (ean_digits, sku_digits, id_digits):
+                if not field_digits:
+                    continue
+                # najpierw dokładne dopasowanie
+                if q_digits == field_digits:
+                    return True
+                # dopuszczamy też sytuacje: użytkownik wkleił końcówkę / początek numeru
+                if field_digits.endswith(q_digits) or field_digits.startswith(q_digits):
+                    return True
+            # czysto numeryczne zapytanie, ale nic nie pasuje – nie przechodzimy do tekstu
+            return False
+        # zapytanie mieszane (litery+cyfry): cyfry traktujemy tylko jako pomocniczy warunek
+        # dla EAN (np. ktoś wkleił fragment numeru), nie używamy już samych cyfr do SKU/ID
+        else:
+            if ean_digits and q_digits == ean_digits:
+                return True
+
+    # 2) Dopasowanie tekstowe po wielu polach (nazwa, producent, grupa, rodzaj, opakowanie, SKU)
     name = str(product.get("Nazwa") or "")
-    name_norm = _normalize_for_search(name)
-    if not name_norm:
+    producer = str(product.get("Nazwa_producenta") or "")
+    group = str(product.get("Grupa_produktu") or "")
+    kind = str(product.get("Rodzaj_produktu") or "")
+    pack = str(product.get("Rodzaj_opakowania") or "")
+    sku_text = str(product.get("SKU") or "")
+
+    fields_norm = [
+        _normalize_for_search(name),
+        _normalize_for_search(producer),
+        _normalize_for_search(group),
+        _normalize_for_search(kind),
+        _normalize_for_search(pack),
+        _normalize_for_search(sku_text),
+    ]
+
+    # jeśli wszystkie puste – nic nie pasuje
+    if not any(fields_norm):
         return False
-    tokens = [t.strip() for t in query.strip().split() if t.strip()]
+
+    tokens = [t.strip() for t in q_raw.split() if t.strip()]
     for token in tokens:
         token_norm = _normalize_for_search(token)
-        if not token_norm or token_norm not in name_norm:
+        if not token_norm:
+            continue
+        # token musi pojawić się w co najmniej jednym z pól
+        if not any(token_norm in f for f in fields_norm if f):
             return False
+
     return True
 
 
@@ -639,6 +774,10 @@ def update_product_field(product_id: int):
         return jsonify({"error": "field_required"}), 400
     if field == "ID_produktu":
         return jsonify({"error": "field_not_editable"}), 400
+    
+    # Normalizuj wartość Tryb przed zapisem
+    if field == "Tryb":
+        value = normalize_tryb_value(value)
 
     if _use_db():
         with get_connection() as conn:
@@ -756,6 +895,10 @@ def batch_update_products():
 
     if not ids:
         return jsonify({"updated": 0})
+    
+    # Normalizuj wartość Tryb przed zapisem
+    if field == "Tryb":
+        value = normalize_tryb_value(value)
 
     if _use_db():
         with get_connection() as conn:
@@ -955,6 +1098,10 @@ def upload_database():
             else:
                 data = load_from_xml_suuhouse(content)
                 source = "xml"
+            # Ustaw źródło danych na poziomie rekordu – potrzebne do kolumny Zrodlo_danych
+            for p in data:
+                if isinstance(p, dict):
+                    p.setdefault("Zrodlo_danych", source)
             existing = load_products()
             if existing:
                 merged = _merge_products(existing, data, new_is_master=True)
@@ -984,6 +1131,12 @@ def upload_database():
         data = json.loads(content)
         if not isinstance(data, list):
             return jsonify({"error": "invalid_json_format"}), 400
+
+        # Upewnij się, że wszystkie rekordy mają informację o źródle danych
+        # (w trybie plikowym dopuszczamy tylko JSON, więc ustawiamy "json")
+        for p in data:
+            if isinstance(p, dict) and "Zrodlo_danych" not in p:
+                p["Zrodlo_danych"] = "json"
 
         backup_file = BASE_DIR / f"backup_before_upload_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
         if DATA_FILE.exists():

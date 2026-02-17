@@ -380,7 +380,9 @@ def insert_products(conn, products: List[Dict[str, Any]], source: str = "json") 
     sql = f"INSERT INTO products ({col_names}) VALUES ({placeholders})"
     with conn.cursor() as cur:
         for p in products:
-            row = [source]
+            # Pozwól nadpisać źródło na poziomie rekordu (np. mieszany import JSON + XML)
+            per_row_source = (p.get("Zrodlo_danych") or p.get("source") or source or "json")
+            row = [per_row_source]
             for k in PRODUCT_KEYS:
                 v = p.get(k)
                 if v is None and k in NUMERIC_KEYS:
