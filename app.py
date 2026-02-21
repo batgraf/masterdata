@@ -871,6 +871,55 @@ def batch_delete_products():
     return jsonify({"deleted": deleted, "remaining": len(kept)})
 
 
+@app.post("/api/products/export")
+def export_products_json():
+    """
+    Eksportuje zaznaczone produkty do pliku JSON w tym samym formacie co AsortymentyMasterData.json.
+    Oczekuje JSON-a: {"ids": [123, 456, ...]}.
+    Zwraca plik do pobrania.
+    """
+    data = request.get_json(silent=True) or {}
+    raw_ids = data.get("ids") or []
+    try:
+        id_set = {int(x) for x in raw_ids}
+    except (TypeError, ValueError):
+        return jsonify({"error": "invalid_ids"}), 400
+    if not id_set:
+        return jsonify({"error": "no_ids", "hint": "Zaznacz co najmniej jeden produkt."}), 400
+
+    products = load_products()
+    if not isinstance(products, list):
+        return jsonify({"error": "no_products"}), 500
+
+    # Frontend przy bazie wysyła wewnętrzne id (PK), przy pliku – ID_produktu. Obsługujemy oba.
+    by_id_produktu = {}
+    by_internal_id = {}
+    for p in products:
+        pid = p.get("ID_produktu")
+        if pid is not None:
+            by_id_produktu[int(pid)] = p
+        internal = p.get("id")
+        if internal is not None:
+            by_internal_id[int(internal)] = p
+
+    ordered = []
+    for i in raw_ids:
+        ii = int(i)
+        if ii in by_internal_id:
+            ordered.append(by_internal_id[ii])
+        elif ii in by_id_produktu:
+            ordered.append(by_id_produktu[ii])
+    export_list = [{k: p.get(k) for k in PRODUCT_KEYS} for p in ordered]
+
+    buf = BytesIO(json.dumps(export_list, ensure_ascii=False, indent=2).encode("utf-8"))
+    return send_file(
+        buf,
+        mimetype="application/json",
+        as_attachment=True,
+        download_name=f"wybrane_produkty_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json",
+    )
+
+
 @app.post("/api/products/batch-update")
 def batch_update_products():
     """

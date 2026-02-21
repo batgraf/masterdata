@@ -649,6 +649,14 @@
                   >
                     edytuj
                   </button>
+                  <button
+                    type="button"
+                    id="exportSelectedJsonBtn"
+                    class="btn btn-sm btn-outline-primary"
+                    title="Pobierz zaznaczone produkty jako JSON (format jak AsortymentyMasterData)"
+                  >
+                    <i class="bi bi-download me-1"></i>eksportuj JSON
+                  </button>
                 </div>
               </div>
             </div>
@@ -2378,6 +2386,46 @@
             } else {
               // Zaznacz
               await selectAllRecords(allPages);
+            }
+          });
+        }
+
+        // Eksport zaznaczonych do JSON
+        const exportSelectedJsonBtn = document.getElementById("exportSelectedJsonBtn");
+        if (exportSelectedJsonBtn) {
+          exportSelectedJsonBtn.addEventListener("click", async () => {
+            const selectedCount = state.selected_ids.size;
+            if (selectedCount === 0) {
+              showMessage("Uwaga", "Nie zaznaczono żadnych rekordów do eksportu.", "warning");
+              return;
+            }
+            const selectedIds = Array.from(state.selected_ids).map(id => parseInt(id));
+            try {
+              const response = await fetch("/api/products/export", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ ids: selectedIds }),
+              });
+              if (!response.ok) {
+                const err = await response.json().catch(() => ({}));
+                showMessage("Błąd", err.hint || err.error || "Błąd eksportu.", "error");
+                return;
+              }
+              const blob = await response.blob();
+              const disposition = response.headers.get("Content-Disposition");
+              let name = "wybrane_produkty.json";
+              if (disposition) {
+                const m = disposition.match(/filename[*]?=(?:UTF-8'')?([^;]+)/i);
+                if (m) name = m[1].trim().replace(/^["']|["']$/g, "");
+              }
+              const a = document.createElement("a");
+              a.href = URL.createObjectURL(blob);
+              a.download = name;
+              a.click();
+              URL.revokeObjectURL(a.href);
+            } catch (err) {
+              console.error("Eksport JSON:", err);
+              showMessage("Błąd", "Wystąpił błąd podczas eksportu.", "error");
             }
           });
         }
