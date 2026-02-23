@@ -1,0 +1,4012 @@
+[
+  {
+    "indeks": "AFRN2-160/13C31",
+    "EAN": "5905253666803",
+    "Nazwa": "AFRO NEW 2",
+    "Szerokosc_mm": 288.0,
+    "Wysokosc_mm": 1600.0,
+    "Glebokosc_mm": 116.0,
+    "Waga_kg": 20.9,
+    "Wymiary": "288.0 x 1600.0 x 116.0"
+  },
+  {
+    "indeks": "AFRN2-180/13C91",
+    "EAN": "5905253714610",
+    "Nazwa": "AFRO NEW 2",
+    "Szerokosc_mm": 288.0,
+    "Wysokosc_mm": 1800.0,
+    "Glebokosc_mm": 116.0,
+    "Waga_kg": 23.3,
+    "Wymiary": "288.0 x 1800.0 x 116.0"
+  },
+  {
+    "indeks": "AFRN2-180/18",
+    "EAN": "5905253673528",
+    "Nazwa": "AFRO NEW 2",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 1800.0,
+    "Glebokosc_mm": 116.0,
+    "Waga_kg": 33.1,
+    "Wymiary": "400.0 x 1800.0 x 116.0"
+  },
+  {
+    "indeks": "AFRN2-180/18D50PC83",
+    "EAN": null,
+    "Nazwa": "AFRO NEW 2",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 1800.0,
+    "Glebokosc_mm": 116.0,
+    "Waga_kg": 33.1,
+    "Wymiary": "400.0 x 1800.0 x 116.0"
+  },
+  {
+    "indeks": "AFRN2-180/28D50LC83",
+    "EAN": "5905253726828",
+    "Nazwa": "AFRO NEW 2",
+    "Szerokosc_mm": 625.0,
+    "Wysokosc_mm": 1800.0,
+    "Glebokosc_mm": 116.0,
+    "Waga_kg": 43.1,
+    "Wymiary": "625.0 x 1800.0 x 116.0"
+  },
+  {
+    "indeks": "AFRNX2-060/28D50P",
+    "EAN": null,
+    "Nazwa": "AFRO NEW X2",
+    "Szerokosc_mm": 625.0,
+    "Wysokosc_mm": 575.0,
+    "Glebokosc_mm": 116.0,
+    "Waga_kg": 25.3,
+    "Wymiary": "625.0 x 575.0 x 116.0"
+  },
+  {
+    "indeks": "AFRNX2-120/13",
+    "EAN": "5905253673597",
+    "Nazwa": "AFRO NEW X2",
+    "Szerokosc_mm": 288.0,
+    "Wysokosc_mm": 1200.0,
+    "Glebokosc_mm": 116.0,
+    "Waga_kg": 23.8,
+    "Wymiary": "288.0 x 1200.0 x 116.0"
+  },
+  {
+    "indeks": "AFRNX2-180/18",
+    "EAN": "5905253666841",
+    "Nazwa": "AFRO NEW X2",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 1800.0,
+    "Glebokosc_mm": 116.0,
+    "Waga_kg": 47.8,
+    "Wymiary": "400.0 x 1800.0 x 116.0"
+  },
+  {
+    "indeks": "AFRNX2-180/28D50LC34",
+    "EAN": "5905253696534",
+    "Nazwa": "AFRO NEW X2",
+    "Szerokosc_mm": 625.0,
+    "Wysokosc_mm": 1800.0,
+    "Glebokosc_mm": 116.0,
+    "Waga_kg": 73.8,
+    "Wymiary": "625.0 x 1800.0 x 116.0"
+  },
+  {
+    "indeks": "AMBR-40/100",
+    "EAN": "5905253093180",
+    "Nazwa": "AMBRA R",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 1038.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 5.7,
+    "Wymiary": "400.0 x 1038.0"
+  },
+  {
+    "indeks": "AMBR-40/120",
+    "EAN": "5905253093197",
+    "Nazwa": "AMBRA R",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 1230.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 6.8,
+    "Wymiary": "400.0 x 1230.0"
+  },
+  {
+    "indeks": "AMBR-40/140",
+    "EAN": "5905253093203",
+    "Nazwa": "AMBRA R",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 1394.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 7.6,
+    "Wymiary": "400.0 x 1394.0"
+  },
+  {
+    "indeks": "AMBR-40/170",
+    "EAN": "5905253093210",
+    "Nazwa": "AMBRA R",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 1650.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 8.9,
+    "Wymiary": "400.0 x 1650.0"
+  },
+  {
+    "indeks": "AMBR-40/70",
+    "EAN": "5905253093173",
+    "Nazwa": "AMBRA R",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 682.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 3.8,
+    "Wymiary": "400.0 x 682.0"
+  },
+  {
+    "indeks": "AMBR-50/100D50",
+    "EAN": "5905253214196",
+    "Nazwa": "AMBRA R",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 1038.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 7.0,
+    "Wymiary": "500.0 x 1038.0"
+  },
+  {
+    "indeks": "AMBR-50/120D50",
+    "EAN": "5905253219122",
+    "Nazwa": "AMBRA R",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 1230.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 8.1,
+    "Wymiary": "500.0 x 1230.0"
+  },
+  {
+    "indeks": "AMBR-50/140",
+    "EAN": "5905253093227",
+    "Nazwa": "AMBRA R",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 1394.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 9.0,
+    "Wymiary": "500.0 x 1394.0"
+  },
+  {
+    "indeks": "AMBR-50/70C34",
+    "EAN": "5905253496417",
+    "Nazwa": "AMBRA R",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 682.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 4.6,
+    "Wymiary": "500.0 x 682.0"
+  },
+  {
+    "indeks": "AMBR-55/120",
+    "EAN": "5905253206351",
+    "Nazwa": "AMBRA R",
+    "Szerokosc_mm": 550.0,
+    "Wysokosc_mm": 1230.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 8.2,
+    "Wymiary": "550.0 x 1230.0"
+  },
+  {
+    "indeks": "AMBR-55/170",
+    "EAN": "5905253206375",
+    "Nazwa": "AMBRA R",
+    "Szerokosc_mm": 550.0,
+    "Wysokosc_mm": 1650.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 10.7,
+    "Wymiary": "550.0 x 1650.0"
+  },
+  {
+    "indeks": "AMBR-55/70C100",
+    "EAN": "5905253726330",
+    "Nazwa": "AMBRA R",
+    "Szerokosc_mm": 550.0,
+    "Wysokosc_mm": 682.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 4.6,
+    "Wymiary": "550.0 x 682.0"
+  },
+  {
+    "indeks": "AMBR-60/100",
+    "EAN": "5905253093258",
+    "Nazwa": "AMBRA R",
+    "Szerokosc_mm": 600.0,
+    "Wysokosc_mm": 1038.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 7.1,
+    "Wymiary": "600.0 x 1038.0"
+  },
+  {
+    "indeks": "AMBR-60/120",
+    "EAN": "5905253093265",
+    "Nazwa": "AMBRA R",
+    "Szerokosc_mm": 600.0,
+    "Wysokosc_mm": 1230.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 8.3,
+    "Wymiary": "600.0 x 1230.0"
+  },
+  {
+    "indeks": "AMBR-60/170",
+    "EAN": "5905253093289",
+    "Nazwa": "AMBRA R",
+    "Szerokosc_mm": 600.0,
+    "Wysokosc_mm": 1650.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 10.8,
+    "Wymiary": "600.0 x 1650.0"
+  },
+  {
+    "indeks": "AMBR-60/70",
+    "EAN": "5905253093241",
+    "Nazwa": "AMBRA R",
+    "Szerokosc_mm": 600.0,
+    "Wysokosc_mm": 682.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 4.7,
+    "Wymiary": "600.0 x 682.0"
+  },
+  {
+    "indeks": "AMBRA-40/100",
+    "EAN": "5905253725821",
+    "Nazwa": "AMBRA R",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 1038.0,
+    "Glebokosc_mm": 0.0,
+    "Waga_kg": NaN,
+    "Wymiary": "400.0 x 1038.0"
+  },
+  {
+    "indeks": "AMBRA-40/120",
+    "EAN": "5905253725838",
+    "Nazwa": "AMBRA R",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 1230.0,
+    "Glebokosc_mm": 0.0,
+    "Waga_kg": NaN,
+    "Wymiary": "400.0 x 1230.0"
+  },
+  {
+    "indeks": "AMBRA-50/100",
+    "EAN": "5905253718427",
+    "Nazwa": "AMBRA R",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 1038.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 7.0,
+    "Wymiary": "500.0 x 1038.0"
+  },
+  {
+    "indeks": "AMBRA-50/120",
+    "EAN": "5905253718434",
+    "Nazwa": "AMBRA R",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 1230.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 8.1,
+    "Wymiary": "500.0 x 1230.0"
+  },
+  {
+    "indeks": "AMBRA-50/140",
+    "EAN": "5905253725845",
+    "Nazwa": "AMBRA R",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 1394.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": NaN,
+    "Wymiary": "500.0 x 1394.0"
+  },
+  {
+    "indeks": "AMBRA-50/70",
+    "EAN": "5905253718410",
+    "Nazwa": "AMBRA R",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 682.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 4.6,
+    "Wymiary": "500.0 x 682.0"
+  },
+  {
+    "indeks": "AMBRA-60/120",
+    "EAN": "5905253725852",
+    "Nazwa": "AMBRA R",
+    "Szerokosc_mm": 600.0,
+    "Wysokosc_mm": 1230.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": NaN,
+    "Wymiary": "600.0 x 1230.0"
+  },
+  {
+    "indeks": "AMBRA-60/70",
+    "EAN": "5905253725869",
+    "Nazwa": "AMBRA R",
+    "Szerokosc_mm": 600.0,
+    "Wysokosc_mm": 682.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": NaN,
+    "Wymiary": "600.0 x 682.0"
+  },
+  {
+    "indeks": "AMBRE-50/140+GH-06C1U",
+    "EAN": "5905253707766",
+    "Nazwa": "AMBRA R ELECTRO",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 1394.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 15.1,
+    "Wymiary": "500.0 x 1394.0"
+  },
+  {
+    "indeks": "000M855A001",
+    "EAN": "5903175020864",
+    "Nazwa": "ARMATURA A1",
+    "Szerokosc_mm": 80.0,
+    "Wysokosc_mm": 44.0,
+    "Glebokosc_mm": 41.0,
+    "Waga_kg": NaN,
+    "Wymiary": "80.0 x 44.0 x 41.0"
+  },
+  {
+    "indeks": "000M855A006",
+    "EAN": "5902414140370",
+    "Nazwa": "ARMATURA A1",
+    "Szerokosc_mm": 80.0,
+    "Wysokosc_mm": 44.0,
+    "Glebokosc_mm": 41.0,
+    "Waga_kg": NaN,
+    "Wymiary": "80.0 x 44.0 x 41.0"
+  },
+  {
+    "indeks": "601000101VTC12",
+    "EAN": "5905253405266",
+    "Nazwa": "ARMATURA A1",
+    "Szerokosc_mm": 80.0,
+    "Wysokosc_mm": 44.0,
+    "Glebokosc_mm": 41.0,
+    "Waga_kg": NaN,
+    "Wymiary": "80.0 x 44.0 x 41.0"
+  },
+  {
+    "indeks": "601000101VTC31",
+    "EAN": "5905253508790",
+    "Nazwa": "ARMATURA A1",
+    "Szerokosc_mm": 80.0,
+    "Wysokosc_mm": 44.0,
+    "Glebokosc_mm": 41.0,
+    "Waga_kg": NaN,
+    "Wymiary": "80.0 x 44.0 x 41.0"
+  },
+  {
+    "indeks": "AST-60/100C12",
+    "EAN": "5905253068218",
+    "Nazwa": "ASTRO",
+    "Szerokosc_mm": 600.0,
+    "Wysokosc_mm": 1044.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 14.3,
+    "Wymiary": "600.0 x 1044.0"
+  },
+  {
+    "indeks": "AST-60/120",
+    "EAN": "5905253981036",
+    "Nazwa": "ASTRO",
+    "Szerokosc_mm": 600.0,
+    "Wysokosc_mm": 1198.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 19.3,
+    "Wymiary": "600.0 x 1198.0"
+  },
+  {
+    "indeks": "ASTE-50/160+GH-12C1",
+    "EAN": "5905253636295",
+    "Nazwa": "ASTRO ELECTRO",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 1610.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 30.8,
+    "Wymiary": "500.0 x 1610.0"
+  },
+  {
+    "indeks": "BEL-40/120",
+    "EAN": "5905253428883",
+    "Nazwa": "BELTI",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 1203.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 8.5,
+    "Wymiary": "400.0 x 1203.0"
+  },
+  {
+    "indeks": "BEL-40/120C31",
+    "EAN": "5905253440922",
+    "Nazwa": "BELTI",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 1203.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 8.5,
+    "Wymiary": "400.0 x 1203.0"
+  },
+  {
+    "indeks": "BEL-40/160C31",
+    "EAN": "5905253477317",
+    "Nazwa": "BELTI",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 1573.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 10.4,
+    "Wymiary": "400.0 x 1573.0"
+  },
+  {
+    "indeks": "BEL-40/80",
+    "EAN": "5905253428869",
+    "Nazwa": "BELTI",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 753.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 6.1,
+    "Wymiary": "400.0 x 753.0"
+  },
+  {
+    "indeks": "BEL-40/90",
+    "EAN": "5905253428876",
+    "Nazwa": "BELTI",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 896.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 6.9,
+    "Wymiary": "400.0 x 896.0"
+  },
+  {
+    "indeks": "BEL-40/90C12",
+    "EAN": "5905253457500",
+    "Nazwa": "BELTI",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 896.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 6.9,
+    "Wymiary": "400.0 x 896.0"
+  },
+  {
+    "indeks": "BEL-50/120",
+    "EAN": "5905253420337",
+    "Nazwa": "BELTI",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 1203.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 10.1,
+    "Wymiary": "500.0 x 1203.0"
+  },
+  {
+    "indeks": "BEL-50/80C34",
+    "EAN": "5905253455667",
+    "Nazwa": "BELTI",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 753.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 7.3,
+    "Wymiary": "500.0 x 753.0"
+  },
+  {
+    "indeks": "BEL-50/90",
+    "EAN": "5905253434112",
+    "Nazwa": "BELTI",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 896.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 8.2,
+    "Wymiary": "500.0 x 896.0"
+  },
+  {
+    "indeks": "BEL-50/90C12",
+    "EAN": "5905253439346",
+    "Nazwa": "BELTI",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 896.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 8.2,
+    "Wymiary": "500.0 x 896.0"
+  },
+  {
+    "indeks": "BEL-60/120",
+    "EAN": "5905253428944",
+    "Nazwa": "BELTI",
+    "Szerokosc_mm": 600.0,
+    "Wysokosc_mm": 1203.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 11.7,
+    "Wymiary": "600.0 x 1203.0"
+  },
+  {
+    "indeks": "BOL-40/100",
+    "EAN": "5905253093029",
+    "Nazwa": "BOLERO",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 1038.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 7.3,
+    "Wymiary": "400.0 x 1038.0"
+  },
+  {
+    "indeks": "BOL-55/140",
+    "EAN": "5905253206412",
+    "Nazwa": "BOLERO",
+    "Szerokosc_mm": 550.0,
+    "Wysokosc_mm": 1394.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 10.6,
+    "Wymiary": "550.0 x 1394.0"
+  },
+  {
+    "indeks": "BOL-60/100",
+    "EAN": "5905253093081",
+    "Nazwa": "BOLERO",
+    "Szerokosc_mm": 600.0,
+    "Wysokosc_mm": 1038.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 9.4,
+    "Wymiary": "600.0 x 1038.0"
+  },
+  {
+    "indeks": "BOL-60/170",
+    "EAN": "5905253093111",
+    "Nazwa": "BOLERO",
+    "Szerokosc_mm": 600.0,
+    "Wysokosc_mm": 1650.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 12.2,
+    "Wymiary": "600.0 x 1650.0"
+  },
+  {
+    "indeks": "BOLA-40/100",
+    "EAN": "5905253725951",
+    "Nazwa": "BOLERO",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 1038.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": NaN,
+    "Wymiary": "400.0 x 1038.0"
+  },
+  {
+    "indeks": "BOLA-50/100",
+    "EAN": "5905253725937",
+    "Nazwa": "BOLERO",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 1038.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": NaN,
+    "Wymiary": "500.0 x 1038.0"
+  },
+  {
+    "indeks": "BOLA-50/70",
+    "EAN": "5905253725944",
+    "Nazwa": "BOLERO",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 682.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": NaN,
+    "Wymiary": "500.0 x 682.0"
+  },
+  {
+    "indeks": "BOLE-50/120+GH-06C1",
+    "EAN": "5905253614668",
+    "Nazwa": "BOLERO ELECTRO",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 1230.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 15.2,
+    "Wymiary": "500.0 x 1230.0"
+  },
+  {
+    "indeks": "COD-40/130",
+    "EAN": "5905253148286",
+    "Nazwa": "CODE",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 1290.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 11.6,
+    "Wymiary": "400.0 x 1290.0"
+  },
+  {
+    "indeks": "COD-50/100D50",
+    "EAN": "5905253148460",
+    "Nazwa": "CODE",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 953.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 10.3,
+    "Wymiary": "500.0 x 953.0"
+  },
+  {
+    "indeks": "COD-50/130",
+    "EAN": "5905253147708",
+    "Nazwa": "CODE",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 1290.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 13.7,
+    "Wymiary": "500.0 x 1290.0"
+  },
+  {
+    "indeks": "COD-50/130C12",
+    "EAN": "5905253151422",
+    "Nazwa": "CODE",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 1290.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 13.7,
+    "Wymiary": "500.0 x 1290.0"
+  },
+  {
+    "indeks": "COD-50/130D50",
+    "EAN": "5905253148477",
+    "Nazwa": "CODE",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 1290.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 13.7,
+    "Wymiary": "500.0 x 1290.0"
+  },
+  {
+    "indeks": "COD-60/130D50",
+    "EAN": "5905253148514",
+    "Nazwa": "CODE",
+    "Szerokosc_mm": 600.0,
+    "Wysokosc_mm": 1290.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 15.8,
+    "Wymiary": "600.0 x 1290.0"
+  },
+  {
+    "indeks": "COVHN-120/06C12",
+    "EAN": "5905253420344",
+    "Nazwa": "COVER H NEW",
+    "Szerokosc_mm": 1200.0,
+    "Wysokosc_mm": 315.0,
+    "Glebokosc_mm": 75.0,
+    "Waga_kg": 10.9,
+    "Wymiary": "1200.0 x 315.0 x 75.0"
+  },
+  {
+    "indeks": "COVHN-200/11VP",
+    "EAN": "5905253508776",
+    "Nazwa": "COVER H NEW",
+    "Szerokosc_mm": 2000.0,
+    "Wysokosc_mm": 580.0,
+    "Glebokosc_mm": 75.0,
+    "Waga_kg": 31.0,
+    "Wymiary": "2000.0 x 580.0 x 75.0"
+  },
+  {
+    "indeks": "COVVN-060/11C31",
+    "EAN": "5905253558573",
+    "Nazwa": "COVER V NEW",
+    "Szerokosc_mm": 580.0,
+    "Wysokosc_mm": 600.0,
+    "Glebokosc_mm": 75.0,
+    "Waga_kg": 10.6,
+    "Wymiary": "580.0 x 600.0 x 75.0"
+  },
+  {
+    "indeks": "COVVN-180/06C31",
+    "EAN": "5905253488580",
+    "Nazwa": "COVER V NEW",
+    "Szerokosc_mm": 315.0,
+    "Wysokosc_mm": 1800.0,
+    "Glebokosc_mm": 75.0,
+    "Waga_kg": 15.5,
+    "Wymiary": "315.0 x 1800.0 x 75.0"
+  },
+  {
+    "indeks": "E-INDN-60/180C31L05",
+    "EAN": "5905253124358",
+    "Nazwa": "EKRAN DO INDIVI NEW",
+    "Szerokosc_mm": 576.0,
+    "Wysokosc_mm": 1806.0,
+    "Glebokosc_mm": 20.0,
+    "Waga_kg": NaN,
+    "Wymiary": "576.0 x 1806.0 x 20.0"
+  },
+  {
+    "indeks": "FRA-40/110",
+    "EAN": "5905253148156",
+    "Nazwa": "FRAME",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 1075.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 8.0,
+    "Wymiary": "400.0 x 1075.0"
+  },
+  {
+    "indeks": "FRA-40/110C12",
+    "EAN": "5905253154898",
+    "Nazwa": "FRAME",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 1075.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 8.0,
+    "Wymiary": "400.0 x 1075.0"
+  },
+  {
+    "indeks": "FRA-40/110C31",
+    "EAN": "5905253167522",
+    "Nazwa": "FRAME",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 1075.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 8.0,
+    "Wymiary": "400.0 x 1075.0"
+  },
+  {
+    "indeks": "FRA-40/60",
+    "EAN": "5905253148149",
+    "Nazwa": "FRAME",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 570.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 4.7,
+    "Wymiary": "400.0 x 570.0"
+  },
+  {
+    "indeks": "FRA-40/60B",
+    "EAN": "5905253148231",
+    "Nazwa": "FRAME",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 570.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 4.7,
+    "Wymiary": "400.0 x 570.0"
+  },
+  {
+    "indeks": "FRA-50/110",
+    "EAN": "5905253148002",
+    "Nazwa": "FRAME",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 1075.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 9.5,
+    "Wymiary": "500.0 x 1075.0"
+  },
+  {
+    "indeks": "FRA-50/110C12",
+    "EAN": "5905253170553",
+    "Nazwa": "FRAME",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 1075.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 9.5,
+    "Wymiary": "500.0 x 1075.0"
+  },
+  {
+    "indeks": "FRA-50/160C12",
+    "EAN": "5905253195594",
+    "Nazwa": "FRAME",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 1580.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 13.6,
+    "Wymiary": "500.0 x 1580.0"
+  },
+  {
+    "indeks": "FRA-50/60C12",
+    "EAN": "5905253188152",
+    "Nazwa": "FRAME",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 570.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 5.5,
+    "Wymiary": "500.0 x 570.0"
+  },
+  {
+    "indeks": "FRA-60/110",
+    "EAN": "5905253148217",
+    "Nazwa": "FRAME",
+    "Szerokosc_mm": 600.0,
+    "Wysokosc_mm": 1075.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 11.0,
+    "Wymiary": "600.0 x 1075.0"
+  },
+  {
+    "indeks": "FRA-60/110D50",
+    "EAN": "5905253690334",
+    "Nazwa": "FRAME",
+    "Szerokosc_mm": 600.0,
+    "Wysokosc_mm": 1075.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 11.0,
+    "Wymiary": "600.0 x 1075.0"
+  },
+  {
+    "indeks": "GLT-50/90",
+    "EAN": "5905253376863",
+    "Nazwa": "GIULIETTA",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 930.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 14.4,
+    "Wymiary": "500.0 x 930.0"
+  },
+  {
+    "indeks": "GLT-50/90C12",
+    "EAN": "5905253390746",
+    "Nazwa": "GIULIETTA",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 930.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 14.4,
+    "Wymiary": "500.0 x 930.0"
+  },
+  {
+    "indeks": "000M638A106",
+    "EAN": "5901549219470",
+    "Nazwa": "GŁOWICA G1",
+    "Szerokosc_mm": 96.0,
+    "Wysokosc_mm": 44.0,
+    "Glebokosc_mm": 44.0,
+    "Waga_kg": NaN,
+    "Wymiary": "96.0 x 44.0 x 44.0"
+  },
+  {
+    "indeks": "600500004VTC31",
+    "EAN": "5905253508783",
+    "Nazwa": "GŁOWICA G1",
+    "Szerokosc_mm": 96.0,
+    "Wysokosc_mm": 44.0,
+    "Glebokosc_mm": 44.0,
+    "Waga_kg": NaN,
+    "Wymiary": "96.0 x 44.0 x 44.0"
+  },
+  {
+    "indeks": "000M636A006",
+    "EAN": "5906372783747",
+    "Nazwa": "GŁOWICA G2",
+    "Szerokosc_mm": 83.0,
+    "Wysokosc_mm": 44.0,
+    "Glebokosc_mm": 44.0,
+    "Waga_kg": NaN,
+    "Wymiary": "83.0 x 44.0 x 44.0"
+  },
+  {
+    "indeks": "600500002VTC31",
+    "EAN": "5905253513848",
+    "Nazwa": "GŁOWICA G2",
+    "Szerokosc_mm": 83.0,
+    "Wysokosc_mm": 44.0,
+    "Glebokosc_mm": 44.0,
+    "Waga_kg": NaN,
+    "Wymiary": "83.0 x 44.0 x 44.0"
+  },
+  {
+    "indeks": "HOTS-03C2",
+    "EAN": "5905253064463",
+    "Nazwa": "HOTS",
+    "Szerokosc_mm": 40.0,
+    "Wysokosc_mm": 93.0,
+    "Glebokosc_mm": 60.0,
+    "Waga_kg": 0.7,
+    "Wymiary": "40.0 x 93.0 x 60.0"
+  },
+  {
+    "indeks": "HOTS-03C4",
+    "EAN": "5905253660962",
+    "Nazwa": "HOTS",
+    "Szerokosc_mm": 40.0,
+    "Wysokosc_mm": 93.0,
+    "Glebokosc_mm": 60.0,
+    "Waga_kg": 0.7,
+    "Wymiary": "40.0 x 93.0 x 60.0"
+  },
+  {
+    "indeks": "HOTS-04C1",
+    "EAN": "5905253660917",
+    "Nazwa": "HOTS",
+    "Szerokosc_mm": 40.0,
+    "Wysokosc_mm": 93.0,
+    "Glebokosc_mm": 60.0,
+    "Waga_kg": 0.7,
+    "Wymiary": "40.0 x 93.0 x 60.0"
+  },
+  {
+    "indeks": "HOTS-09C2U",
+    "EAN": "5905253442216",
+    "Nazwa": "HOTS",
+    "Szerokosc_mm": 40.0,
+    "Wysokosc_mm": 93.0,
+    "Glebokosc_mm": 60.0,
+    "Waga_kg": 0.8,
+    "Wymiary": "40.0 x 93.0 x 60.0"
+  },
+  {
+    "indeks": "HOTS-12C4",
+    "EAN": "5905253686603",
+    "Nazwa": "HOTS",
+    "Szerokosc_mm": 40.0,
+    "Wysokosc_mm": 93.0,
+    "Glebokosc_mm": 60.0,
+    "Waga_kg": 0.9,
+    "Wymiary": "40.0 x 93.0 x 60.0"
+  },
+  {
+    "indeks": "INDN-50/180E31L05",
+    "EAN": "5905253114892",
+    "Nazwa": "INDIVI NEW",
+    "Szerokosc_mm": 486.0,
+    "Wysokosc_mm": 1806.0,
+    "Glebokosc_mm": 96.0,
+    "Waga_kg": 44.2,
+    "Wymiary": "486.0 x 1806.0 x 96.0"
+  },
+  {
+    "indeks": "INV-40/120E",
+    "EAN": "5905253123955",
+    "Nazwa": "INVENTIO",
+    "Szerokosc_mm": 380.0,
+    "Wysokosc_mm": 1200.0,
+    "Glebokosc_mm": 91.0,
+    "Waga_kg": 18.2,
+    "Wymiary": "380.0 x 1200.0 x 91.0"
+  },
+  {
+    "indeks": "INV-50/120E",
+    "EAN": "5905253123986",
+    "Nazwa": "INVENTIO",
+    "Szerokosc_mm": 480.0,
+    "Wysokosc_mm": 1200.0,
+    "Glebokosc_mm": 91.0,
+    "Waga_kg": 23.1,
+    "Wymiary": "480.0 x 1200.0 x 91.0"
+  },
+  {
+    "indeks": "INV-50/160E",
+    "EAN": "5905253123993",
+    "Nazwa": "INVENTIO",
+    "Szerokosc_mm": 480.0,
+    "Wysokosc_mm": 1600.0,
+    "Glebokosc_mm": 91.0,
+    "Waga_kg": 31.3,
+    "Wymiary": "480.0 x 1600.0 x 91.0"
+  },
+  {
+    "indeks": "INV-70/180E31FS21",
+    "EAN": "5905253507861",
+    "Nazwa": "INVENTIO",
+    "Szerokosc_mm": 656.0,
+    "Wysokosc_mm": 1806.0,
+    "Glebokosc_mm": 96.0,
+    "Waga_kg": 48.5,
+    "Wymiary": "656.0 x 1806.0 x 96.0"
+  },
+  {
+    "indeks": "INV-70/180E34FS20",
+    "EAN": "5905253507854",
+    "Nazwa": "INVENTIO",
+    "Szerokosc_mm": 656.0,
+    "Wysokosc_mm": 1806.0,
+    "Glebokosc_mm": 96.0,
+    "Waga_kg": 48.5,
+    "Wymiary": "656.0 x 1806.0 x 96.0"
+  },
+  {
+    "indeks": "INVE-50/120E+GH-06C1",
+    "EAN": "5905253628467",
+    "Nazwa": "INVENTIO ELECTRO",
+    "Szerokosc_mm": 480.0,
+    "Wysokosc_mm": 1200.0,
+    "Glebokosc_mm": 91.0,
+    "Waga_kg": 30.7,
+    "Wymiary": "480.0 x 1200.0 x 91.0"
+  },
+  {
+    "indeks": "INVX-70/180E31",
+    "EAN": "5905253378966",
+    "Nazwa": "INVENTIO X",
+    "Szerokosc_mm": 650.0,
+    "Wysokosc_mm": 1800.0,
+    "Glebokosc_mm": 126.0,
+    "Waga_kg": 78.8,
+    "Wymiary": "650.0 x 1800.0 x 126.0"
+  },
+  {
+    "indeks": "MAK-50/120C12",
+    "EAN": "5905253415517",
+    "Nazwa": "MAKAO",
+    "Szerokosc_mm": 477.0,
+    "Wysokosc_mm": 1205.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 11.8,
+    "Wymiary": "477.0 x 1205.0"
+  },
+  {
+    "indeks": "MAK-50/90C12",
+    "EAN": "5905253386633",
+    "Nazwa": "MAKAO",
+    "Szerokosc_mm": 477.0,
+    "Wysokosc_mm": 883.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 8.9,
+    "Wymiary": "477.0 x 883.0"
+  },
+  {
+    "indeks": "MAK-60/120",
+    "EAN": "5905253295751",
+    "Nazwa": "MAKAO",
+    "Szerokosc_mm": 577.0,
+    "Wysokosc_mm": 1205.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 12.6,
+    "Wymiary": "577.0 x 1205.0"
+  },
+  {
+    "indeks": "MAK-60/120C12",
+    "EAN": "5905253355394",
+    "Nazwa": "MAKAO",
+    "Szerokosc_mm": 577.0,
+    "Wysokosc_mm": 1205.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 12.6,
+    "Wymiary": "577.0 x 1205.0"
+  },
+  {
+    "indeks": "MAK-60/120C75",
+    "EAN": "5905253325564",
+    "Nazwa": "MAKAO",
+    "Szerokosc_mm": 577.0,
+    "Wysokosc_mm": 1205.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 12.6,
+    "Wymiary": "577.0 x 1205.0"
+  },
+  {
+    "indeks": "MAK-60/160",
+    "EAN": "5905253295799",
+    "Nazwa": "MAKAO",
+    "Szerokosc_mm": 577.0,
+    "Wysokosc_mm": 1528.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 15.7,
+    "Wymiary": "577.0 x 1528.0"
+  },
+  {
+    "indeks": "MAK-60/90C12",
+    "EAN": "5905253343933",
+    "Nazwa": "MAKAO",
+    "Szerokosc_mm": 577.0,
+    "Wysokosc_mm": 883.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 9.5,
+    "Wymiary": "577.0 x 883.0"
+  },
+  {
+    "indeks": "MAK-60/90C75",
+    "EAN": "5905253325540",
+    "Nazwa": "MAKAO",
+    "Szerokosc_mm": 577.0,
+    "Wysokosc_mm": 883.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 9.5,
+    "Wymiary": "577.0 x 883.0"
+  },
+  {
+    "indeks": "MOD-40/100D50",
+    "EAN": "5905253170324",
+    "Nazwa": "MODO",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 1049.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 10.5,
+    "Wymiary": "400.0 x 1049.0"
+  },
+  {
+    "indeks": "MOD-40/140D50",
+    "EAN": "5905253170058",
+    "Nazwa": "MODO",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 1378.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 12.3,
+    "Wymiary": "400.0 x 1378.0"
+  },
+  {
+    "indeks": "MOD-50/100D50",
+    "EAN": "5905253170263",
+    "Nazwa": "MODO",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 1049.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 12.3,
+    "Wymiary": "500.0 x 1049.0"
+  },
+  {
+    "indeks": "MOD-50/100D50C75",
+    "EAN": "5905253345128",
+    "Nazwa": "MODO",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 1049.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 12.3,
+    "Wymiary": "500.0 x 1049.0"
+  },
+  {
+    "indeks": "MOD-50/140",
+    "EAN": "5905253170249",
+    "Nazwa": "MODO",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 1378.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 14.3,
+    "Wymiary": "500.0 x 1378.0"
+  },
+  {
+    "indeks": "MOD-60/100D50",
+    "EAN": "5905253170195",
+    "Nazwa": "MODO",
+    "Szerokosc_mm": 600.0,
+    "Wysokosc_mm": 1049.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 14.0,
+    "Wymiary": "600.0 x 1049.0"
+  },
+  {
+    "indeks": "MON-50/110D50",
+    "EAN": "5905253486494",
+    "Nazwa": "MONDRIAN",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 1140.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 12.0,
+    "Wymiary": "500.0 x 1140.0"
+  },
+  {
+    "indeks": "MON-50/110D50C12",
+    "EAN": "5905253509100",
+    "Nazwa": "MONDRIAN",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 1140.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 12.0,
+    "Wymiary": "500.0 x 1140.0"
+  },
+  {
+    "indeks": "MON-50/140D50",
+    "EAN": "5905253486500",
+    "Nazwa": "MONDRIAN",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 1440.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 12.8,
+    "Wymiary": "500.0 x 1440.0"
+  },
+  {
+    "indeks": "MONE-40/80C31+GH-03C2",
+    "EAN": "5905253637131",
+    "Nazwa": "MONDRIAN ELECTRO",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 832.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 12.3,
+    "Wymiary": "400.0 x 832.0"
+  },
+  {
+    "indeks": "MONE-50/140+GH-04C1",
+    "EAN": "5905253686177",
+    "Nazwa": "MONDRIAN ELECTRO",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 1440.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 18.7,
+    "Wymiary": "500.0 x 1440.0"
+  },
+  {
+    "indeks": "MONE-50/140C31+GH-04C2",
+    "EAN": "5905253686184",
+    "Nazwa": "MONDRIAN ELECTRO",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 1440.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 18.7,
+    "Wymiary": "500.0 x 1440.0"
+  },
+  {
+    "indeks": "NAM-40/120",
+    "EAN": "5905253377457",
+    "Nazwa": "NAMELESS",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 1186.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 14.0,
+    "Wymiary": "400.0 x 1186.0"
+  },
+  {
+    "indeks": "NAM-40/120C12",
+    "EAN": "5905253390777",
+    "Nazwa": "NAMELESS",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 1186.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 14.0,
+    "Wymiary": "400.0 x 1186.0"
+  },
+  {
+    "indeks": "NAM-40/90",
+    "EAN": "5905253337987",
+    "Nazwa": "NAMELESS",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 930.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 10.4,
+    "Wymiary": "400.0 x 930.0"
+  },
+  {
+    "indeks": "NAM-40/90C12",
+    "EAN": "5905253343353",
+    "Nazwa": "NAMELESS",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 930.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 10.4,
+    "Wymiary": "400.0 x 930.0"
+  },
+  {
+    "indeks": "NAM-40/90C31",
+    "EAN": "5905253400339",
+    "Nazwa": "NAMELESS",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 930.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 10.4,
+    "Wymiary": "400.0 x 930.0"
+  },
+  {
+    "indeks": "NAM-40/90C34",
+    "EAN": "5905253392245",
+    "Nazwa": "NAMELESS",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 930.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 10.4,
+    "Wymiary": "400.0 x 930.0"
+  },
+  {
+    "indeks": "NAM-50/160",
+    "EAN": "5905253243172",
+    "Nazwa": "NAMELESS",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 1610.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 19.0,
+    "Wymiary": "500.0 x 1610.0"
+  },
+  {
+    "indeks": "NAM-50/90",
+    "EAN": "5905253222894",
+    "Nazwa": "NAMELESS",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 930.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 12.0,
+    "Wymiary": "500.0 x 930.0"
+  },
+  {
+    "indeks": "NAM-50/90C31",
+    "EAN": "5905253226632",
+    "Nazwa": "NAMELESS",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 930.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 12.0,
+    "Wymiary": "500.0 x 930.0"
+  },
+  {
+    "indeks": "NAM-50/90C34",
+    "EAN": "5905253242205",
+    "Nazwa": "NAMELESS",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 930.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 12.0,
+    "Wymiary": "500.0 x 930.0"
+  },
+  {
+    "indeks": "NAM-60/120",
+    "EAN": "5905253172250",
+    "Nazwa": "NAMELESS",
+    "Szerokosc_mm": 600.0,
+    "Wysokosc_mm": 1186.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 17.8,
+    "Wymiary": "600.0 x 1186.0"
+  },
+  {
+    "indeks": "NAME-50/120C75+GHL-04C2",
+    "EAN": "5905253687617",
+    "Nazwa": "NAMELESS ELECTRO",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 1186.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 20.2,
+    "Wymiary": "500.0 x 1186.0"
+  },
+  {
+    "indeks": "NAMED-50/120C31LU",
+    "EAN": "5905253728563",
+    "Nazwa": "NAMELESS SMART AIR ELECTRO",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 1197.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 15.3,
+    "Wymiary": "500.0 x 1197.0"
+  },
+  {
+    "indeks": "OMER-40/120D50",
+    "EAN": "5905253980527",
+    "Nazwa": "OMEGA R",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 1173.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 8.2,
+    "Wymiary": "400.0 x 1173.0"
+  },
+  {
+    "indeks": "OMER-40/160",
+    "EAN": "5905253980305",
+    "Nazwa": "OMEGA R",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 1574.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 10.5,
+    "Wymiary": "400.0 x 1574.0"
+  },
+  {
+    "indeks": "OMER-40/70D50",
+    "EAN": "5905253980503",
+    "Nazwa": "OMEGA R",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 686.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 4.6,
+    "Wymiary": "400.0 x 686.0"
+  },
+  {
+    "indeks": "OMER-40/90D50",
+    "EAN": "5905253980510",
+    "Nazwa": "OMEGA R",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 915.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 6.2,
+    "Wymiary": "400.0 x 915.0"
+  },
+  {
+    "indeks": "OMER-50/140",
+    "EAN": "5905253292354",
+    "Nazwa": "OMEGA R",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 1402.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 11.6,
+    "Wymiary": "500.0 x 1402.0"
+  },
+  {
+    "indeks": "OMER-50/160",
+    "EAN": "5905253980350",
+    "Nazwa": "OMEGA R",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 1574.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 13.0,
+    "Wymiary": "500.0 x 1574.0"
+  },
+  {
+    "indeks": "OMER-50/70",
+    "EAN": "5905253980329",
+    "Nazwa": "OMEGA R",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 686.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 5.5,
+    "Wymiary": "500.0 x 686.0"
+  },
+  {
+    "indeks": "OMER-50/70D50",
+    "EAN": "5905253980558",
+    "Nazwa": "OMEGA R",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 686.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 5.5,
+    "Wymiary": "500.0 x 686.0"
+  },
+  {
+    "indeks": "OMER-50/90D50",
+    "EAN": "5905253980565",
+    "Nazwa": "OMEGA R",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 915.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 7.0,
+    "Wymiary": "500.0 x 915.0"
+  },
+  {
+    "indeks": "OMER-60/120",
+    "EAN": "5905253980398",
+    "Nazwa": "OMEGA R",
+    "Szerokosc_mm": 600.0,
+    "Wysokosc_mm": 1173.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 11.1,
+    "Wymiary": "600.0 x 1173.0"
+  },
+  {
+    "indeks": "OMER-60/120D50",
+    "EAN": "5905253980626",
+    "Nazwa": "OMEGA R",
+    "Szerokosc_mm": 600.0,
+    "Wysokosc_mm": 1173.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 11.1,
+    "Wymiary": "600.0 x 1173.0"
+  },
+  {
+    "indeks": "OMER-60/140",
+    "EAN": "5905253302275",
+    "Nazwa": "OMEGA R",
+    "Szerokosc_mm": 600.0,
+    "Wysokosc_mm": 1402.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 13.3,
+    "Wymiary": "600.0 x 1402.0"
+  },
+  {
+    "indeks": "OMER-60/160",
+    "EAN": "5905253980404",
+    "Nazwa": "OMEGA R",
+    "Szerokosc_mm": 600.0,
+    "Wysokosc_mm": 1574.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 14.9,
+    "Wymiary": "600.0 x 1574.0"
+  },
+  {
+    "indeks": "OMER-60/70",
+    "EAN": "5905253980374",
+    "Nazwa": "OMEGA R",
+    "Szerokosc_mm": 600.0,
+    "Wysokosc_mm": 686.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 6.3,
+    "Wymiary": "600.0 x 686.0"
+  },
+  {
+    "indeks": "OMER-60/90",
+    "EAN": "5905253980381",
+    "Nazwa": "OMEGA R",
+    "Szerokosc_mm": 600.0,
+    "Wysokosc_mm": 915.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 8.2,
+    "Wymiary": "600.0 x 915.0"
+  },
+  {
+    "indeks": "OMER-60/90D50",
+    "EAN": "5905253980619",
+    "Nazwa": "OMEGA R",
+    "Szerokosc_mm": 600.0,
+    "Wysokosc_mm": 915.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 8.2,
+    "Wymiary": "600.0 x 915.0"
+  },
+  {
+    "indeks": "OMER-70/140",
+    "EAN": "5905253302732",
+    "Nazwa": "OMEGA R",
+    "Szerokosc_mm": 700.0,
+    "Wysokosc_mm": 1402.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 15.0,
+    "Wymiary": "700.0 x 1402.0"
+  },
+  {
+    "indeks": "OMER-70/170",
+    "EAN": "5905253980459",
+    "Nazwa": "OMEGA R",
+    "Szerokosc_mm": 700.0,
+    "Wysokosc_mm": 1746.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 18.7,
+    "Wymiary": "700.0 x 1746.0"
+  },
+  {
+    "indeks": "OMER-80/140D50",
+    "EAN": "5905253303258",
+    "Nazwa": "OMEGA R",
+    "Szerokosc_mm": 800.0,
+    "Wysokosc_mm": 1402.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 16.7,
+    "Wymiary": "800.0 x 1402.0"
+  },
+  {
+    "indeks": "OMERA-40/120",
+    "EAN": "5905253725982",
+    "Nazwa": "OMEGA R",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 1173.0,
+    "Glebokosc_mm": 0.0,
+    "Waga_kg": NaN,
+    "Wymiary": "400.0 x 1173.0"
+  },
+  {
+    "indeks": "OMERA-40/70",
+    "EAN": "5905253725975",
+    "Nazwa": "OMEGA R",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 686.0,
+    "Glebokosc_mm": 0.0,
+    "Waga_kg": NaN,
+    "Wymiary": "400.0 x 686.0"
+  },
+  {
+    "indeks": "OMERA-50/140",
+    "EAN": "5905253726002",
+    "Nazwa": "OMEGA R",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 1402.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": NaN,
+    "Wymiary": "500.0 x 1402.0"
+  },
+  {
+    "indeks": "OMERA-50/160",
+    "EAN": "5905253726019",
+    "Nazwa": "OMEGA R",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 1574.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": NaN,
+    "Wymiary": "500.0 x 1574.0"
+  },
+  {
+    "indeks": "OMERA-50/70",
+    "EAN": "5905253725999",
+    "Nazwa": "OMEGA R",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 686.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": NaN,
+    "Wymiary": "500.0 x 686.0"
+  },
+  {
+    "indeks": "OMERA-60/120",
+    "EAN": "5905253718465",
+    "Nazwa": "OMEGA R",
+    "Szerokosc_mm": 600.0,
+    "Wysokosc_mm": 1173.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 11.1,
+    "Wymiary": "600.0 x 1173.0"
+  },
+  {
+    "indeks": "OMERA-60/140",
+    "EAN": "5905253726026",
+    "Nazwa": "OMEGA R",
+    "Szerokosc_mm": 600.0,
+    "Wysokosc_mm": 1402.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": NaN,
+    "Wymiary": "600.0 x 1402.0"
+  },
+  {
+    "indeks": "PIK-40/100",
+    "EAN": "5905253423659",
+    "Nazwa": "PIKO",
+    "Szerokosc_mm": 430.0,
+    "Wysokosc_mm": 979.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 5.6,
+    "Wymiary": "430.0 x 979.0"
+  },
+  {
+    "indeks": "PIK-40/100C31",
+    "EAN": "5905253457173",
+    "Nazwa": "PIKO",
+    "Szerokosc_mm": 430.0,
+    "Wysokosc_mm": 979.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 5.6,
+    "Wymiary": "430.0 x 979.0"
+  },
+  {
+    "indeks": "PIK-40/130",
+    "EAN": "5905253423673",
+    "Nazwa": "PIKO",
+    "Szerokosc_mm": 430.0,
+    "Wysokosc_mm": 1329.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 7.5,
+    "Wymiary": "430.0 x 1329.0"
+  },
+  {
+    "indeks": "PIK-40/130C31",
+    "EAN": "5905253472008",
+    "Nazwa": "PIKO",
+    "Szerokosc_mm": 430.0,
+    "Wysokosc_mm": 1329.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 7.5,
+    "Wymiary": "430.0 x 1329.0"
+  },
+  {
+    "indeks": "PIK-40/130C34",
+    "EAN": "5905253436291",
+    "Nazwa": "PIKO",
+    "Szerokosc_mm": 430.0,
+    "Wysokosc_mm": 1329.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 7.5,
+    "Wymiary": "430.0 x 1329.0"
+  },
+  {
+    "indeks": "PIK-40/70",
+    "EAN": "5905253423642",
+    "Nazwa": "PIKO",
+    "Szerokosc_mm": 430.0,
+    "Wysokosc_mm": 729.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 4.3,
+    "Wymiary": "430.0 x 729.0"
+  },
+  {
+    "indeks": "PIK-50/100",
+    "EAN": "5905253423680",
+    "Nazwa": "PIKO",
+    "Szerokosc_mm": 530.0,
+    "Wysokosc_mm": 979.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 6.3,
+    "Wymiary": "530.0 x 979.0"
+  },
+  {
+    "indeks": "PIK-50/100D50",
+    "EAN": "5905253679469",
+    "Nazwa": "PIKO",
+    "Szerokosc_mm": 530.0,
+    "Wysokosc_mm": 979.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 6.3,
+    "Wymiary": "530.0 x 979.0"
+  },
+  {
+    "indeks": "PIK-50/110",
+    "EAN": "5905253423697",
+    "Nazwa": "PIKO",
+    "Szerokosc_mm": 530.0,
+    "Wysokosc_mm": 1129.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 7.2,
+    "Wymiary": "530.0 x 1129.0"
+  },
+  {
+    "indeks": "PIK-50/110C31",
+    "EAN": "5905253449208",
+    "Nazwa": "PIKO",
+    "Szerokosc_mm": 530.0,
+    "Wysokosc_mm": 1129.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 7.2,
+    "Wymiary": "530.0 x 1129.0"
+  },
+  {
+    "indeks": "PIK-50/110C75",
+    "EAN": "5905253438745",
+    "Nazwa": "PIKO",
+    "Szerokosc_mm": 530.0,
+    "Wysokosc_mm": 1129.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 7.2,
+    "Wymiary": "530.0 x 1129.0"
+  },
+  {
+    "indeks": "PIK-50/130C12",
+    "EAN": "5905253438738",
+    "Nazwa": "PIKO",
+    "Szerokosc_mm": 530.0,
+    "Wysokosc_mm": 1329.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 8.5,
+    "Wymiary": "530.0 x 1329.0"
+  },
+  {
+    "indeks": "PIK-50/150",
+    "EAN": "5905253423710",
+    "Nazwa": "PIKO",
+    "Szerokosc_mm": 530.0,
+    "Wysokosc_mm": 1529.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 9.7,
+    "Wymiary": "530.0 x 1529.0"
+  },
+  {
+    "indeks": "PIK-50/150C34",
+    "EAN": "5905253472381",
+    "Nazwa": "PIKO",
+    "Szerokosc_mm": 530.0,
+    "Wysokosc_mm": 1529.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 9.7,
+    "Wymiary": "530.0 x 1529.0"
+  },
+  {
+    "indeks": "PIK-50/70",
+    "EAN": "5905253420474",
+    "Nazwa": "PIKO",
+    "Szerokosc_mm": 530.0,
+    "Wysokosc_mm": 729.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 4.8,
+    "Wymiary": "530.0 x 729.0"
+  },
+  {
+    "indeks": "PIK-50/70C12",
+    "EAN": "5905253438714",
+    "Nazwa": "PIKO",
+    "Szerokosc_mm": 530.0,
+    "Wysokosc_mm": 729.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 4.8,
+    "Wymiary": "530.0 x 729.0"
+  },
+  {
+    "indeks": "PIK-50/70C75",
+    "EAN": "5905253438707",
+    "Nazwa": "PIKO",
+    "Szerokosc_mm": 530.0,
+    "Wysokosc_mm": 729.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 4.8,
+    "Wymiary": "530.0 x 729.0"
+  },
+  {
+    "indeks": "PIK-50/70D50",
+    "EAN": "5905253679452",
+    "Nazwa": "PIKO",
+    "Szerokosc_mm": 530.0,
+    "Wysokosc_mm": 729.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 4.8,
+    "Wymiary": "530.0 x 729.0"
+  },
+  {
+    "indeks": "PIK-50/70D50C12",
+    "EAN": "5905253711558",
+    "Nazwa": "PIKO",
+    "Szerokosc_mm": 530.0,
+    "Wysokosc_mm": 729.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 4.8,
+    "Wymiary": "530.0 x 729.0"
+  },
+  {
+    "indeks": "PIK-60/100D50C31",
+    "EAN": "5905253679674",
+    "Nazwa": "PIKO",
+    "Szerokosc_mm": 630.0,
+    "Wysokosc_mm": 979.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 7.0,
+    "Wymiary": "630.0 x 979.0"
+  },
+  {
+    "indeks": "PIK-60/110",
+    "EAN": "5905253434273",
+    "Nazwa": "PIKO",
+    "Szerokosc_mm": 630.0,
+    "Wysokosc_mm": 1129.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 8.1,
+    "Wymiary": "630.0 x 1129.0"
+  },
+  {
+    "indeks": "PIK-60/110D50C31",
+    "EAN": "5905253679681",
+    "Nazwa": "PIKO",
+    "Szerokosc_mm": 630.0,
+    "Wysokosc_mm": 1129.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 8.1,
+    "Wymiary": "630.0 x 1129.0"
+  },
+  {
+    "indeks": "PIK-60/130C34",
+    "EAN": "5905253462320",
+    "Nazwa": "PIKO",
+    "Szerokosc_mm": 630.0,
+    "Wysokosc_mm": 1329.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 9.4,
+    "Wymiary": "630.0 x 1329.0"
+  },
+  {
+    "indeks": "PIK-60/150D50C42",
+    "EAN": "5905253724237",
+    "Nazwa": "PIKO",
+    "Szerokosc_mm": 630.0,
+    "Wysokosc_mm": 1529.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 10.8,
+    "Wymiary": "630.0 x 1529.0"
+  },
+  {
+    "indeks": "PIK-60/60",
+    "EAN": "5905253434259",
+    "Nazwa": "PIKO",
+    "Szerokosc_mm": 630.0,
+    "Wysokosc_mm": 629.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 4.8,
+    "Wymiary": "630.0 x 629.0"
+  },
+  {
+    "indeks": "PIKE-50/110C34+GHL-04C1U",
+    "EAN": "5905253715846",
+    "Nazwa": "PIKO ELECTRO",
+    "Szerokosc_mm": 530.0,
+    "Wysokosc_mm": 1129.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 11.3,
+    "Wymiary": "530.0 x 1129.0"
+  },
+  {
+    "indeks": "PIKE-50/70C31+GH-03C2",
+    "EAN": "5905253613951",
+    "Nazwa": "PIKO ELECTRO",
+    "Szerokosc_mm": 530.0,
+    "Wysokosc_mm": 729.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 7.6,
+    "Wymiary": "530.0 x 729.0"
+  },
+  {
+    "indeks": "PIKE-60/110C75+GH-06C2",
+    "EAN": "5905253651205",
+    "Nazwa": "PIKO ELECTRO",
+    "Szerokosc_mm": 630.0,
+    "Wysokosc_mm": 1129.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 12.2,
+    "Wymiary": "630.0 x 1129.0"
+  },
+  {
+    "indeks": "POPSE-50/90C31+GH-04C2",
+    "EAN": "5905253685859",
+    "Nazwa": "POP STAR ELECTRO",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 875.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 15.1,
+    "Wymiary": "500.0 x 875.0"
+  },
+  {
+    "indeks": "POPSE-50/90C34+GH-04C1",
+    "EAN": "5905253685842",
+    "Nazwa": "POP STAR ELECTRO",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 875.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 15.1,
+    "Wymiary": "500.0 x 875.0"
+  },
+  {
+    "indeks": "PPY-40/100",
+    "EAN": "5905253321108",
+    "Nazwa": "POPPY",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 990.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 8.2,
+    "Wymiary": "400.0 x 990.0"
+  },
+  {
+    "indeks": "PPY-40/100C31",
+    "EAN": "5905253349362",
+    "Nazwa": "POPPY",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 990.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 8.2,
+    "Wymiary": "400.0 x 990.0"
+  },
+  {
+    "indeks": "PPY-40/100C34",
+    "EAN": "5905253321115",
+    "Nazwa": "POPPY",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 990.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 8.2,
+    "Wymiary": "400.0 x 990.0"
+  },
+  {
+    "indeks": "PPY-40/160C12",
+    "EAN": "5905253387449",
+    "Nazwa": "POPPY",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 1630.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 11.5,
+    "Wymiary": "400.0 x 1630.0"
+  },
+  {
+    "indeks": "PPY-40/160D50C31",
+    "EAN": "5905253668326",
+    "Nazwa": "POPPY",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 1630.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 11.5,
+    "Wymiary": "400.0 x 1630.0"
+  },
+  {
+    "indeks": "PPY-40/160D50C34",
+    "EAN": "5905253691423",
+    "Nazwa": "POPPY",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 1630.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 11.5,
+    "Wymiary": "400.0 x 1630.0"
+  },
+  {
+    "indeks": "PPY-40/70",
+    "EAN": "5905253321061",
+    "Nazwa": "POPPY",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 670.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 4.9,
+    "Wymiary": "400.0 x 670.0"
+  },
+  {
+    "indeks": "PPY-40/70C31",
+    "EAN": "5905253363757",
+    "Nazwa": "POPPY",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 670.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 4.9,
+    "Wymiary": "400.0 x 670.0"
+  },
+  {
+    "indeks": "PPY-50/100",
+    "EAN": "5905253321122",
+    "Nazwa": "POPPY",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 990.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 9.2,
+    "Wymiary": "500.0 x 990.0"
+  },
+  {
+    "indeks": "PPY-50/100C31",
+    "EAN": "5905253354397",
+    "Nazwa": "POPPY",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 990.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 9.2,
+    "Wymiary": "500.0 x 990.0"
+  },
+  {
+    "indeks": "PPY-50/100C75",
+    "EAN": "5905253321399",
+    "Nazwa": "POPPY",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 990.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 9.2,
+    "Wymiary": "500.0 x 990.0"
+  },
+  {
+    "indeks": "PPY-50/130",
+    "EAN": "5905253321184",
+    "Nazwa": "POPPY",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 1310.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 10.4,
+    "Wymiary": "500.0 x 1310.0"
+  },
+  {
+    "indeks": "PPY-50/130C31",
+    "EAN": "5905253349027",
+    "Nazwa": "POPPY",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 1310.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 10.4,
+    "Wymiary": "500.0 x 1310.0"
+  },
+  {
+    "indeks": "PPY-50/130C95",
+    "EAN": "5905253711862",
+    "Nazwa": "POPPY",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 1310.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 10.4,
+    "Wymiary": "500.0 x 1310.0"
+  },
+  {
+    "indeks": "PPY-50/130D50C91",
+    "EAN": null,
+    "Nazwa": "POPPY",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 1310.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 10.4,
+    "Wymiary": "500.0 x 1310.0"
+  },
+  {
+    "indeks": "PPY-50/130D50C97",
+    "EAN": null,
+    "Nazwa": "POPPY",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 1310.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 10.4,
+    "Wymiary": "500.0 x 1310.0"
+  },
+  {
+    "indeks": "PPY-50/70",
+    "EAN": "5905253321085",
+    "Nazwa": "POPPY",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 670.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 5.5,
+    "Wymiary": "500.0 x 670.0"
+  },
+  {
+    "indeks": "PPY-60/160C34",
+    "EAN": "5905253321276",
+    "Nazwa": "POPPY",
+    "Szerokosc_mm": 600.0,
+    "Wysokosc_mm": 1630.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 14.3,
+    "Wymiary": "600.0 x 1630.0"
+  },
+  {
+    "indeks": "PPY-60/160D50",
+    "EAN": "5905253661112",
+    "Nazwa": "POPPY",
+    "Szerokosc_mm": 600.0,
+    "Wysokosc_mm": 1630.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 14.3,
+    "Wymiary": "600.0 x 1630.0"
+  },
+  {
+    "indeks": "PPYE-40/160+GH-06C1",
+    "EAN": "5905253630408",
+    "Nazwa": "POPPY ELECTRO",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 1630.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 16.9,
+    "Wymiary": "400.0 x 1630.0"
+  },
+  {
+    "indeks": "PPYE-40/70C34+GH-03C1U",
+    "EAN": "5905253664380",
+    "Nazwa": "POPPY ELECTRO",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 670.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 7.6,
+    "Wymiary": "400.0 x 670.0"
+  },
+  {
+    "indeks": "RCVN1-40",
+    "EAN": "5905253509988",
+    "Nazwa": "RELING RCVN1",
+    "Szerokosc_mm": 446.0,
+    "Wysokosc_mm": 30.0,
+    "Glebokosc_mm": 94.0,
+    "Waga_kg": NaN,
+    "Wymiary": "446.0 x 30.0 x 94.0"
+  },
+  {
+    "indeks": "RCVN1-40C34",
+    "EAN": "5905253591723",
+    "Nazwa": "RELING RCVN1",
+    "Szerokosc_mm": 446.0,
+    "Wysokosc_mm": 30.0,
+    "Glebokosc_mm": 94.0,
+    "Waga_kg": NaN,
+    "Wymiary": "446.0 x 30.0 x 94.0"
+  },
+  {
+    "indeks": "RH3-30C85",
+    "EAN": null,
+    "Nazwa": "RELING RH3",
+    "Szerokosc_mm": 268.0,
+    "Wysokosc_mm": 30.0,
+    "Glebokosc_mm": 93.0,
+    "Waga_kg": NaN,
+    "Wymiary": "268.0 x 30.0 x 93.0"
+  },
+  {
+    "indeks": "RS4-50",
+    "EAN": "5905253126215",
+    "Nazwa": "RELING RS4",
+    "Szerokosc_mm": 520.0,
+    "Wysokosc_mm": 30.0,
+    "Glebokosc_mm": 103.0,
+    "Waga_kg": NaN,
+    "Wymiary": "520.0 x 30.0 x 103.0"
+  },
+  {
+    "indeks": "RS4-70",
+    "EAN": "5905253062025",
+    "Nazwa": "RELING RS4",
+    "Szerokosc_mm": 690.0,
+    "Wysokosc_mm": 30.0,
+    "Glebokosc_mm": 103.0,
+    "Waga_kg": NaN,
+    "Wymiary": "690.0 x 30.0 x 103.0"
+  },
+  {
+    "indeks": "RET-40/110",
+    "EAN": "5905253303685",
+    "Nazwa": "RETTO",
+    "Szerokosc_mm": 412.0,
+    "Wysokosc_mm": 1072.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 10.4,
+    "Wymiary": "412.0 x 1072.0"
+  },
+  {
+    "indeks": "RET-40/110D50",
+    "EAN": "5905253331992",
+    "Nazwa": "RETTO",
+    "Szerokosc_mm": 412.0,
+    "Wysokosc_mm": 1072.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 10.4,
+    "Wymiary": "412.0 x 1072.0"
+  },
+  {
+    "indeks": "RET-40/110D50C31",
+    "EAN": "5905253420139",
+    "Nazwa": "RETTO",
+    "Szerokosc_mm": 412.0,
+    "Wysokosc_mm": 1072.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 10.4,
+    "Wymiary": "412.0 x 1072.0"
+  },
+  {
+    "indeks": "RET-40/140",
+    "EAN": "5905253327421",
+    "Nazwa": "RETTO",
+    "Szerokosc_mm": 412.0,
+    "Wysokosc_mm": 1436.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 13.6,
+    "Wymiary": "412.0 x 1436.0"
+  },
+  {
+    "indeks": "RET-40/140C12",
+    "EAN": "5905253332326",
+    "Nazwa": "RETTO",
+    "Szerokosc_mm": 412.0,
+    "Wysokosc_mm": 1436.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 13.6,
+    "Wymiary": "412.0 x 1436.0"
+  },
+  {
+    "indeks": "RET-40/140C34",
+    "EAN": "5905253423918",
+    "Nazwa": "RETTO",
+    "Szerokosc_mm": 412.0,
+    "Wysokosc_mm": 1436.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 13.6,
+    "Wymiary": "412.0 x 1436.0"
+  },
+  {
+    "indeks": "RET-40/70",
+    "EAN": "5905253303678",
+    "Nazwa": "RETTO",
+    "Szerokosc_mm": 412.0,
+    "Wysokosc_mm": 708.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 6.5,
+    "Wymiary": "412.0 x 708.0"
+  },
+  {
+    "indeks": "RET-40/70C12",
+    "EAN": "5905253293665",
+    "Nazwa": "RETTO",
+    "Szerokosc_mm": 412.0,
+    "Wysokosc_mm": 708.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 6.5,
+    "Wymiary": "412.0 x 708.0"
+  },
+  {
+    "indeks": "RET-50/110",
+    "EAN": "5905253981050",
+    "Nazwa": "RETTO",
+    "Szerokosc_mm": 540.0,
+    "Wysokosc_mm": 1072.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 11.8,
+    "Wymiary": "540.0 x 1072.0"
+  },
+  {
+    "indeks": "RET-50/110C12",
+    "EAN": "5905253057731",
+    "Nazwa": "RETTO",
+    "Szerokosc_mm": 540.0,
+    "Wysokosc_mm": 1072.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 11.8,
+    "Wymiary": "540.0 x 1072.0"
+  },
+  {
+    "indeks": "RET-50/110C31",
+    "EAN": "5905253104527",
+    "Nazwa": "RETTO",
+    "Szerokosc_mm": 540.0,
+    "Wysokosc_mm": 1072.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 11.8,
+    "Wymiary": "540.0 x 1072.0"
+  },
+  {
+    "indeks": "RET-50/110C34",
+    "EAN": "5905253063619",
+    "Nazwa": "RETTO",
+    "Szerokosc_mm": 540.0,
+    "Wysokosc_mm": 1072.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 11.8,
+    "Wymiary": "540.0 x 1072.0"
+  },
+  {
+    "indeks": "RET-50/110D50",
+    "EAN": "5905253065347",
+    "Nazwa": "RETTO",
+    "Szerokosc_mm": 540.0,
+    "Wysokosc_mm": 1072.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 11.8,
+    "Wymiary": "540.0 x 1072.0"
+  },
+  {
+    "indeks": "RET-50/140",
+    "EAN": "5905253981067",
+    "Nazwa": "RETTO",
+    "Szerokosc_mm": 540.0,
+    "Wysokosc_mm": 1436.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 14.7,
+    "Wymiary": "540.0 x 1436.0"
+  },
+  {
+    "indeks": "RET-50/140C12",
+    "EAN": "5905253057724",
+    "Nazwa": "RETTO",
+    "Szerokosc_mm": 540.0,
+    "Wysokosc_mm": 1436.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 14.7,
+    "Wymiary": "540.0 x 1436.0"
+  },
+  {
+    "indeks": "RET-50/140D50C31",
+    "EAN": "5905253136078",
+    "Nazwa": "RETTO",
+    "Szerokosc_mm": 540.0,
+    "Wysokosc_mm": 1436.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 14.7,
+    "Wymiary": "540.0 x 1436.0"
+  },
+  {
+    "indeks": "RET-50/180D50",
+    "EAN": "5905253065361",
+    "Nazwa": "RETTO",
+    "Szerokosc_mm": 540.0,
+    "Wysokosc_mm": 1800.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 18.8,
+    "Wymiary": "540.0 x 1800.0"
+  },
+  {
+    "indeks": "RET-50/70",
+    "EAN": "5905253981043",
+    "Nazwa": "RETTO",
+    "Szerokosc_mm": 540.0,
+    "Wysokosc_mm": 708.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 7.3,
+    "Wymiary": "540.0 x 708.0"
+  },
+  {
+    "indeks": "RET-50/70C12",
+    "EAN": "5905253062896",
+    "Nazwa": "RETTO",
+    "Szerokosc_mm": 540.0,
+    "Wysokosc_mm": 708.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 7.3,
+    "Wymiary": "540.0 x 708.0"
+  },
+  {
+    "indeks": "RET-50/70C31",
+    "EAN": "5905253109287",
+    "Nazwa": "RETTO",
+    "Szerokosc_mm": 540.0,
+    "Wysokosc_mm": 708.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 7.3,
+    "Wymiary": "540.0 x 708.0"
+  },
+  {
+    "indeks": "RET-50/70C34",
+    "EAN": "5905253063602",
+    "Nazwa": "RETTO",
+    "Szerokosc_mm": 540.0,
+    "Wysokosc_mm": 708.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 7.3,
+    "Wymiary": "540.0 x 708.0"
+  },
+  {
+    "indeks": "RET-50/70D50",
+    "EAN": "5905253064241",
+    "Nazwa": "RETTO",
+    "Szerokosc_mm": 540.0,
+    "Wysokosc_mm": 708.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 7.3,
+    "Wymiary": "540.0 x 708.0"
+  },
+  {
+    "indeks": "RETE-50/70+GHL-04C1",
+    "EAN": "5905253703621",
+    "Nazwa": "RETTO ELECTRO",
+    "Szerokosc_mm": 540.0,
+    "Wysokosc_mm": 708.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 10.9,
+    "Wymiary": "540.0 x 708.0"
+  },
+  {
+    "indeks": "RETE-50/70C88+GH-04C3",
+    "EAN": "5905253709685",
+    "Nazwa": "RETTO ELECTRO",
+    "Szerokosc_mm": 540.0,
+    "Wysokosc_mm": 708.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 10.9,
+    "Wymiary": "540.0 x 708.0"
+  },
+  {
+    "indeks": "GŁ-40/120",
+    "EAN": "5905253980077",
+    "Nazwa": "STANDARD",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 1173.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 9.5,
+    "Wymiary": "400.0 x 1173.0"
+  },
+  {
+    "indeks": "GŁ-40/160",
+    "EAN": "5905253980084",
+    "Nazwa": "STANDARD",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 1574.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 12.5,
+    "Wymiary": "400.0 x 1574.0"
+  },
+  {
+    "indeks": "GŁ-40/70",
+    "EAN": "5905253980053",
+    "Nazwa": "STANDARD",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 686.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 5.9,
+    "Wymiary": "400.0 x 686.0"
+  },
+  {
+    "indeks": "GŁ-50/170",
+    "EAN": "5905253980138",
+    "Nazwa": "STANDARD",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 1746.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 15.1,
+    "Wymiary": "500.0 x 1746.0"
+  },
+  {
+    "indeks": "GŁ-50/170D50",
+    "EAN": "5905253662911",
+    "Nazwa": "STANDARD",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 1746.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 15.1,
+    "Wymiary": "500.0 x 1746.0"
+  },
+  {
+    "indeks": "GŁ-50/90",
+    "EAN": "5905253980107",
+    "Nazwa": "STANDARD",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 915.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 8.4,
+    "Wymiary": "500.0 x 915.0"
+  },
+  {
+    "indeks": "GŁ-60/120",
+    "EAN": "5905253980169",
+    "Nazwa": "STANDARD",
+    "Szerokosc_mm": 600.0,
+    "Wysokosc_mm": 1173.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 12.5,
+    "Wymiary": "600.0 x 1173.0"
+  },
+  {
+    "indeks": "GŁ-60/140",
+    "EAN": "5905253304163",
+    "Nazwa": "STANDARD",
+    "Szerokosc_mm": 600.0,
+    "Wysokosc_mm": 1402.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 14.7,
+    "Wymiary": "600.0 x 1402.0"
+  },
+  {
+    "indeks": "GŁ-60/170",
+    "EAN": "5905253980183",
+    "Nazwa": "STANDARD",
+    "Szerokosc_mm": 600.0,
+    "Wysokosc_mm": 1746.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 18.1,
+    "Wymiary": "600.0 x 1746.0"
+  },
+  {
+    "indeks": "GŁA-40/70",
+    "EAN": "5905253725876",
+    "Nazwa": "STANDARD",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 686.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": NaN,
+    "Wymiary": "400.0 x 686.0"
+  },
+  {
+    "indeks": "GŁA-40/90",
+    "EAN": "5905253725883",
+    "Nazwa": "STANDARD",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 915.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": NaN,
+    "Wymiary": "400.0 x 915.0"
+  },
+  {
+    "indeks": "GŁA-50/120",
+    "EAN": "5905253718489",
+    "Nazwa": "STANDARD",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 1173.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 11.5,
+    "Wymiary": "500.0 x 1173.0"
+  },
+  {
+    "indeks": "GŁA-50/70",
+    "EAN": "5905253725906",
+    "Nazwa": "STANDARD",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 686.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": NaN,
+    "Wymiary": "500.0 x 686.0"
+  },
+  {
+    "indeks": "GŁA-50/90",
+    "EAN": "5905253718472",
+    "Nazwa": "STANDARD",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 915.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 8.4,
+    "Wymiary": "500.0 x 915.0"
+  },
+  {
+    "indeks": "GŁA-60/120",
+    "EAN": "5905253718496",
+    "Nazwa": "STANDARD",
+    "Szerokosc_mm": 600.0,
+    "Wysokosc_mm": 1173.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 12.5,
+    "Wymiary": "600.0 x 1173.0"
+  },
+  {
+    "indeks": "GŁA-60/140",
+    "EAN": "5905253725913",
+    "Nazwa": "STANDARD",
+    "Szerokosc_mm": 600.0,
+    "Wysokosc_mm": 1402.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": NaN,
+    "Wymiary": "600.0 x 1402.0"
+  },
+  {
+    "indeks": "GŁA-60/160",
+    "EAN": "5905253725920",
+    "Nazwa": "STANDARD",
+    "Szerokosc_mm": 600.0,
+    "Wysokosc_mm": 1574.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": NaN,
+    "Wymiary": "600.0 x 1574.0"
+  },
+  {
+    "indeks": "STD-30/70",
+    "EAN": "5905253980862",
+    "Nazwa": "STANDARD 3D",
+    "Szerokosc_mm": 300.0,
+    "Wysokosc_mm": 686.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 6.3,
+    "Wymiary": "300.0 x 686.0"
+  },
+  {
+    "indeks": "STD-40/140",
+    "EAN": "5905253302138",
+    "Nazwa": "STANDARD 3D",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 1402.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 16.6,
+    "Wymiary": "400.0 x 1402.0"
+  },
+  {
+    "indeks": "STD-40/90B",
+    "EAN": "5905253980954",
+    "Nazwa": "STANDARD 3D",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 915.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 9.9,
+    "Wymiary": "400.0 x 915.0"
+  },
+  {
+    "indeks": "STD-50/120",
+    "EAN": "5905253101380",
+    "Nazwa": "STANDARD 3D",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 1173.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 15.0,
+    "Wymiary": "500.0 x 1173.0"
+  },
+  {
+    "indeks": "STD-50/140",
+    "EAN": "5905253303852",
+    "Nazwa": "STANDARD 3D",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 1402.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 19.8,
+    "Wymiary": "500.0 x 1402.0"
+  },
+  {
+    "indeks": "STD-50/70",
+    "EAN": "5905253980909",
+    "Nazwa": "STANDARD 3D",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 686.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 8.9,
+    "Wymiary": "500.0 x 686.0"
+  },
+  {
+    "indeks": "STD-50/90",
+    "EAN": "5905253980916",
+    "Nazwa": "STANDARD 3D",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 915.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 11.7,
+    "Wymiary": "500.0 x 915.0"
+  },
+  {
+    "indeks": "STD-50/90B",
+    "EAN": "5905253980978",
+    "Nazwa": "STANDARD 3D",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 915.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 11.7,
+    "Wymiary": "500.0 x 915.0"
+  },
+  {
+    "indeks": "GŁE-50/120+GH-06C1",
+    "EAN": "5905253618048",
+    "Nazwa": "STANDARD ELECTRO",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 1173.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 18.9,
+    "Wymiary": "500.0 x 1173.0"
+  },
+  {
+    "indeks": "STI-40/70",
+    "EAN": "5905253064258",
+    "Nazwa": "STICK",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 740.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 6.0,
+    "Wymiary": "400.0 x 740.0"
+  },
+  {
+    "indeks": "STI-40/70B",
+    "EAN": "5905253126093",
+    "Nazwa": "STICK",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 740.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 6.0,
+    "Wymiary": "400.0 x 740.0"
+  },
+  {
+    "indeks": "STI-40/70D50",
+    "EAN": "5905253065415",
+    "Nazwa": "STICK",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 740.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 6.0,
+    "Wymiary": "400.0 x 740.0"
+  },
+  {
+    "indeks": "STI-50/110C12",
+    "EAN": "5905253057205",
+    "Nazwa": "STICK",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 1110.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 9.5,
+    "Wymiary": "500.0 x 1110.0"
+  },
+  {
+    "indeks": "STI-50/110C31",
+    "EAN": "5905253092237",
+    "Nazwa": "STICK",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 1110.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 9.5,
+    "Wymiary": "500.0 x 1110.0"
+  },
+  {
+    "indeks": "STI-50/110C75",
+    "EAN": "5905253339660",
+    "Nazwa": "STICK",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 1110.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 9.5,
+    "Wymiary": "500.0 x 1110.0"
+  },
+  {
+    "indeks": "STI-50/110D50C31",
+    "EAN": "5905253112317",
+    "Nazwa": "STICK",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 1110.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 9.5,
+    "Wymiary": "500.0 x 1110.0"
+  },
+  {
+    "indeks": "STI-50/110D50C89",
+    "EAN": "5905253723902",
+    "Nazwa": "STICK",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 1110.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 9.5,
+    "Wymiary": "500.0 x 1110.0"
+  },
+  {
+    "indeks": "STI-50/150",
+    "EAN": "5905253981104",
+    "Nazwa": "STICK",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 1480.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 13.0,
+    "Wymiary": "500.0 x 1480.0"
+  },
+  {
+    "indeks": "STI-50/150C31",
+    "EAN": "5905253092923",
+    "Nazwa": "STICK",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 1480.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 13.0,
+    "Wymiary": "500.0 x 1480.0"
+  },
+  {
+    "indeks": "STI-50/150C95",
+    "EAN": "5905253721083",
+    "Nazwa": "STICK",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 1480.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 13.0,
+    "Wymiary": "500.0 x 1480.0"
+  },
+  {
+    "indeks": "STI-50/150D50",
+    "EAN": "5905253065392",
+    "Nazwa": "STICK",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 1480.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 13.0,
+    "Wymiary": "500.0 x 1480.0"
+  },
+  {
+    "indeks": "STI-50/70C31",
+    "EAN": "5905253076398",
+    "Nazwa": "STICK",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 740.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 6.4,
+    "Wymiary": "500.0 x 740.0"
+  },
+  {
+    "indeks": "STI-50/70D50",
+    "EAN": "5905253065378",
+    "Nazwa": "STICK",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 740.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 6.4,
+    "Wymiary": "500.0 x 740.0"
+  },
+  {
+    "indeks": "STIE-40/110+GHL-04C1",
+    "EAN": "5905253702839",
+    "Nazwa": "STICK ELECTRO",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 1110.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 14.0,
+    "Wymiary": "400.0 x 1110.0"
+  },
+  {
+    "indeks": "STIE-40/110C31+GH-04C2U",
+    "EAN": "5905253704499",
+    "Nazwa": "STICK ELECTRO",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 1110.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 14.0,
+    "Wymiary": "400.0 x 1110.0"
+  },
+  {
+    "indeks": "STIE-40/70+GHL-03C1",
+    "EAN": "5905253723032",
+    "Nazwa": "STICK ELECTRO",
+    "Szerokosc_mm": 400.0,
+    "Wysokosc_mm": 740.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 9.7,
+    "Wymiary": "400.0 x 740.0"
+  },
+  {
+    "indeks": "STIE-50/70C31+GH-04C2U",
+    "EAN": "5905253692604",
+    "Nazwa": "STICK ELECTRO",
+    "Szerokosc_mm": 500.0,
+    "Wysokosc_mm": 740.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 10.8,
+    "Wymiary": "500.0 x 740.0"
+  },
+  {
+    "indeks": "STIL-080/60BZN",
+    "EAN": "5905253304125",
+    "Nazwa": "STICK LEVEL",
+    "Szerokosc_mm": 800.0,
+    "Wysokosc_mm": 555.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 6.6,
+    "Wymiary": "800.0 x 555.0"
+  },
+  {
+    "indeks": "STIL-100/60ZN",
+    "EAN": "5905253142413",
+    "Nazwa": "STICK LEVEL",
+    "Szerokosc_mm": 1000.0,
+    "Wysokosc_mm": 555.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 8.1,
+    "Wymiary": "1000.0 x 555.0"
+  },
+  {
+    "indeks": "STIL-180/60ZN",
+    "EAN": "5905253123771",
+    "Nazwa": "STICK LEVEL",
+    "Szerokosc_mm": 1800.0,
+    "Wysokosc_mm": 555.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 13.9,
+    "Wymiary": "1800.0 x 555.0"
+  },
+  {
+    "indeks": "TRK-40/120D50C31",
+    "EAN": "5905253420573",
+    "Nazwa": "TRICK",
+    "Szerokosc_mm": 430.0,
+    "Wysokosc_mm": 1187.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 10.2,
+    "Wymiary": "430.0 x 1187.0"
+  },
+  {
+    "indeks": "TRK-40/90C75",
+    "EAN": "5905253445279",
+    "Nazwa": "TRICK",
+    "Szerokosc_mm": 430.0,
+    "Wysokosc_mm": 857.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 7.5,
+    "Wymiary": "430.0 x 857.0"
+  },
+  {
+    "indeks": "TRK-40/90D50C31",
+    "EAN": "5905253431142",
+    "Nazwa": "TRICK",
+    "Szerokosc_mm": 430.0,
+    "Wysokosc_mm": 857.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 7.5,
+    "Wymiary": "430.0 x 857.0"
+  },
+  {
+    "indeks": "TRK-40/90D50C34",
+    "EAN": "5905253450624",
+    "Nazwa": "TRICK",
+    "Szerokosc_mm": 430.0,
+    "Wysokosc_mm": 857.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 7.5,
+    "Wymiary": "430.0 x 857.0"
+  },
+  {
+    "indeks": "TRK-50/120C34",
+    "EAN": "5905253389740",
+    "Nazwa": "TRICK",
+    "Szerokosc_mm": 530.0,
+    "Wysokosc_mm": 1187.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 11.8,
+    "Wymiary": "530.0 x 1187.0"
+  },
+  {
+    "indeks": "TRK-50/120C75",
+    "EAN": "5905253393822",
+    "Nazwa": "TRICK",
+    "Szerokosc_mm": 530.0,
+    "Wysokosc_mm": 1187.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 11.8,
+    "Wymiary": "530.0 x 1187.0"
+  },
+  {
+    "indeks": "TRK-50/120D50C31",
+    "EAN": "5905253421037",
+    "Nazwa": "TRICK",
+    "Szerokosc_mm": 530.0,
+    "Wysokosc_mm": 1187.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 11.8,
+    "Wymiary": "530.0 x 1187.0"
+  },
+  {
+    "indeks": "TRK-50/150",
+    "EAN": "5905253376559",
+    "Nazwa": "TRICK",
+    "Szerokosc_mm": 530.0,
+    "Wysokosc_mm": 1517.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 15.0,
+    "Wymiary": "530.0 x 1517.0"
+  },
+  {
+    "indeks": "TRK-50/90C34",
+    "EAN": "5905253400438",
+    "Nazwa": "TRICK",
+    "Szerokosc_mm": 530.0,
+    "Wysokosc_mm": 857.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 8.6,
+    "Wymiary": "530.0 x 857.0"
+  },
+  {
+    "indeks": "TRK-50/90C42",
+    "EAN": "5905253487071",
+    "Nazwa": "TRICK",
+    "Szerokosc_mm": 530.0,
+    "Wysokosc_mm": 857.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 8.6,
+    "Wymiary": "530.0 x 857.0"
+  },
+  {
+    "indeks": "TRK-50/90D50",
+    "EAN": "5905253420825",
+    "Nazwa": "TRICK",
+    "Szerokosc_mm": 530.0,
+    "Wysokosc_mm": 857.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 8.6,
+    "Wymiary": "530.0 x 857.0"
+  },
+  {
+    "indeks": "TRK-50/90D50C31",
+    "EAN": "5905253423451",
+    "Nazwa": "TRICK",
+    "Szerokosc_mm": 530.0,
+    "Wysokosc_mm": 857.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 8.6,
+    "Wymiary": "530.0 x 857.0"
+  },
+  {
+    "indeks": "TRKE-50/120C12+GH-06C2",
+    "EAN": "5905253656781",
+    "Nazwa": "TRICK ELECTRO",
+    "Szerokosc_mm": 530.0,
+    "Wysokosc_mm": 1187.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 18.1,
+    "Wymiary": "530.0 x 1187.0"
+  },
+  {
+    "indeks": "TRKE-50/180+GH-09C1",
+    "EAN": "5905253631306",
+    "Nazwa": "TRICK ELECTRO",
+    "Szerokosc_mm": 530.0,
+    "Wysokosc_mm": 1847.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 27.4,
+    "Wymiary": "530.0 x 1847.0"
+  },
+  {
+    "indeks": "TRKE-50/180C34+GH-09C1",
+    "EAN": "5905253631313",
+    "Nazwa": "TRICK ELECTRO",
+    "Szerokosc_mm": 530.0,
+    "Wysokosc_mm": 1847.0,
+    "Glebokosc_mm": null,
+    "Waga_kg": 27.4,
+    "Wymiary": "530.0 x 1847.0"
+  },
+  {
+    "indeks": "TR-15C01",
+    "EAN": "5905253013454",
+    "Nazwa": "TRÓJNIK",
+    "Szerokosc_mm": 24.0,
+    "Wysokosc_mm": 57.0,
+    "Glebokosc_mm": 37.0,
+    "Waga_kg": NaN,
+    "Wymiary": "24.0 x 57.0 x 37.0"
+  },
+  {
+    "indeks": "TUB2-050/11",
+    "EAN": "5905253086922",
+    "Nazwa": "TUBUS 2",
+    "Szerokosc_mm": 531.0,
+    "Wysokosc_mm": 568.0,
+    "Glebokosc_mm": 90.0,
+    "Waga_kg": 11.0,
+    "Wymiary": "531.0 x 568.0 x 90.0"
+  },
+  {
+    "indeks": "TUB2-050/11C12",
+    "EAN": "5905253719950",
+    "Nazwa": "TUBUS 2",
+    "Szerokosc_mm": 531.0,
+    "Wysokosc_mm": 568.0,
+    "Glebokosc_mm": 90.0,
+    "Waga_kg": 11.0,
+    "Wymiary": "531.0 x 568.0 x 90.0"
+  },
+  {
+    "indeks": "TUB2-050/12VC75",
+    "EAN": "5905253620034",
+    "Nazwa": "TUBUS 2",
+    "Szerokosc_mm": 576.0,
+    "Wysokosc_mm": 568.0,
+    "Glebokosc_mm": 90.0,
+    "Waga_kg": 12.2,
+    "Wymiary": "576.0 x 568.0 x 90.0"
+  },
+  {
+    "indeks": "TUB2-070/20D50C31",
+    "EAN": "5905253703553",
+    "Nazwa": "TUBUS 2",
+    "Szerokosc_mm": 940.0,
+    "Wysokosc_mm": 700.0,
+    "Glebokosc_mm": 90.0,
+    "Waga_kg": 26.1,
+    "Wymiary": "940.0 x 700.0 x 90.0"
+  },
+  {
+    "indeks": "TUB2-080/08D50",
+    "EAN": "5905253429019",
+    "Nazwa": "TUBUS 2",
+    "Szerokosc_mm": 394.0,
+    "Wysokosc_mm": 800.0,
+    "Glebokosc_mm": 90.0,
+    "Waga_kg": 11.299999999999999,
+    "Wymiary": "394.0 x 800.0 x 90.0"
+  },
+  {
+    "indeks": "TUB2-080/16D50C57",
+    "EAN": "5905253678103",
+    "Nazwa": "TUBUS 2",
+    "Szerokosc_mm": 758.0,
+    "Wysokosc_mm": 800.0,
+    "Glebokosc_mm": 90.0,
+    "Waga_kg": 22.5,
+    "Wymiary": "758.0 x 800.0 x 90.0"
+  },
+  {
+    "indeks": "TUB2-120/30D50",
+    "EAN": "5905253469954",
+    "Nazwa": "TUBUS 2",
+    "Szerokosc_mm": 1395.0,
+    "Wysokosc_mm": 1200.0,
+    "Glebokosc_mm": 90.0,
+    "Waga_kg": 63.1,
+    "Wymiary": "1395.0 x 1200.0 x 90.0"
+  },
+  {
+    "indeks": "TUB2-150/11",
+    "EAN": "5905253096655",
+    "Nazwa": "TUBUS 2",
+    "Szerokosc_mm": 531.0,
+    "Wysokosc_mm": 1500.0,
+    "Glebokosc_mm": 90.0,
+    "Waga_kg": 29.7,
+    "Wymiary": "531.0 x 1500.0 x 90.0"
+  },
+  {
+    "indeks": "TUB2-180/03C31",
+    "EAN": "5905253397417",
+    "Nazwa": "TUBUS 2",
+    "Szerokosc_mm": 167.0,
+    "Wysokosc_mm": 1800.0,
+    "Glebokosc_mm": 90.0,
+    "Waga_kg": 9.6,
+    "Wymiary": "167.0 x 1800.0 x 90.0"
+  },
+  {
+    "indeks": "TUB2-180/08D50C31",
+    "EAN": "5905253180439",
+    "Nazwa": "TUBUS 2",
+    "Szerokosc_mm": 394.0,
+    "Wysokosc_mm": 1800.0,
+    "Glebokosc_mm": 90.0,
+    "Waga_kg": 25.700000000000003,
+    "Wymiary": "394.0 x 1800.0 x 90.0"
+  },
+  {
+    "indeks": "TUB2-180/08D50C75",
+    "EAN": "5905253404030",
+    "Nazwa": "TUBUS 2",
+    "Szerokosc_mm": 394.0,
+    "Wysokosc_mm": 1800.0,
+    "Glebokosc_mm": 90.0,
+    "Waga_kg": 25.700000000000003,
+    "Wymiary": "394.0 x 1800.0 x 90.0"
+  },
+  {
+    "indeks": "TUB2-180/08D50LC34",
+    "EAN": "5905253486371",
+    "Nazwa": "TUBUS 2",
+    "Szerokosc_mm": 394.0,
+    "Wysokosc_mm": 1800.0,
+    "Glebokosc_mm": 90.0,
+    "Waga_kg": 25.700000000000003,
+    "Wymiary": "394.0 x 1800.0 x 90.0"
+  },
+  {
+    "indeks": "TUB2-180/13D50C75",
+    "EAN": "5905253366031",
+    "Nazwa": "TUBUS 2",
+    "Szerokosc_mm": 622.0,
+    "Wysokosc_mm": 1800.0,
+    "Glebokosc_mm": 90.0,
+    "Waga_kg": 41.7,
+    "Wymiary": "622.0 x 1800.0 x 90.0"
+  },
+  {
+    "indeks": "TUB2-180/14D50C57",
+    "EAN": "5905253709852",
+    "Nazwa": "TUBUS 2",
+    "Szerokosc_mm": 667.0,
+    "Wysokosc_mm": 1800.0,
+    "Glebokosc_mm": 90.0,
+    "Waga_kg": 44.9,
+    "Wymiary": "667.0 x 1800.0 x 90.0"
+  },
+  {
+    "indeks": "TUB2-200/08D50C31",
+    "EAN": "5905253280627",
+    "Nazwa": "TUBUS 2",
+    "Szerokosc_mm": 394.0,
+    "Wysokosc_mm": 2000.0,
+    "Glebokosc_mm": 90.0,
+    "Waga_kg": 28.1,
+    "Wymiary": "394.0 x 2000.0 x 90.0"
+  },
+  {
+    "indeks": "TUB2-200/09VC31",
+    "EAN": "5905253085888",
+    "Nazwa": "TUBUS 2",
+    "Szerokosc_mm": 440.0,
+    "Wysokosc_mm": 2000.0,
+    "Glebokosc_mm": 90.0,
+    "Waga_kg": 31.700000000000003,
+    "Wymiary": "440.0 x 2000.0 x 90.0"
+  },
+  {
+    "indeks": "TUB3-050/16C12",
+    "EAN": "5905253302640",
+    "Nazwa": "TUBUS 3",
+    "Szerokosc_mm": 758.0,
+    "Wysokosc_mm": 568.0,
+    "Glebokosc_mm": 131.0,
+    "Waga_kg": 24.9,
+    "Wymiary": "758.0 x 568.0 x 131.0"
+  },
+  {
+    "indeks": "TUB3-070/18V",
+    "EAN": "5905253111426",
+    "Nazwa": "TUBUS 3",
+    "Szerokosc_mm": 849.0,
+    "Wysokosc_mm": 700.0,
+    "Glebokosc_mm": 131.0,
+    "Waga_kg": 36.2,
+    "Wymiary": "849.0 x 700.0 x 131.0"
+  },
+  {
+    "indeks": "TUB3-090/10VC34",
+    "EAN": "5905253430374",
+    "Nazwa": "TUBUS 3",
+    "Szerokosc_mm": 485.0,
+    "Wysokosc_mm": 900.0,
+    "Glebokosc_mm": 131.0,
+    "Waga_kg": 26.200000000000003,
+    "Wymiary": "485.0 x 900.0 x 131.0"
+  },
+  {
+    "indeks": "TUB3-100/12",
+    "EAN": "5905253328503",
+    "Nazwa": "TUBUS 3",
+    "Szerokosc_mm": 576.0,
+    "Wysokosc_mm": 1000.0,
+    "Glebokosc_mm": 131.0,
+    "Waga_kg": 33.6,
+    "Wymiary": "576.0 x 1000.0 x 131.0"
+  },
+  {
+    "indeks": "TUB3-180/17D50LC42",
+    "EAN": "5905253676901",
+    "Nazwa": "TUBUS 3",
+    "Szerokosc_mm": 804.0,
+    "Wysokosc_mm": 1800.0,
+    "Glebokosc_mm": 131.0,
+    "Waga_kg": 83.39999999999999,
+    "Wymiary": "804.0 x 1800.0 x 131.0"
+  },
+  {
+    "indeks": "TUB3-200/07D50P",
+    "EAN": "5905253366765",
+    "Nazwa": "TUBUS 3",
+    "Szerokosc_mm": 349.0,
+    "Wysokosc_mm": 2000.0,
+    "Glebokosc_mm": 131.0,
+    "Waga_kg": 37.9,
+    "Wymiary": "349.0 x 2000.0 x 131.0"
+  },
+  {
+    "indeks": "TUB3-200/10VC31",
+    "EAN": "5905253211447",
+    "Nazwa": "TUBUS 3",
+    "Szerokosc_mm": 485.0,
+    "Wysokosc_mm": 2000.0,
+    "Glebokosc_mm": 131.0,
+    "Waga_kg": 54.2,
+    "Wymiary": "485.0 x 2000.0 x 131.0"
+  },
+  {
+    "indeks": "TUB4-050/03V",
+    "EAN": "5905253627101",
+    "Nazwa": "TUBUS 4",
+    "Szerokosc_mm": 167.0,
+    "Wysokosc_mm": 568.0,
+    "Glebokosc_mm": 171.0,
+    "Waga_kg": 6.499999999999999,
+    "Wymiary": "167.0 x 568.0 x 171.0"
+  },
+  {
+    "indeks": "TUB4-050/10D50",
+    "EAN": "5905253611773",
+    "Nazwa": "TUBUS 4",
+    "Szerokosc_mm": 485.0,
+    "Wysokosc_mm": 568.0,
+    "Glebokosc_mm": 171.0,
+    "Waga_kg": 21.1,
+    "Wymiary": "485.0 x 568.0 x 171.0"
+  },
+  {
+    "indeks": "TUB4-050/12VC42",
+    "EAN": "5905253172472",
+    "Nazwa": "TUBUS 4",
+    "Szerokosc_mm": 576.0,
+    "Wysokosc_mm": 568.0,
+    "Glebokosc_mm": 171.0,
+    "Waga_kg": 25.400000000000002,
+    "Wymiary": "576.0 x 568.0 x 171.0"
+  },
+  {
+    "indeks": "TUB4-070/30D50V",
+    "EAN": "5905253707643",
+    "Nazwa": "TUBUS 4",
+    "Szerokosc_mm": 1395.0,
+    "Wysokosc_mm": 700.0,
+    "Glebokosc_mm": 171.0,
+    "Waga_kg": 78.0,
+    "Wymiary": "1395.0 x 700.0 x 171.0"
+  },
+  {
+    "indeks": "TZTZ/B",
+    "EAN": "5905054628208",
+    "Nazwa": "TULLY",
+    "Szerokosc_mm": 195.0,
+    "Wysokosc_mm": 55.0,
+    "Glebokosc_mm": 50.0,
+    "Waga_kg": 0.85,
+    "Wymiary": "195.0 x 55.0 x 50.0"
+  },
+  {
+    "indeks": "TZTZ/C",
+    "EAN": "5905054628215",
+    "Nazwa": "TULLY",
+    "Szerokosc_mm": 195.0,
+    "Wysokosc_mm": 55.0,
+    "Glebokosc_mm": 50.0,
+    "Waga_kg": 0.85,
+    "Wymiary": "195.0 x 55.0 x 50.0"
+  },
+  {
+    "indeks": "TZTZ/CR",
+    "EAN": "5905054628192",
+    "Nazwa": "TULLY",
+    "Szerokosc_mm": 195.0,
+    "Wysokosc_mm": 55.0,
+    "Glebokosc_mm": 50.0,
+    "Waga_kg": 0.85,
+    "Wymiary": "195.0 x 55.0 x 50.0"
+  },
+  {
+    "indeks": "VIKE-50/70",
+    "EAN": "5905253059032",
+    "Nazwa": "VIKING ELECTRO",
+    "Szerokosc_mm": 530.0,
+    "Wysokosc_mm": 693.0,
+    "Glebokosc_mm": 95.0,
+    "Waga_kg": 5.6,
+    "Wymiary": "530.0 x 693.0 x 95.0"
+  },
+  {
+    "indeks": "VIV2-160/23",
+    "EAN": "5905253673672",
+    "Nazwa": "VIVAT 2",
+    "Szerokosc_mm": 675.0,
+    "Wysokosc_mm": 1600.0,
+    "Glebokosc_mm": 134.0,
+    "Waga_kg": 55.7,
+    "Wymiary": "675.0 x 1600.0 x 134.0"
+  },
+  {
+    "indeks": "VIV2-160/23C57",
+    "EAN": "5905253726668",
+    "Nazwa": "VIVAT 2",
+    "Szerokosc_mm": 675.0,
+    "Wysokosc_mm": 1600.0,
+    "Glebokosc_mm": 134.0,
+    "Waga_kg": 55.7,
+    "Wymiary": "675.0 x 1600.0 x 134.0"
+  },
+  {
+    "indeks": "VIV2-160/28",
+    "EAN": "5905253673689",
+    "Nazwa": "VIVAT 2",
+    "Szerokosc_mm": 825.0,
+    "Wysokosc_mm": 1600.0,
+    "Glebokosc_mm": 134.0,
+    "Waga_kg": 66.7,
+    "Wymiary": "825.0 x 1600.0 x 134.0"
+  },
+  {
+    "indeks": "VIV2-180/09",
+    "EAN": "5905253673696",
+    "Nazwa": "VIVAT 2",
+    "Szerokosc_mm": 256.0,
+    "Wysokosc_mm": 1800.0,
+    "Glebokosc_mm": 134.0,
+    "Waga_kg": 27.8,
+    "Wymiary": "256.0 x 1800.0 x 134.0"
+  },
+  {
+    "indeks": "VIVX2-060/28",
+    "EAN": "5905253676390",
+    "Nazwa": "VIVAT X2",
+    "Szerokosc_mm": 825.0,
+    "Wysokosc_mm": 575.0,
+    "Glebokosc_mm": 134.0,
+    "Waga_kg": 35.8,
+    "Wymiary": "825.0 x 575.0 x 134.0"
+  },
+  {
+    "indeks": "VIVX2-160/28",
+    "EAN": "5905253667091",
+    "Nazwa": "VIVAT X2",
+    "Szerokosc_mm": 825.0,
+    "Wysokosc_mm": 1600.0,
+    "Glebokosc_mm": 134.0,
+    "Waga_kg": 94.5,
+    "Wymiary": "825.0 x 1600.0 x 134.0"
+  },
+  {
+    "indeks": "VIVX2-180/13",
+    "EAN": "5905253673740",
+    "Nazwa": "VIVAT X2",
+    "Szerokosc_mm": 375.0,
+    "Wysokosc_mm": 1800.0,
+    "Glebokosc_mm": 134.0,
+    "Waga_kg": 49.7,
+    "Wymiary": "375.0 x 1800.0 x 134.0"
+  },
+  {
+    "indeks": "4HS2-0C2",
+    "EAN": "5905253163715",
+    "Nazwa": "WIESZAKI HS2",
+    "Szerokosc_mm": 20.0,
+    "Wysokosc_mm": 67.0,
+    "Glebokosc_mm": 46.0,
+    "Waga_kg": NaN,
+    "Wymiary": "20.0 x 67.0 x 46.0"
+  },
+  {
+    "indeks": "YUUKI-03C1",
+    "EAN": "5905253414855",
+    "Nazwa": "YUUKI",
+    "Szerokosc_mm": 59.0,
+    "Wysokosc_mm": 65.0,
+    "Glebokosc_mm": 55.0,
+    "Waga_kg": 0.6,
+    "Wymiary": "59.0 x 65.0 x 55.0"
+  },
+  {
+    "indeks": "6037000VT",
+    "EAN": "5905253221767",
+    "Nazwa": "Z13",
+    "Szerokosc_mm": 43.0,
+    "Wysokosc_mm": 56.0,
+    "Glebokosc_mm": 126.0,
+    "Waga_kg": 0.56,
+    "Wymiary": "43.0 x 56.0 x 126.0"
+  },
+  {
+    "indeks": "6037000VTC12",
+    "EAN": "5905253221774",
+    "Nazwa": "Z13",
+    "Szerokosc_mm": 43.0,
+    "Wysokosc_mm": 56.0,
+    "Glebokosc_mm": 126.0,
+    "Waga_kg": 0.56,
+    "Wymiary": "43.0 x 56.0 x 126.0"
+  },
+  {
+    "indeks": "6037000VTC31",
+    "EAN": "5905253361777",
+    "Nazwa": "Z13",
+    "Szerokosc_mm": 43.0,
+    "Wysokosc_mm": 56.0,
+    "Glebokosc_mm": 126.0,
+    "Waga_kg": 0.56,
+    "Wymiary": "43.0 x 56.0 x 126.0"
+  },
+  {
+    "indeks": "6037000VTC89",
+    "EAN": null,
+    "Nazwa": "Z13",
+    "Szerokosc_mm": 43.0,
+    "Wysokosc_mm": 56.0,
+    "Glebokosc_mm": 126.0,
+    "Waga_kg": 0.56,
+    "Wymiary": "43.0 x 56.0 x 126.0"
+  },
+  {
+    "indeks": "6037002VT",
+    "EAN": "5905253514692",
+    "Nazwa": "Z13",
+    "Szerokosc_mm": 43.0,
+    "Wysokosc_mm": 56.0,
+    "Glebokosc_mm": 126.0,
+    "Waga_kg": 0.56,
+    "Wymiary": "43.0 x 56.0 x 126.0"
+  },
+  {
+    "indeks": "612100166VT",
+    "EAN": "5905253256189",
+    "Nazwa": "Z14",
+    "Szerokosc_mm": 120.0,
+    "Wysokosc_mm": 46.0,
+    "Glebokosc_mm": 50.0,
+    "Waga_kg": 0.63,
+    "Wymiary": "120.0 x 46.0 x 50.0"
+  },
+  {
+    "indeks": "612100167VT",
+    "EAN": "5905253256196",
+    "Nazwa": "Z14",
+    "Szerokosc_mm": 120.0,
+    "Wysokosc_mm": 46.0,
+    "Glebokosc_mm": 50.0,
+    "Waga_kg": 0.63,
+    "Wymiary": "120.0 x 46.0 x 50.0"
+  },
+  {
+    "indeks": "612100168VTC12",
+    "EAN": "5905253256202",
+    "Nazwa": "Z14",
+    "Szerokosc_mm": 120.0,
+    "Wysokosc_mm": 46.0,
+    "Glebokosc_mm": 50.0,
+    "Waga_kg": 0.63,
+    "Wymiary": "120.0 x 46.0 x 50.0"
+  },
+  {
+    "indeks": "612100168VTC31",
+    "EAN": "5905253404580",
+    "Nazwa": "Z14",
+    "Szerokosc_mm": 120.0,
+    "Wysokosc_mm": 46.0,
+    "Glebokosc_mm": 50.0,
+    "Waga_kg": 0.63,
+    "Wymiary": "120.0 x 46.0 x 50.0"
+  },
+  {
+    "indeks": "612100168VTC34",
+    "EAN": "5905253289088",
+    "Nazwa": "Z14",
+    "Szerokosc_mm": 120.0,
+    "Wysokosc_mm": 46.0,
+    "Glebokosc_mm": 50.0,
+    "Waga_kg": 0.63,
+    "Wymiary": "120.0 x 46.0 x 50.0"
+  },
+  {
+    "indeks": "612100169VTC12",
+    "EAN": "5905253256219",
+    "Nazwa": "Z14",
+    "Szerokosc_mm": 120.0,
+    "Wysokosc_mm": 46.0,
+    "Glebokosc_mm": 50.0,
+    "Waga_kg": 0.63,
+    "Wymiary": "120.0 x 46.0 x 50.0"
+  },
+  {
+    "indeks": "612100169VTC42",
+    "EAN": "5905253500251",
+    "Nazwa": "Z14",
+    "Szerokosc_mm": 120.0,
+    "Wysokosc_mm": 46.0,
+    "Glebokosc_mm": 50.0,
+    "Waga_kg": 0.63,
+    "Wymiary": "120.0 x 46.0 x 50.0"
+  },
+  {
+    "indeks": "602100000VTLC01",
+    "EAN": "5905253431616",
+    "Nazwa": "Z15",
+    "Szerokosc_mm": 195.0,
+    "Wysokosc_mm": 55.0,
+    "Glebokosc_mm": 50.0,
+    "Waga_kg": 0.85,
+    "Wymiary": "195.0 x 55.0 x 50.0"
+  },
+  {
+    "indeks": "602100000VTLC100",
+    "EAN": null,
+    "Nazwa": "Z15",
+    "Szerokosc_mm": 195.0,
+    "Wysokosc_mm": 55.0,
+    "Glebokosc_mm": 50.0,
+    "Waga_kg": 0.85,
+    "Wymiary": "195.0 x 55.0 x 50.0"
+  },
+  {
+    "indeks": "602100000VTLC12",
+    "EAN": "5905253289545",
+    "Nazwa": "Z15",
+    "Szerokosc_mm": 195.0,
+    "Wysokosc_mm": 55.0,
+    "Glebokosc_mm": 50.0,
+    "Waga_kg": 0.85,
+    "Wymiary": "195.0 x 55.0 x 50.0"
+  },
+  {
+    "indeks": "602100000VTLC31",
+    "EAN": "5905253430022",
+    "Nazwa": "Z15",
+    "Szerokosc_mm": 195.0,
+    "Wysokosc_mm": 55.0,
+    "Glebokosc_mm": 50.0,
+    "Waga_kg": 0.85,
+    "Wymiary": "195.0 x 55.0 x 50.0"
+  },
+  {
+    "indeks": "602100000VTLC34",
+    "EAN": "5905253299803",
+    "Nazwa": "Z15",
+    "Szerokosc_mm": 195.0,
+    "Wysokosc_mm": 55.0,
+    "Glebokosc_mm": 50.0,
+    "Waga_kg": 0.85,
+    "Wymiary": "195.0 x 55.0 x 50.0"
+  },
+  {
+    "indeks": "602100000VTLC57",
+    "EAN": "5905253439315",
+    "Nazwa": "Z15",
+    "Szerokosc_mm": 195.0,
+    "Wysokosc_mm": 55.0,
+    "Glebokosc_mm": 50.0,
+    "Waga_kg": 0.85,
+    "Wymiary": "195.0 x 55.0 x 50.0"
+  },
+  {
+    "indeks": "602100000VTLC75",
+    "EAN": "5905253394881",
+    "Nazwa": "Z15",
+    "Szerokosc_mm": 195.0,
+    "Wysokosc_mm": 55.0,
+    "Glebokosc_mm": 50.0,
+    "Waga_kg": 0.85,
+    "Wymiary": "195.0 x 55.0 x 50.0"
+  },
+  {
+    "indeks": "602100000VTLC85",
+    "EAN": null,
+    "Nazwa": "Z15",
+    "Szerokosc_mm": 195.0,
+    "Wysokosc_mm": 55.0,
+    "Glebokosc_mm": 50.0,
+    "Waga_kg": 0.85,
+    "Wymiary": "195.0 x 55.0 x 50.0"
+  },
+  {
+    "indeks": "602100000VTLC87",
+    "EAN": null,
+    "Nazwa": "Z15",
+    "Szerokosc_mm": 195.0,
+    "Wysokosc_mm": 55.0,
+    "Glebokosc_mm": 50.0,
+    "Waga_kg": 0.85,
+    "Wymiary": "195.0 x 55.0 x 50.0"
+  },
+  {
+    "indeks": "602100000VTPC01",
+    "EAN": "5905253394898",
+    "Nazwa": "Z15",
+    "Szerokosc_mm": 195.0,
+    "Wysokosc_mm": 55.0,
+    "Glebokosc_mm": 50.0,
+    "Waga_kg": 0.85,
+    "Wymiary": "195.0 x 55.0 x 50.0"
+  },
+  {
+    "indeks": "602100000VTPC12",
+    "EAN": "5905253289538",
+    "Nazwa": "Z15",
+    "Szerokosc_mm": 195.0,
+    "Wysokosc_mm": 55.0,
+    "Glebokosc_mm": 50.0,
+    "Waga_kg": 0.85,
+    "Wymiary": "195.0 x 55.0 x 50.0"
+  },
+  {
+    "indeks": "602100000VTPC31",
+    "EAN": "5905253272219",
+    "Nazwa": "Z15",
+    "Szerokosc_mm": 195.0,
+    "Wysokosc_mm": 55.0,
+    "Glebokosc_mm": 50.0,
+    "Waga_kg": 0.85,
+    "Wymiary": "195.0 x 55.0 x 50.0"
+  },
+  {
+    "indeks": "602100000VTPC34",
+    "EAN": "5905253299797",
+    "Nazwa": "Z15",
+    "Szerokosc_mm": 195.0,
+    "Wysokosc_mm": 55.0,
+    "Glebokosc_mm": 50.0,
+    "Waga_kg": 0.85,
+    "Wymiary": "195.0 x 55.0 x 50.0"
+  },
+  {
+    "indeks": "602100000VTPC42",
+    "EAN": "5905253435553",
+    "Nazwa": "Z15",
+    "Szerokosc_mm": 195.0,
+    "Wysokosc_mm": 55.0,
+    "Glebokosc_mm": 50.0,
+    "Waga_kg": 0.85,
+    "Wymiary": "195.0 x 55.0 x 50.0"
+  },
+  {
+    "indeks": "602100000VTPC57",
+    "EAN": "5905253397844",
+    "Nazwa": "Z15",
+    "Szerokosc_mm": 195.0,
+    "Wysokosc_mm": 55.0,
+    "Glebokosc_mm": 50.0,
+    "Waga_kg": 0.85,
+    "Wymiary": "195.0 x 55.0 x 50.0"
+  },
+  {
+    "indeks": "602100000VTPC85",
+    "EAN": null,
+    "Nazwa": "Z15",
+    "Szerokosc_mm": 195.0,
+    "Wysokosc_mm": 55.0,
+    "Glebokosc_mm": 50.0,
+    "Waga_kg": 0.85,
+    "Wymiary": "195.0 x 55.0 x 50.0"
+  },
+  {
+    "indeks": "602100000VTPC89",
+    "EAN": null,
+    "Nazwa": "Z15",
+    "Szerokosc_mm": 195.0,
+    "Wysokosc_mm": 55.0,
+    "Glebokosc_mm": 50.0,
+    "Waga_kg": 0.85,
+    "Wymiary": "195.0 x 55.0 x 50.0"
+  },
+  {
+    "indeks": "602200000VTL",
+    "EAN": "5905253514685",
+    "Nazwa": "Z15",
+    "Szerokosc_mm": 195.0,
+    "Wysokosc_mm": 55.0,
+    "Glebokosc_mm": 50.0,
+    "Waga_kg": 0.85,
+    "Wymiary": "195.0 x 55.0 x 50.0"
+  },
+  {
+    "indeks": "602200000VTLC31",
+    "EAN": "5905253517419",
+    "Nazwa": "Z15",
+    "Szerokosc_mm": 195.0,
+    "Wysokosc_mm": 55.0,
+    "Glebokosc_mm": 50.0,
+    "Waga_kg": 0.85,
+    "Wymiary": "195.0 x 55.0 x 50.0"
+  },
+  {
+    "indeks": "602200000VTLC42",
+    "EAN": "0",
+    "Nazwa": "Z15",
+    "Szerokosc_mm": 195.0,
+    "Wysokosc_mm": 55.0,
+    "Glebokosc_mm": 50.0,
+    "Waga_kg": 0.85,
+    "Wymiary": "195.0 x 55.0 x 50.0"
+  },
+  {
+    "indeks": "602200000VTPC31",
+    "EAN": "5905253508219",
+    "Nazwa": "Z15",
+    "Szerokosc_mm": 195.0,
+    "Wysokosc_mm": 55.0,
+    "Glebokosc_mm": 50.0,
+    "Waga_kg": 0.85,
+    "Wymiary": "195.0 x 55.0 x 50.0"
+  },
+  {
+    "indeks": "602200000VTPC42",
+    "EAN": "5905253622373",
+    "Nazwa": "Z15",
+    "Szerokosc_mm": 195.0,
+    "Wysokosc_mm": 55.0,
+    "Glebokosc_mm": 50.0,
+    "Waga_kg": 0.85,
+    "Wymiary": "195.0 x 55.0 x 50.0"
+  },
+  {
+    "indeks": "605100002VT",
+    "EAN": "5905253419966",
+    "Nazwa": "Z16",
+    "Szerokosc_mm": 122.0,
+    "Wysokosc_mm": 50.0,
+    "Glebokosc_mm": 55.0,
+    "Waga_kg": 1.0,
+    "Wymiary": "122.0 x 50.0 x 55.0"
+  },
+  {
+    "indeks": "605100002VTC12",
+    "EAN": "5905253420245",
+    "Nazwa": "Z16",
+    "Szerokosc_mm": 122.0,
+    "Wysokosc_mm": 50.0,
+    "Glebokosc_mm": 55.0,
+    "Waga_kg": 1.0,
+    "Wymiary": "122.0 x 50.0 x 55.0"
+  },
+  {
+    "indeks": "605100002VTC31",
+    "EAN": "5905253423901",
+    "Nazwa": "Z16",
+    "Szerokosc_mm": 122.0,
+    "Wysokosc_mm": 50.0,
+    "Glebokosc_mm": 55.0,
+    "Waga_kg": 1.0,
+    "Wymiary": "122.0 x 50.0 x 55.0"
+  },
+  {
+    "indeks": "605100004VT",
+    "EAN": "5905253419935",
+    "Nazwa": "Z16",
+    "Szerokosc_mm": 122.0,
+    "Wysokosc_mm": 50.0,
+    "Glebokosc_mm": 55.0,
+    "Waga_kg": 1.0,
+    "Wymiary": "122.0 x 50.0 x 55.0"
+  },
+  {
+    "indeks": "605100004VTC31",
+    "EAN": "5905253438981",
+    "Nazwa": "Z16",
+    "Szerokosc_mm": 122.0,
+    "Wysokosc_mm": 50.0,
+    "Glebokosc_mm": 55.0,
+    "Waga_kg": 1.0,
+    "Wymiary": "122.0 x 50.0 x 55.0"
+  },
+  {
+    "indeks": "605200002VTC12",
+    "EAN": "5905253511882",
+    "Nazwa": "Z16",
+    "Szerokosc_mm": 122.0,
+    "Wysokosc_mm": 50.0,
+    "Glebokosc_mm": 55.0,
+    "Waga_kg": 1.0,
+    "Wymiary": "122.0 x 50.0 x 55.0"
+  },
+  {
+    "indeks": "605200004VTC75",
+    "EAN": "0",
+    "Nazwa": "Z16",
+    "Szerokosc_mm": 122.0,
+    "Wysokosc_mm": 50.0,
+    "Glebokosc_mm": 55.0,
+    "Waga_kg": 1.0,
+    "Wymiary": "122.0 x 50.0 x 55.0"
+  },
+  {
+    "indeks": "606400001",
+    "EAN": "5905253414336",
+    "Nazwa": "Z17",
+    "Szerokosc_mm": 0.0,
+    "Wysokosc_mm": 0.0,
+    "Glebokosc_mm": 0.0,
+    "Waga_kg": NaN,
+    "Wymiary": null
+  },
+  {
+    "indeks": "606400002",
+    "EAN": "5905253414343",
+    "Nazwa": "Z17",
+    "Szerokosc_mm": 0.0,
+    "Wysokosc_mm": 0.0,
+    "Glebokosc_mm": 0.0,
+    "Waga_kg": NaN,
+    "Wymiary": null
+  },
+  {
+    "indeks": "606400001C12",
+    "EAN": "5905253414350",
+    "Nazwa": "Z17",
+    "Szerokosc_mm": 0.0,
+    "Wysokosc_mm": 0.0,
+    "Glebokosc_mm": 0.0,
+    "Waga_kg": NaN,
+    "Wymiary": null
+  },
+  {
+    "indeks": "606400001C31",
+    "EAN": "5905253414381",
+    "Nazwa": "Z17",
+    "Szerokosc_mm": 0.0,
+    "Wysokosc_mm": 0.0,
+    "Glebokosc_mm": 0.0,
+    "Waga_kg": NaN,
+    "Wymiary": null
+  },
+  {
+    "indeks": "606400001C75",
+    "EAN": "5905253498138",
+    "Nazwa": "Z17",
+    "Szerokosc_mm": 0.0,
+    "Wysokosc_mm": 0.0,
+    "Glebokosc_mm": 0.0,
+    "Waga_kg": NaN,
+    "Wymiary": null
+  },
+  {
+    "indeks": "606400002C12",
+    "EAN": "5905253414367",
+    "Nazwa": "Z17",
+    "Szerokosc_mm": 0.0,
+    "Wysokosc_mm": 0.0,
+    "Glebokosc_mm": 0.0,
+    "Waga_kg": NaN,
+    "Wymiary": null
+  },
+  {
+    "indeks": "606400002C31",
+    "EAN": "5905253414374",
+    "Nazwa": "Z17",
+    "Szerokosc_mm": 0.0,
+    "Wysokosc_mm": 0.0,
+    "Glebokosc_mm": 0.0,
+    "Waga_kg": NaN,
+    "Wymiary": null
+  },
+  {
+    "indeks": "606400002C75",
+    "EAN": "5905253498145",
+    "Nazwa": "Z17",
+    "Szerokosc_mm": 0.0,
+    "Wysokosc_mm": 0.0,
+    "Glebokosc_mm": 0.0,
+    "Waga_kg": NaN,
+    "Wymiary": null
+  },
+  {
+    "indeks": "ZMD-VTC100P",
+    "EAN": null,
+    "Nazwa": "ZESTAW MASKUJĄCY",
+    "Szerokosc_mm": 115.0,
+    "Wysokosc_mm": 63.0,
+    "Glebokosc_mm": 65.0,
+    "Waga_kg": NaN,
+    "Wymiary": "115.0 x 63.0 x 65.0"
+  },
+  {
+    "indeks": "ZMD-VTC31P",
+    "EAN": "5905253423765",
+    "Nazwa": "ZESTAW MASKUJĄCY",
+    "Szerokosc_mm": 115.0,
+    "Wysokosc_mm": 63.0,
+    "Glebokosc_mm": 65.0,
+    "Waga_kg": NaN,
+    "Wymiary": "115.0 x 63.0 x 65.0"
+  },
+  {
+    "indeks": "ZMD-VTC35C",
+    "EAN": "5905253422355",
+    "Nazwa": "ZESTAW MASKUJĄCY",
+    "Szerokosc_mm": 115.0,
+    "Wysokosc_mm": 63.0,
+    "Glebokosc_mm": 65.0,
+    "Waga_kg": NaN,
+    "Wymiary": "115.0 x 63.0 x 65.0"
+  },
+  {
+    "indeks": "ZMD-VTC75P",
+    "EAN": "5905253611711",
+    "Nazwa": "ZESTAW MASKUJĄCY",
+    "Szerokosc_mm": 115.0,
+    "Wysokosc_mm": 63.0,
+    "Glebokosc_mm": 65.0,
+    "Waga_kg": NaN,
+    "Wymiary": "115.0 x 63.0 x 65.0"
+  },
+  {
+    "indeks": "ZMD-VTC87P",
+    "EAN": null,
+    "Nazwa": "ZESTAW MASKUJĄCY",
+    "Szerokosc_mm": 115.0,
+    "Wysokosc_mm": 63.0,
+    "Glebokosc_mm": 65.0,
+    "Waga_kg": NaN,
+    "Wymiary": "115.0 x 63.0 x 65.0"
+  },
+  {
+    "indeks": "ZMD-VTC89P",
+    "EAN": null,
+    "Nazwa": "ZESTAW MASKUJĄCY",
+    "Szerokosc_mm": 115.0,
+    "Wysokosc_mm": 63.0,
+    "Glebokosc_mm": 65.0,
+    "Waga_kg": NaN,
+    "Wymiary": "115.0 x 63.0 x 65.0"
+  },
+  {
+    "indeks": "ZMS-VTC12P",
+    "EAN": "5905253481772",
+    "Nazwa": "ZESTAW MASKUJĄCY",
+    "Szerokosc_mm": 115.0,
+    "Wysokosc_mm": 63.0,
+    "Glebokosc_mm": 65.0,
+    "Waga_kg": NaN,
+    "Wymiary": "115.0 x 63.0 x 65.0"
+  },
+  {
+    "indeks": "ZMS-VTC35P",
+    "EAN": "5905253422294",
+    "Nazwa": "ZESTAW MASKUJĄCY",
+    "Szerokosc_mm": 115.0,
+    "Wysokosc_mm": 63.0,
+    "Glebokosc_mm": 65.0,
+    "Waga_kg": NaN,
+    "Wymiary": "115.0 x 63.0 x 65.0"
+  },
+  {
+    "indeks": "602600003VT",
+    "EAN": "5905253294570",
+    "Nazwa": "ZŁĄCZKA",
+    "Szerokosc_mm": 30.0,
+    "Wysokosc_mm": 30.0,
+    "Glebokosc_mm": 12.0,
+    "Waga_kg": NaN,
+    "Wymiary": "30.0 x 30.0 x 12.0"
+  }
+]

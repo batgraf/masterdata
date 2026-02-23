@@ -2346,31 +2346,13 @@
           if (selectAllRecordsBtn) selectAllRecordsBtn.classList.add("active");
         }
 
-        async function deselectAllRecords(allPages = false) {
-          if (allPages) {
-            // Odznacz wszystkie produkty
-            state.selected_ids.clear();
-          } else {
-            // Odznacz tylko na bieżącej stronie
-            const checkboxes = tableBody
-              ? tableBody.querySelectorAll("input.row-select")
-              : [];
-            checkboxes.forEach((cb) => {
-              cb.checked = false;
-              const id = String(cb.getAttribute("data-id") || "");
-              if (id) state.selected_ids.delete(id);
-            });
-          }
-          // Odśwież checkboxy na bieżącej stronie
+        function deselectAllRecords() {
+          // Zawsze czyść całe zaznaczenie – bez ghostów i mylącego licznika
+          state.selected_ids.clear();
           const checkboxes = tableBody
             ? tableBody.querySelectorAll("input.row-select")
             : [];
-          checkboxes.forEach((cb) => {
-            const id = String(cb.getAttribute("data-id") || "");
-            if (id && !state.selected_ids.has(id)) {
-              cb.checked = false;
-            }
-          });
+          checkboxes.forEach((cb) => { cb.checked = false; });
           updatePaginationUi();
           if (selectAllRecordsBtn) selectAllRecordsBtn.classList.remove("active");
         }
@@ -2381,8 +2363,8 @@
             const allPages = selectAllPagesCheckbox && selectAllPagesCheckbox.checked;
             
             if (isActive) {
-              // Odznacz
-              await deselectAllRecords(allPages);
+              // Odznacz (zawsze całe zaznaczenie)
+              deselectAllRecords();
             } else {
               // Zaznacz
               await selectAllRecords(allPages);
