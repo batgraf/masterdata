@@ -22,3 +22,4 @@
 19. 2026-02-25 20:30 - przycisk „zaznacz” w tym samym stylu co reszta (padding 0.25rem 0.5rem, 2rem, 11px)
 20. 2026-02-25 20:45 - checkbox „wszystko” jako przycisk: szary niezaznaczony, niebieski zaznaczony
 21. 2026-02-25 20:35 - kopia, json, wszystko – niebieskie (primary / ciemniejszy gdy zaznaczony)
+22. 2026-02-25 20:40 - ikona Statystyki w środkowym bloku (col-lg-1)
