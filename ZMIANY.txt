@@ -20,3 +20,4 @@
 17. 2026-02-25 20:15 - Blok1: przycisk „eksportuj JSON”→„json”, przeniesiony za „kopia”
 18. 2026-02-25 20:25 - usunięcie ikon z przycisków (cofnij, zapisz, reset, opcje, json, zaznacz, Dziennik, paginacja «‹›»)
 19. 2026-02-25 20:30 - przycisk „zaznacz” w tym samym stylu co reszta (padding 0.25rem 0.5rem, 2rem, 11px)
+20. 2026-02-25 20:45 - checkbox „wszystko” jako przycisk: szary niezaznaczony, niebieski zaznaczony
