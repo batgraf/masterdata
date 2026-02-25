@@ -371,10 +371,6 @@
       .select-all-btn .btn-text {
         display: inline-block;
       }
-      .select-all-btn .btn-check-icon {
-        font-size: 12px;
-        flex-shrink: 0;
-      }
       .select-all-btn::before {
         content: '';
         position: absolute;
@@ -402,9 +398,6 @@
       }
       .select-all-btn.active .btn-text {
         display: inline-block;
-      }
-      .select-all-btn.active .btn-check-icon {
-        display: inline-block !important;
       }
       .select-all-btn.active:hover {
         background-color: #2f7cfd;
@@ -573,7 +566,7 @@
               <div class="col-12">
                 <div class="d-flex flex-wrap align-items-center justify-content-start gap-2 view-controls">
                   <button type="button" id="undoBtn" class="btn btn-sm btn-success" title="Cofnij ostatnią zmianę (Ctrl+Z)">
-                    <i class="bi bi-arrow-left-square-fill"></i> cofnij
+                    cofnij
                   </button>
                   <div class="d-flex align-items-center gap-1 view-controls-main flex-wrap">
                     <div id="viewAuthorContainer" style="position: relative; max-width: 120px;">
@@ -590,13 +583,13 @@
                       <option value="">wybierz widok</option>
                     </select>
                     <button type="button" id="saveViewBtn" class="btn btn-sm btn-primary" title="Zapisz">
-                      <i class="bi bi-floppy2-fill"></i> zapisz
+                      zapisz
                     </button>
                     <button type="button" id="resetViewBtn" class="btn btn-sm btn-danger" title="Reset">
-                      <i class="bi bi-r-circle-fill"></i> reset
+                      reset
                     </button>
                     <button type="button" id="viewOptionsBtn" class="btn btn-sm" title="Opcje">
-                      <i class="bi bi-gear-fill"></i> opcje
+                      opcje
                     </button>
                     <button type="button" id="restoreFromBackupBtn" class="btn btn-sm btn-outline-secondary" title="Załaduj z najnowszej kopii (awaryjnie)">
                       kopia
@@ -607,7 +600,7 @@
                       class="btn btn-sm btn-outline-primary"
                       title="Pobierz zaznaczone produkty jako JSON (format jak AsortymentyMasterData)"
                     >
-                      <i class="bi bi-download me-1"></i>json
+                      json
                     </button>
                   </div>
                 </div>
@@ -633,7 +626,6 @@
                     <span class="btn-loading d-none" aria-hidden="true">
                       <span class="spinner-border spinner-border-sm me-1" role="status"></span>zaznaczanie…
                     </span>
-                    <i class="bi bi-check-lg btn-check-icon d-none"></i>
                   </button>
                   <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="selectAllPagesCheckbox" />
@@ -671,7 +663,7 @@
 
         <div class="col-12 col-lg-5">
           <div class="p-3 bg-white rounded-3 shadow-sm h-100 d-flex flex-column justify-content-start position-relative">
-            <a href="#" id="changeLogBtn" class="position-absolute top-0 end-0 p-2 text-primary" title="Dziennik zmian" style="text-decoration: none; font-size: 1.1rem;"><i class="bi bi-journal-text"></i></a>
+            <a href="#" id="changeLogBtn" class="position-absolute top-0 end-0 p-2 text-primary" title="Dziennik zmian" style="text-decoration: none; font-size: 1.1rem;">Dziennik</a>
             <div class="row g-2">
               <div class="col-3">
                 <div class="stat-number">{{ total_count }}</div>
@@ -716,17 +708,17 @@
       <!-- Paginacja -->
       <div class="d-flex justify-content-center align-items-center gap-2 mb-2 flex-wrap">
         <button type="button" id="firstPageBtn" class="btn btn-sm pagination-btn" style="font-size: 11px; padding: 0.15rem 0.5rem;" title="Pierwsza strona">
-          <i class="bi bi-chevron-double-left"></i>
+          «
         </button>
         <button type="button" id="prevPageBtn" class="btn btn-sm pagination-btn" style="font-size: 11px; padding: 0.15rem 0.8rem;">
-          <i class="bi bi-chevron-left"></i>
+          ‹
         </button>
         <div class="small text-muted" id="pageInfo" style="font-size: 11px; min-width: 50px; text-align: center;">Ładowanie...</div>
         <button type="button" id="nextPageBtn" class="btn btn-sm pagination-btn" style="font-size: 11px; padding: 0.15rem 0.8rem;">
-          <i class="bi bi-chevron-right"></i>
+          ›
         </button>
         <button type="button" id="lastPageBtn" class="btn btn-sm pagination-btn" style="font-size: 11px; padding: 0.15rem 0.5rem;" title="Ostatnia strona">
-          <i class="bi bi-chevron-double-right"></i>
+          »
         </button>
         <span class="ms-2 small text-muted">na stronie:</span>
         <select id="pageSizeSelect" class="form-select form-select-sm" style="width: auto; min-width: 4rem; font-size: 11px; padding: 0.15rem 0.5rem 0.15rem 0.5rem; padding-right: 1.5rem;">
@@ -3259,7 +3251,7 @@
           } finally {
             if (undoBtn) {
               undoBtn.disabled = false;
-              undoBtn.innerHTML = '<i class="bi bi-arrow-left-square-fill"></i> cofnij';
+              undoBtn.innerHTML = 'cofnij';
             }
           }
         }
