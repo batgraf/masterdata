@@ -75,3 +75,4 @@
 72. 2026-02-28 19:45 - płynna zmiana motywu jasny/ciemny: transition 0.4s ease-in-out na tło, kolor i obramowanie (bez przeskoków)
 73. 2026-02-28 19:50 - zmiana motywu: skrócony transition do 0.15s, dodane stat-number, text-warning, leftBlock, pagination-btn (mniej efektu ładowania)
 74. 2026-02-28 19:55 - zmiana motywu jasny/ciemny bez animacji (usunięty transition) – natychmiastowe przełączenie
+75. 2026-02-28 19:58 - usunięta animacja komórek tabeli (transition background-color z wierszy i komórek)
