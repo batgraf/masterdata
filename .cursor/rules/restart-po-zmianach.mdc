@@ -1,0 +1,9 @@
+---
+description: Po zmianach w szablonach/static – restart serwisu; użytkownik odświeża Ctrl+F5
+alwaysApply: true
+---
+
+# Restart i odświeżanie
+
+- Po zmianach w **szablonach** (templates/) lub **plikach static** na serwerze: **zrestartuj** `masterdata.service`, żeby użytkownik widział zmiany.
+- Użytkownik **zawsze odświeża stronę przez Ctrl+F5** (twarde odświeżenie).

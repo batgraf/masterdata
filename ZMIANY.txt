@@ -24,3 +24,4 @@
 21. 2026-02-25 20:35 - kopia, json, wszystko – niebieskie (primary / ciemniejszy gdy zaznaczony)
 22. 2026-02-25 20:40 - ikona Statystyki w środkowym bloku (col-lg-1)
 23. 2026-02-26 14:00 - nagłówek col-12: ikona bi-menu-button-wide + „MasterData baza produktów”
+24. 2026-02-26 14:05 - reguła Cursor: restart po zmianach szablonów, odświeżanie Ctrl+F5
