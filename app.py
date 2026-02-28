@@ -234,6 +234,8 @@ def is_missing_weight(value: Any) -> bool:
 def is_column_empty(product: Dict[str, Any], column_key: str) -> bool:
     """Wartość pusta: None, '', 0, 0.0, tekst '0'. Dla Waga_brutto używamy is_missing_weight."""
     val = product.get(column_key)
+    if column_key == "Zrodlo_danych" and (val is None or (isinstance(val, str) and not val.strip())):
+        val = product.get("source")
     if column_key == "Waga_brutto":
         return is_missing_weight(val)
     if val is None:
@@ -427,6 +429,8 @@ def filter_products(
 
         if use_value_filter:
             val = p.get(filter_column)
+            if filter_column == "Zrodlo_danych" and (val is None or (isinstance(val, str) and not val.strip())):
+                val = p.get("source")
             str_val = "" if val is None else str(val).strip()
             if str_val not in filter_values:
                 continue
@@ -709,6 +713,9 @@ def get_column_values():
             if not isinstance(p, dict):
                 continue
             v = p.get(column)
+            # W pliku JSON jest "source", w UI używamy "Zrodlo_danych" – uwzględnij oba
+            if column == "Zrodlo_danych" and (v is None or (isinstance(v, str) and not v.strip())):
+                v = p.get("source")
             if v is None or (isinstance(v, str) and not v.strip()):
                 continue
             s = str(v).strip()
