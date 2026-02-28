@@ -56,3 +56,4 @@
 53. 2026-02-28 16:35 - motyw ciemny: wymuszenie ciemnego tła thead/th, pola w nagłówkach i page-wrap, pill Tryb (nowe/w trakcie/gotowe) ciemne
 54. 2026-02-28 16:45 - tło komórek ciemny motyw #212529; menu Tryb position:fixed + z-index – nie ucieka pod inne wiersze
 55. 2026-02-28 16:55 - dropdown Tryb: przenoszenie do body przy otwarciu (fixed względem viewport), powrót do wrap przy zamknięciu – naprawa przesunięcia w dół i w prawo
+56. 2026-02-28 17:05 - dropdown Tryb w body: style osobno dla .tryb-dropdown-fixed (tło, opcje) – po przeniesieniu nie działały selektory z td
