@@ -763,6 +763,14 @@
       .block4-params-table thead th { color: #6c757d !important; font-size: 10px !important; font-weight: 400 !important; background: transparent; border-bottom: 1px solid #dee2e6; }
       .block4-params-table tbody td { border-bottom: 1px solid #dee2e6; }
       .block4-params-table tr.block4-bar-row td { border-bottom: none !important; }
+      .block4-params-table tr.block4-row-jest td { background-color: #8bd48b; }
+      .block4-params-table tr.block4-row-brak td { background-color: #d99a9a; }
+      .block4-params-table .block4-row-label {
+        text-transform: uppercase;
+        font-weight: 600;
+      }
+      .block4-params-table .block4-row-label.block4-row-label-jest { color: #8eff50 !important; }
+      .block4-params-table .block4-row-label.block4-row-label-brak { color: #ff5050 !important; }
       #block3Stats table tbody tr:last-child td { border-bottom: none !important; }
       .block-stats-same-padding { padding-top: 16px !important; }
       .products-table-wrapper { padding-top: 1rem; padding-bottom: 1rem; }
@@ -1174,14 +1182,14 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td class="text-muted py-1 px-1 block4-row-label">jest</td>
+                  <tr class="block4-row-jest">
+                    <td class="text-muted py-1 px-1 block4-row-label block4-row-label-jest">JEST</td>
                     {% for p in block4_params %}
                     <td class="py-1 px-1 text-start stat-number">{{ p.jest }}</td>
                     {% endfor %}
                   </tr>
-                  <tr>
-                    <td class="text-muted py-1 px-1 block4-row-label">brak</td>
+                  <tr class="block4-row-brak">
+                    <td class="text-muted py-1 px-1 block4-row-label block4-row-label-brak">BRAK</td>
                     {% for p in block4_params %}
                     <td class="py-1 px-1 text-start stat-number">{{ p.brak }}</td>
                     {% endfor %}
