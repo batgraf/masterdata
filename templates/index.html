@@ -747,14 +747,16 @@
       .block4-params-table th, .block4-params-table td { white-space: nowrap; vertical-align: middle; }
       .block4-params-table .block4-row-th { width: 2.2em; }
       .block4-params-table .block4-param-th,
-      .block4-params-table tbody td.text-end { width: 2.8em; min-width: 2.8em; max-width: 2.8em; box-sizing: border-box; }
-      .block4-params-table .block4-bar-th,
-      .block4-params-table .block4-bar-cell { width: 1.8em; min-width: 1.8em; }
+      .block4-params-table tbody td.text-end,
+      .block4-params-table .block4-bar-cell { width: 2.8em; min-width: 2.8em; max-width: 2.8em; box-sizing: border-box; }
       .block4-params-table thead th { color: #fff !important; font-size: 10px !important; font-weight: 400 !important; background-color: #212529; }
       [data-bs-theme="dark"] .block4-params-table thead th { background-color: #212529; color: #fff !important; }
-      .block4-bar { display: flex; flex-direction: column; align-items: center; }
-      .block4-bar-seg { display: block; width: 100%; min-height: 1px; background-color: #6c757d; }
-      [data-bs-theme="dark"] .block4-bar-seg { background-color: #6c757d; }
+      .block4-bar-h { display: flex; flex-direction: row; width: 100%; overflow: hidden; border-radius: 2px; }
+      .block4-bar-h-seg { display: block; min-width: 0; height: 100%; }
+      .block4-bar-h-seg.block4-bar-brak { background-color: #dc3545; }
+      .block4-bar-h-seg.block4-bar-jest { background-color: #198754; }
+      [data-bs-theme="dark"] .block4-bar-h-seg.block4-bar-brak { background-color: #dc3545; }
+      [data-bs-theme="dark"] .block4-bar-h-seg.block4-bar-jest { background-color: #198754; }
       /* Tylko wybrane nagłówki kolumn – kolor #68ef10 */
       table.products-table thead th[data-col="EAN"],
       table.products-table thead th[data-col="SKU"],
@@ -1104,7 +1106,6 @@
                     <th class="py-1 px-1 block4-row-th"></th>
                     {% for p in block4_params %}
                     <th class="text-start text-uppercase py-1 px-1 block4-param-th">{{ p.label }}</th>
-                    <th class="py-1 px-1 block4-bar-th"></th>
                     {% endfor %}
                   </tr>
                 </thead>
@@ -1113,21 +1114,26 @@
                     <td class="text-muted py-0 px-1 block4-row-label">jest</td>
                     {% for p in block4_params %}
                     <td class="py-0 px-1 text-end stat-number">{{ p.jest }}</td>
-                    <td rowspan="2" class="py-0 px-1 align-bottom block4-bar-cell">
-                      {% set total = total_count or 1 %}
-                      {% set h_jest = (p.jest / total * 40) if total else 0 %}
-                      {% set h_brak = (p.brak / total * 40) if total else 0 %}
-                      <div class="block4-bar" style="width: 14px; height: 40px;" title="jest {{ p.jest }}, brak {{ p.brak }}">
-                        <span class="block4-bar-seg block4-bar-jest" style="height: {{ h_jest }}px;"></span>
-                        <span class="block4-bar-seg block4-bar-brak" style="height: {{ h_brak }}px;"></span>
-                      </div>
-                    </td>
                     {% endfor %}
                   </tr>
                   <tr>
                     <td class="text-muted py-0 px-1 block4-row-label">brak</td>
                     {% for p in block4_params %}
                     <td class="py-0 px-1 text-end stat-number">{{ p.brak }}</td>
+                    {% endfor %}
+                  </tr>
+                  <tr class="block4-bar-row">
+                    <td class="py-0 px-1 block4-row-th"></td>
+                    {% for p in block4_params %}
+                    {% set total = total_count or 1 %}
+                    {% set w_brak = (p.brak / total * 100) if total else 0 %}
+                    {% set w_jest = (p.jest / total * 100) if total else 0 %}
+                    <td class="py-0 px-1 align-top block4-bar-cell">
+                      <div class="block4-bar-h" style="height: 8px; min-width: 2.5em;" title="jest {{ p.jest }}, brak {{ p.brak }}">
+                        <span class="block4-bar-h-seg block4-bar-brak" style="width: {{ w_brak }}%;"></span>
+                        <span class="block4-bar-h-seg block4-bar-jest" style="width: {{ w_jest }}%;"></span>
+                      </div>
+                    </td>
                     {% endfor %}
                   </tr>
                 </tbody>
