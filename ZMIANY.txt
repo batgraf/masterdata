@@ -101,3 +101,4 @@
 98. 2026-02-21 13:50 - usunięte ostatnie podkreślenie w obu tabelkach pod wykresami; tytuły kolumn jak w bloku3 wyróżnione w tabeli (Nazwa, Grupa, opakowanie itd.); odstęp nad i pod paginacją; Kopia przeniesiona do stopki (col-12); zmodyfikowane maksymalnie na prawo za paginacją
 99. 2026-02-21 14:00 - blok2 i blok3 padding-top 16px; podpowiedź pod wyszukiwarką (nie znika po kliknięciu); domyślny motyw ciemny; tabela rekordów – większy odstęp od góry i dołu
 100. 2026-02-21 14:10 - tabela rekordów: wyrównanie treści komórek do lewej
+101. 2026-02-21 14:20 - tabela rekordów: uproszczony scroll (bez wewnętrznego pionowego suwaka, jeden główny przewijacz)

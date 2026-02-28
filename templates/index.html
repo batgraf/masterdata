@@ -766,6 +766,11 @@
       #block3Stats table tbody tr:last-child td { border-bottom: none !important; }
       .block-stats-same-padding { padding-top: 16px !important; }
       .products-table-wrapper { padding-top: 1rem; padding-bottom: 1rem; }
+      .table-scroll-wrapper {
+        overflow-x: auto;
+        overflow-y: visible;
+        max-height: none;
+      }
       [data-bs-theme="dark"] .block4-params-table thead th { color: #adb5bd !important; background: transparent; border-bottom-color: #343a40; }
       [data-bs-theme="dark"] .block4-params-table tbody td { border-bottom-color: #343a40; }
       .block4-bar-h { display: flex; flex-direction: row; width: 100%; overflow: hidden; border-radius: 2px; }
@@ -1209,7 +1214,7 @@
 
       <!-- Tabela produktów -->
       <div class="bg-white rounded-3 shadow-sm products-table-wrapper">
-        <div class="table-responsive table-scroll-wrapper" style="max-height: 75vh; overflow-x: auto; overflow-y: auto;">
+        <div class="table-responsive table-scroll-wrapper">
           <table class="table table-sm table-hover align-middle mb-0 products-table" style="min-width: max-content;">
             <thead class="table-light sticky-top">
               <tr>
