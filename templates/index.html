@@ -752,6 +752,9 @@
       #block3Stats .fw-bold {
         font-weight: 400 !important;
       }
+      .blok3-donut-col {
+        margin-left: 0.75rem;
+      }
       [data-bs-theme="dark"] .blok3-donut circle:first-of-type {
         stroke: #343a40;
       }
@@ -1086,7 +1089,7 @@
                   </tbody>
                 </table>
               </div>
-              <div class="col-6 d-flex justify-content-center align-items-center">
+              <div class="col-6 d-flex justify-content-center align-items-center blok3-donut-col">
                 <div class="blok3-donut-wrap flex-shrink-0" style="width: 84px; height: 84px;">
                 {% set total = total_count or 1 %}
                 {% set u = count_uzupelnione or 0 %}
