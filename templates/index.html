@@ -842,7 +842,7 @@
       }
       [data-bs-theme="dark"] table.products-table tbody tr:hover td,
       [data-bs-theme="dark"] table.products-table tbody tr:hover {
-        filter: brightness(1.15);
+        filter: none;
       }
       [data-bs-theme="dark"] table.products-table tbody tr.row-modified td,
       [data-bs-theme="dark"] table.products-table tbody tr.row-modified {
@@ -3084,7 +3084,6 @@
                   if (modifiedCountEl) modifiedCountEl.textContent = String(data.modified_count);
                 }
                 state.modified_ids.add(productId);
-                tr.classList.add("row-modified");
               })
               .catch((err) => {
                 console.error("Zapis trybu nieudany", err);
