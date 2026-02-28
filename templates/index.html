@@ -91,18 +91,21 @@
         justify-content: center;
         align-items: center;
       }
+      .row-blocks-equal .col-lg-1 {
+        align-self: stretch;
+      }
       #leftBlock {
         min-height: 2rem;
-        height: 100%;
       }
       #leftBlock .left-block-undo-btn {
         width: 100%;
-        flex: 1 1 auto;
-        min-height: 0;
-        align-self: stretch;
+        min-height: 100%;
         font-size: 11px;
         text-transform: uppercase;
         padding: 0.25rem 0.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
       .page-header-controls {
         display: flex;
@@ -732,10 +735,10 @@
         </div>
       </div>
       <!-- Blok1 (1/12) + blok2 (4/12) + blok3 (7/12) -->
-      <div class="row g-3 mb-3">
-        <div class="col-12 col-lg-1">
-          <div class="p-2 bg-white rounded-3 shadow-sm h-100 d-flex" id="leftBlock" aria-label="Blok 1">
-            <button type="button" id="undoBtn" class="btn btn-sm btn-success left-block-undo-btn" title="Cofnij ostatnią zmianę (Ctrl+Z)">cofnij</button>
+      <div class="row g-3 mb-3 row-blocks-equal">
+        <div class="col-12 col-lg-1 d-flex flex-column">
+          <div class="p-2 bg-white rounded-3 shadow-sm flex-grow-1 d-flex flex-column min-h-0" id="leftBlock" aria-label="Blok 1">
+            <button type="button" id="undoBtn" class="btn btn-sm btn-success left-block-undo-btn flex-grow-1" title="Cofnij ostatnią zmianę (Ctrl+Z)">cofnij</button>
           </div>
         </div>
         <div class="col-12 col-lg-4">
