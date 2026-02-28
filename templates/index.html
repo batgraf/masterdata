@@ -59,6 +59,32 @@
         cursor: default;
         opacity: 0.85;
       }
+      .page-header-controls {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+      }
+      .page-header-view-author {
+        color: #fff !important;
+        background: rgba(255,255,255,0.1);
+      }
+      .page-header-select.page-header-select,
+      .page-header-input.page-header-input {
+        background: rgba(255,255,255,0.15);
+        border-color: rgba(255,255,255,0.35);
+        color: #fff;
+        font-size: 0.875rem;
+      }
+      .page-header-select option {
+        background: #212529;
+        color: #fff;
+      }
+      .page-header-btn {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        padding: 0.25rem 0.5rem;
+      }
       /* Ujednolicone: przyciski, listy, wyszukiwarka (Blok1, Blok2) – ta sama wysokość i czcionka */
       .page-wrap > .row.g-3 .btn.btn-sm {
         height: 2rem;
@@ -653,10 +679,21 @@
       <!-- Nagłówek: pasek logo + tytuł + menu (#212529) -->
       <div class="row mb-2">
         <div class="col-12 page-header-bar">
-          <div class="d-flex align-items-center justify-content-between w-100 flex-wrap gap-2">
+            <div class="d-flex align-items-center justify-content-between w-100 flex-wrap gap-2">
             <div class="d-flex align-items-center gap-2">
               <i class="bi bi-menu-button-wide page-header-logo" aria-hidden="true"></i>
               <span class="page-header-title">MasterData - baza produktów</span>
+            </div>
+            <div class="d-flex align-items-center gap-2 page-header-controls">
+              <div id="viewAuthorContainer" style="position: relative; max-width: 120px;">
+                <span id="viewAuthorDisplay" class="view-author-display page-header-view-author" style="display: inline-block; padding: 0.25rem 0.5rem; border: 1px solid rgba(255,255,255,0.3); border-radius: 0.25rem; cursor: pointer; min-width: 80px;">imię</span>
+                <input type="text" id="viewAuthor" class="form-control form-control-sm d-none page-header-input" placeholder="imię" style="max-width: 120px;" />
+              </div>
+              <select id="viewSelect" class="form-select form-select-sm page-header-select" style="max-width: 180px;">
+                <option value="">wybierz widok</option>
+              </select>
+              <button type="button" id="saveViewBtn" class="btn btn-sm btn-primary page-header-btn" title="Zapisz">zapisz</button>
+              <button type="button" id="resetViewBtn" class="btn btn-sm btn-danger page-header-btn" title="Reset">reset</button>
             </div>
             <nav class="page-header-menu">
               <a href="https://masterdata.mebloszyk.pl" class="page-header-menu-link">Strona główna</a>
@@ -678,25 +715,6 @@
                     cofnij
                   </button>
                   <div class="d-flex align-items-center gap-1 view-controls-main flex-wrap">
-                    <div id="viewAuthorContainer" style="position: relative; max-width: 120px;">
-                      <span id="viewAuthorDisplay" class="view-author-display" style="display: inline-block; padding: 0.25rem 0.5rem; border: 1px solid transparent; border-radius: 0.25rem; cursor: pointer; min-width: 80px; color: #6c757d;">imię</span>
-                      <input
-                        type="text"
-                        id="viewAuthor"
-                        class="form-control form-control-sm d-none"
-                        placeholder="imię"
-                        style="max-width: 120px;"
-                      />
-                    </div>
-                    <select id="viewSelect" class="form-select form-select-sm" style="max-width: 180px;">
-                      <option value="">wybierz widok</option>
-                    </select>
-                    <button type="button" id="saveViewBtn" class="btn btn-sm btn-primary" title="Zapisz">
-                      zapisz
-                    </button>
-                    <button type="button" id="resetViewBtn" class="btn btn-sm btn-danger" title="Reset">
-                      reset
-                    </button>
                     <button type="button" id="viewOptionsBtn" class="btn btn-sm" title="Opcje">
                       opcje
                     </button>
