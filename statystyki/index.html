@@ -1,0 +1,640 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Statystyki MasterData</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    rel="stylesheet"
+  />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --brand: #1a73e8;
+      --bg: #f5f7fa;
+      --card: #ffffff;
+      --text: #1f2328;
+      --muted: #5f6368;
+      --dark-gray: #2f343a;
+      --border: #e6e9ef;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Google Sans", Arial, Helvetica, sans-serif;
+      font-size: 14px;
+    }
+
+    .topbar {
+      height: 58px;
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      padding: 0 18px;
+      gap: 10px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .topbar i {
+      color: var(--brand);
+      font-size: 18px;
+    }
+
+    .topbar-title {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 0.1px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 270px 1fr;
+      min-height: calc(100vh - 58px);
+    }
+
+    .sidebar {
+      background: var(--card);
+      border-right: 1px solid var(--border);
+      padding: 14px 12px;
+    }
+
+    .side-section {
+      margin-bottom: 16px;
+    }
+
+    .side-label {
+      color: var(--muted);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.35px;
+      margin-bottom: 8px;
+    }
+
+    .side-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 9px 10px;
+      margin-bottom: 8px;
+      transition: transform .15s ease, border-color .15s ease;
+    }
+
+    .side-item:hover {
+      transform: translateY(-1px);
+      border-color: #d1dae8;
+    }
+
+    .side-item .value {
+      color: var(--dark-gray);
+      font-weight: 600;
+    }
+
+    .producers-list {
+      max-height: 220px;
+      overflow: auto;
+      padding-right: 2px;
+    }
+
+    .producer-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 8px 10px;
+      margin-bottom: 7px;
+      font-size: 12px;
+      gap: 8px;
+    }
+
+    .producer-name {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .producer-meta {
+      color: var(--muted);
+      font-size: 11px;
+      margin-top: 6px;
+    }
+
+    .demo-btn-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .demo-btn {
+      border: 0;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 12px;
+      padding: 7px 8px;
+      font-weight: 500;
+      transition: transform .12s ease, opacity .12s ease;
+    }
+
+    .demo-btn:hover {
+      transform: translateY(-1px);
+      opacity: 0.92;
+    }
+
+    .row-color-1 {
+      background: #1a73e8;
+    }
+
+    .row-color-2 {
+      background: #2f343a;
+    }
+
+    .row-color-3 {
+      background: #6a7683;
+    }
+
+    .content {
+      padding: 18px;
+    }
+
+    .section-title {
+      font-size: 24px;
+      font-weight: 500;
+      margin-bottom: 14px;
+    }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .kpi-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      min-height: 92px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .kpi-card::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--brand);
+      opacity: .75;
+    }
+
+    .kpi-label {
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+
+    .kpi-value {
+      font-size: 28px;
+      font-weight: 400;
+      line-height: 1;
+      color: var(--dark-gray);
+    }
+
+    .chart-grid {
+      display: grid;
+      grid-template-columns: 2fr 1.2fr 1.2fr;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .card-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+    }
+
+    .card-title {
+      font-size: 13px;
+      color: #30343a;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .chart-wrap {
+      position: relative;
+      height: 250px;
+      width: 100%;
+    }
+
+    .chart-wrap canvas {
+      display: block;
+      width: 100% !important;
+      height: 100% !important;
+    }
+
+    .mini-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .mini-table th,
+    .mini-table td {
+      border-bottom: 1px solid #edf0f5;
+      padding: 8px 6px;
+      font-size: 12px;
+      text-align: left;
+    }
+
+    .mini-table th {
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .badge-soft {
+      display: inline-block;
+      border: 1px solid #d8e8f8;
+      color: var(--brand);
+      background: #f3f8fd;
+      border-radius: 999px;
+      padding: 2px 8px;
+      font-size: 11px;
+    }
+
+    @media (max-width: 1200px) {
+      .kpi-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .chart-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 920px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+      .sidebar {
+        border-right: 0;
+        border-bottom: 1px solid var(--border);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <i class="bi bi-bar-chart-fill"></i>
+    <div class="topbar-title">statystyki MasterData</div>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar">
+      <div class="side-section">
+        <div class="side-label">Szybki podgląd</div>
+        <div class="side-item">
+          <span>Produkty aktywne</span>
+          <span class="value">1 696</span>
+        </div>
+        <div class="side-item">
+          <span>Brak EAN</span>
+          <span class="value">362</span>
+        </div>
+        <div class="side-item">
+          <span>Brak SKU</span>
+          <span class="value">0</span>
+        </div>
+        <div class="side-item">
+          <span>Brak wagi</span>
+          <span class="value">117</span>
+        </div>
+      </div>
+
+      <div class="side-section">
+        <div class="side-label">Producenci (z bazy)</div>
+        <div id="producersList" class="producers-list">
+          <div class="producer-item">
+            <span class="producer-name">Ładowanie listy producentów...</span>
+            <span class="badge-soft">...</span>
+          </div>
+        </div>
+        <div id="producersMeta" class="producer-meta"></div>
+      </div>
+
+      <div class="side-section">
+        <div class="side-label">Przyciski demo</div>
+        <div class="demo-btn-grid">
+          <button type="button" class="demo-btn row-color-1">Raport A</button>
+          <button type="button" class="demo-btn row-color-1">Raport B</button>
+          <button type="button" class="demo-btn row-color-2">Raport C</button>
+          <button type="button" class="demo-btn row-color-2">Raport D</button>
+          <button type="button" class="demo-btn row-color-3">Raport E</button>
+          <button type="button" class="demo-btn row-color-3">Raport F</button>
+        </div>
+      </div>
+    </aside>
+
+    <section class="content">
+      <h1 class="section-title">Przegląd raportów</h1>
+
+      <div class="kpi-grid">
+        <article class="kpi-card">
+          <div class="kpi-label">Wszystkie produkty</div>
+          <div id="kpiTotalProducts" class="kpi-value">-</div>
+        </article>
+        <article class="kpi-card">
+          <div class="kpi-label">Dostawcy</div>
+          <div id="kpiSuppliers" class="kpi-value">-</div>
+        </article>
+        <article class="kpi-card">
+          <div class="kpi-label">Brak EAN</div>
+          <div id="kpiMissingEan" class="kpi-value">-</div>
+        </article>
+        <article class="kpi-card">
+          <div class="kpi-label">Brak wagi</div>
+          <div id="kpiMissingWeight" class="kpi-value">-</div>
+        </article>
+      </div>
+
+      <div class="chart-grid">
+        <article class="card-box">
+          <div class="card-title">Zmiany rekordów (7 dni)</div>
+          <div class="chart-wrap">
+            <canvas id="changesChart"></canvas>
+          </div>
+        </article>
+        <article class="card-box">
+          <div class="card-title">Braki danych wg typu</div>
+          <div class="chart-wrap">
+            <canvas id="missingChart"></canvas>
+          </div>
+        </article>
+        <article class="card-box">
+          <div class="card-title">Struktura danych (demo)</div>
+          <div class="chart-wrap">
+            <canvas id="shareChart"></canvas>
+          </div>
+        </article>
+      </div>
+
+      <article class="card-box">
+        <div class="card-title">Najnowsze aktywności (przykład)</div>
+        <table class="mini-table">
+          <thead>
+            <tr>
+              <th>Czas</th>
+              <th>Akcja</th>
+              <th>Zakres</th>
+              <th>Użytkownik</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>13:29</td>
+              <td>Edycja pola</td>
+              <td>Waga_brutto (12 rekordów)</td>
+              <td>arek</td>
+            </tr>
+            <tr>
+              <td>13:10</td>
+              <td>Usunięcie</td>
+              <td>34 rekordy bez SKU</td>
+              <td>arek</td>
+            </tr>
+            <tr>
+              <td>12:56</td>
+              <td>Import</td>
+              <td>Nowy plik źródłowy JSON</td>
+              <td>system</td>
+            </tr>
+            <tr>
+              <td>12:34</td>
+              <td>Zapis widoku</td>
+              <td>Profil kolumn QA</td>
+              <td>arek</td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    const commonOpts = {
+      responsive: true,
+      maintainAspectRatio: false,
+      resizeDelay: 120,
+      animation: { duration: 700, easing: "easeOutQuart" },
+      plugins: { legend: { display: false } },
+      scales: {
+        x: {
+          grid: { display: false },
+          ticks: { color: "#5f6368", font: { family: "Google Sans, Arial, Helvetica, sans-serif", size: 11 } },
+        },
+        y: {
+          grid: { color: "#edf1f5" },
+          ticks: { color: "#5f6368", font: { family: "Google Sans, Arial, Helvetica, sans-serif", size: 11 } },
+        },
+      },
+    };
+
+    new Chart(document.getElementById("changesChart"), {
+      type: "line",
+      data: {
+        labels: ["pon", "wt", "śr", "czw", "pt", "sob", "nd"],
+        datasets: [{
+          data: [16, 22, 18, 25, 31, 20, 28],
+          borderColor: "#1a73e8",
+          backgroundColor: "rgba(26,115,232,0.14)",
+          borderWidth: 1,
+          fill: true,
+          tension: 0.35,
+          pointRadius: 2.5,
+        }],
+      },
+      options: commonOpts,
+    });
+
+    new Chart(document.getElementById("missingChart"), {
+      type: "bar",
+      data: {
+        labels: ["EAN", "SKU", "Producent", "Waga"],
+        datasets: [{
+          data: [362, 0, 936, 117],
+          backgroundColor: ["#1a73e8", "#4d90f0", "#6a7683", "#2f343a"],
+          borderRadius: 8,
+        }],
+      },
+      options: {
+        ...commonOpts,
+        scales: {
+          x: { ...commonOpts.scales.x },
+          y: { ...commonOpts.scales.y, beginAtZero: true },
+        },
+      },
+    });
+
+    new Chart(document.getElementById("shareChart"), {
+      type: "doughnut",
+      data: {
+        labels: ["Kompletne", "Brak EAN", "Brak producenta", "Brak wagi"],
+        datasets: [{
+          data: [1185, 362, 936, 117],
+          backgroundColor: ["#1a73e8", "#4d90f0", "#2f343a", "#6a7683"],
+          borderWidth: 0,
+          hoverOffset: 4,
+        }],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        animation: { duration: 700, easing: "easeOutQuart" },
+        plugins: {
+          legend: {
+            position: "bottom",
+            labels: {
+              boxWidth: 10,
+              color: "#5f6368",
+              font: { family: "Google Sans, Arial, Helvetica, sans-serif", size: 11 },
+            },
+          },
+        },
+      },
+    });
+
+    function escapeHtml(value) {
+      return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#39;");
+    }
+
+    async function loadProducers() {
+      const listEl = document.getElementById("producersList");
+      const metaEl = document.getElementById("producersMeta");
+      if (!listEl || !metaEl) {
+        return;
+      }
+
+      try {
+        const res = await fetch("/api/masterdata/producers", { cache: "no-store" });
+        if (!res.ok) {
+          throw new Error("HTTP " + res.status);
+        }
+        const data = await res.json();
+        const producers = Array.isArray(data.producers) ? data.producers : [];
+
+        if (producers.length === 0) {
+          listEl.innerHTML = `
+            <div class="producer-item">
+              <span class="producer-name">Brak producentów w bazie</span>
+              <span class="badge-soft">0</span>
+            </div>
+          `;
+          metaEl.textContent = "Źródło: masterdata / PostgreSQL";
+          return;
+        }
+
+        const maxVisible = 14;
+        const visible = producers.slice(0, maxVisible);
+        listEl.innerHTML = visible
+          .map(
+            (name, idx) => `
+              <div class="producer-item" title="${escapeHtml(name)}">
+                <span class="producer-name">${escapeHtml(name)}</span>
+                <span class="badge-soft">${idx + 1}</span>
+              </div>
+            `
+          )
+          .join("");
+
+        metaEl.textContent =
+          producers.length > maxVisible
+            ? `Pokazano ${maxVisible} z ${producers.length}. Źródło: masterdata / PostgreSQL`
+            : `Łącznie producentów: ${producers.length}. Źródło: masterdata / PostgreSQL`;
+      } catch (err) {
+        listEl.innerHTML = `
+          <div class="producer-item">
+            <span class="producer-name">Nie udało się pobrać producentów</span>
+            <span class="badge-soft">!</span>
+          </div>
+        `;
+        metaEl.textContent = "Sprawdź połączenie z API masterdata.";
+      }
+    }
+
+    function fmtInt(value) {
+      const n = Number(value);
+      if (!Number.isFinite(n)) {
+        return "-";
+      }
+      return n.toLocaleString("pl-PL");
+    }
+
+    async function loadKpis() {
+      const totalEl = document.getElementById("kpiTotalProducts");
+      const suppliersEl = document.getElementById("kpiSuppliers");
+      const missingEanEl = document.getElementById("kpiMissingEan");
+      const missingWeightEl = document.getElementById("kpiMissingWeight");
+
+      if (!totalEl || !suppliersEl || !missingEanEl || !missingWeightEl) {
+        return;
+      }
+
+      try {
+        const [allRes, producersRes, missingEanRes, missingWeightRes] = await Promise.all([
+          fetch("/api/masterdata/products?page=1&page_size=1", { cache: "no-store" }),
+          fetch("/api/masterdata/producers", { cache: "no-store" }),
+          fetch("/api/masterdata/products?page=1&page_size=1&missing=missing_ean", { cache: "no-store" }),
+          fetch("/api/masterdata/products?page=1&page_size=1&missing=missing_weight", { cache: "no-store" }),
+        ]);
+
+        if (!allRes.ok || !producersRes.ok || !missingEanRes.ok || !missingWeightRes.ok) {
+          throw new Error("Błąd pobierania KPI");
+        }
+
+        const allData = await allRes.json();
+        const producersData = await producersRes.json();
+        const missingEanData = await missingEanRes.json();
+        const missingWeightData = await missingWeightRes.json();
+
+        totalEl.textContent = fmtInt(allData.total_all);
+        suppliersEl.textContent = fmtInt((producersData.producers || []).length);
+        missingEanEl.textContent = fmtInt(missingEanData.total_filtered);
+        missingWeightEl.textContent = fmtInt(missingWeightData.total_filtered);
+      } catch (_) {
+        totalEl.textContent = "-";
+        suppliersEl.textContent = "-";
+        missingEanEl.textContent = "-";
+        missingWeightEl.textContent = "-";
+      }
+    }
+
+    loadProducers();
+    loadKpis();
+  </script>
+</body>
+</html>
