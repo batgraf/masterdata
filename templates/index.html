@@ -736,10 +736,13 @@
       #block3Stats .fw-bold {
         font-weight: 400 !important;
       }
-      [data-bs-theme="dark"] .blok3-donut circle:first-of-type {
-        stroke: #343a40;
-      }
+      .blok3-bar { display: flex; flex-direction: column; align-items: center; }
+      .blok3-bar-seg { display: block; width: 100%; min-height: 1px; }
+      .blok3-bar-uzup { background-color: #0d6efd; }
+      .blok3-bar-niekompl { background-color: #dc3545; }
       /* Ostatni blok – tabela parametrów jest/brak + wykres słupkowy */
+      #block4Stats, #block4Stats * { font-size: 12px !important; }
+      #block4Stats .stat-number { font-weight: 400 !important; }
       .block4-table-wrap .block4-params-table { min-width: max-content; }
       .block4-params-table th, .block4-params-table td { white-space: nowrap; vertical-align: middle; }
       .block4-bar { display: flex; flex-direction: column; align-items: center; }
@@ -988,9 +991,9 @@
           </div>
         </div>
       </div>
-      <!-- blok2 (4/12) + blok3 (3/12) + blok4 (5/12) -->
+      <!-- blok1 (3/12) + blok2 (2/12) + blok3 (7/12) -->
       <div class="row g-3 mb-3 row-blocks-equal">
-        <div class="col-12 col-lg-4">
+        <div class="col-12 col-lg-3">
           <div class="p-3 bg-white rounded-3 shadow-sm h-100">
             <div class="row g-2">
               <div class="col-12">
@@ -1050,7 +1053,7 @@
           </div>
         </div>
 
-        <div class="col-12 col-lg-3">
+        <div class="col-12 col-lg-2">
           <div id="block3Stats" class="p-3 bg-white rounded-3 shadow-sm h-100 d-flex flex-column justify-content-start">
             <div class="row g-2 h-100">
               <div class="col-6">
@@ -1072,41 +1075,36 @@
                 </table>
               </div>
               <div class="col-6 d-flex justify-content-center align-items-center">
-                <div class="blok3-donut-wrap flex-shrink-0" style="width: 84px; height: 84px;">
-                {% set total = total_count or 1 %}
-                {% set u = count_uzupelnione or 0 %}
-                {% set d = count_do_uzupelnienia or 0 %}
-                {% set circ = 251 %}
-                {% set gap = 5 %}
-                {% set len_blue = (u / total) * (circ - gap) if total and u >= 0 else 0 %}
-                {% set len_red = (d / total) * (circ - gap) if total and d >= 0 else 0 %}
-                <svg viewBox="0 0 100 100" class="blok3-donut" aria-hidden="true">
-                  <circle cx="50" cy="50" r="40" fill="none" stroke="#e9ecef" stroke-width="12"/>
-                  <circle cx="50" cy="50" r="40" fill="none" stroke="#0d6efd" stroke-width="12" stroke-linecap="butt" stroke-dasharray="{{ len_blue }} {{ circ }}" stroke-dashoffset="0"/>
-                  <circle cx="50" cy="50" r="40" fill="none" stroke="#dc3545" stroke-width="12" stroke-linecap="butt" stroke-dasharray="{{ gap }} {{ len_red }} {{ circ }}" stroke-dashoffset="{{ -len_blue }}"/>
-                </svg>
+                {% set total_b = total_count or 1 %}
+                {% set u_b = count_uzupelnione or 0 %}
+                {% set d_b = count_do_uzupelnienia or 0 %}
+                {% set h_u = (u_b / total_b * 50) if total_b and u_b >= 0 else 0 %}
+                {% set h_d = (d_b / total_b * 50) if total_b and d_b >= 0 else 0 %}
+                <div class="blok3-bar" style="width: 16px; height: 50px;" title="uzupełnione {{ u_b }}, niekompletne {{ d_b }}">
+                  <span class="blok3-bar-seg blok3-bar-uzup" style="height: {{ h_u }}px;"></span>
+                  <span class="blok3-bar-seg blok3-bar-niekompl" style="height: {{ h_d }}px;"></span>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-12 col-lg-5">
+        <div class="col-12 col-lg-7" id="block4Stats">
           <div class="p-2 bg-white rounded-3 shadow-sm h-100 d-flex flex-column min-h-0">
             <div class="block4-table-wrap overflow-auto flex-grow-1" style="max-height: 200px;">
-              <table class="table table-sm table-borderless mb-0 block4-params-table" style="font-size: 10px;">
+              <table class="table table-sm table-borderless mb-0 block4-params-table">
                 <thead>
                   <tr>
+                    <th class="py-1 px-1 block4-row-th"></th>
                     {% for p in block4_params %}
                     <th class="text-start text-muted text-uppercase py-1 px-1" style="font-weight: 600;">{{ p.label }}</th>
-                    <th class="py-1 px-1"></th>
                     <th class="py-1 px-1 block4-bar-th"></th>
                     {% endfor %}
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
+                    <td class="text-muted py-0 px-1 block4-row-label">jest</td>
                     {% for p in block4_params %}
-                    <td class="text-muted py-0 px-1">jest</td>
                     <td class="py-0 px-1 text-end stat-number">{{ p.jest }}</td>
                     <td rowspan="2" class="py-0 px-1 align-bottom block4-bar-cell">
                       {% set total = total_count or 1 %}
@@ -1120,8 +1118,8 @@
                     {% endfor %}
                   </tr>
                   <tr>
+                    <td class="text-muted py-0 px-1 block4-row-label">brak</td>
                     {% for p in block4_params %}
-                    <td class="text-muted py-0 px-1">brak</td>
                     <td class="py-0 px-1 text-end stat-number">{{ p.brak }}</td>
                     {% endfor %}
                   </tr>
