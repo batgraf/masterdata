@@ -71,3 +71,4 @@
 68. 2026-02-28 19:13 - paginacja: zamiana znaków « ‹ › » na ikony Bootstrap chevron (single/double left/right)
 69. 2026-02-28 19:25 - przefiltrowane | wybranych | zmodyfikowane przeniesione pod przyciski w bloku 2 (jedna linia, małe litery, wartości oddzielone |)
 70. 2026-02-28 19:30 - blok 2 statystyki: wielkie litery, większe odstępy, cyfry pogrubione, separator bi-record-fill #f86c6f, wyśrodkowane
+71. 2026-02-28 19:35 - blok 2: etykiety 11px i odstęp od cyfr; nagłówki ean/sku/waga/szer/wys/dł/producent/cena zakupu netto/cena sprzedaży brutto w kolorze #68ef10

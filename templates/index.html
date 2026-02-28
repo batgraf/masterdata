@@ -749,6 +749,22 @@
         font-size: 0.4rem;
         vertical-align: middle;
       }
+      .block2-stat-label {
+        font-size: 11px;
+        margin-left: 0.45rem;
+      }
+      /* Tylko wybrane nagłówki kolumn – kolor #68ef10 */
+      table.products-table thead th[data-col="EAN"],
+      table.products-table thead th[data-col="SKU"],
+      table.products-table thead th[data-col="Waga_brutto"],
+      table.products-table thead th[data-col="Szerokosc"],
+      table.products-table thead th[data-col="Wysokosc"],
+      table.products-table thead th[data-col="Dlugosc"],
+      table.products-table thead th[data-col="Nazwa_producenta"],
+      table.products-table thead th[data-col="Cena_zakupu_netto"],
+      table.products-table thead th[data-col="Cena_sprzedazy_brutto"] {
+        color: #68ef10 !important;
+      }
       /* ----- Motyw ciemny (wzór: instrukcje.mebloszyk.pl) ----- */
       [data-bs-theme="dark"] {
         color-scheme: dark;
@@ -793,6 +809,17 @@
       }
       [data-bs-theme="dark"] table.products-table thead th[data-col] {
         color: #c6cadc !important;
+      }
+      [data-bs-theme="dark"] table.products-table thead th[data-col="EAN"],
+      [data-bs-theme="dark"] table.products-table thead th[data-col="SKU"],
+      [data-bs-theme="dark"] table.products-table thead th[data-col="Waga_brutto"],
+      [data-bs-theme="dark"] table.products-table thead th[data-col="Szerokosc"],
+      [data-bs-theme="dark"] table.products-table thead th[data-col="Wysokosc"],
+      [data-bs-theme="dark"] table.products-table thead th[data-col="Dlugosc"],
+      [data-bs-theme="dark"] table.products-table thead th[data-col="Nazwa_producenta"],
+      [data-bs-theme="dark"] table.products-table thead th[data-col="Cena_zakupu_netto"],
+      [data-bs-theme="dark"] table.products-table thead th[data-col="Cena_sprzedazy_brutto"] {
+        color: #68ef10 !important;
       }
       [data-bs-theme="dark"] .products-table tbody td {
         color: #c6cadc;
@@ -1026,11 +1053,11 @@
                 </div>
               </div>
               <div class="col-12 mt-2 d-flex justify-content-center flex-wrap align-items-center" style="gap: 0.75rem 1rem;">
-                <span class="small text-muted text-uppercase" style="font-size: 0.85rem;"><strong id="filteredCountValue" class="text-body">0</strong> przefiltrowane</span>
+                <span class="small text-muted text-uppercase"><strong id="filteredCountValue" class="text-body">0</strong><span class="block2-stat-label">przefiltrowane</span></span>
                 <i class="bi bi-record-fill block2-stat-sep" aria-hidden="true"></i>
-                <span class="small text-muted text-uppercase" style="font-size: 0.85rem;"><strong id="selectedCountValue" class="text-body">{{ selected_count }}</strong> wybranych</span>
+                <span class="small text-muted text-uppercase"><strong id="selectedCountValue" class="text-body">{{ selected_count }}</strong><span class="block2-stat-label">wybranych</span></span>
                 <i class="bi bi-record-fill block2-stat-sep" aria-hidden="true"></i>
-                <span class="small text-muted text-uppercase" style="font-size: 0.85rem;"><strong id="modifiedCountValue" class="text-body">{{ modified_count }}</strong> zmodyfikowane</span>
+                <span class="small text-muted text-uppercase"><strong id="modifiedCountValue" class="text-body">{{ modified_count }}</strong><span class="block2-stat-label">zmodyfikowane</span></span>
               </div>
             </div>
           </div>
