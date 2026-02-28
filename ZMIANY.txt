@@ -57,3 +57,4 @@
 54. 2026-02-28 16:45 - tło komórek ciemny motyw #212529; menu Tryb position:fixed + z-index – nie ucieka pod inne wiersze
 55. 2026-02-28 16:55 - dropdown Tryb: przenoszenie do body przy otwarciu (fixed względem viewport), powrót do wrap przy zamknięciu – naprawa przesunięcia w dół i w prawo
 56. 2026-02-28 17:05 - dropdown Tryb w body: style osobno dla .tryb-dropdown-fixed (tło, opcje) – po przeniesieniu nie działały selektory z td
+57. 2026-02-28 17:15 - obsługa kliknięcia w opcję Tryb gdy dropdown w body: delegacja na document (applyTrybOption), zmiana statusu działa w jasnym i ciemnym

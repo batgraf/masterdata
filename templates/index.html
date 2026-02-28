@@ -3037,6 +3037,73 @@
             d.style.left = ""; d.style.top = ""; d.style.width = ""; d.style.minWidth = "";
             if (d._trybParentWrap) { d._trybParentWrap.appendChild(d); d._trybParentWrap = null; }
           }
+          function applyTrybOption(option, wrap) {
+            const td = wrap.closest("td[data-field]");
+            const tr = wrap.closest("tr");
+            const pillBtn = wrap.querySelector(".tryb-pill");
+            if (!td || !tr) return;
+            const rawValue = (option.getAttribute("data-tryb-value") || "").trim();
+            const value = normalizeTrybValue(rawValue);
+            const productId = tr.getAttribute("data-id");
+            if (!productId) return;
+            document.querySelectorAll(".tryb-dropdown").forEach(closeTrybDropdown);
+            const prevRaw = td.getAttribute("data-raw") || "";
+            if (pillBtn) {
+              pillBtn.textContent = value || "nowe";
+              pillBtn.style.backgroundColor = value ? (TRYB_COLORS[value] || "#e9ecef") : TRYB_COLORS["nowe"];
+            }
+            td.setAttribute("data-raw", value);
+            tr.style.backgroundColor = TRYB_COLORS[value] || TRYB_COLORS["nowe"];
+            tr.setAttribute("data-tryb", value || "nowe");
+            const userId = getAuthorName();
+            fetch(`/api/products/${productId}`, {
+              method: "PATCH",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ field: "Tryb", value, user_id: userId }),
+            })
+              .then((res) => {
+                if (!res.ok) throw new Error("HTTP " + res.status);
+                return res.json();
+              })
+              .then((data) => {
+                const rawValue = data.value ?? "";
+                const newVal = normalizeTrybValue(rawValue);
+                td.setAttribute("data-raw", newVal);
+                if (pillBtn) {
+                  pillBtn.textContent = newVal || "nowe";
+                  pillBtn.style.backgroundColor = newVal ? (TRYB_COLORS[newVal] || "#e9ecef") : TRYB_COLORS["nowe"];
+                }
+                tr.style.backgroundColor = TRYB_COLORS[newVal] || TRYB_COLORS["nowe"];
+                tr.setAttribute("data-tryb", newVal || "nowe");
+                if (data.modified_count !== undefined) {
+                  const modifiedCountEl = document.getElementById("modifiedCountValue");
+                  if (modifiedCountEl) modifiedCountEl.textContent = String(data.modified_count);
+                }
+                state.modified_ids.add(productId);
+                tr.classList.add("row-modified");
+              })
+              .catch((err) => {
+                console.error("Zapis trybu nieudany", err);
+                td.setAttribute("data-raw", prevRaw);
+                if (pillBtn) {
+                  pillBtn.textContent = prevRaw || "nowe";
+                  pillBtn.style.backgroundColor = prevRaw ? (TRYB_COLORS[prevRaw] || "#e9ecef") : TRYB_COLORS["nowe"];
+                }
+                tr.style.backgroundColor = TRYB_COLORS[prevRaw] || TRYB_COLORS["nowe"];
+                tr.setAttribute("data-tryb", prevRaw || "nowe");
+                showMessage("Błąd", "Nie udało się zapisać trybu.", "error");
+              });
+          }
+          document.addEventListener("click", function(e) {
+            const option = e.target.closest(".tryb-option");
+            if (!option) return;
+            const dropdown = option.closest(".tryb-dropdown");
+            const wrap = dropdown && dropdown._trybParentWrap;
+            if (!wrap) return;
+            e.preventDefault();
+            e.stopPropagation();
+            applyTrybOption(option, wrap);
+          }, true);
           tableBody.addEventListener("click", (event) => {
             const wrap = event.target.closest(".tryb-pill-wrap");
             if (!wrap) return;
@@ -3047,58 +3114,7 @@
             const td = wrap.closest("td[data-field]");
             const tr = wrap.closest("tr");
             if (option) {
-              const rawValue = (option.getAttribute("data-tryb-value") || "").trim();
-              const value = normalizeTrybValue(rawValue); // Normalizuj wartość przed użyciem
-              const productId = tr ? tr.getAttribute("data-id") : "";
-              if (!productId || !td) return;
-              document.querySelectorAll(".tryb-dropdown").forEach(closeTrybDropdown);
-              const pillBtn = wrap.querySelector(".tryb-pill");
-              const prevRaw = td.getAttribute("data-raw") || "";
-              if (pillBtn) {
-                pillBtn.textContent = value || "nowe";
-                pillBtn.style.backgroundColor = value ? (TRYB_COLORS[value] || "#e9ecef") : TRYB_COLORS["nowe"];
-              }
-              td.setAttribute("data-raw", value);
-              tr.style.backgroundColor = TRYB_COLORS[value] || TRYB_COLORS["nowe"];
-              tr.setAttribute("data-tryb", value || "nowe");
-              const userId = getAuthorName();
-              fetch(`/api/products/${productId}`, {
-                method: "PATCH",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ field: "Tryb", value, user_id: userId }),
-              })
-                .then((res) => {
-                  if (!res.ok) throw new Error("HTTP " + res.status);
-                  return res.json();
-                })
-                .then((data) => {
-                  const rawValue = data.value ?? "";
-                  const newVal = normalizeTrybValue(rawValue);
-                  td.setAttribute("data-raw", newVal);
-                  if (pillBtn) {
-                    pillBtn.textContent = newVal || "nowe";
-                    pillBtn.style.backgroundColor = newVal ? (TRYB_COLORS[newVal] || "#e9ecef") : TRYB_COLORS["nowe"];
-                  }
-                  tr.style.backgroundColor = TRYB_COLORS[newVal] || TRYB_COLORS["nowe"];
-                  tr.setAttribute("data-tryb", newVal || "nowe");
-                  if (data.modified_count !== undefined) {
-                    const modifiedCountEl = document.getElementById("modifiedCountValue");
-                    if (modifiedCountEl) modifiedCountEl.textContent = String(data.modified_count);
-                  }
-                  state.modified_ids.add(productId);
-                  tr.classList.add("row-modified");
-                })
-                .catch((err) => {
-                  console.error("Zapis trybu nieudany", err);
-                  td.setAttribute("data-raw", prevRaw);
-                  if (pillBtn) {
-                    pillBtn.textContent = prevRaw || "nowe";
-                    pillBtn.style.backgroundColor = prevRaw ? (TRYB_COLORS[prevRaw] || "#e9ecef") : TRYB_COLORS["nowe"];
-                  }
-                  tr.style.backgroundColor = TRYB_COLORS[prevRaw] || TRYB_COLORS["nowe"];
-                  tr.setAttribute("data-tryb", prevRaw || "nowe");
-                  showMessage("Błąd", "Nie udało się zapisać trybu.", "error");
-                });
+              applyTrybOption(option, wrap);
               return;
             }
             if (pill) {
