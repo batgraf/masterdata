@@ -76,6 +76,17 @@
         cursor: default;
         opacity: 0.85;
       }
+      #leftBlock {
+        min-height: 2rem;
+      }
+      #leftBlock .left-block-undo-btn {
+        width: 100%;
+        flex: 1;
+        min-height: 0;
+        font-size: 11px;
+        text-transform: uppercase;
+        padding: 0.25rem 0.5rem;
+      }
       .page-header-controls {
         display: flex;
         align-items: center;
@@ -121,7 +132,6 @@
         justify-content: center;
       }
       /* Przyciski z ikoną w Blok1 – padding jak „zaznacz” (1rem boki), odstęp ikona–tekst */
-      #undoBtn,
       #saveViewBtn,
       #resetViewBtn {
         padding-left: 1rem;
@@ -704,25 +714,16 @@
           </div>
         </div>
       </div>
-      <!-- Blok1 (2/12) + blok przycisków (5/12) + blok liczników (5/12) -->
+      <!-- Blok1 (1/12) z cofnij + blok przycisków (6/12) + blok liczników (5/12) -->
       <div class="row g-3 mb-3">
-        <div class="col-12 col-lg-2">
-          <div class="p-3 bg-white rounded-3 shadow-sm h-100" id="leftBlock" aria-label="Blok 1">
-            <!-- blok1 2/12 -->
+        <div class="col-12 col-lg-1">
+          <div class="p-2 bg-white rounded-3 shadow-sm h-100 d-flex" id="leftBlock" aria-label="Blok 1">
+            <button type="button" id="undoBtn" class="btn btn-sm btn-success left-block-undo-btn" title="Cofnij ostatnią zmianę (Ctrl+Z)">cofnij</button>
           </div>
         </div>
-        <div class="col-12 col-lg-5">
+        <div class="col-12 col-lg-6">
           <div class="p-3 bg-white rounded-3 shadow-sm h-100">
             <div class="row g-2">
-              <div class="col-12">
-                <div class="d-flex flex-wrap align-items-center justify-content-start gap-2 view-controls">
-                  <button type="button" id="undoBtn" class="btn btn-sm btn-success" title="Cofnij ostatnią zmianę (Ctrl+Z)">
-                    cofnij
-                  </button>
-                  <div class="d-flex align-items-center gap-1 view-controls-main flex-wrap">
-                  </div>
-                </div>
-              </div>
               <div class="col-12 col-lg-6">
                 <div class="d-flex align-items-center gap-2">
                   <input
