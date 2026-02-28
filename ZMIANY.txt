@@ -81,3 +81,4 @@
 78. 2026-02-28 20:10 - blok 3: „Produktów”, uzupełnione / do uzupełnienia, rekordy brak wszystkich, wykres donut (niebieski/czerwony, przerwa)
 79. 2026-02-28 20:32 - blok 3: układ 12/12 wszystkie + 6/12 uzupełnione/niekompletne + 6/12 wykres donut; usunięty nagłówek „Produktów”
 80. 2026-02-28 20:36 - blok 3: „wszystkie + licznik” w jednej linii; cały blok 3 ustawiony na 11px
+81. 2026-02-28 20:41 - blok 3 zwiększony do 3/12, blok 4 zmniejszony do 4/12; blok 3: lewa kolumna 6/12 tabela 3x2 (wszystkie/uzupełnione/niekompletne), prawa 6/12 donut
