@@ -3107,7 +3107,7 @@
                 showMessage("Błąd", "Nie udało się zapisać trybu.", "error");
               });
           }
-          document.addEventListener("click", function(e) {
+          function handleTrybOptionClick(e) {
             const option = e.target.closest(".tryb-option");
             if (!option) return;
             const dropdown = option.closest(".tryb-dropdown");
@@ -3121,7 +3121,8 @@
             e.preventDefault();
             e.stopPropagation();
             applyTrybOption(option, wrap);
-          }, true);
+          }
+          document.addEventListener("mousedown", handleTrybOptionClick, true);
           tableBody.addEventListener("click", (event) => {
             const wrap = event.target.closest(".tryb-pill-wrap");
             if (!wrap) return;

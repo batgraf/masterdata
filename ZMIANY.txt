@@ -58,3 +58,5 @@
 55. 2026-02-28 16:55 - dropdown Tryb: przenoszenie do body przy otwarciu (fixed względem viewport), powrót do wrap przy zamknięciu – naprawa przesunięcia w dół i w prawo
 56. 2026-02-28 17:05 - dropdown Tryb w body: style osobno dla .tryb-dropdown-fixed (tło, opcje) – po przeniesieniu nie działały selektory z td
 57. 2026-02-28 17:15 - obsługa kliknięcia w opcję Tryb gdy dropdown w body: delegacja na document (applyTrybOption), zmiana statusu działa w jasnym i ciemnym
+58. 2026-02-28 17:25 - zmiana statusu Tryb: zapas _trybProductId, odświeżanie wrap z tabeli gdy nie w DOM, nie zamykać przy kliku w opcję
+59. 2026-02-28 17:35 - zmiana statusu Tryb: obsługa opcji na mousedown (capture), wspólna funkcja handleTrybOptionClick
