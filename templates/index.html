@@ -46,13 +46,26 @@
         flex-wrap: wrap;
       }
       .page-header-menu-link,
-      .page-header-menu-item {
+      .page-header-menu-item,
+      .page-header-menu-btn {
         font-size: 0.9rem;
         text-transform: uppercase;
         color: #fff;
         text-decoration: none;
       }
-      .page-header-menu-link:hover {
+      .page-header-menu-btn {
+        border: none;
+        background: none !important;
+        color: #fff !important;
+        cursor: pointer;
+        padding: 0;
+        font: inherit;
+      }
+      .page-header-menu-btn:hover {
+        color: #FF5A00 !important;
+      }
+      .page-header-menu-link:hover,
+      .page-header-menu-btn:hover {
         color: #FF5A00;
       }
       .page-header-menu-item {
@@ -693,6 +706,8 @@
               <a href="https://masterdata.mebloszyk.pl" class="page-header-menu-link">Strona główna</a>
               <span class="page-header-menu-item">Opcje wyświetlania</span>
               <span class="page-header-menu-item">Statystyki</span>
+              <button type="button" id="restoreFromBackupBtn" class="page-header-menu-btn" title="Załaduj z najnowszej kopii (awaryjnie)">Kopia</button>
+              <button type="button" id="exportSelectedJsonBtn" class="page-header-menu-btn" title="Pobierz zaznaczone produkty jako JSON">Json</button>
               <a href="#" id="changeLogBtn" class="page-header-menu-link" title="Dziennik zmian">Dziennik</a>
             </nav>
             <div class="d-flex align-items-center gap-2 page-header-controls">
@@ -722,17 +737,6 @@
                   <div class="d-flex align-items-center gap-1 view-controls-main flex-wrap">
                     <button type="button" id="viewOptionsBtn" class="btn btn-sm" title="Opcje">
                       opcje
-                    </button>
-                    <button type="button" id="restoreFromBackupBtn" class="btn btn-sm btn-outline-secondary" title="Załaduj z najnowszej kopii (awaryjnie)">
-                      kopia
-                    </button>
-                    <button
-                      type="button"
-                      id="exportSelectedJsonBtn"
-                      class="btn btn-sm btn-outline-primary"
-                      title="Pobierz zaznaczone produkty jako JSON (format jak AsortymentyMasterData)"
-                    >
-                      json
                     </button>
                   </div>
                 </div>

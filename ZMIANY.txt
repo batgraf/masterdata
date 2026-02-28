@@ -31,3 +31,4 @@
 28. 2026-02-26 14:35 - imię, wybierz widok, zapisz, reset przeniesione na pasek nagłówka
 29. 2026-02-26 14:40 - pole „imię” (arek) na pasku: bez ramki i tła, biała czcionka
 30. 2026-02-26 14:45 - zamiana miejsc: menu (Strona główna, Opcje, Statystyki, Dziennik) przed arek/widok/zapisz/reset
+31. 2026-02-26 14:50 - Kopia i Json przeniesione do menu w pasku (między Statystyki a Dziennik)
