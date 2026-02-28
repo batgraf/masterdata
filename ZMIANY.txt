@@ -55,3 +55,4 @@
 52. 2026-02-28 16:20 - motyw ciemny: nagłówki kolumn jeden kolor #c6cadc, tło komórek #252830, tekst komórek #c6cadc, statusy ciemniejsze
 53. 2026-02-28 16:35 - motyw ciemny: wymuszenie ciemnego tła thead/th, pola w nagłówkach i page-wrap, pill Tryb (nowe/w trakcie/gotowe) ciemne
 54. 2026-02-28 16:45 - tło komórek ciemny motyw #212529; menu Tryb position:fixed + z-index – nie ucieka pod inne wiersze
+55. 2026-02-28 16:55 - dropdown Tryb: przenoszenie do body przy otwarciu (fixed względem viewport), powrót do wrap przy zamknięciu – naprawa przesunięcia w dół i w prawo

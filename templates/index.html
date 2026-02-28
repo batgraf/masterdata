@@ -2998,6 +2998,12 @@
             });
           });
 
+          function closeTrybDropdown(d) {
+            d.classList.add("d-none");
+            d.classList.remove("tryb-dropdown-fixed");
+            d.style.left = ""; d.style.top = ""; d.style.width = ""; d.style.minWidth = "";
+            if (d._trybParentWrap) { d._trybParentWrap.appendChild(d); d._trybParentWrap = null; }
+          }
           tableBody.addEventListener("click", (event) => {
             const wrap = event.target.closest(".tryb-pill-wrap");
             if (!wrap) return;
@@ -3012,11 +3018,7 @@
               const value = normalizeTrybValue(rawValue); // Normalizuj wartość przed użyciem
               const productId = tr ? tr.getAttribute("data-id") : "";
               if (!productId || !td) return;
-              document.querySelectorAll(".tryb-dropdown").forEach((d) => {
-                d.classList.add("d-none");
-                d.classList.remove("tryb-dropdown-fixed");
-                d.style.position = ""; d.style.left = ""; d.style.top = ""; d.style.width = "";
-              });
+              document.querySelectorAll(".tryb-dropdown").forEach(closeTrybDropdown);
               const pillBtn = wrap.querySelector(".tryb-pill");
               const prevRaw = td.getAttribute("data-raw") || "";
               if (pillBtn) {
@@ -3069,34 +3071,26 @@
             if (pill) {
               const dropdown = wrap.querySelector(".tryb-dropdown");
               if (!dropdown) return;
-              document.querySelectorAll(".tryb-dropdown").forEach((d) => {
-                if (d !== dropdown) {
-                  d.classList.add("d-none");
-                  d.classList.remove("tryb-dropdown-fixed");
-                  d.style.position = ""; d.style.left = ""; d.style.top = ""; d.style.width = "";
-                }
-              });
+              document.querySelectorAll(".tryb-dropdown").forEach((d) => { if (d !== dropdown) closeTrybDropdown(d); });
               dropdown.classList.toggle("d-none");
               if (!dropdown.classList.contains("d-none")) {
                 if (td) pill.setAttribute("data-prev-raw", td.getAttribute("data-raw") || "");
                 var rect = pill.getBoundingClientRect();
+                dropdown._trybParentWrap = wrap;
+                document.body.appendChild(dropdown);
                 dropdown.classList.add("tryb-dropdown-fixed");
                 dropdown.style.left = rect.left + "px";
                 dropdown.style.top = (rect.bottom + 2) + "px";
                 dropdown.style.width = rect.width + "px";
+                dropdown.style.minWidth = rect.width + "px";
               } else {
-                dropdown.classList.remove("tryb-dropdown-fixed");
-                dropdown.style.position = ""; dropdown.style.left = ""; dropdown.style.top = ""; dropdown.style.width = "";
+                closeTrybDropdown(dropdown);
               }
             }
           }, true);
           document.addEventListener("click", (event) => {
             if (event.target.closest(".tryb-pill-wrap")) return;
-            document.querySelectorAll(".tryb-dropdown").forEach((d) => {
-              d.classList.add("d-none");
-              d.classList.remove("tryb-dropdown-fixed");
-              d.style.position = ""; d.style.left = ""; d.style.top = ""; d.style.width = "";
-            });
+            document.querySelectorAll(".tryb-dropdown").forEach(closeTrybDropdown);
           });
         }
 
