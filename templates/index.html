@@ -1011,9 +1011,9 @@
           </div>
         </div>
       </div>
-      <!-- blok1 (4/12) + blok2 (1/12) + blok3 (7/12) -->
+      <!-- blok1 (3/12) + blok2 (2/12) + blok3 (7/12) -->
       <div class="row g-3 mb-3 row-blocks-equal">
-        <div class="col-12 col-lg-4">
+        <div class="col-12 col-lg-3">
           <div class="p-3 bg-white rounded-3 shadow-sm h-100">
             <div class="row g-2">
               <div class="col-12">
@@ -1066,14 +1066,12 @@
                 <span class="small text-muted text-uppercase"><strong id="filteredCountValue" class="text-body">0</strong><span class="block2-stat-label">przefiltrowane</span></span>
                 <i class="bi bi-record-fill block2-stat-sep" aria-hidden="true"></i>
                 <span class="small text-muted text-uppercase"><strong id="selectedCountValue" class="text-body">{{ selected_count }}</strong><span class="block2-stat-label">wybranych</span></span>
-                <i class="bi bi-record-fill block2-stat-sep" aria-hidden="true"></i>
-                <span class="small text-muted text-uppercase"><strong id="modifiedCountValue" class="text-body">{{ modified_count }}</strong><span class="block2-stat-label">zmodyfikowane</span></span>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="col-12 col-lg-1">
+        <div class="col-12 col-lg-2">
           <div id="block3Stats" class="p-3 bg-white rounded-3 shadow-sm h-100 d-flex flex-column justify-content-start">
             <table class="table table-sm mb-0 align-middle">
               <tbody>
@@ -1157,9 +1155,10 @@
 
       </div>
 
-      <!-- Paginacja + cofnij zmiany (całkiem do lewej) -->
+      <!-- Paginacja + cofnij zmiany i zmodyfikowane (całkiem do lewej) -->
       <div class="d-flex align-items-center gap-2 mb-2 flex-wrap">
         <button type="button" id="undoBtn" class="btn btn-sm btn-success me-2" title="Cofnij ostatnią zmianę (Ctrl+Z)">cofnij zmiany</button>
+        <span class="small text-muted text-uppercase me-2"><strong id="modifiedCountValue" class="text-body">{{ modified_count }}</strong><span class="block2-stat-label">zmodyfikowane</span></span>
         <div class="d-flex justify-content-center align-items-center gap-2 flex-wrap flex-grow-1">
         <button type="button" id="firstPageBtn" class="btn btn-sm pagination-btn" style="font-size: 16px; line-height: 1; padding: 0.3rem 0.8rem;" title="Pierwsza strona">
           <i class="bi bi-chevron-double-left"></i>
