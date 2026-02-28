@@ -29,3 +29,4 @@
 26. 2026-02-26 14:15 - nagłówek: „MasterData - baza produktów”, font-weight 400, logo #FF5A00
 27. 2026-02-26 14:25 - menu w szarym pasku: Strona główna, Opcje wyświetlania, Statystyki, Dziennik; duże litery
 28. 2026-02-26 14:35 - imię, wybierz widok, zapisz, reset przeniesione na pasek nagłówka
+29. 2026-02-26 14:40 - pole „imię” (arek) na pasku: bez ramki i tła, biała czcionka
