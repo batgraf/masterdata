@@ -87,3 +87,4 @@
 84. 2026-02-28 20:56 - licznik „uzupełnione” wg pełnych reguł kompletności: nazwa, producent, grupa, EAN, SKU, cena zakupu, cena sprzedaży, waga, komplet wymiarów, rodzaj opakowania
 85. 2026-02-28 20:59 - szerokości bloków: blok 3 zmniejszony z 3/12 do 2/12, blok 4 zwiększony z 4/12 do 5/12
 86. 2026-02-28 21:02 - blok 3: odstęp między tabelką a wykresem kołowym (margin-left kolumny donut)
+87. 2026-02-28 21:05 - blok 3 z powrotem 3/12, blok 4 z powrotem 4/12 (wykres nie uciekał pod spód)
