@@ -765,6 +765,33 @@
       table.products-table thead th[data-col="Cena_sprzedazy_brutto"] {
         color: #68ef10 !important;
       }
+      /* ----- Płynna zmiana motywu (jednolity czas, bez przeskoków) ----- */
+      body,
+      .page-header-bar,
+      .page-wrap .bg-white,
+      .page-wrap .rounded-3.shadow-sm,
+      .page-wrap .stat-label,
+      .table-light,
+      .products-table thead,
+      .products-table thead th,
+      .products-table tbody td,
+      .products-table tbody tr td,
+      .products-table thead .form-control,
+      .products-table thead .form-select,
+      .page-wrap .form-control,
+      .page-wrap .form-select,
+      .page-wrap input[type="text"],
+      .page-wrap select,
+      .products-table td[data-col="Tryb"] .tryb-option,
+      .products-table td[data-col="Tryb"] .tryb-dropdown,
+      .tryb-pill,
+      .view-author-display,
+      #pageInfo,
+      .page-wrap .small.text-muted,
+      .middle-filters .filter-count,
+      .block2-stat-sep {
+        transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out, border-color 0.4s ease-in-out;
+      }
       /* ----- Motyw ciemny (wzór: instrukcje.mebloszyk.pl) ----- */
       [data-bs-theme="dark"] {
         color-scheme: dark;
