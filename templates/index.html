@@ -100,22 +100,6 @@
         justify-content: center;
         align-items: center;
       }
-      .row-blocks-equal .col-lg-1 {
-        align-self: stretch;
-      }
-      #leftBlock {
-        min-height: 2rem;
-      }
-      #leftBlock .left-block-undo-btn {
-        width: 100%;
-        min-height: 100%;
-        font-size: 11px;
-        text-transform: uppercase;
-        padding: 0.25rem 0.5rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
       .page-header-controls {
         display: flex;
         align-items: center;
@@ -998,13 +982,8 @@
           </div>
         </div>
       </div>
-      <!-- Blok1 (1/12) + blok2 (4/12) + blok3 (3/12) + blok4 (4/12) -->
+      <!-- blok2 (4/12) + blok3 (3/12) + blok4 (5/12) -->
       <div class="row g-3 mb-3 row-blocks-equal">
-        <div class="col-12 col-lg-1 d-flex flex-column">
-          <div class="p-2 bg-white rounded-3 shadow-sm flex-grow-1 d-flex flex-column min-h-0" id="leftBlock" aria-label="Blok 1">
-            <button type="button" id="undoBtn" class="btn btn-sm btn-success left-block-undo-btn flex-grow-1" title="Cofnij ostatnią zmianę (Ctrl+Z)">cofnij zmiany</button>
-          </div>
-        </div>
         <div class="col-12 col-lg-4">
           <div class="p-3 bg-white rounded-3 shadow-sm h-100">
             <div class="row g-2">
@@ -1105,7 +1084,7 @@
             </div>
           </div>
         </div>
-        <div class="col-12 col-lg-4">
+        <div class="col-12 col-lg-5">
           <div class="p-3 bg-white rounded-3 shadow-sm h-100 d-flex flex-column justify-content-start">
             <div class="row g-2">
               <div class="col-3 col-6">
@@ -1130,8 +1109,10 @@
 
       </div>
 
-      <!-- Paginacja -->
-      <div class="d-flex justify-content-center align-items-center gap-2 mb-2 flex-wrap">
+      <!-- Paginacja + cofnij zmiany (całkiem do lewej) -->
+      <div class="d-flex align-items-center gap-2 mb-2 flex-wrap">
+        <button type="button" id="undoBtn" class="btn btn-sm btn-success me-2" title="Cofnij ostatnią zmianę (Ctrl+Z)">cofnij zmiany</button>
+        <div class="d-flex justify-content-center align-items-center gap-2 flex-wrap flex-grow-1">
         <button type="button" id="firstPageBtn" class="btn btn-sm pagination-btn" style="font-size: 16px; line-height: 1; padding: 0.3rem 0.8rem;" title="Pierwsza strona">
           <i class="bi bi-chevron-double-left"></i>
         </button>
@@ -1152,6 +1133,7 @@
           <option value="200">200</option>
           <option value="500">500</option>
         </select>
+        </div>
       </div>
 
       <!-- Tabela produktów -->
