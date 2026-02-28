@@ -573,6 +573,48 @@ def index():
 
     total_count = len(products)
 
+    # Uzupełnione = ma wszystkie wymagane: producent, waga>0, wymiary (co najmniej jeden), ceny (co najmniej jedną), EAN, SKU
+    def _has_required_all(p):
+        if not isinstance(p, dict):
+            return False
+        if is_missing(p.get("Nazwa_producenta")):
+            return False
+        if is_missing_weight(p.get("Waga_brutto")):
+            return False
+        dl = p.get("Dlugosc"); sz = p.get("Szerokosc"); wy = p.get("Wysokosc")
+        has_dim = not is_missing(dl) and float(dl or 0) > 0 or not is_missing(sz) and float(sz or 0) > 0 or not is_missing(wy) and float(wy or 0) > 0
+        if not has_dim:
+            return False
+        c_zak = p.get("Cena_zakupu_netto"); c_spr = p.get("Cena_sprzedazy_netto")
+        has_price = (not is_missing(c_zak) and float(c_zak or 0) > 0) or (not is_missing(c_spr) and float(c_spr or 0) > 0)
+        if not has_price:
+            return False
+        if is_missing(p.get("EAN")) or is_missing(p.get("SKU")):
+            return False
+        return True
+
+    # Brak wszystkich = brak producenta i (brak wagi lub 0) i brak wymiarów i brak cen i brak EAN i brak SKU
+    def _has_required_none(p):
+        if not isinstance(p, dict):
+            return True
+        if not is_missing(p.get("Nazwa_producenta")):
+            return False
+        if not is_missing_weight(p.get("Waga_brutto")) and float(p.get("Waga_brutto") or 0) > 0:
+            return False
+        dl = p.get("Dlugosc"); sz = p.get("Szerokosc"); wy = p.get("Wysokosc")
+        if (not is_missing(dl) and float(dl or 0) > 0) or (not is_missing(sz) and float(sz or 0) > 0) or (not is_missing(wy) and float(wy or 0) > 0):
+            return False
+        c_zak = p.get("Cena_zakupu_netto"); c_spr = p.get("Cena_sprzedazy_netto")
+        if (not is_missing(c_zak) and float(c_zak or 0) > 0) or (not is_missing(c_spr) and float(c_spr or 0) > 0):
+            return False
+        if not is_missing(p.get("EAN")) or not is_missing(p.get("SKU")):
+            return False
+        return True
+
+    count_uzupelnione = sum(1 for p in products if _has_required_all(p))
+    count_do_uzupelnienia = total_count - count_uzupelnione
+    count_brak_wszystkich = sum(1 for p in products if _has_required_none(p))
+
     # wybrane – na razie 0 (brak mechanizmu zaznaczania)
     selected_count = 0
 
@@ -601,6 +643,9 @@ def index():
         "index.html",
         total_count=total_count,
         selected_count=selected_count,
+        count_uzupelnione=count_uzupelnione,
+        count_do_uzupelnienia=count_do_uzupelnienia,
+        count_brak_wszystkich=count_brak_wszystkich,
         missing_producer=missing_producer,
         missing_sku=missing_sku,
         missing_ean=missing_ean,

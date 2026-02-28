@@ -745,6 +745,9 @@
         font-size: 11px;
         margin-left: 0.45rem;
       }
+      [data-bs-theme="dark"] .blok3-donut circle:first-of-type {
+        stroke: #343a40;
+      }
       /* Tylko wybrane nagłówki kolumn – kolor #68ef10 */
       table.products-table thead th[data-col="EAN"],
       table.products-table thead th[data-col="SKU"],
@@ -1057,10 +1060,35 @@
 
         <div class="col-12 col-lg-2">
           <div class="p-3 bg-white rounded-3 shadow-sm h-100 d-flex flex-column justify-content-start">
-            <div class="row g-2">
-              <div class="col-12">
-                <div class="stat-number">{{ total_count }}</div>
-                <div class="stat-label">produktów łącznie</div>
+            <div class="d-flex align-items-stretch gap-2 flex-wrap">
+              <div class="flex-grow-1 min-w-0">
+                <div class="stat-label mb-1">Produktów</div>
+                <div class="row g-1 small">
+                  <div class="col-6">
+                    <span class="text-muted">uzupełnione</span>
+                    <div class="stat-number small fw-bold">{{ count_uzupelnione }}</div>
+                  </div>
+                  <div class="col-6">
+                    <span class="text-muted">do uzupełnienia</span>
+                    <div class="stat-number small fw-bold">{{ count_do_uzupelnienia }}</div>
+                  </div>
+                </div>
+                <div class="mt-1 small text-muted">rekordy w których brak wszystkich</div>
+                <div class="stat-number small fw-bold">{{ count_brak_wszystkich }}</div>
+              </div>
+              <div class="blok3-donut-wrap flex-shrink-0" style="width: 72px; height: 72px;">
+                {% set total = total_count or 1 %}
+                {% set u = count_uzupelnione or 0 %}
+                {% set d = count_do_uzupelnienia or 0 %}
+                {% set circ = 251 %}
+                {% set gap = 5 %}
+                {% set len_blue = (u / total) * (circ - gap) if total and u >= 0 else 0 %}
+                {% set len_red = (d / total) * (circ - gap) if total and d >= 0 else 0 %}
+                <svg viewBox="0 0 100 100" class="blok3-donut" aria-hidden="true">
+                  <circle cx="50" cy="50" r="40" fill="none" stroke="#e9ecef" stroke-width="12"/>
+                  <circle cx="50" cy="50" r="40" fill="none" stroke="#0d6efd" stroke-width="12" stroke-linecap="butt" stroke-dasharray="{{ len_blue }} {{ circ }}" stroke-dashoffset="0"/>
+                  <circle cx="50" cy="50" r="40" fill="none" stroke="#dc3545" stroke-width="12" stroke-linecap="butt" stroke-dasharray="{{ gap }} {{ len_red }} {{ circ }}" stroke-dashoffset="{{ -len_blue }}"/>
+                </svg>
               </div>
             </div>
           </div>
