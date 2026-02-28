@@ -738,7 +738,7 @@
       <div class="row g-3 mb-3 row-blocks-equal">
         <div class="col-12 col-lg-1 d-flex flex-column">
           <div class="p-2 bg-white rounded-3 shadow-sm flex-grow-1 d-flex flex-column min-h-0" id="leftBlock" aria-label="Blok 1">
-            <button type="button" id="undoBtn" class="btn btn-sm btn-success left-block-undo-btn flex-grow-1" title="Cofnij ostatnią zmianę (Ctrl+Z)">cofnij</button>
+            <button type="button" id="undoBtn" class="btn btn-sm btn-success left-block-undo-btn flex-grow-1" title="Cofnij ostatnią zmianę (Ctrl+Z)"><span class="d-block">cofnij</span><span class="d-block small">wprowadzone zmiany</span></button>
           </div>
         </div>
         <div class="col-12 col-lg-4">
@@ -3383,7 +3383,7 @@
           } finally {
             if (undoBtn) {
               undoBtn.disabled = false;
-              undoBtn.innerHTML = 'cofnij';
+              undoBtn.innerHTML = '<span class="d-block">cofnij</span><span class="d-block small">wprowadzone zmiany</span>';
             }
           }
         }

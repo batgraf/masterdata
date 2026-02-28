@@ -44,3 +44,5 @@
 41. 2026-02-26 15:40 - szerokości bloków: blok1 1/12, blok2 4/12, blok3 7/12
 42. 2026-02-26 15:45 - przyciski zaznacz, wszystko, usuń, edytuj równej szerokości, wypełniają cały blok
 43. 2026-02-26 15:50 - przycisk cofnij na całą wysokość bloku1
+44. 2026-02-26 15:55 - cofnij: wymuszenie pełnej wysokości (flex-grow-1 w kolumnie i przycisku)
+45. 2026-02-26 16:00 - przycisk cofnij: dwie linie (cofnij / wprowadzone zmiany)
