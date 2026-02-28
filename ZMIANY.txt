@@ -94,3 +94,4 @@
 91. 2026-02-21 12:30 - bloki 3/12+2/12+7/12; blok2 wykres kołowy→słupkowy; tabela jest/brak z jednym tytułem wiersza; blok3 (ostatni) czcionka 12px, cyfry fw 400
 92. 2026-02-21 12:45 - etykiety Cena Zakup / Cena Sprzedaż; kolumny tabeli jednakowa szerokość; tytuły kolumn biała 10px fw 400
 93. 2026-02-21 13:00 - wykresy słupkowe przeniesione jako trzeci wiersz pod dane (poziome paski: czerwony brak, zielony jest)
+94. 2026-02-21 13:15 - ostatni blok: nagłówki kolumn szare; wiersze z podkreśleniem jak tabelka wszystkie/uzupełnione; wysokość wiersza py-1; cyfry wyrównane do lewej

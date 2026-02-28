@@ -747,10 +747,12 @@
       .block4-params-table th, .block4-params-table td { white-space: nowrap; vertical-align: middle; }
       .block4-params-table .block4-row-th { width: 2.2em; }
       .block4-params-table .block4-param-th,
-      .block4-params-table tbody td.text-end,
+      .block4-params-table tbody td.stat-number,
       .block4-params-table .block4-bar-cell { width: 2.8em; min-width: 2.8em; max-width: 2.8em; box-sizing: border-box; }
-      .block4-params-table thead th { color: #fff !important; font-size: 10px !important; font-weight: 400 !important; background-color: #212529; }
-      [data-bs-theme="dark"] .block4-params-table thead th { background-color: #212529; color: #fff !important; }
+      .block4-params-table thead th { color: #6c757d !important; font-size: 10px !important; font-weight: 400 !important; background: transparent; border-bottom: 1px solid #dee2e6; }
+      .block4-params-table tbody td { border-bottom: 1px solid #dee2e6; }
+      [data-bs-theme="dark"] .block4-params-table thead th { color: #adb5bd !important; background: transparent; border-bottom-color: #343a40; }
+      [data-bs-theme="dark"] .block4-params-table tbody td { border-bottom-color: #343a40; }
       .block4-bar-h { display: flex; flex-direction: row; width: 100%; overflow: hidden; border-radius: 2px; }
       .block4-bar-h-seg { display: block; min-width: 0; height: 100%; }
       .block4-bar-h-seg.block4-bar-brak { background-color: #dc3545; }
@@ -1100,7 +1102,7 @@
         <div class="col-12 col-lg-7" id="block4Stats">
           <div class="p-2 bg-white rounded-3 shadow-sm h-100 d-flex flex-column min-h-0">
             <div class="block4-table-wrap overflow-auto flex-grow-1" style="max-height: 200px;">
-              <table class="table table-sm table-borderless mb-0 block4-params-table">
+              <table class="table table-sm mb-0 block4-params-table">
                 <thead>
                   <tr>
                     <th class="py-1 px-1 block4-row-th"></th>
@@ -1111,24 +1113,24 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td class="text-muted py-0 px-1 block4-row-label">jest</td>
+                    <td class="text-muted py-1 px-1 block4-row-label">jest</td>
                     {% for p in block4_params %}
-                    <td class="py-0 px-1 text-end stat-number">{{ p.jest }}</td>
+                    <td class="py-1 px-1 text-start stat-number">{{ p.jest }}</td>
                     {% endfor %}
                   </tr>
                   <tr>
-                    <td class="text-muted py-0 px-1 block4-row-label">brak</td>
+                    <td class="text-muted py-1 px-1 block4-row-label">brak</td>
                     {% for p in block4_params %}
-                    <td class="py-0 px-1 text-end stat-number">{{ p.brak }}</td>
+                    <td class="py-1 px-1 text-start stat-number">{{ p.brak }}</td>
                     {% endfor %}
                   </tr>
                   <tr class="block4-bar-row">
-                    <td class="py-0 px-1 block4-row-th"></td>
+                    <td class="py-1 px-1 block4-row-th"></td>
                     {% for p in block4_params %}
                     {% set total = total_count or 1 %}
                     {% set w_brak = (p.brak / total * 100) if total else 0 %}
                     {% set w_jest = (p.jest / total * 100) if total else 0 %}
-                    <td class="py-0 px-1 align-top block4-bar-cell">
+                    <td class="py-1 px-1 align-top block4-bar-cell">
                       <div class="block4-bar-h" style="height: 8px; min-width: 2.5em;" title="jest {{ p.jest }}, brak {{ p.brak }}">
                         <span class="block4-bar-h-seg block4-bar-brak" style="width: {{ w_brak }}%;"></span>
                         <span class="block4-bar-h-seg block4-bar-jest" style="width: {{ w_jest }}%;"></span>
