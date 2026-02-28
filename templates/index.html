@@ -4,10 +4,10 @@
     <script>
       (function () {
         var t = localStorage.getItem("masterdata_theme");
-        if (t === "dark" || (!t && window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches))
-          document.documentElement.setAttribute("data-bs-theme", "dark");
-        else
+        if (t === "light")
           document.documentElement.setAttribute("data-bs-theme", "light");
+        else
+          document.documentElement.setAttribute("data-bs-theme", "dark");
       })();
     </script>
     <meta charset="utf-8" />
@@ -228,6 +228,8 @@
       }
       table.products-table tbody td {
         font-size: 12px;
+        padding-top: 0.4rem;
+        padding-bottom: 0.4rem;
       }
       table.products-table tbody td[data-field]:not([data-field="ID_produktu"]):not([data-field="Tryb"]) {
         cursor: pointer;
@@ -762,6 +764,8 @@
       .block4-params-table tbody td { border-bottom: 1px solid #dee2e6; }
       .block4-params-table tr.block4-bar-row td { border-bottom: none !important; }
       #block3Stats table tbody tr:last-child td { border-bottom: none !important; }
+      .block-stats-same-padding { padding-top: 16px !important; }
+      .products-table-wrapper { padding-top: 1rem; padding-bottom: 1rem; }
       [data-bs-theme="dark"] .block4-params-table thead th { color: #adb5bd !important; background: transparent; border-bottom-color: #343a40; }
       [data-bs-theme="dark"] .block4-params-table tbody td { border-bottom-color: #343a40; }
       .block4-bar-h { display: flex; flex-direction: row; width: 100%; overflow: hidden; border-radius: 2px; }
@@ -963,6 +967,15 @@
       [data-bs-theme="dark"] .form-control::placeholder {
         color: #868e96;
       }
+      #searchInput::placeholder,
+      #searchInput:focus::placeholder {
+        opacity: 1;
+      }
+      [data-bs-theme="dark"] #searchInput::placeholder,
+      [data-bs-theme="dark"] #searchInput:focus::placeholder {
+        color: #9aa0a6;
+        opacity: 1;
+      }
       [data-bs-theme="dark"] .form-control:focus,
       [data-bs-theme="dark"] .form-select:focus {
         background-color: #343a40 !important;
@@ -1025,14 +1038,18 @@
             <div class="row g-2">
               <div class="col-12">
                 <div class="d-flex align-items-center gap-2">
-                  <input
-                    type="text"
-                    id="searchInput"
-                    class="form-control form-control-sm flex-grow-1"
-                    placeholder="szukaj po nazwie (np. 3x4, pergola 3x4)"
-                    autocomplete="off"
-                  />
-                  <button type="button" id="searchClearBtn" class="btn btn-sm btn-outline-secondary" title="Wyczyść wyszukiwarkę" style="font-size: 11px; white-space: nowrap;">
+                  <div class="d-flex flex-column gap-1 flex-grow-1">
+                    <input
+                      type="text"
+                      id="searchInput"
+                      class="form-control form-control-sm"
+                      placeholder="szukaj po nazwie (np. 3x4, pergola 3x4)"
+                      autocomplete="off"
+                      aria-describedby="searchHint"
+                    />
+                    <span id="searchHint" class="small text-muted" style="font-size: 10px;">szukaj po nazwie (np. 3x4, pergola 3x4)</span>
+                  </div>
+                  <button type="button" id="searchClearBtn" class="btn btn-sm btn-outline-secondary align-self-start" title="Wyczyść wyszukiwarkę" style="font-size: 11px; white-space: nowrap;">
                     wyczyść
                   </button>
                 </div>
@@ -1079,7 +1096,7 @@
         </div>
 
         <div class="col-12 col-lg-2">
-          <div id="block3Stats" class="p-3 bg-white rounded-3 shadow-sm h-100 d-flex flex-column justify-content-start">
+          <div id="block3Stats" class="p-3 bg-white rounded-3 shadow-sm h-100 d-flex flex-column justify-content-start block-stats-same-padding">
             <table class="table table-sm mb-0 align-middle">
               <tbody>
                 <tr>
@@ -1114,7 +1131,7 @@
           </div>
         </div>
         <div class="col-12 col-lg-7" id="block4Stats">
-          <div class="p-2 bg-white rounded-3 shadow-sm h-100 d-flex flex-column min-h-0">
+          <div class="p-2 bg-white rounded-3 shadow-sm h-100 d-flex flex-column min-h-0 block-stats-same-padding">
             <div class="block4-table-wrap overflow-auto flex-grow-1" style="max-height: 200px;">
               <table class="table table-sm mb-0 block4-params-table">
                 <thead>
@@ -1191,7 +1208,7 @@
       </div>
 
       <!-- Tabela produktów -->
-      <div class="bg-white rounded-3 shadow-sm">
+      <div class="bg-white rounded-3 shadow-sm products-table-wrapper">
         <div class="table-responsive table-scroll-wrapper" style="max-height: 75vh; overflow-x: auto; overflow-y: auto;">
           <table class="table table-sm table-hover align-middle mb-0 products-table" style="min-width: max-content;">
             <thead class="table-light sticky-top">
@@ -1575,10 +1592,10 @@
         }
         if (themeToggleBtn) {
           themeToggleBtn.addEventListener("click", function () {
-            var current = document.documentElement.getAttribute("data-bs-theme") || "light";
+            var current = document.documentElement.getAttribute("data-bs-theme") || "dark";
             applyTheme(current === "dark" ? "light" : "dark");
           });
-          var t = document.documentElement.getAttribute("data-bs-theme") || "light";
+          var t = document.documentElement.getAttribute("data-bs-theme") || "dark";
           themeToggleBtn.setAttribute("aria-label", t === "dark" ? "Przełącz na motyw jasny" : "Przełącz na motyw ciemny");
           themeToggleBtn.setAttribute("title", t === "dark" ? "Motyw ciemny (klik: jasny)" : "Motyw jasny (klik: ciemny)");
         }

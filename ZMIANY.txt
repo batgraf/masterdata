@@ -99,3 +99,4 @@
 96. 2026-02-21 13:35 - blok2 -1 na rzecz bloku1 (4/12 + 1/12 + 7/12)
 97. 2026-02-21 13:40 - „zmodyfikowane” obok przycisku cofnij zmiany w tej samej linii; blok1 3/12, blok2 2/12
 98. 2026-02-21 13:50 - usunięte ostatnie podkreślenie w obu tabelkach pod wykresami; tytuły kolumn jak w bloku3 wyróżnione w tabeli (Nazwa, Grupa, opakowanie itd.); odstęp nad i pod paginacją; Kopia przeniesiona do stopki (col-12); zmodyfikowane maksymalnie na prawo za paginacją
+99. 2026-02-21 14:00 - blok2 i blok3 padding-top 16px; podpowiedź pod wyszukiwarką (nie znika po kliknięciu); domyślny motyw ciemny; tabela rekordów – większy odstęp od góry i dołu
