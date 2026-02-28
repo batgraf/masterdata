@@ -732,10 +732,19 @@
         color: #f86c6f !important;
       }
       [data-bs-theme="dark"] .table-light,
-      [data-bs-theme="dark"] .products-table thead {
+      [data-bs-theme="dark"] .products-table thead,
+      [data-bs-theme="dark"] .products-table thead th {
         background-color: #2d3238 !important;
         color: #c6cadc;
         border-color: #343a40;
+      }
+      [data-bs-theme="dark"] .products-table thead input,
+      [data-bs-theme="dark"] .products-table thead select,
+      [data-bs-theme="dark"] .products-table thead .form-control,
+      [data-bs-theme="dark"] .products-table thead .form-select {
+        background-color: #343a40 !important;
+        border-color: #495057 !important;
+        color: #c6cadc !important;
       }
       [data-bs-theme="dark"] table.products-table thead th[data-col]:hover {
         background-color: #343a40 !important;
@@ -749,11 +758,11 @@
         background-color: #252830;
       }
       [data-bs-theme="dark"] table.products-table td[data-col="Tryb"] .tryb-option {
-        background: #343a40;
-        color: #c6cadc;
+        background: #343a40 !important;
+        color: #c6cadc !important;
       }
       [data-bs-theme="dark"] table.products-table td[data-col="Tryb"] .tryb-option:hover {
-        background: #495057;
+        background: #495057 !important;
       }
       [data-bs-theme="dark"] table.products-table td[data-col="Tryb"] .tryb-dropdown {
         border-color: #495057;
@@ -774,6 +783,21 @@
       [data-bs-theme="dark"] table.products-table tbody tr[data-tryb="gotowe"] td,
       [data-bs-theme="dark"] table.products-table tbody tr[data-tryb="gotowe"] {
         background-color: #121c12 !important;
+      }
+      [data-bs-theme="dark"] tr[data-tryb="nowe"] .tryb-pill {
+        background-color: #1e3a5f !important;
+        color: #c6cadc !important;
+        border-color: #2d4a6f !important;
+      }
+      [data-bs-theme="dark"] tr[data-tryb="w trakcie"] .tryb-pill {
+        background-color: #3d3512 !important;
+        color: #c6cadc !important;
+        border-color: #4d4518 !important;
+      }
+      [data-bs-theme="dark"] tr[data-tryb="gotowe"] .tryb-pill {
+        background-color: #1a3d1a !important;
+        color: #c6cadc !important;
+        border-color: #2a4d2a !important;
       }
       [data-bs-theme="dark"] table.products-table tbody tr:hover td,
       [data-bs-theme="dark"] table.products-table tbody tr:hover {
@@ -824,19 +848,23 @@
         border-color: #343a40;
       }
       [data-bs-theme="dark"] .form-control,
-      [data-bs-theme="dark"] .form-select {
-        background-color: #343a40;
-        border-color: #495057;
-        color: #e9ecef;
+      [data-bs-theme="dark"] .form-select,
+      [data-bs-theme="dark"] .page-wrap .form-control,
+      [data-bs-theme="dark"] .page-wrap .form-select,
+      [data-bs-theme="dark"] .page-wrap input[type="text"],
+      [data-bs-theme="dark"] .page-wrap select {
+        background-color: #343a40 !important;
+        border-color: #495057 !important;
+        color: #c6cadc !important;
       }
       [data-bs-theme="dark"] .form-control::placeholder {
         color: #868e96;
       }
       [data-bs-theme="dark"] .form-control:focus,
       [data-bs-theme="dark"] .form-select:focus {
-        background-color: #343a40;
+        background-color: #343a40 !important;
         border-color: #FF5A00;
-        color: #e9ecef;
+        color: #c6cadc !important;
       }
       [data-bs-theme="dark"] #themeToggleBtn .bi-sun {
         display: inline-block;

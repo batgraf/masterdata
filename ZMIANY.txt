@@ -53,3 +53,4 @@
 50. 2026-02-26 16:25 - nagłówki: wymagane kolumny na czerwono (bez pogrubienia), wszystkie nazwy kolumn dużymi literami
 51. 2026-02-21 18:30 - motyw ciemny: przełącznik w nagłówku, zapis w localStorage, style wzór instrukcje.mebloszyk.pl
 52. 2026-02-28 16:20 - motyw ciemny: nagłówki kolumn jeden kolor #c6cadc, tło komórek #252830, tekst komórek #c6cadc, statusy ciemniejsze
+53. 2026-02-28 16:35 - motyw ciemny: wymuszenie ciemnego tła thead/th, pola w nagłówkach i page-wrap, pill Tryb (nowe/w trakcie/gotowe) ciemne
