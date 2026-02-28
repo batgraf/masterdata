@@ -1060,23 +1060,19 @@
 
         <div class="col-12 col-lg-2">
           <div class="p-3 bg-white rounded-3 shadow-sm h-100 d-flex flex-column justify-content-start">
-            <div class="d-flex align-items-stretch gap-2 flex-wrap">
-              <div class="flex-grow-1 min-w-0">
-                <div class="stat-label mb-1">Produktów</div>
-                <div class="row g-1 small">
-                  <div class="col-6">
-                    <span class="text-muted">uzupełnione</span>
-                    <div class="stat-number small fw-bold">{{ count_uzupelnione }}</div>
-                  </div>
-                  <div class="col-6">
-                    <span class="text-muted">do uzupełnienia</span>
-                    <div class="stat-number small fw-bold">{{ count_do_uzupelnienia }}</div>
-                  </div>
-                </div>
-                <div class="mt-1 small text-muted">rekordy w których brak wszystkich</div>
-                <div class="stat-number small fw-bold">{{ count_brak_wszystkich }}</div>
+            <div class="row g-2 h-100">
+              <div class="col-12">
+                <div class="small text-muted text-uppercase">wszystkie</div>
+                <div class="stat-number fw-bold">{{ total_count }}</div>
               </div>
-              <div class="blok3-donut-wrap flex-shrink-0" style="width: 72px; height: 72px;">
+              <div class="col-6">
+                <div class="small text-muted text-uppercase">uzupełnione</div>
+                <div class="stat-number small fw-bold">{{ count_uzupelnione }}</div>
+                <div class="small text-muted text-uppercase mt-1">niekompletne</div>
+                <div class="stat-number small fw-bold">{{ count_do_uzupelnienia }}</div>
+              </div>
+              <div class="col-6 d-flex justify-content-center align-items-center">
+                <div class="blok3-donut-wrap flex-shrink-0" style="width: 76px; height: 76px;">
                 {% set total = total_count or 1 %}
                 {% set u = count_uzupelnione or 0 %}
                 {% set d = count_do_uzupelnienia or 0 %}
@@ -1089,6 +1085,7 @@
                   <circle cx="50" cy="50" r="40" fill="none" stroke="#0d6efd" stroke-width="12" stroke-linecap="butt" stroke-dasharray="{{ len_blue }} {{ circ }}" stroke-dashoffset="0"/>
                   <circle cx="50" cy="50" r="40" fill="none" stroke="#dc3545" stroke-width="12" stroke-linecap="butt" stroke-dasharray="{{ gap }} {{ len_red }} {{ circ }}" stroke-dashoffset="{{ -len_blue }}"/>
                 </svg>
+                </div>
               </div>
             </div>
           </div>
