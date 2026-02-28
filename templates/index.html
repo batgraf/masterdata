@@ -268,12 +268,16 @@
         left: 0;
         top: 100%;
         margin-top: 2px;
-        z-index: 1050;
+        z-index: 9999;
         min-width: 100%;
         box-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.15);
         border-radius: 0.375rem;
         overflow: hidden;
         border: 1px solid rgba(0,0,0,0.1);
+      }
+      table.products-table td[data-col="Tryb"] .tryb-dropdown.tryb-dropdown-fixed {
+        position: fixed;
+        z-index: 10000;
       }
       table.products-table td[data-col="Tryb"] .tryb-option {
         display: block;
@@ -755,7 +759,7 @@
       [data-bs-theme="dark"] .products-table tbody td {
         color: #c6cadc;
         border-color: #343a40;
-        background-color: #252830;
+        background-color: #212529;
       }
       [data-bs-theme="dark"] table.products-table td[data-col="Tryb"] .tryb-option {
         background: #343a40 !important;
@@ -770,7 +774,7 @@
       }
       [data-bs-theme="dark"] table.products-table tbody tr td {
         border-color: #343a40;
-        background-color: #252830;
+        background-color: #212529;
       }
       [data-bs-theme="dark"] table.products-table tbody tr[data-tryb="nowe"] td,
       [data-bs-theme="dark"] table.products-table tbody tr[data-tryb="nowe"] {
@@ -813,7 +817,7 @@
       }
       [data-bs-theme="dark"] @keyframes blink-twice {
         0%, 100% { background-color: #1e4620 !important; }
-        25%, 75% { background-color: #252830 !important; }
+        25%, 75% { background-color: #212529 !important; }
         50% { background-color: #1e4620 !important; }
       }
       [data-bs-theme="dark"] .view-author-display {
@@ -3008,7 +3012,11 @@
               const value = normalizeTrybValue(rawValue); // Normalizuj wartość przed użyciem
               const productId = tr ? tr.getAttribute("data-id") : "";
               if (!productId || !td) return;
-              document.querySelectorAll(".tryb-dropdown").forEach((d) => d.classList.add("d-none"));
+              document.querySelectorAll(".tryb-dropdown").forEach((d) => {
+                d.classList.add("d-none");
+                d.classList.remove("tryb-dropdown-fixed");
+                d.style.position = ""; d.style.left = ""; d.style.top = ""; d.style.width = "";
+              });
               const pillBtn = wrap.querySelector(".tryb-pill");
               const prevRaw = td.getAttribute("data-raw") || "";
               if (pillBtn) {
@@ -3061,16 +3069,34 @@
             if (pill) {
               const dropdown = wrap.querySelector(".tryb-dropdown");
               if (!dropdown) return;
-              document.querySelectorAll(".tryb-dropdown").forEach((d) => { if (d !== dropdown) d.classList.add("d-none"); });
+              document.querySelectorAll(".tryb-dropdown").forEach((d) => {
+                if (d !== dropdown) {
+                  d.classList.add("d-none");
+                  d.classList.remove("tryb-dropdown-fixed");
+                  d.style.position = ""; d.style.left = ""; d.style.top = ""; d.style.width = "";
+                }
+              });
               dropdown.classList.toggle("d-none");
-              if (!dropdown.classList.contains("d-none") && td) {
-                pill.setAttribute("data-prev-raw", td.getAttribute("data-raw") || "");
+              if (!dropdown.classList.contains("d-none")) {
+                if (td) pill.setAttribute("data-prev-raw", td.getAttribute("data-raw") || "");
+                var rect = pill.getBoundingClientRect();
+                dropdown.classList.add("tryb-dropdown-fixed");
+                dropdown.style.left = rect.left + "px";
+                dropdown.style.top = (rect.bottom + 2) + "px";
+                dropdown.style.width = rect.width + "px";
+              } else {
+                dropdown.classList.remove("tryb-dropdown-fixed");
+                dropdown.style.position = ""; dropdown.style.left = ""; dropdown.style.top = ""; dropdown.style.width = "";
               }
             }
           }, true);
           document.addEventListener("click", (event) => {
             if (event.target.closest(".tryb-pill-wrap")) return;
-            document.querySelectorAll(".tryb-dropdown").forEach((d) => d.classList.add("d-none"));
+            document.querySelectorAll(".tryb-dropdown").forEach((d) => {
+              d.classList.add("d-none");
+              d.classList.remove("tryb-dropdown-fixed");
+              d.style.position = ""; d.style.left = ""; d.style.top = ""; d.style.width = "";
+            });
           });
         }
 
