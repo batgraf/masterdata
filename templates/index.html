@@ -1,6 +1,15 @@
 <!doctype html>
 <html lang="pl">
   <head>
+    <script>
+      (function () {
+        var t = localStorage.getItem("masterdata_theme");
+        if (t === "dark" || (!t && window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches))
+          document.documentElement.setAttribute("data-bs-theme", "dark");
+        else
+          document.documentElement.setAttribute("data-bs-theme", "light");
+      })();
+    </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Master Data – produkty</title>
@@ -698,6 +707,160 @@
         font-size: 10px;
         text-align: center;
       }
+      /* ----- Motyw ciemny (wzór: instrukcje.mebloszyk.pl) ----- */
+      [data-bs-theme="dark"] {
+        color-scheme: dark;
+      }
+      [data-bs-theme="dark"] body {
+        background-color: #1a1d21;
+      }
+      [data-bs-theme="dark"] .page-header-bar {
+        background-color: #212529;
+        color: #fff;
+      }
+      [data-bs-theme="dark"] .page-wrap .bg-white,
+      [data-bs-theme="dark"] .page-wrap .rounded-3.shadow-sm {
+        background-color: #212529 !important;
+        border: 1px solid #343a40;
+        color: #e9ecef;
+      }
+      [data-bs-theme="dark"] .stat-label,
+      [data-bs-theme="dark"] .stat-label.text-muted {
+        color: #adb5bd !important;
+      }
+      [data-bs-theme="dark"] .text-warning {
+        color: #f86c6f !important;
+      }
+      [data-bs-theme="dark"] .table-light,
+      [data-bs-theme="dark"] .products-table thead {
+        background-color: #2d3238 !important;
+        color: #e9ecef;
+        border-color: #343a40;
+      }
+      [data-bs-theme="dark"] table.products-table thead th[data-col]:hover {
+        background-color: #343a40 !important;
+      }
+      [data-bs-theme="dark"] table.products-table thead th[data-col="Nazwa"],
+      [data-bs-theme="dark"] table.products-table thead th[data-col="Nazwa_producenta"],
+      [data-bs-theme="dark"] table.products-table thead th[data-col="Grupa_produktu"],
+      [data-bs-theme="dark"] table.products-table thead th[data-col="EAN"],
+      [data-bs-theme="dark"] table.products-table thead th[data-col="SKU"],
+      [data-bs-theme="dark"] table.products-table thead th[data-col="Cena_zakupu_brutto"],
+      [data-bs-theme="dark"] table.products-table thead th[data-col="Cena_zakupu_netto"],
+      [data-bs-theme="dark"] table.products-table thead th[data-col="Cena_sprzedazy_brutto"],
+      [data-bs-theme="dark"] table.products-table thead th[data-col="Cena_sprzedazy_netto"],
+      [data-bs-theme="dark"] table.products-table thead th[data-col="Waga_brutto"],
+      [data-bs-theme="dark"] table.products-table thead th[data-col="Szerokosc"],
+      [data-bs-theme="dark"] table.products-table thead th[data-col="Wysokosc"],
+      [data-bs-theme="dark"] table.products-table thead th[data-col="Dlugosc"],
+      [data-bs-theme="dark"] table.products-table thead th[data-col="Rodzaj_opakowania"] {
+        color: #f86c6f !important;
+      }
+      [data-bs-theme="dark"] .products-table tbody td {
+        color: #e9ecef;
+        border-color: #343a40;
+      }
+      [data-bs-theme="dark"] table.products-table td[data-col="Tryb"] .tryb-option {
+        background: #343a40;
+        color: #e9ecef;
+      }
+      [data-bs-theme="dark"] table.products-table td[data-col="Tryb"] .tryb-option:hover {
+        background: #495057;
+      }
+      [data-bs-theme="dark"] table.products-table td[data-col="Tryb"] .tryb-dropdown {
+        border-color: #495057;
+        box-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.4);
+      }
+      [data-bs-theme="dark"] table.products-table tbody tr[data-tryb="nowe"] td,
+      [data-bs-theme="dark"] table.products-table tbody tr[data-tryb="nowe"] {
+        background-color: #1a2d44 !important;
+      }
+      [data-bs-theme="dark"] table.products-table tbody tr[data-tryb="w trakcie"] td,
+      [data-bs-theme="dark"] table.products-table tbody tr[data-tryb="w trakcie"] {
+        background-color: #3d3a20 !important;
+      }
+      [data-bs-theme="dark"] table.products-table tbody tr[data-tryb="gotowe"] td,
+      [data-bs-theme="dark"] table.products-table tbody tr[data-tryb="gotowe"] {
+        background-color: #1a2e1a !important;
+      }
+      [data-bs-theme="dark"] table.products-table tbody tr td {
+        border-color: #343a40;
+      }
+      [data-bs-theme="dark"] table.products-table tbody tr:hover td,
+      [data-bs-theme="dark"] table.products-table tbody tr:hover {
+        filter: brightness(1.15);
+      }
+      [data-bs-theme="dark"] table.products-table tbody tr.row-modified td,
+      [data-bs-theme="dark"] table.products-table tbody tr.row-modified {
+        background-color: #1e4620 !important;
+      }
+      [data-bs-theme="dark"] table.products-table tbody tr.row-modified:hover td,
+      [data-bs-theme="dark"] table.products-table tbody tr.row-modified:hover {
+        background-color: #2a5c2d !important;
+      }
+      [data-bs-theme="dark"] @keyframes blink-twice {
+        0%, 100% { background-color: #1e4620 !important; }
+        25%, 75% { background-color: #212529 !important; }
+        50% { background-color: #1e4620 !important; }
+      }
+      [data-bs-theme="dark"] .view-author-display {
+        color: #e9ecef !important;
+      }
+      [data-bs-theme="dark"] .view-author-display[data-placeholder="1"] {
+        color: #6c757d !important;
+      }
+      [data-bs-theme="dark"] .view-author-display:hover {
+        background-color: #343a40;
+        border-color: #495057;
+      }
+      [data-bs-theme="dark"] .middle-filters .filter-count {
+        color: #adb5bd;
+      }
+      [data-bs-theme="dark"] .small.text-muted,
+      [data-bs-theme="dark"] #pageInfo {
+        color: #adb5bd !important;
+      }
+      [data-bs-theme="dark"] #viewOptionsModal .view-options-separator {
+        border-top-color: #495057;
+      }
+      [data-bs-theme="dark"] .modal-content:not(.bg-dark) {
+        background-color: #212529;
+        border-color: #343a40;
+        color: #e9ecef;
+      }
+      [data-bs-theme="dark"] .modal-content:not(.bg-dark) .modal-header {
+        border-color: #343a40;
+      }
+      [data-bs-theme="dark"] .modal-content:not(.bg-dark) .modal-footer {
+        border-color: #343a40;
+      }
+      [data-bs-theme="dark"] .form-control,
+      [data-bs-theme="dark"] .form-select {
+        background-color: #343a40;
+        border-color: #495057;
+        color: #e9ecef;
+      }
+      [data-bs-theme="dark"] .form-control::placeholder {
+        color: #868e96;
+      }
+      [data-bs-theme="dark"] .form-control:focus,
+      [data-bs-theme="dark"] .form-select:focus {
+        background-color: #343a40;
+        border-color: #FF5A00;
+        color: #e9ecef;
+      }
+      [data-bs-theme="dark"] #themeToggleBtn .bi-sun {
+        display: inline-block;
+      }
+      [data-bs-theme="dark"] #themeToggleBtn .bi-moon-stars {
+        display: none;
+      }
+      [data-bs-theme="light"] #themeToggleBtn .bi-sun {
+        display: none;
+      }
+      [data-bs-theme="light"] #themeToggleBtn .bi-moon-stars {
+        display: inline-block;
+      }
     </style>
   </head>
   <body>
@@ -720,6 +883,7 @@
               <button type="button" id="restoreFromBackupBtn" class="page-header-menu-btn" title="Załaduj z najnowszej kopii (awaryjnie)">Kopia</button>
               <button type="button" id="exportSelectedJsonBtn" class="page-header-menu-btn" title="Pobierz zaznaczone produkty jako JSON">Json</button>
               <a href="#" id="changeLogBtn" class="page-header-menu-link" title="Dziennik zmian">Dziennik</a>
+              <button type="button" id="themeToggleBtn" class="page-header-menu-btn" title="Przełącz motyw jasny/ciemny" aria-label="Przełącz motyw"><i class="bi bi-moon-stars" aria-hidden="true"></i><i class="bi bi-sun" aria-hidden="true"></i></button>
             </nav>
             <div class="d-flex align-items-center gap-2 page-header-controls">
               <div id="viewAuthorContainer" style="position: relative; max-width: 120px;">
@@ -1228,6 +1392,26 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
+        const THEME_STORAGE_KEY = "masterdata_theme";
+        const themeToggleBtn = document.getElementById("themeToggleBtn");
+        function applyTheme(theme) {
+          var isDark = theme === "dark";
+          document.documentElement.setAttribute("data-bs-theme", theme);
+          try { localStorage.setItem(THEME_STORAGE_KEY, theme); } catch (e) {}
+          if (themeToggleBtn) {
+            themeToggleBtn.setAttribute("aria-label", isDark ? "Przełącz na motyw jasny" : "Przełącz na motyw ciemny");
+            themeToggleBtn.setAttribute("title", isDark ? "Motyw ciemny (klik: jasny)" : "Motyw jasny (klik: ciemny)");
+          }
+        }
+        if (themeToggleBtn) {
+          themeToggleBtn.addEventListener("click", function () {
+            var current = document.documentElement.getAttribute("data-bs-theme") || "light";
+            applyTheme(current === "dark" ? "light" : "dark");
+          });
+          var t = document.documentElement.getAttribute("data-bs-theme") || "light";
+          themeToggleBtn.setAttribute("aria-label", t === "dark" ? "Przełącz na motyw jasny" : "Przełącz na motyw ciemny");
+          themeToggleBtn.setAttribute("title", t === "dark" ? "Motyw ciemny (klik: jasny)" : "Motyw jasny (klik: ciemny)");
+        }
         const STORAGE_KEY = "masterdata_column_visibility";
         const TRYB_OPTIONS = ["nowe", "w trakcie", "gotowe"];
         const TRYB_COLORS = { "nowe": "#deedff", "w trakcie": "#fffca3", "gotowe": "#d4fec9" };
@@ -1262,6 +1446,7 @@
           const savedAuthor = localStorage.getItem(AUTHOR_STORAGE_KEY);
           if (savedAuthor && viewAuthorDisplay) {
             viewAuthorDisplay.textContent = savedAuthor || "imię";
+            viewAuthorDisplay.setAttribute("data-placeholder", viewAuthorDisplay.textContent === "imię" ? "1" : "0");
             if (viewAuthorDisplay.textContent === "imię") {
               viewAuthorDisplay.style.color = "#6c757d";
             } else {
@@ -1302,7 +1487,7 @@
             viewAuthorInput.classList.add("d-none");
             viewAuthorDisplay.classList.remove("d-none");
             viewAuthorDisplay.textContent = displayValue;
-            
+            viewAuthorDisplay.setAttribute("data-placeholder", displayValue === "imię" ? "1" : "0");
             if (displayValue === "imię") {
               viewAuthorDisplay.style.color = "#6c757d";
             } else {

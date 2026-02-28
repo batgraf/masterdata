@@ -50,3 +50,5 @@
 47. 2026-02-26 16:10 - przycisk: jeden napis „cofnij zmiany”
 48. 2026-02-26 16:15 - odstęp (mt-3) między wyszukiwarką a przyciskami zaznacz/wszystko/usuń/edytuj
 49. 2026-02-26 16:20 - nagłówki kolumn: tło jak reszta (bez #ffe9d9), czcionka pogrubiona (font-weight 600)
+50. 2026-02-26 16:25 - nagłówki: wymagane kolumny na czerwono (bez pogrubienia), wszystkie nazwy kolumn dużymi literami
+51. 2026-02-21 18:30 - motyw ciemny: przełącznik w nagłówku, zapis w localStorage, style wzór instrukcje.mebloszyk.pl
