@@ -771,6 +771,32 @@
         overflow-y: visible;
         max-height: none;
       }
+      .table-scroll-wrapper {
+        scrollbar-width: none;
+      }
+      .table-scroll-wrapper::-webkit-scrollbar {
+        height: 0;
+      }
+      #productsStickyXScroll {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        height: 14px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        z-index: 1040;
+        background: rgba(33, 37, 41, 0.08);
+        border-top: 1px solid rgba(0, 0, 0, 0.12);
+        display: none;
+      }
+      [data-bs-theme="dark"] #productsStickyXScroll {
+        background: rgba(33, 37, 41, 0.75);
+        border-top-color: #495057;
+      }
+      #productsStickyXScrollInner {
+        height: 1px;
+      }
       [data-bs-theme="dark"] .block4-params-table thead th { color: #adb5bd !important; background: transparent; border-bottom-color: #343a40; }
       [data-bs-theme="dark"] .block4-params-table tbody td { border-bottom-color: #343a40; }
       .block4-bar-h { display: flex; flex-direction: row; width: 100%; overflow: hidden; border-radius: 2px; }
@@ -1254,6 +1280,9 @@
           </table>
         </div>
       </div>
+      <div id="productsStickyXScroll" aria-hidden="true">
+        <div id="productsStickyXScrollInner"></div>
+      </div>
       <div class="row mt-2">
         <div class="col-12">
           <button type="button" id="restoreFromBackupBtn" class="btn btn-sm btn-outline-secondary" title="Załaduj z najnowszej kopii (awaryjnie)">Kopia</button>
@@ -1715,6 +1744,9 @@
         const producerExcludeSelect = document.getElementById("producerExcludeSelect");
         const producerExcludeBtn = document.getElementById("producerExcludeBtn");
         const tableBody = document.getElementById("productsTbody");
+        const tableScrollWrapper = document.querySelector(".table-scroll-wrapper");
+        const stickyXScroll = document.getElementById("productsStickyXScroll");
+        const stickyXScrollInner = document.getElementById("productsStickyXScrollInner");
         const selectedCountValue = document.getElementById("selectedCountValue");
         const prevPageBtn = document.getElementById("prevPageBtn");
         const nextPageBtn = document.getElementById("nextPageBtn");
@@ -2148,6 +2180,7 @@
               applyVisibilityFromProfile(buildCurrentProfile());
               updateFilterCountButtons();
               updatePaginationUi();
+              updateStickyTableScrollbar();
               
               // Inicjalizuj lastChangeId po pierwszym załadowaniu, aby nie pokazywać starych zmian
               if (!liveUpdateInitialized) {
@@ -2175,6 +2208,21 @@
                   '<tr><td colspan="28" class="text-center text-danger py-3">błąd ładowania danych</td></tr>';
               }
             });
+        }
+
+        function updateStickyTableScrollbar() {
+          if (!tableScrollWrapper || !productsTable || !stickyXScroll || !stickyXScrollInner) return;
+          const needsX = productsTable.scrollWidth > tableScrollWrapper.clientWidth + 1;
+          if (!needsX) {
+            stickyXScroll.style.display = "none";
+            return;
+          }
+          const rect = tableScrollWrapper.getBoundingClientRect();
+          stickyXScroll.style.display = "block";
+          stickyXScroll.style.left = Math.max(0, rect.left) + "px";
+          stickyXScroll.style.width = Math.max(0, rect.width) + "px";
+          stickyXScrollInner.style.width = productsTable.scrollWidth + "px";
+          stickyXScroll.scrollLeft = tableScrollWrapper.scrollLeft;
         }
 
         function loadProducerOptions() {
@@ -2765,6 +2813,22 @@
         }
 
         const productsTable = document.querySelector("table.products-table");
+        if (tableScrollWrapper && stickyXScroll) {
+          let _syncingSticky = false;
+          tableScrollWrapper.addEventListener("scroll", () => {
+            if (_syncingSticky) return;
+            _syncingSticky = true;
+            stickyXScroll.scrollLeft = tableScrollWrapper.scrollLeft;
+            _syncingSticky = false;
+          });
+          stickyXScroll.addEventListener("scroll", () => {
+            if (_syncingSticky) return;
+            _syncingSticky = true;
+            tableScrollWrapper.scrollLeft = stickyXScroll.scrollLeft;
+            _syncingSticky = false;
+          });
+          window.addEventListener("resize", updateStickyTableScrollbar);
+        }
         if (productsTable) {
           productsTable.addEventListener("click", (event) => {
             const th = event.target.closest("th[data-col]");
@@ -3868,6 +3932,7 @@
         loadProducerOptions();
         updateFilterStyles();
         loadProducts();
+        updateStickyTableScrollbar();
       });
     </script>
   </body>

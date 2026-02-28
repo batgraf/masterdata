@@ -102,3 +102,4 @@
 99. 2026-02-21 14:00 - blok2 i blok3 padding-top 16px; podpowiedź pod wyszukiwarką (nie znika po kliknięciu); domyślny motyw ciemny; tabela rekordów – większy odstęp od góry i dołu
 100. 2026-02-21 14:10 - tabela rekordów: wyrównanie treści komórek do lewej
 101. 2026-02-21 14:20 - tabela rekordów: uproszczony scroll (bez wewnętrznego pionowego suwaka, jeden główny przewijacz)
+102. 2026-02-21 14:30 - dolny suwak poziomy tabeli przyklejony do dołu (zawsze widoczny), zsynchronizowany z przewijaniem tabeli
