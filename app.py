@@ -723,6 +723,9 @@ def get_column_values():
                 seen.add(s.lower())
                 out.append(s)
         out.sort(key=lambda x: (x.lower(), x))
+        # Dla Źródła zawsze daj przynajmniej json/xml, jeśli w danych nic nie znaleziono
+        if column == "Zrodlo_danych" and not out:
+            out = ["json", "xml"]
         return jsonify({"column": column, "values": out})
     except Exception:
         return jsonify({"column": request.args.get("column", ""), "values": []})

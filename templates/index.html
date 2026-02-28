@@ -2159,7 +2159,8 @@
                   return r.json();
                 })
                 .then((data) => {
-                  const values = data.values || [];
+                  let values = data.values || [];
+                  if (col === "Zrodlo_danych" && values.length === 0) values = ["json", "xml"];
                   values.forEach((v) => {
                     const opt = document.createElement("option");
                     opt.value = v;

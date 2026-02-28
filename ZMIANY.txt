@@ -64,3 +64,4 @@
 61. 2026-02-28 16:55 - status Tryb: ograniczenie migania (bez row-modified po zmianie Tryb, wyłączony dark hover filter brightness)
 62. 2026-02-28 18:10 - kryteria wyświetlania: opcja Źródło (json/xml) w filtrze kolumny
 63. 2026-02-28 18:15 - filtr Źródło: API column-values i filtrowanie uwzględniają pole source (json/xml w drugim polu)
+64. 2026-02-28 18:25 - filtr Źródło: fallback json/xml w API i w JS gdy lista wartości pusta
