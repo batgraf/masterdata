@@ -252,9 +252,13 @@
       table.products-table td[data-col="Tryb"] {
         min-width: 70px;
         overflow: visible;
+        position: relative;
       }
       table.products-table td[data-col="Tryb"] .tryb-pill-wrap {
         position: relative;
+      }
+      table.products-table td[data-col="Tryb"] .tryb-pill-wrap.open {
+        z-index: 3000;
       }
       table.products-table td[data-col="Tryb"] .tryb-pill {
         font-size: 11px;
@@ -3033,24 +3037,11 @@
 
           function closeTrybDropdown(d) {
             d.classList.add("d-none");
-            d.classList.remove("tryb-dropdown-fixed");
-            d.style.left = ""; d.style.top = ""; d.style.width = ""; d.style.minWidth = "";
-            if (d._trybParentWrap) { d._trybParentWrap.appendChild(d); d._trybParentWrap = null; }
-            d._trybProductId = "";
+            const wrap = d.closest(".tryb-pill-wrap");
+            if (wrap) wrap.classList.remove("open");
           }
           function applyTrybOption(option, wrap) {
             if (!wrap || !tableBody) return;
-            if (!document.body.contains(wrap)) {
-              const trOld = wrap.closest("tr");
-              const productId = trOld ? trOld.getAttribute("data-id") : null;
-              if (productId) {
-                const freshTr = tableBody.querySelector('tr[data-id="' + productId + '"]');
-                wrap = freshTr ? freshTr.querySelector(".tryb-pill-wrap") : null;
-              } else {
-                wrap = null;
-              }
-            }
-            if (!wrap) return;
             const td = wrap.closest("td[data-field]");
             const tr = wrap.closest("tr");
             const pillBtn = wrap.querySelector(".tryb-pill");
@@ -3107,22 +3098,6 @@
                 showMessage("Błąd", "Nie udało się zapisać trybu.", "error");
               });
           }
-          function handleTrybOptionClick(e) {
-            const option = e.target.closest(".tryb-option");
-            if (!option) return;
-            const dropdown = option.closest(".tryb-dropdown");
-            if (!dropdown) return;
-            let wrap = dropdown._trybParentWrap;
-            if (!wrap && dropdown._trybProductId && tableBody) {
-              const tr = tableBody.querySelector('tr[data-id="' + dropdown._trybProductId + '"]');
-              wrap = tr ? tr.querySelector(".tryb-pill-wrap") : null;
-            }
-            if (!wrap) return;
-            e.preventDefault();
-            e.stopPropagation();
-            applyTrybOption(option, wrap);
-          }
-          document.addEventListener("mousedown", handleTrybOptionClick, true);
           tableBody.addEventListener("click", (event) => {
             const wrap = event.target.closest(".tryb-pill-wrap");
             if (!wrap) return;
@@ -3143,15 +3118,7 @@
               dropdown.classList.toggle("d-none");
               if (!dropdown.classList.contains("d-none")) {
                 if (td) pill.setAttribute("data-prev-raw", td.getAttribute("data-raw") || "");
-                var rect = pill.getBoundingClientRect();
-                dropdown._trybParentWrap = wrap;
-                dropdown._trybProductId = tr ? tr.getAttribute("data-id") : "";
-                document.body.appendChild(dropdown);
-                dropdown.classList.add("tryb-dropdown-fixed");
-                dropdown.style.left = rect.left + "px";
-                dropdown.style.top = (rect.bottom + 2) + "px";
-                dropdown.style.width = rect.width + "px";
-                dropdown.style.minWidth = rect.width + "px";
+                wrap.classList.add("open");
               } else {
                 closeTrybDropdown(dropdown);
               }
@@ -3159,7 +3126,6 @@
           }, true);
           document.addEventListener("click", (event) => {
             if (event.target.closest(".tryb-pill-wrap")) return;
-            if (event.target.closest(".tryb-option")) return;
             document.querySelectorAll(".tryb-dropdown").forEach(closeTrybDropdown);
           });
         }
