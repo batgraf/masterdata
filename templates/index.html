@@ -736,10 +736,19 @@
       #block3Stats .fw-bold {
         font-weight: 400 !important;
       }
-      .blok3-bar { display: flex; flex-direction: column; align-items: center; }
-      .blok3-bar-seg { display: block; width: 100%; min-height: 1px; }
-      .blok3-bar-uzup { background-color: #0d6efd; }
-      .blok3-bar-niekompl { background-color: #dc3545; }
+      .blok3-bar-h { display: flex; flex-direction: row; width: 100%; overflow: hidden; border-radius: 2px; }
+      .blok3-bar-h-seg { display: block; min-width: 0; height: 100%; }
+      .blok3-bar-h-seg.blok3-bar-uzup { background-color: #0d6efd; }
+      .blok3-bar-h-seg.blok3-bar-niekompl { background-color: #dc3545; }
+      .blok3-bar-h-wrap, .block4-bar-h-wrap { overflow: hidden; width: 100%; }
+      .blok3-bar-h-wrap.bar-fill-anim, .block4-bar-h-wrap.bar-fill-anim {
+        max-width: 0;
+        animation: bar-fill-from-left 0.6s ease-out forwards;
+      }
+      @keyframes bar-fill-from-left {
+        from { max-width: 0; }
+        to { max-width: 100%; }
+      }
       /* Ostatni blok – tabela parametrów jest/brak + wykres słupkowy */
       #block4Stats, #block4Stats * { font-size: 12px !important; }
       #block4Stats .stat-number { font-weight: 400 !important; }
@@ -1066,37 +1075,37 @@
 
         <div class="col-12 col-lg-2">
           <div id="block3Stats" class="p-3 bg-white rounded-3 shadow-sm h-100 d-flex flex-column justify-content-start">
-            <div class="row g-2 h-100">
-              <div class="col-6">
-                <table class="table table-sm mb-0 align-middle">
-                  <tbody>
-                    <tr>
-                      <td class="small text-muted text-uppercase py-1">wszystkie</td>
-                      <td class="py-1 text-end"><span class="stat-number small fw-bold">{{ total_count }}</span></td>
-                    </tr>
-                    <tr>
-                      <td class="small text-muted text-uppercase py-1">uzupełnione</td>
-                      <td class="py-1 text-end"><span class="stat-number small fw-bold">{{ count_uzupelnione }}</span></td>
-                    </tr>
-                    <tr>
-                      <td class="small text-muted text-uppercase py-1">niekompletne</td>
-                      <td class="py-1 text-end"><span class="stat-number small fw-bold">{{ count_do_uzupelnienia }}</span></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div class="col-6 d-flex justify-content-center align-items-center">
-                {% set total_b = total_count or 1 %}
-                {% set u_b = count_uzupelnione or 0 %}
-                {% set d_b = count_do_uzupelnienia or 0 %}
-                {% set h_u = (u_b / total_b * 50) if total_b and u_b >= 0 else 0 %}
-                {% set h_d = (d_b / total_b * 50) if total_b and d_b >= 0 else 0 %}
-                <div class="blok3-bar" style="width: 16px; height: 50px;" title="uzupełnione {{ u_b }}, niekompletne {{ d_b }}">
-                  <span class="blok3-bar-seg blok3-bar-uzup" style="height: {{ h_u }}px;"></span>
-                  <span class="blok3-bar-seg blok3-bar-niekompl" style="height: {{ h_d }}px;"></span>
-                </div>
-              </div>
-            </div>
+            <table class="table table-sm mb-0 align-middle">
+              <tbody>
+                <tr>
+                  <td class="small text-muted text-uppercase py-1">wszystkie</td>
+                  <td class="py-1 text-end"><span class="stat-number small fw-bold">{{ total_count }}</span></td>
+                </tr>
+                <tr>
+                  <td class="small text-muted text-uppercase py-1">uzupełnione</td>
+                  <td class="py-1 text-end"><span class="stat-number small fw-bold">{{ count_uzupelnione }}</span></td>
+                </tr>
+                <tr>
+                  <td class="small text-muted text-uppercase py-1">niekompletne</td>
+                  <td class="py-1 text-end"><span class="stat-number small fw-bold">{{ count_do_uzupelnienia }}</span></td>
+                </tr>
+                <tr class="blok3-bar-row">
+                  <td colspan="2" class="py-1 pe-0">
+                    {% set total_b = total_count or 1 %}
+                    {% set u_b = count_uzupelnione or 0 %}
+                    {% set d_b = count_do_uzupelnienia or 0 %}
+                    {% set w_u = (u_b / total_b * 100) if total_b and u_b >= 0 else 0 %}
+                    {% set w_d = (d_b / total_b * 100) if total_b and d_b >= 0 else 0 %}
+                    <div class="blok3-bar-h-wrap bar-fill-anim">
+                      <div class="blok3-bar-h" style="height: 8px;" title="uzupełnione {{ u_b }}, niekompletne {{ d_b }}">
+                        <span class="blok3-bar-h-seg blok3-bar-uzup" style="width: {{ w_u }}%;"></span>
+                        <span class="blok3-bar-h-seg blok3-bar-niekompl" style="width: {{ w_d }}%;"></span>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
         <div class="col-12 col-lg-7" id="block4Stats">
@@ -1131,9 +1140,11 @@
                     {% set w_brak = (p.brak / total * 100) if total else 0 %}
                     {% set w_jest = (p.jest / total * 100) if total else 0 %}
                     <td class="py-1 px-1 align-top block4-bar-cell">
-                      <div class="block4-bar-h" style="height: 8px; min-width: 2.5em;" title="jest {{ p.jest }}, brak {{ p.brak }}">
-                        <span class="block4-bar-h-seg block4-bar-brak" style="width: {{ w_brak }}%;"></span>
-                        <span class="block4-bar-h-seg block4-bar-jest" style="width: {{ w_jest }}%;"></span>
+                      <div class="block4-bar-h-wrap bar-fill-anim">
+                        <div class="block4-bar-h" style="height: 8px; min-width: 2.5em;" title="jest {{ p.jest }}, brak {{ p.brak }}">
+                          <span class="block4-bar-h-seg block4-bar-brak" style="width: {{ w_brak }}%;"></span>
+                          <span class="block4-bar-h-seg block4-bar-jest" style="width: {{ w_jest }}%;"></span>
+                        </div>
                       </div>
                     </td>
                     {% endfor %}
