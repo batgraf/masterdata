@@ -46,3 +46,5 @@
 43. 2026-02-26 15:50 - przycisk cofnij na całą wysokość bloku1
 44. 2026-02-26 15:55 - cofnij: wymuszenie pełnej wysokości (flex-grow-1 w kolumnie i przycisku)
 45. 2026-02-26 16:00 - przycisk cofnij: dwie linie (cofnij / wprowadzone zmiany)
+46. 2026-02-26 16:05 - przycisk cofnij: druga linia „zmiany” (cofnij i zmiany jeden pod drugim)
+47. 2026-02-26 16:10 - przycisk: jeden napis „cofnij zmiany”
