@@ -90,3 +90,4 @@
 87. 2026-02-28 21:05 - blok 3 z powrotem 3/12, blok 4 z powrotem 4/12 (wykres nie uciekał pod spód)
 88. 2026-02-28 21:08 - usunięty margin .blok3-donut-col (zgodność ze specyfikacją)
 89. 2026-02-21 12:00 - blok1 usunięty; przycisk „cofnij zmiany” przeniesiony w linię z paginacją (skrajnie w lewo), wysokość normalna; ostatni blok 5/12
+90. 2026-02-21 12:15 - ostatni blok: tabela parametrów (Produkt, Dostawca, Kategoria, EAN, SKU, ceny, Waga, Wymiary, opakowanie), wiersze jest/brak, wykres słupkowy przy każdej kolumnie (jedna barwa)

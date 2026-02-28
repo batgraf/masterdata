@@ -659,6 +659,51 @@ def index():
         return False
     unavailable_count = sum(1 for p in products if _is_unavailable(p.get("Dostepnosc")))
 
+    # Ostatni blok: kolumny parametrów, wiersze jest/brak (dla wykresów słupkowych)
+    def _param_jest(p, key):
+        if key == "Nazwa":
+            return not is_missing(p.get("Nazwa"))
+        if key == "Nazwa_producenta":
+            return not is_missing(p.get("Nazwa_producenta"))
+        if key == "Grupa_produktu":
+            return not is_missing(p.get("Grupa_produktu"))
+        if key == "EAN":
+            return not is_missing(p.get("EAN"))
+        if key == "SKU":
+            return not is_missing(p.get("SKU"))
+        if key == "Cena_zakupu":
+            return _has_purchase_price(p)
+        if key == "Cena_sprzedazy":
+            return _has_sale_price(p)
+        if key == "Waga_brutto":
+            return _is_positive_number(p.get("Waga_brutto"))
+        if key == "Wymiary":
+            return _has_dimensions_all(p)
+        if key == "Rodzaj_opakowania":
+            return not is_missing(p.get("Rodzaj_opakowania"))
+        return False
+
+    _block4_param_keys = [
+        ("Produkt", "Nazwa"),
+        ("Dostawca", "Nazwa_producenta"),
+        ("Kategoria", "Grupa_produktu"),
+        ("EAN", "EAN"),
+        ("SKU", "SKU"),
+        ("Cena Zakupu netto", "Cena_zakupu"),
+        ("Cena Sprzedaży brutto", "Cena_sprzedazy"),
+        ("Waga", "Waga_brutto"),
+        ("Wymiary", "Wymiary"),
+        ("opakowanie", "Rodzaj_opakowania"),
+    ]
+    block4_params = []
+    for label, key in _block4_param_keys:
+        jest_n = sum(1 for p in products if _param_jest(p, key))
+        block4_params.append({
+            "label": label,
+            "jest": jest_n,
+            "brak": total_count - jest_n,
+        })
+
     modified_count = stats.get("modified_count", 0)
     version = read_version()
 
@@ -673,6 +718,7 @@ def index():
         missing_sku=missing_sku,
         missing_ean=missing_ean,
         unavailable_count=unavailable_count,
+        block4_params=block4_params,
         modified_count=modified_count,
         version=version,
         use_db=_use_db(),

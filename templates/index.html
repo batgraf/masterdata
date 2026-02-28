@@ -739,6 +739,12 @@
       [data-bs-theme="dark"] .blok3-donut circle:first-of-type {
         stroke: #343a40;
       }
+      /* Ostatni blok – tabela parametrów jest/brak + wykres słupkowy */
+      .block4-table-wrap .block4-params-table { min-width: max-content; }
+      .block4-params-table th, .block4-params-table td { white-space: nowrap; vertical-align: middle; }
+      .block4-bar { display: flex; flex-direction: column; align-items: center; }
+      .block4-bar-seg { display: block; width: 100%; min-height: 1px; background-color: #6c757d; }
+      [data-bs-theme="dark"] .block4-bar-seg { background-color: #6c757d; }
       /* Tylko wybrane nagłówki kolumn – kolor #68ef10 */
       table.products-table thead th[data-col="EAN"],
       table.products-table thead th[data-col="SKU"],
@@ -1085,24 +1091,42 @@
           </div>
         </div>
         <div class="col-12 col-lg-5">
-          <div class="p-3 bg-white rounded-3 shadow-sm h-100 d-flex flex-column justify-content-start">
-            <div class="row g-2">
-              <div class="col-3 col-6">
-                <div class="stat-number text-warning">{{ missing_producer }}</div>
-                <div class="stat-label text-muted">brak producenta</div>
-              </div>
-              <div class="col-3 col-6">
-                <div class="stat-number text-warning">{{ missing_sku }}</div>
-                <div class="stat-label text-muted">brak SKU</div>
-              </div>
-              <div class="col-3 col-6">
-                <div class="stat-number text-warning">{{ missing_ean }}</div>
-                <div class="stat-label text-muted">brak EAN</div>
-              </div>
-              <div class="col-3 col-6">
-                <div class="stat-number text-warning">{{ unavailable_count }}</div>
-                <div class="stat-label text-muted">niedostępnych</div>
-              </div>
+          <div class="p-2 bg-white rounded-3 shadow-sm h-100 d-flex flex-column min-h-0">
+            <div class="block4-table-wrap overflow-auto flex-grow-1" style="max-height: 200px;">
+              <table class="table table-sm table-borderless mb-0 block4-params-table" style="font-size: 10px;">
+                <thead>
+                  <tr>
+                    {% for p in block4_params %}
+                    <th class="text-start text-muted text-uppercase py-1 px-1" style="font-weight: 600;">{{ p.label }}</th>
+                    <th class="py-1 px-1"></th>
+                    <th class="py-1 px-1 block4-bar-th"></th>
+                    {% endfor %}
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    {% for p in block4_params %}
+                    <td class="text-muted py-0 px-1">jest</td>
+                    <td class="py-0 px-1 text-end stat-number">{{ p.jest }}</td>
+                    <td rowspan="2" class="py-0 px-1 align-bottom block4-bar-cell">
+                      {% set total = total_count or 1 %}
+                      {% set h_jest = (p.jest / total * 40) if total else 0 %}
+                      {% set h_brak = (p.brak / total * 40) if total else 0 %}
+                      <div class="block4-bar" style="width: 14px; height: 40px;" title="jest {{ p.jest }}, brak {{ p.brak }}">
+                        <span class="block4-bar-seg block4-bar-jest" style="height: {{ h_jest }}px;"></span>
+                        <span class="block4-bar-seg block4-bar-brak" style="height: {{ h_brak }}px;"></span>
+                      </div>
+                    </td>
+                    {% endfor %}
+                  </tr>
+                  <tr>
+                    {% for p in block4_params %}
+                    <td class="text-muted py-0 px-1">brak</td>
+                    <td class="py-0 px-1 text-end stat-number">{{ p.brak }}</td>
+                    {% endfor %}
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
