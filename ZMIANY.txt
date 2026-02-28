@@ -76,3 +76,4 @@
 73. 2026-02-28 19:50 - zmiana motywu: skrócony transition do 0.15s, dodane stat-number, text-warning, leftBlock, pagination-btn (mniej efektu ładowania)
 74. 2026-02-28 19:55 - zmiana motywu jasny/ciemny bez animacji (usunięty transition) – natychmiastowe przełączenie
 75. 2026-02-28 19:58 - usunięta animacja komórek tabeli (transition background-color z wierszy i komórek)
+76. 2026-02-28 20:00 - bloki: podział dawnego bloku 3 na dwa – blok 3 (3/12) produktów łącznie, blok 4 (4/12) brak producenta/SKU/EAN/niedostępnych
