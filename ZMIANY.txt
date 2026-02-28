@@ -40,3 +40,5 @@
 37. 2026-02-26 15:20 - nowy blok1 z lewej 2/12 (col-lg-2), środkowy i prawy po 5/12
 38. 2026-02-26 15:25 - blok1 zmieniony na 1/12, przycisk „cofnij” w blok1 na całą szerokość i wysokość
 39. 2026-02-26 15:30 - zaznacz, wszystko, usuń, edytuj pod wyszukiwarką w dwóch divach po 50% szerokości
+40. 2026-02-26 15:35 - zaznacz, wszystko, usuń, edytuj w jednej linii
+41. 2026-02-26 15:40 - szerokości bloków: blok1 1/12, blok2 4/12, blok3 7/12
