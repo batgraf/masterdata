@@ -33,3 +33,5 @@
 30. 2026-02-26 14:45 - zamiana miejsc: menu (Strona główna, Opcje, Statystyki, Dziennik) przed arek/widok/zapisz/reset
 31. 2026-02-26 14:50 - Kopia i Json przeniesione do menu w pasku (między Statystyki a Dziennik)
 32. 2026-02-26 14:55 - menu: Kopia i Json bez niebieskiego tła, całe menu w jednym stylu (jak Strona główna)
+33. 2026-02-26 15:00 - „Opcje wyświetlania” w menu otwiera modal opcji, usunięty fioletowy przycisk „opcje”
+34. 2026-02-26 15:05 - menu: wszystkie czcionki 13px
