@@ -36,3 +36,4 @@
 33. 2026-02-26 15:00 - „Opcje wyświetlania” w menu otwiera modal opcji, usunięty fioletowy przycisk „opcje”
 34. 2026-02-26 15:05 - menu: wszystkie czcionki 13px
 35. 2026-02-26 15:10 - menu: wymuszenie 13px na wszystkich (Opcje, Kopia, Json) – font-size !important
+36. 2026-02-26 15:15 - usunięcie bloku z obrazkiem Statystyki (col-lg-1), układ z powrotem 6+6
