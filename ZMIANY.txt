@@ -106,3 +106,4 @@
 103. 2026-02-21 14:40 - blok3: skrócone etykiety kolumn „Cena Zak.” i „Cena Sprz.”
 104. 2026-02-21 14:50 - blok3: wiersz JEST cały jasnozielony (#8bd48b), wiersz BRAK cały różowy (#d99a9a); etykiety JEST/BRAK wielkimi literami, kolory #8eff50 i #ff5050
 105. 2026-02-21 14:55 - blok3: korekta na kolor czcionki (nie tła) dla całych wierszy JEST/BRAK; etykiety JEST/BRAK pozostają wyróżnione
+106. 2026-02-21 15:10 - liczniki dashboardu odświeżane bez reloadu po edycji rekordu + lekki fade; nowy endpoint /api/stats-summary

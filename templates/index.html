@@ -773,6 +773,12 @@
       .block4-params-table .block4-row-label.block4-row-label-brak { color: #ff5050 !important; }
       #block3Stats table tbody tr:last-child td { border-bottom: none !important; }
       .block-stats-same-padding { padding-top: 16px !important; }
+      .counter-fade-target {
+        transition: opacity 0.14s ease;
+      }
+      .counter-fade-target.counter-fade-out {
+        opacity: 0.25;
+      }
       .products-table-wrapper { padding-top: 1rem; padding-bottom: 1rem; }
       .table-scroll-wrapper {
         overflow-x: auto;
@@ -1140,15 +1146,15 @@
               <tbody>
                 <tr>
                   <td class="small text-muted text-uppercase py-1">wszystkie</td>
-                  <td class="py-1 text-end"><span class="stat-number small fw-bold">{{ total_count }}</span></td>
+                  <td class="py-1 text-end"><span id="block3TotalCount" class="stat-number small fw-bold counter-fade-target">{{ total_count }}</span></td>
                 </tr>
                 <tr>
                   <td class="small text-muted text-uppercase py-1">uzupełnione</td>
-                  <td class="py-1 text-end"><span class="stat-number small fw-bold">{{ count_uzupelnione }}</span></td>
+                  <td class="py-1 text-end"><span id="block3CompleteCount" class="stat-number small fw-bold counter-fade-target">{{ count_uzupelnione }}</span></td>
                 </tr>
                 <tr>
                   <td class="small text-muted text-uppercase py-1">niekompletne</td>
-                  <td class="py-1 text-end"><span class="stat-number small fw-bold">{{ count_do_uzupelnienia }}</span></td>
+                  <td class="py-1 text-end"><span id="block3IncompleteCount" class="stat-number small fw-bold counter-fade-target">{{ count_do_uzupelnienia }}</span></td>
                 </tr>
                 <tr class="blok3-bar-row">
                   <td colspan="2" class="py-1 pe-0">
@@ -1158,9 +1164,9 @@
                     {% set w_u = (u_b / total_b * 100) if total_b and u_b >= 0 else 0 %}
                     {% set w_d = (d_b / total_b * 100) if total_b and d_b >= 0 else 0 %}
                     <div class="blok3-bar-h-wrap bar-fill-anim">
-                      <div class="blok3-bar-h" style="height: 8px;" title="uzupełnione {{ u_b }}, niekompletne {{ d_b }}">
-                        <span class="blok3-bar-h-seg blok3-bar-uzup" style="width: {{ w_u }}%;"></span>
-                        <span class="blok3-bar-h-seg blok3-bar-niekompl" style="width: {{ w_d }}%;"></span>
+                      <div id="block3BarWrap" class="blok3-bar-h" style="height: 8px;" title="uzupełnione {{ u_b }}, niekompletne {{ d_b }}">
+                        <span id="block3BarComplete" class="blok3-bar-h-seg blok3-bar-uzup" style="width: {{ w_u }}%;"></span>
+                        <span id="block3BarIncomplete" class="blok3-bar-h-seg blok3-bar-niekompl" style="width: {{ w_d }}%;"></span>
                       </div>
                     </div>
                   </td>
@@ -1185,13 +1191,13 @@
                   <tr class="block4-row-jest">
                     <td class="text-muted py-1 px-1 block4-row-label block4-row-label-jest">JEST</td>
                     {% for p in block4_params %}
-                    <td class="py-1 px-1 text-start stat-number">{{ p.jest }}</td>
+                    <td class="py-1 px-1 text-start stat-number counter-fade-target" data-block4-key="{{ p.key }}" data-kind="jest">{{ p.jest }}</td>
                     {% endfor %}
                   </tr>
                   <tr class="block4-row-brak">
                     <td class="text-muted py-1 px-1 block4-row-label block4-row-label-brak">BRAK</td>
                     {% for p in block4_params %}
-                    <td class="py-1 px-1 text-start stat-number">{{ p.brak }}</td>
+                    <td class="py-1 px-1 text-start stat-number counter-fade-target" data-block4-key="{{ p.key }}" data-kind="brak">{{ p.brak }}</td>
                     {% endfor %}
                   </tr>
                   <tr class="block4-bar-row">
@@ -1202,9 +1208,9 @@
                     {% set w_jest = (p.jest / total * 100) if total else 0 %}
                     <td class="py-1 px-1 align-top block4-bar-cell">
                       <div class="block4-bar-h-wrap bar-fill-anim">
-                        <div class="block4-bar-h" style="height: 8px; min-width: 2.5em;" title="jest {{ p.jest }}, brak {{ p.brak }}">
-                          <span class="block4-bar-h-seg block4-bar-brak" style="width: {{ w_brak }}%;"></span>
-                          <span class="block4-bar-h-seg block4-bar-jest" style="width: {{ w_jest }}%;"></span>
+                        <div class="block4-bar-h" data-block4-key="{{ p.key }}" style="height: 8px; min-width: 2.5em;" title="jest {{ p.jest }}, brak {{ p.brak }}">
+                          <span class="block4-bar-h-seg block4-bar-brak" data-block4-key="{{ p.key }}" data-kind="brak" style="width: {{ w_brak }}%;"></span>
+                          <span class="block4-bar-h-seg block4-bar-jest" data-block4-key="{{ p.key }}" data-kind="jest" style="width: {{ w_jest }}%;"></span>
                         </div>
                       </div>
                     </td>
@@ -1243,7 +1249,7 @@
           <option value="500">500</option>
         </select>
         </div>
-        <span class="small text-muted text-uppercase ms-auto"><strong id="modifiedCountValue" class="text-body">{{ modified_count }}</strong><span class="block2-stat-label">zmodyfikowane</span></span>
+        <span class="small text-muted text-uppercase ms-auto"><strong id="modifiedCountValue" class="text-body counter-fade-target">{{ modified_count }}</strong><span class="block2-stat-label">zmodyfikowane</span></span>
       </div>
 
       <!-- Tabela produktów -->
@@ -1997,6 +2003,69 @@
             params.set("order", state.sort_order);
           }
           return "/api/products?" + params.toString();
+        }
+
+        function fadeSetText(el, value) {
+          if (!el) return;
+          const next = String(value ?? "");
+          if (el.textContent === next) return;
+          el.classList.add("counter-fade-target", "counter-fade-out");
+          setTimeout(() => {
+            el.textContent = next;
+            el.classList.remove("counter-fade-out");
+          }, 120);
+        }
+
+        function applyDashboardSummary(summary) {
+          if (!summary || typeof summary !== "object") return;
+
+          const total = Number(summary.total_count || 0);
+          const complete = Number(summary.count_uzupelnione || 0);
+          const incomplete = Number(summary.count_do_uzupelnienia || Math.max(0, total - complete));
+          const safeTotal = Math.max(1, total);
+
+          fadeSetText(document.getElementById("modifiedCountValue"), Number(summary.modified_count || 0));
+          fadeSetText(document.getElementById("block3TotalCount"), total);
+          fadeSetText(document.getElementById("block3CompleteCount"), complete);
+          fadeSetText(document.getElementById("block3IncompleteCount"), incomplete);
+
+          const block3BarComplete = document.getElementById("block3BarComplete");
+          const block3BarIncomplete = document.getElementById("block3BarIncomplete");
+          const block3BarWrap = document.getElementById("block3BarWrap");
+          if (block3BarComplete) block3BarComplete.style.width = `${(complete / safeTotal) * 100}%`;
+          if (block3BarIncomplete) block3BarIncomplete.style.width = `${(incomplete / safeTotal) * 100}%`;
+          if (block3BarWrap) block3BarWrap.setAttribute("title", `uzupełnione ${complete}, niekompletne ${incomplete}`);
+
+          const params = Array.isArray(summary.block4_params) ? summary.block4_params : [];
+          params.forEach((p) => {
+            const key = String(p.key || "");
+            if (!key) return;
+            const jest = Number(p.jest || 0);
+            const brak = Number(p.brak || 0);
+            fadeSetText(document.querySelector(`[data-block4-key="${key}"][data-kind="jest"]`), jest);
+            fadeSetText(document.querySelector(`[data-block4-key="${key}"][data-kind="brak"]`), brak);
+
+            const barJ = document.querySelector(`.block4-bar-h-seg[data-block4-key="${key}"][data-kind="jest"]`);
+            const barB = document.querySelector(`.block4-bar-h-seg[data-block4-key="${key}"][data-kind="brak"]`);
+            const barWrap = document.querySelector(`.block4-bar-h[data-block4-key="${key}"]`);
+            if (barJ) barJ.style.width = `${(jest / safeTotal) * 100}%`;
+            if (barB) barB.style.width = `${(brak / safeTotal) * 100}%`;
+            if (barWrap) barWrap.setAttribute("title", `jest ${jest}, brak ${brak}`);
+          });
+        }
+
+        function refreshDashboardSummary() {
+          return fetch("/api/stats-summary")
+            .then((res) => {
+              if (!res.ok) throw new Error("HTTP " + res.status);
+              return res.json();
+            })
+            .then((summary) => {
+              applyDashboardSummary(summary);
+            })
+            .catch((e) => {
+              console.warn("Nie udało się odświeżyć liczników", e);
+            });
         }
 
         function renderProducts(items) {
@@ -3295,9 +3364,10 @@
                   if (data.modified_count !== undefined) {
                     const modifiedCountEl = document.getElementById("modifiedCountValue");
                     if (modifiedCountEl) {
-                      modifiedCountEl.textContent = String(data.modified_count);
+                      fadeSetText(modifiedCountEl, Number(data.modified_count));
                     }
                   }
+                  refreshDashboardSummary();
                 })
                 .catch((err) => {
                   console.error("Edycja nieudana", err);
@@ -3354,8 +3424,9 @@
                 tr.setAttribute("data-tryb", newVal || "nowe");
                 if (data.modified_count !== undefined) {
                   const modifiedCountEl = document.getElementById("modifiedCountValue");
-                  if (modifiedCountEl) modifiedCountEl.textContent = String(data.modified_count);
+                  if (modifiedCountEl) fadeSetText(modifiedCountEl, Number(data.modified_count));
                 }
+                refreshDashboardSummary();
                 state.modified_ids.add(productId);
               })
               .catch((err) => {

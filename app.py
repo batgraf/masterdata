@@ -566,11 +566,8 @@ def increment_modified_count() -> int:
     return stats["modified_count"]
 
 
-@app.route("/")
-def index():
-    products = load_products()
-    stats = load_stats()
-
+def _compute_dashboard_stats(products: List[Dict[str, Any]], modified_count: int = 0) -> Dict[str, Any]:
+    """Liczy statystyki dashboardu (te same reguły co w widoku głównym)."""
     total_count = len(products)
 
     # Kompletność wg reguł użytkownika:
@@ -638,14 +635,13 @@ def index():
     count_do_uzupelnienia = total_count - count_uzupelnione
     count_brak_wszystkich = sum(1 for p in products if _has_required_none(p))
 
-    # wybrane – na razie 0 (brak mechanizmu zaznaczania)
+    # wybrane – na razie 0 (brak mechanizmu zaznaczania globalnego)
     selected_count = 0
 
-    missing_producer = sum(
-        1 for p in products if is_missing(p.get("Nazwa_producenta"))
-    )
+    missing_producer = sum(1 for p in products if is_missing(p.get("Nazwa_producenta")))
     missing_sku = sum(1 for p in products if is_missing(p.get("SKU")))
     missing_ean = sum(1 for p in products if is_missing(p.get("EAN")))
+
     # Niedostępnych: Dostepnosc puste, 0 lub status „niedostępny” / „niedostepny”
     def _is_unavailable(v):
         if v is None:
@@ -657,6 +653,7 @@ def index():
         if s_lower in ("0", "niedostępne", "niedostepne", "niedostępny", "niedostepny"):
             return True
         return False
+
     unavailable_count = sum(1 for p in products if _is_unavailable(p.get("Dostepnosc")))
 
     # Ostatni blok: kolumny parametrów, wiersze jest/brak (dla wykresów słupkowych)
@@ -699,27 +696,37 @@ def index():
     for label, key in _block4_param_keys:
         jest_n = sum(1 for p in products if _param_jest(p, key))
         block4_params.append({
+            "key": key,
             "label": label,
             "jest": jest_n,
             "brak": total_count - jest_n,
         })
 
-    modified_count = stats.get("modified_count", 0)
+    return {
+        "total_count": total_count,
+        "selected_count": selected_count,
+        "count_uzupelnione": count_uzupelnione,
+        "count_do_uzupelnienia": count_do_uzupelnienia,
+        "count_brak_wszystkich": count_brak_wszystkich,
+        "missing_producer": missing_producer,
+        "missing_sku": missing_sku,
+        "missing_ean": missing_ean,
+        "unavailable_count": unavailable_count,
+        "block4_params": block4_params,
+        "modified_count": modified_count,
+    }
+
+
+@app.route("/")
+def index():
+    products = load_products()
+    stats = load_stats()
+    dashboard = _compute_dashboard_stats(products, stats.get("modified_count", 0))
     version = read_version()
 
     return render_template(
         "index.html",
-        total_count=total_count,
-        selected_count=selected_count,
-        count_uzupelnione=count_uzupelnione,
-        count_do_uzupelnienia=count_do_uzupelnienia,
-        count_brak_wszystkich=count_brak_wszystkich,
-        missing_producer=missing_producer,
-        missing_sku=missing_sku,
-        missing_ean=missing_ean,
-        unavailable_count=unavailable_count,
-        block4_params=block4_params,
-        modified_count=modified_count,
+        **dashboard,
         version=version,
         use_db=_use_db(),
     )
@@ -1136,6 +1143,14 @@ def get_stats():
     """Zwraca statystyki (m.in. licznik zmodyfikowanych rekordów)."""
     stats = load_stats()
     return jsonify(stats)
+
+
+@app.get("/api/stats-summary")
+def get_stats_summary():
+    """Zwraca pełne liczniki dashboardu (bez przeładowania strony)."""
+    products = load_products()
+    stats = load_stats()
+    return jsonify(_compute_dashboard_stats(products, stats.get("modified_count", 0)))
 
 
 @app.post("/api/stats/reset-modified")
