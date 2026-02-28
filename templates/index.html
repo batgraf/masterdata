@@ -749,6 +749,7 @@
         font-size: 0.4rem;
         vertical-align: middle;
       }
+      /* Płynna zmiana motywu – ok. 0.2s (krótszy czas, mniej „ładowania”) */
       .block2-stat-label {
         font-size: 11px;
         margin-left: 0.45rem;
@@ -789,8 +790,12 @@
       #pageInfo,
       .page-wrap .small.text-muted,
       .middle-filters .filter-count,
-      .block2-stat-sep {
-        transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out, border-color 0.4s ease-in-out;
+      .block2-stat-sep,
+      .stat-number,
+      .text-warning,
+      #leftBlock,
+      .pagination-btn {
+        transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out, border-color 0.15s ease-in-out;
       }
       /* ----- Motyw ciemny (wzór: instrukcje.mebloszyk.pl) ----- */
       [data-bs-theme="dark"] {
