@@ -119,21 +119,10 @@
       /* Przyciski z ikoną w Blok1 – padding jak „zaznacz” (1rem boki), odstęp ikona–tekst */
       #undoBtn,
       #saveViewBtn,
-      #resetViewBtn,
-      #viewOptionsBtn {
+      #resetViewBtn {
         padding-left: 1rem;
         padding-right: 1rem;
         gap: 0.35rem;
-      }
-      #viewOptionsBtn {
-        background-color: #4a148c;
-        border-color: #4a148c;
-        color: #fff;
-      }
-      #viewOptionsBtn:hover {
-        background-color: #6a1bac;
-        border-color: #6a1bac;
-        color: #fff;
       }
       .page-wrap > .row.g-3 .form-control,
       .page-wrap > .row.g-3 .form-control-sm,
@@ -691,7 +680,7 @@
             </div>
             <nav class="page-header-menu">
               <a href="https://masterdata.mebloszyk.pl" class="page-header-menu-link">Strona główna</a>
-              <span class="page-header-menu-item">Opcje wyświetlania</span>
+              <button type="button" id="viewOptionsBtn" class="page-header-menu-btn" title="Opcje wyświetlania">Opcje wyświetlania</button>
               <span class="page-header-menu-item">Statystyki</span>
               <button type="button" id="restoreFromBackupBtn" class="page-header-menu-btn" title="Załaduj z najnowszej kopii (awaryjnie)">Kopia</button>
               <button type="button" id="exportSelectedJsonBtn" class="page-header-menu-btn" title="Pobierz zaznaczone produkty jako JSON">Json</button>
@@ -722,9 +711,6 @@
                     cofnij
                   </button>
                   <div class="d-flex align-items-center gap-1 view-controls-main flex-wrap">
-                    <button type="button" id="viewOptionsBtn" class="btn btn-sm" title="Opcje">
-                      opcje
-                    </button>
                   </div>
                 </div>
               </div>
