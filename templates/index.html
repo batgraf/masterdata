@@ -760,6 +760,8 @@
       .block4-params-table .block4-bar-cell { width: 2.8em; min-width: 2.8em; max-width: 2.8em; box-sizing: border-box; }
       .block4-params-table thead th { color: #6c757d !important; font-size: 10px !important; font-weight: 400 !important; background: transparent; border-bottom: 1px solid #dee2e6; }
       .block4-params-table tbody td { border-bottom: 1px solid #dee2e6; }
+      .block4-params-table tr.block4-bar-row td { border-bottom: none !important; }
+      #block3Stats table tbody tr:last-child td { border-bottom: none !important; }
       [data-bs-theme="dark"] .block4-params-table thead th { color: #adb5bd !important; background: transparent; border-bottom-color: #343a40; }
       [data-bs-theme="dark"] .block4-params-table tbody td { border-bottom-color: #343a40; }
       .block4-bar-h { display: flex; flex-direction: row; width: 100%; overflow: hidden; border-radius: 2px; }
@@ -768,16 +770,19 @@
       .block4-bar-h-seg.block4-bar-jest { background-color: #198754; }
       [data-bs-theme="dark"] .block4-bar-h-seg.block4-bar-brak { background-color: #dc3545; }
       [data-bs-theme="dark"] .block4-bar-h-seg.block4-bar-jest { background-color: #198754; }
-      /* Tylko wybrane nagłówki kolumn – kolor #68ef10 */
+      /* Tytuły jak w bloku3 (parametry) – kolor #68ef10 */
+      table.products-table thead th[data-col="Nazwa"],
+      table.products-table thead th[data-col="Nazwa_producenta"],
+      table.products-table thead th[data-col="Grupa_produktu"],
       table.products-table thead th[data-col="EAN"],
       table.products-table thead th[data-col="SKU"],
+      table.products-table thead th[data-col="Cena_zakupu_netto"],
+      table.products-table thead th[data-col="Cena_sprzedazy_brutto"],
       table.products-table thead th[data-col="Waga_brutto"],
       table.products-table thead th[data-col="Szerokosc"],
       table.products-table thead th[data-col="Wysokosc"],
       table.products-table thead th[data-col="Dlugosc"],
-      table.products-table thead th[data-col="Nazwa_producenta"],
-      table.products-table thead th[data-col="Cena_zakupu_netto"],
-      table.products-table thead th[data-col="Cena_sprzedazy_brutto"] {
+      table.products-table thead th[data-col="Rodzaj_opakowania"] {
         color: #68ef10 !important;
       }
       /* ----- Motyw ciemny (wzór: instrukcje.mebloszyk.pl) ----- */
@@ -825,15 +830,18 @@
       [data-bs-theme="dark"] table.products-table thead th[data-col] {
         color: #c6cadc !important;
       }
+      [data-bs-theme="dark"] table.products-table thead th[data-col="Nazwa"],
+      [data-bs-theme="dark"] table.products-table thead th[data-col="Nazwa_producenta"],
+      [data-bs-theme="dark"] table.products-table thead th[data-col="Grupa_produktu"],
       [data-bs-theme="dark"] table.products-table thead th[data-col="EAN"],
       [data-bs-theme="dark"] table.products-table thead th[data-col="SKU"],
+      [data-bs-theme="dark"] table.products-table thead th[data-col="Cena_zakupu_netto"],
+      [data-bs-theme="dark"] table.products-table thead th[data-col="Cena_sprzedazy_brutto"],
       [data-bs-theme="dark"] table.products-table thead th[data-col="Waga_brutto"],
       [data-bs-theme="dark"] table.products-table thead th[data-col="Szerokosc"],
       [data-bs-theme="dark"] table.products-table thead th[data-col="Wysokosc"],
       [data-bs-theme="dark"] table.products-table thead th[data-col="Dlugosc"],
-      [data-bs-theme="dark"] table.products-table thead th[data-col="Nazwa_producenta"],
-      [data-bs-theme="dark"] table.products-table thead th[data-col="Cena_zakupu_netto"],
-      [data-bs-theme="dark"] table.products-table thead th[data-col="Cena_sprzedazy_brutto"] {
+      [data-bs-theme="dark"] table.products-table thead th[data-col="Rodzaj_opakowania"] {
         color: #68ef10 !important;
       }
       [data-bs-theme="dark"] .products-table tbody td {
@@ -992,7 +1000,6 @@
               <a href="https://masterdata.mebloszyk.pl" class="page-header-menu-link">Strona główna</a>
               <button type="button" id="viewOptionsBtn" class="page-header-menu-btn" title="Opcje wyświetlania">Opcje wyświetlania</button>
               <span class="page-header-menu-item">Statystyki</span>
-              <button type="button" id="restoreFromBackupBtn" class="page-header-menu-btn" title="Załaduj z najnowszej kopii (awaryjnie)">Kopia</button>
               <button type="button" id="exportSelectedJsonBtn" class="page-header-menu-btn" title="Pobierz zaznaczone produkty jako JSON">Json</button>
               <a href="#" id="changeLogBtn" class="page-header-menu-link" title="Dziennik zmian">Dziennik</a>
               <button type="button" id="themeToggleBtn" class="page-header-menu-btn" title="Przełącz motyw jasny/ciemny" aria-label="Przełącz motyw"><i class="bi bi-moon-stars" aria-hidden="true"></i><i class="bi bi-sun" aria-hidden="true"></i></button>
@@ -1155,10 +1162,9 @@
 
       </div>
 
-      <!-- Paginacja + cofnij zmiany i zmodyfikowane (całkiem do lewej) -->
-      <div class="d-flex align-items-center gap-2 mb-2 flex-wrap">
+      <!-- Paginacja + cofnij zmiany (lewa) | zmodyfikowane (prawa) -->
+      <div class="d-flex align-items-center gap-2 flex-wrap mt-3 mb-3">
         <button type="button" id="undoBtn" class="btn btn-sm btn-success me-2" title="Cofnij ostatnią zmianę (Ctrl+Z)">cofnij zmiany</button>
-        <span class="small text-muted text-uppercase me-2"><strong id="modifiedCountValue" class="text-body">{{ modified_count }}</strong><span class="block2-stat-label">zmodyfikowane</span></span>
         <div class="d-flex justify-content-center align-items-center gap-2 flex-wrap flex-grow-1">
         <button type="button" id="firstPageBtn" class="btn btn-sm pagination-btn" style="font-size: 16px; line-height: 1; padding: 0.3rem 0.8rem;" title="Pierwsza strona">
           <i class="bi bi-chevron-double-left"></i>
@@ -1181,6 +1187,7 @@
           <option value="500">500</option>
         </select>
         </div>
+        <span class="small text-muted text-uppercase ms-auto"><strong id="modifiedCountValue" class="text-body">{{ modified_count }}</strong><span class="block2-stat-label">zmodyfikowane</span></span>
       </div>
 
       <!-- Tabela produktów -->
@@ -1223,6 +1230,11 @@
             </thead>
             <tbody id="productsTbody"></tbody>
           </table>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col-12">
+          <button type="button" id="restoreFromBackupBtn" class="btn btn-sm btn-outline-secondary" title="Załaduj z najnowszej kopii (awaryjnie)">Kopia</button>
         </div>
       </div>
     </div>
