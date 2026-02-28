@@ -69,3 +69,4 @@
 66. 2026-02-28 17:54 - modal „opcje wyświetlania” można przeciągać myszką za nagłówek (drag & drop, reset pozycji po zamknięciu)
 67. 2026-02-28 18:21 - paginacja: powiększone strzałki (większy font i padding przycisków « ‹ › »)
 68. 2026-02-28 19:13 - paginacja: zamiana znaków « ‹ › » na ikony Bootstrap chevron (single/double left/right)
+69. 2026-02-28 19:25 - przefiltrowane | wybranych | zmodyfikowane przeniesione pod przyciski w bloku 2 (jedna linia, małe litery, wartości oddzielone |)

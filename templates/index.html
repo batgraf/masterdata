@@ -1020,6 +1020,11 @@
                   </button>
                 </div>
               </div>
+              <div class="col-12 mt-2">
+                <div class="small text-muted text-lowercase" style="font-size: 0.85rem;">
+                  <span id="filteredCountValue">0</span> przefiltrowane | <span id="selectedCountValue">{{ selected_count }}</span> wybranych | <span id="modifiedCountValue">{{ modified_count }}</span> zmodyfikowane
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -1030,18 +1035,6 @@
               <div class="col-3">
                 <div class="stat-number">{{ total_count }}</div>
                 <div class="stat-label">produktów łącznie</div>
-              </div>
-              <div class="col-3">
-                <div class="stat-number" id="filteredCountValue">0</div>
-                <div class="stat-label">przefiltrowane</div>
-              </div>
-              <div class="col-3">
-                <div class="stat-number" id="selectedCountValue">{{ selected_count }}</div>
-                <div class="stat-label">wybranych</div>
-              </div>
-              <div class="col-3">
-                <div class="stat-number" id="modifiedCountValue">{{ modified_count }}</div>
-                <div class="stat-label">zmodyfikowane</div>
               </div>
             </div>
             <div class="row g-2 mt-2">
