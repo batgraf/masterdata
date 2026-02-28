@@ -744,6 +744,11 @@
       #viewOptionsModal .modal-header .btn-close {
         cursor: pointer;
       }
+      .block2-stat-sep {
+        color: #f86c6f;
+        font-size: 0.4rem;
+        vertical-align: middle;
+      }
       /* ----- Motyw ciemny (wzór: instrukcje.mebloszyk.pl) ----- */
       [data-bs-theme="dark"] {
         color-scheme: dark;
@@ -1020,10 +1025,12 @@
                   </button>
                 </div>
               </div>
-              <div class="col-12 mt-2">
-                <div class="small text-muted text-lowercase" style="font-size: 0.85rem;">
-                  <span id="filteredCountValue">0</span> przefiltrowane | <span id="selectedCountValue">{{ selected_count }}</span> wybranych | <span id="modifiedCountValue">{{ modified_count }}</span> zmodyfikowane
-                </div>
+              <div class="col-12 mt-2 d-flex justify-content-center flex-wrap align-items-center" style="gap: 0.75rem 1rem;">
+                <span class="small text-muted text-uppercase" style="font-size: 0.85rem;"><strong id="filteredCountValue" class="text-body">0</strong> przefiltrowane</span>
+                <i class="bi bi-record-fill block2-stat-sep" aria-hidden="true"></i>
+                <span class="small text-muted text-uppercase" style="font-size: 0.85rem;"><strong id="selectedCountValue" class="text-body">{{ selected_count }}</strong> wybranych</span>
+                <i class="bi bi-record-fill block2-stat-sep" aria-hidden="true"></i>
+                <span class="small text-muted text-uppercase" style="font-size: 0.85rem;"><strong id="modifiedCountValue" class="text-body">{{ modified_count }}</strong> zmodyfikowane</span>
               </div>
             </div>
           </div>
