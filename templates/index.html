@@ -743,8 +743,15 @@
       /* Ostatni blok – tabela parametrów jest/brak + wykres słupkowy */
       #block4Stats, #block4Stats * { font-size: 12px !important; }
       #block4Stats .stat-number { font-weight: 400 !important; }
-      .block4-table-wrap .block4-params-table { min-width: max-content; }
+      .block4-table-wrap .block4-params-table { table-layout: fixed; }
       .block4-params-table th, .block4-params-table td { white-space: nowrap; vertical-align: middle; }
+      .block4-params-table .block4-row-th { width: 2.2em; }
+      .block4-params-table .block4-param-th,
+      .block4-params-table tbody td.text-end { width: 2.8em; min-width: 2.8em; max-width: 2.8em; box-sizing: border-box; }
+      .block4-params-table .block4-bar-th,
+      .block4-params-table .block4-bar-cell { width: 1.8em; min-width: 1.8em; }
+      .block4-params-table thead th { color: #fff !important; font-size: 10px !important; font-weight: 400 !important; background-color: #212529; }
+      [data-bs-theme="dark"] .block4-params-table thead th { background-color: #212529; color: #fff !important; }
       .block4-bar { display: flex; flex-direction: column; align-items: center; }
       .block4-bar-seg { display: block; width: 100%; min-height: 1px; background-color: #6c757d; }
       [data-bs-theme="dark"] .block4-bar-seg { background-color: #6c757d; }
@@ -1096,7 +1103,7 @@
                   <tr>
                     <th class="py-1 px-1 block4-row-th"></th>
                     {% for p in block4_params %}
-                    <th class="text-start text-muted text-uppercase py-1 px-1" style="font-weight: 600;">{{ p.label }}</th>
+                    <th class="text-start text-uppercase py-1 px-1 block4-param-th">{{ p.label }}</th>
                     <th class="py-1 px-1 block4-bar-th"></th>
                     {% endfor %}
                   </tr>
