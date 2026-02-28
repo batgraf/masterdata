@@ -48,3 +48,5 @@
 45. 2026-02-26 16:00 - przycisk cofnij: dwie linie (cofnij / wprowadzone zmiany)
 46. 2026-02-26 16:05 - przycisk cofnij: druga linia „zmiany” (cofnij i zmiany jeden pod drugim)
 47. 2026-02-26 16:10 - przycisk: jeden napis „cofnij zmiany”
+48. 2026-02-26 16:15 - odstęp (mt-3) między wyszukiwarką a przyciskami zaznacz/wszystko/usuń/edytuj
+49. 2026-02-26 16:20 - nagłówki kolumn: tło jak reszta (bez #ffe9d9), czcionka pogrubiona (font-weight 600)

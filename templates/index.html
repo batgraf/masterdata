@@ -284,7 +284,7 @@
         text-transform: none;
         font-weight: 400;
       }
-      /* Wymagane kolumny - kolor tła nagłówka */
+      /* Wymagane kolumny – tło jak reszta, czcionka pogrubiona */
       table.products-table thead th[data-col="Nazwa"],
       table.products-table thead th[data-col="Nazwa_producenta"],
       table.products-table thead th[data-col="Grupa_produktu"],
@@ -299,7 +299,8 @@
       table.products-table thead th[data-col="Wysokosc"],
       table.products-table thead th[data-col="Dlugosc"],
       table.products-table thead th[data-col="Rodzaj_opakowania"] {
-        background-color: #ffe9d9 !important;
+        background-color: inherit !important;
+        font-weight: 600;
       }
       table.products-table thead th[data-col] {
         cursor: pointer;
