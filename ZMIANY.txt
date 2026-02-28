@@ -66,3 +66,4 @@
 63. 2026-02-28 18:15 - filtr Źródło: API column-values i filtrowanie uwzględniają pole source (json/xml w drugim polu)
 64. 2026-02-28 18:25 - filtr Źródło: fallback json/xml w API i w JS gdy lista wartości pusta
 65. 2026-02-28 17:49 - dark mode: tło wierszy tryb=nowe ustawione na #212529; wyczyszczono 2 błędne EAN (notacja E+...) w bazie
+66. 2026-02-28 17:54 - modal „opcje wyświetlania” można przeciągać myszką za nagłówek (drag & drop, reset pozycji po zamknięciu)

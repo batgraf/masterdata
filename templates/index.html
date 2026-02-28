@@ -737,6 +737,13 @@
         font-size: 10px;
         text-align: center;
       }
+      #viewOptionsModal .modal-header {
+        cursor: move;
+        user-select: none;
+      }
+      #viewOptionsModal .modal-header .btn-close {
+        cursor: pointer;
+      }
       /* ----- Motyw ciemny (wzór: instrukcje.mebloszyk.pl) ----- */
       [data-bs-theme="dark"] {
         color-scheme: dark;
@@ -2345,6 +2352,72 @@
         const viewOptionsBtn = document.getElementById("viewOptionsBtn");
         const viewOptionsModal = document.getElementById("viewOptionsModal");
         if (viewOptionsBtn && viewOptionsModal) {
+          const viewOptionsDialog = viewOptionsModal.querySelector(".modal-dialog");
+          const viewOptionsHeader = viewOptionsModal.querySelector(".modal-header");
+          let isViewOptionsDragging = false;
+          let dragStartX = 0;
+          let dragStartY = 0;
+          let dragBaseX = 0;
+          let dragBaseY = 0;
+
+          function getDialogShift() {
+            if (!viewOptionsDialog) return { x: 0, y: 0 };
+            return {
+              x: Number(viewOptionsDialog.dataset.dragX || 0),
+              y: Number(viewOptionsDialog.dataset.dragY || 0),
+            };
+          }
+
+          function setDialogShift(x, y) {
+            if (!viewOptionsDialog) return;
+            viewOptionsDialog.dataset.dragX = String(x);
+            viewOptionsDialog.dataset.dragY = String(y);
+            viewOptionsDialog.style.transform = "translate(" + x + "px, " + y + "px)";
+          }
+
+          function resetDialogShift() {
+            if (!viewOptionsDialog) return;
+            viewOptionsDialog.dataset.dragX = "0";
+            viewOptionsDialog.dataset.dragY = "0";
+            viewOptionsDialog.style.removeProperty("transform");
+          }
+
+          function handleViewOptionsDragStart(e) {
+            if (e.button !== 0) return;
+            if (e.target && e.target.closest(".btn-close")) return;
+            const shift = getDialogShift();
+            isViewOptionsDragging = true;
+            dragStartX = e.clientX;
+            dragStartY = e.clientY;
+            dragBaseX = shift.x;
+            dragBaseY = shift.y;
+            document.body.style.userSelect = "none";
+            e.preventDefault();
+          }
+
+          function handleViewOptionsDragMove(e) {
+            if (!isViewOptionsDragging) return;
+            const dx = e.clientX - dragStartX;
+            const dy = e.clientY - dragStartY;
+            setDialogShift(dragBaseX + dx, dragBaseY + dy);
+          }
+
+          function handleViewOptionsDragEnd() {
+            if (!isViewOptionsDragging) return;
+            isViewOptionsDragging = false;
+            document.body.style.removeProperty("user-select");
+          }
+
+          if (viewOptionsHeader && viewOptionsDialog) {
+            viewOptionsHeader.addEventListener("mousedown", handleViewOptionsDragStart);
+            document.addEventListener("mousemove", handleViewOptionsDragMove);
+            document.addEventListener("mouseup", handleViewOptionsDragEnd);
+            viewOptionsModal.addEventListener("hidden.bs.modal", () => {
+              handleViewOptionsDragEnd();
+              resetDialogShift();
+            });
+          }
+
           const viewOptionsModalInstance = new bootstrap.Modal(viewOptionsModal);
           viewOptionsBtn.addEventListener("click", () => {
             viewOptionsModalInstance.show();
