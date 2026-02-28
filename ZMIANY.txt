@@ -42,3 +42,4 @@
 39. 2026-02-26 15:30 - zaznacz, wszystko, usuń, edytuj pod wyszukiwarką w dwóch divach po 50% szerokości
 40. 2026-02-26 15:35 - zaznacz, wszystko, usuń, edytuj w jednej linii
 41. 2026-02-26 15:40 - szerokości bloków: blok1 1/12, blok2 4/12, blok3 7/12
+42. 2026-02-26 15:45 - przyciski zaznacz, wszystko, usuń, edytuj równej szerokości, wypełniają cały blok
