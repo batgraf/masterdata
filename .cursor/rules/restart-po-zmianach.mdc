@@ -1,5 +1,5 @@
 ---
-description: Po zmianach w szablonach/static – restart serwisu; użytkownik odświeża Ctrl+F5
+description: Po zmianach w szablonach/static – restart serwisu; przy dużych zmianach push + restart
 alwaysApply: true
 ---
 
@@ -7,3 +7,13 @@ alwaysApply: true
 
 - Po zmianach w **szablonach** (templates/) lub **plikach static** na serwerze: **zrestartuj** `masterdata.service`, żeby użytkownik widział zmiany.
 - Użytkownik **zawsze odświeża stronę przez Ctrl+F5** (twarde odświeżenie).
+
+# Przy dużych zmianach – zawsze na serwer
+
+Po **większych zmianach** (nowe funkcje, raporty, API, istotne poprawki):
+
+1. **Wyślij zmiany na serwer:** `git push origin main`
+2. Na serwerze (jeśli edytujesz zdalnie): `git pull origin main` w katalogu projektu
+3. **Zrestartuj usługę:** `sudo systemctl restart masterdata.service`
+
+Nie pomijaj push i restartu – użytkownik ma od razu widzieć działającą wersję na stronie.
