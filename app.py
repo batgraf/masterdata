@@ -1,6 +1,6 @@
 import json
 import shutil
-from datetime import datetime
+from datetime import datetime, date, timedelta
 from io import BytesIO
 from pathlib import Path
 from typing import Dict, Any, List, Tuple, Optional
@@ -19,6 +19,7 @@ BASE_DIR = Path(__file__).resolve().parent
 DATA_FILE = BASE_DIR / "AsortymentyMasterData.json"
 VIEWS_DIR = BASE_DIR / "column_views"
 STATS_FILE = BASE_DIR / "stats.json"
+REPORTS_SNAPSHOTS_FILE = BASE_DIR / "report_snapshots.json"
 VERSION_FILE = BASE_DIR / "VERSION.txt"
 
 app = Flask(__name__)
@@ -35,7 +36,7 @@ try:
     batch_update_products as db_batch_update_products, clear_products,
     save_user_base, list_user_bases, get_user_base,
     create_system_backup, restore_from_latest_backup, get_product,
-    get_products_id_produktu, insert_change_log, get_changes_since, get_change_log_grouped,
+    get_products_id_produktu, insert_change_log, get_changes_since, get_change_log_grouped, get_change_log_stats,
     PRODUCT_KEYS, NUMERIC_KEYS as DB_NUMERIC_KEYS,
 )
     from data_loaders import load_from_json_bytes, load_from_xml_suuhouse
@@ -556,6 +557,60 @@ def save_stats(stats: Dict[str, Any]) -> None:
         json.dumps(stats, ensure_ascii=False, indent=2),
         encoding="utf-8",
     )
+
+
+def _report_today_date() -> str:
+    """Data dzisiejsza w strefie Europe/Warsaw (YYYY-MM-DD)."""
+    try:
+        from zoneinfo import ZoneInfo
+        from datetime import datetime
+        return datetime.now(ZoneInfo("Europe/Warsaw")).strftime("%Y-%m-%d")
+    except Exception:
+        from datetime import date
+        return date.today().isoformat()
+
+
+def load_report_snapshots() -> List[Dict[str, Any]]:
+    """Wczytuje listę snapshotów raportów (każdy z kluczem date YYYY-MM-DD)."""
+    if not REPORTS_SNAPSHOTS_FILE.exists():
+        return []
+    try:
+        raw = REPORTS_SNAPSHOTS_FILE.read_text(encoding="utf-8")
+        data = json.loads(raw)
+        return data.get("snapshots", []) if isinstance(data, dict) else (data if isinstance(data, list) else [])
+    except Exception:
+        return []
+
+
+def save_report_snapshots(snapshots: List[Dict[str, Any]]) -> None:
+    """Zapisuje listę snapshotów do pliku."""
+    REPORTS_SNAPSHOTS_FILE.write_text(
+        json.dumps({"snapshots": snapshots}, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+
+
+def create_snapshot_now() -> Dict[str, Any]:
+    """Tworzy snapshot bieżącego stanu (data = dziś Europe/Warsaw) i dopisuje do pliku (nadpisuje snapshot z dziś)."""
+    products = load_products()
+    stats = load_stats()
+    dashboard = _compute_dashboard_stats(products, stats.get("modified_count", 0))
+    today = _report_today_date()
+    snapshot = {
+        "date": today,
+        "total_count": dashboard["total_count"],
+        "count_uzupelnione": dashboard["count_uzupelnione"],
+        "count_do_uzupelnienia": dashboard["count_do_uzupelnienia"],
+        "modified_count": dashboard["modified_count"],
+        "block4_params": dashboard["block4_params"],
+    }
+    snapshots = load_report_snapshots()
+    # Nadpisz snapshot z tego samego dnia
+    snapshots = [s for s in snapshots if s.get("date") != today]
+    snapshots.append(snapshot)
+    snapshots.sort(key=lambda s: s.get("date", ""), reverse=True)
+    save_report_snapshots(snapshots)
+    return snapshot
 
 
 def increment_modified_count() -> int:
@@ -1160,6 +1215,118 @@ def reset_modified_count():
     stats["modified_count"] = 0
     save_stats(stats)
     return jsonify({"modified_count": 0})
+
+
+# --- Raporty okresowe (snapshoty + API) ---
+
+def _report_date_from_today(offset_days: int) -> str:
+    """Data offset_days od dziś (Europe/Warsaw) w formacie YYYY-MM-DD."""
+    try:
+        from zoneinfo import ZoneInfo
+        now = datetime.now(ZoneInfo("Europe/Warsaw"))
+        d = (now.date() - timedelta(days=offset_days)).isoformat()
+        return d
+    except Exception:
+        return (date.today() - timedelta(days=offset_days)).isoformat()
+
+
+def _get_latest_snapshot_in_range(snapshots: List[Dict[str, Any]], date_from: str, date_to: str) -> Optional[Dict[str, Any]]:
+    """Zwraca najnowszy snapshot, którego data jest w [date_from, date_to] (włącznie)."""
+    candidates = [s for s in snapshots if date_from <= (s.get("date") or "") <= date_to]
+    if not candidates:
+        return None
+    return max(candidates, key=lambda s: s.get("date", ""))
+
+
+@app.post("/api/report/snapshot")
+def api_report_create_snapshot():
+    """Tworzy snapshot stanu na dziś (Europe/Warsaw) i zapisuje do pliku."""
+    snapshot = create_snapshot_now()
+    return jsonify({"ok": True, "snapshot": snapshot})
+
+
+@app.get("/api/report")
+def api_report():
+    """
+    GET /api/report?period=day|week|month
+    Zwraca: current (snapshot), previous (snapshot), deltas, change_log stats dla okresu.
+    """
+    period = (request.args.get("period") or "day").strip().lower()
+    if period not in ("day", "week", "month"):
+        period = "day"
+    snapshots = load_report_snapshots()
+    today = _report_date_from_today(0)
+
+    if period == "day":
+        date_to = today
+        date_from = today
+        prev_from = _report_date_from_today(1)
+        prev_to = _report_date_from_today(1)
+        change_from = today
+        change_to = today
+    elif period == "week":
+        date_from = _report_date_from_today(6)
+        date_to = today
+        prev_from = _report_date_from_today(13)
+        prev_to = _report_date_from_today(7)
+        change_from = date_from
+        change_to = date_to
+    else:  # month
+        date_from = _report_date_from_today(29)
+        date_to = today
+        prev_from = _report_date_from_today(59)
+        prev_to = _report_date_from_today(30)
+        change_from = date_from
+        change_to = date_to
+
+    current = _get_latest_snapshot_in_range(snapshots, date_from, date_to)
+    previous = _get_latest_snapshot_in_range(snapshots, prev_from, prev_to)
+
+    # Delty: current vs previous (różnica total_count, count_do_uzupelnienia, block4_params)
+    def _delta_snapshot(cur: Optional[Dict], prev: Optional[Dict]) -> Dict[str, Any]:
+        out = {
+            "total_diff": None,
+            "do_uzupelnienia_diff": None,
+            "block4_params": [],
+        }
+        if cur and prev:
+            out["total_diff"] = cur.get("total_count", 0) - prev.get("total_count", 0)
+            out["do_uzupelnienia_diff"] = cur.get("count_do_uzupelnienia", 0) - prev.get("count_do_uzupelnienia", 0)
+            prev_params = {p.get("key"): p for p in prev.get("block4_params") or []}
+            for p in cur.get("block4_params") or []:
+                key = p.get("key")
+                prev_p = prev_params.get(key, {})
+                out["block4_params"].append({
+                    "key": key,
+                    "label": p.get("label"),
+                    "jest_diff": p.get("jest", 0) - prev_p.get("jest", 0),
+                    "brak_diff": p.get("brak", 0) - prev_p.get("brak", 0),
+                })
+        return out
+
+    deltas = _delta_snapshot(current, previous)
+
+    # Zmiany z logu (tylko gdy DB)
+    records_changed = 0
+    changes_count = 0
+    if _use_db():
+        try:
+            with get_connection() as conn:
+                ensure_extra_tables(conn)
+                st = get_change_log_stats(conn, change_from, change_to)
+                records_changed = st.get("records_changed", 0)
+                changes_count = st.get("changes_count", 0)
+        except Exception:
+            pass
+
+    return jsonify({
+        "period": period,
+        "current": current,
+        "previous": previous,
+        "deltas": deltas,
+        "records_changed": records_changed,
+        "changes_count": changes_count,
+    })
 
 
 def read_version() -> str:

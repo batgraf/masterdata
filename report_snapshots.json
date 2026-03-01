@@ -1,0 +1,73 @@
+{
+  "snapshots": [
+    {
+      "date": "2026-03-01",
+      "total_count": 6921,
+      "count_uzupelnione": 3,
+      "count_do_uzupelnienia": 6918,
+      "modified_count": 364,
+      "block4_params": [
+        {
+          "key": "Nazwa",
+          "label": "Produkt",
+          "jest": 6921,
+          "brak": 0
+        },
+        {
+          "key": "Nazwa_producenta",
+          "label": "Dostawca",
+          "jest": 6921,
+          "brak": 0
+        },
+        {
+          "key": "Grupa_produktu",
+          "label": "Kategoria",
+          "jest": 750,
+          "brak": 6171
+        },
+        {
+          "key": "EAN",
+          "label": "EAN",
+          "jest": 6175,
+          "brak": 746
+        },
+        {
+          "key": "SKU",
+          "label": "SKU",
+          "jest": 6740,
+          "brak": 181
+        },
+        {
+          "key": "Cena_zakupu",
+          "label": "Cena Zak.",
+          "jest": 4418,
+          "brak": 2503
+        },
+        {
+          "key": "Cena_sprzedazy",
+          "label": "Cena Sprz.",
+          "jest": 6758,
+          "brak": 163
+        },
+        {
+          "key": "Waga_brutto",
+          "label": "Waga",
+          "jest": 5671,
+          "brak": 1250
+        },
+        {
+          "key": "Wymiary",
+          "label": "Wymiary",
+          "jest": 3,
+          "brak": 6918
+        },
+        {
+          "key": "Rodzaj_opakowania",
+          "label": "opakowanie",
+          "jest": 128,
+          "brak": 6793
+        }
+      ]
+    }
+  ]
+}

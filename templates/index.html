@@ -1060,6 +1060,7 @@
               <span class="page-header-menu-item">Statystyki</span>
               <button type="button" id="exportSelectedJsonBtn" class="page-header-menu-btn" title="Pobierz zaznaczone produkty jako JSON">Json</button>
               <a href="#" id="changeLogBtn" class="page-header-menu-link" title="Dziennik zmian">Dziennik</a>
+              <a href="#" id="reportBtn" class="page-header-menu-link" title="Raport okresowy">Raport</a>
               <button type="button" id="themeToggleBtn" class="page-header-menu-btn" title="Przełącz motyw jasny/ciemny" aria-label="Przełącz motyw"><i class="bi bi-moon-stars" aria-hidden="true"></i><i class="bi bi-sun" aria-hidden="true"></i></button>
             </nav>
             <div class="d-flex align-items-center gap-2 page-header-controls">
@@ -1356,6 +1357,36 @@
           </div>
           <div class="modal-body" id="changeLogModalBody">
             <p class="text-muted mb-0">Ładowanie…</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal raportu okresowego -->
+    <div class="modal fade" id="reportModal" tabindex="-1" aria-labelledby="reportModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="reportModalLabel">Raport okresowy</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Zamknij"></button>
+          </div>
+          <div class="modal-body" id="reportModalBody">
+            <div class="mb-3 d-flex flex-wrap align-items-center gap-2">
+              <label class="mb-0">Okres:</label>
+              <div class="btn-group" role="group">
+                <input type="radio" class="btn-check" name="reportPeriod" id="reportPeriodDay" value="day" checked>
+                <label class="btn btn-outline-secondary btn-sm" for="reportPeriodDay">Dzienny</label>
+                <input type="radio" class="btn-check" name="reportPeriod" id="reportPeriodWeek" value="week">
+                <label class="btn btn-outline-secondary btn-sm" for="reportPeriodWeek">Tygodniowy</label>
+                <input type="radio" class="btn-check" name="reportPeriod" id="reportPeriodMonth" value="month">
+                <label class="btn btn-outline-secondary btn-sm" for="reportPeriodMonth">Miesięczny</label>
+              </div>
+              <button type="button" class="btn btn-primary btn-sm" id="reportRefreshBtn">Odśwież</button>
+              <button type="button" class="btn btn-success btn-sm" id="reportSnapshotBtn">Zapisz snapshot dziś</button>
+            </div>
+            <div id="reportContent">
+              <p class="text-muted mb-0">Wybierz okres i kliknij Odśwież.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -2746,6 +2777,111 @@
               .catch(() => {
                 changeLogModalBody.innerHTML = "<p class=\"text-muted mb-0\">Błąd ładowania dziennika.</p>";
               });
+          });
+        }
+
+        // Raport okresowy – modal, okres (dzienny/tygodniowy/miesięczny), snapshot, delty
+        const reportBtn = document.getElementById("reportBtn");
+        const reportModal = document.getElementById("reportModal");
+        const reportModalBody = document.getElementById("reportContent");
+        const reportRefreshBtn = document.getElementById("reportRefreshBtn");
+        const reportSnapshotBtn = document.getElementById("reportSnapshotBtn");
+        function getReportPeriod() {
+          const r = document.querySelector('input[name="reportPeriod"]:checked');
+          return (r && r.value) ? r.value : "day";
+        }
+        function renderReportContent(data) {
+          if (!data) {
+            reportModalBody.innerHTML = "<p class=\"text-muted mb-0\">Brak danych. Zapisz snapshot (Zapisz snapshot dziś) i odśwież.</p>";
+            return;
+          }
+          const cur = data.current || null;
+          const prev = data.previous || null;
+          const deltas = data.deltas || {};
+          const recordsChanged = data.records_changed != null ? data.records_changed : 0;
+          const changesCount = data.changes_count != null ? data.changes_count : 0;
+          let html = "";
+          if (cur) {
+            html += "<div class=\"mb-3\"><h6 class=\"text-secondary mb-2\">Stan z dnia " + (cur.date || "") + "</h6>";
+            html += "<p class=\"mb-1\"><strong>Rekordów w bazie:</strong> " + (cur.total_count ?? "—") + "</p>";
+            if (deltas.total_diff != null) {
+              const sign = deltas.total_diff > 0 ? "+" : "";
+              html += "<p class=\"mb-1\"><strong>Różnica vs poprzedni okres:</strong> " + sign + deltas.total_diff + "</p>";
+            }
+            html += "<p class=\"mb-1\"><strong>Do uzupełnienia:</strong> " + (cur.count_do_uzupelnienia ?? "—") + "</p>";
+            if (deltas.do_uzupelnienia_diff != null) {
+              const sign = deltas.do_uzupelnienia_diff > 0 ? "+" : "";
+              html += "<p class=\"mb-1\"><strong>Różnica (do uzupełnienia):</strong> " + sign + deltas.do_uzupelnienia_diff + "</p>";
+            }
+            html += "<p class=\"mb-1\"><strong>Rekordów zmieniono (w okresie):</strong> " + recordsChanged + "</p>";
+            html += "<p class=\"mb-1\"><strong>Zmian naniesiono (w okresie):</strong> " + changesCount + "</p>";
+            html += "<p class=\"mb-0\"><strong>Zmodyfikowane (łącznie):</strong> " + (cur.modified_count ?? "—") + "</p></div>";
+          } else {
+            html += "<p class=\"text-muted mb-3\">Brak snapshotu dla wybranego okresu. Kliknij „Zapisz snapshot dziś”, aby zapisać stan.</p>";
+          }
+          if (cur && (cur.block4_params || []).length) {
+            html += "<h6 class=\"text-secondary mb-2\">Parametry (jest / brak)</h6>";
+            html += "<table class=\"table table-sm table-bordered\"><thead><tr><th>Parametr</th><th>Jest</th><th>Brak</th>";
+            if (deltas.block4_params && deltas.block4_params.length) html += "<th>Δ jest</th><th>Δ brak</th>";
+            html += "</tr></thead><tbody>";
+            (cur.block4_params || []).forEach(function(p, i) {
+              const d = (deltas.block4_params || [])[i];
+              html += "<tr><td>" + (p.label || p.key) + "</td><td>" + (p.jest ?? "—") + "</td><td>" + (p.brak ?? "—") + "</td>";
+              if (d) {
+                const jd = d.jest_diff != null ? (d.jest_diff > 0 ? "+" : "") + d.jest_diff : "—";
+                const bd = d.brak_diff != null ? (d.brak_diff > 0 ? "+" : "") + d.brak_diff : "—";
+                html += "<td>" + jd + "</td><td>" + bd + "</td>";
+              }
+              html += "</tr>";
+            });
+            html += "</tbody></table>";
+          }
+          reportModalBody.innerHTML = html;
+        }
+        function loadReport() {
+          const period = getReportPeriod();
+          reportModalBody.innerHTML = "<p class=\"text-muted mb-0\">Ładowanie…</p>";
+          fetch("/api/report?period=" + encodeURIComponent(period))
+            .then((r) => r.json())
+            .then((data) => {
+              if (data.error) {
+                reportModalBody.innerHTML = "<p class=\"text-muted mb-0\">" + (data.error || "Błąd.") + "</p>";
+                return;
+              }
+              renderReportContent(data);
+            })
+            .catch(() => {
+              reportModalBody.innerHTML = "<p class=\"text-muted mb-0\">Błąd ładowania raportu.</p>";
+            });
+        }
+        if (reportBtn && reportModal) {
+          reportBtn.addEventListener("click", function(e) {
+            e.preventDefault();
+            loadReport();
+            const modalInstance = new bootstrap.Modal(reportModal);
+            modalInstance.show();
+          });
+        }
+        if (reportRefreshBtn) reportRefreshBtn.addEventListener("click", loadReport);
+        document.querySelectorAll('input[name="reportPeriod"]').forEach(function(radio) {
+          radio.addEventListener("change", loadReport);
+        });
+        if (reportSnapshotBtn) {
+          reportSnapshotBtn.addEventListener("click", function() {
+            reportSnapshotBtn.disabled = true;
+            fetch("/api/report/snapshot", { method: "POST", headers: { "Content-Type": "application/json" } })
+              .then((r) => r.json())
+              .then((data) => {
+                if (data.ok) {
+                  loadReport();
+                } else {
+                  reportModalBody.innerHTML = "<p class=\"text-muted mb-0\">" + (data.error || "Nie udało się zapisać snapshotu.") + "</p>";
+                }
+              })
+              .catch(() => {
+                reportModalBody.innerHTML = "<p class=\"text-muted mb-0\">Błąd zapisu snapshotu.</p>";
+              })
+              .finally(function() { reportSnapshotBtn.disabled = false; });
           });
         }
 

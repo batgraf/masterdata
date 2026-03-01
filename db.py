@@ -345,6 +345,33 @@ def __log_yesterday_date():
     return __log_today_date() - timedelta(days=1)
 
 
+def get_change_log_stats(conn, date_from: Any, date_to: Any) -> Dict[str, int]:
+    """
+    Dla zakresu dat (Europe/Warsaw) zwraca:
+    - records_changed: liczba unikalnych id_produktu z wpisami w change_log,
+    - changes_count: łączna liczba wpisów (każda zmiana pola = 1).
+    date_from, date_to: obiekty date lub stringi YYYY-MM-DD (włącznie).
+    """
+    from datetime import date
+    if isinstance(date_from, str):
+        date_from = date.fromisoformat(date_from)
+    if isinstance(date_to, str):
+        date_to = date.fromisoformat(date_to)
+    with conn.cursor(cursor_factory=RealDictCursor) as cur:
+        cur.execute("""
+            SELECT COUNT(*) AS changes_count,
+                   COUNT(DISTINCT id_produktu) AS records_changed
+            FROM change_log
+            WHERE (created_at AT TIME ZONE 'Europe/Warsaw')::date >= %s
+              AND (created_at AT TIME ZONE 'Europe/Warsaw')::date <= %s
+        """, (date_from, date_to))
+        row = cur.fetchone()
+    return {
+        "changes_count": int(row["changes_count"] or 0),
+        "records_changed": int(row["records_changed"] or 0),
+    }
+
+
 def _row_to_product(row: Dict[str, Any]) -> Dict[str, Any]:
     """Konwertuje wiersz z DB (z kluczem id) na słownik produktu jak z JSON."""
     out = {}
