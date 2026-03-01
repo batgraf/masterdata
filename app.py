@@ -590,14 +590,17 @@ def save_report_snapshots(snapshots: List[Dict[str, Any]]) -> None:
     )
 
 
-def create_snapshot_now() -> Dict[str, Any]:
-    """Tworzy snapshot bieżącego stanu (data = dziś Europe/Warsaw) i dopisuje do pliku (nadpisuje snapshot z dziś)."""
+def create_snapshot_now(kind: str = "stop") -> Dict[str, Any]:
+    """Tworzy snapshot bieżącego stanu (data = dziś Europe/Warsaw). kind: 'start' (początek pracy) lub 'stop' (koniec pracy)."""
+    if kind not in ("start", "stop"):
+        kind = "stop"
     products = load_products()
     stats = load_stats()
     dashboard = _compute_dashboard_stats(products, stats.get("modified_count", 0))
     today = _report_today_date()
     snapshot = {
         "date": today,
+        "kind": kind,
         "total_count": dashboard["total_count"],
         "count_uzupelnione": dashboard["count_uzupelnione"],
         "count_do_uzupelnienia": dashboard["count_do_uzupelnienia"],
@@ -605,10 +608,11 @@ def create_snapshot_now() -> Dict[str, Any]:
         "block4_params": dashboard["block4_params"],
     }
     snapshots = load_report_snapshots()
-    # Nadpisz snapshot z tego samego dnia
-    snapshots = [s for s in snapshots if s.get("date") != today]
+    # Usuń stary snapshot z tego samego dnia i tego samego kind (start/stop)
+    snapshots = [s for s in snapshots if not (s.get("date") == today and s.get("kind") == kind)]
     snapshots.append(snapshot)
-    snapshots.sort(key=lambda s: s.get("date", ""), reverse=True)
+    # Sort: najpierw po dacie malejąco, potem stop przed start
+    snapshots.sort(key=lambda s: (s.get("date", ""), 0 if s.get("kind") == "stop" else 1), reverse=True)
     save_report_snapshots(snapshots)
     return snapshot
 
@@ -1231,17 +1235,27 @@ def _report_date_from_today(offset_days: int) -> str:
 
 
 def _get_latest_snapshot_in_range(snapshots: List[Dict[str, Any]], date_from: str, date_to: str) -> Optional[Dict[str, Any]]:
-    """Zwraca najnowszy snapshot, którego data jest w [date_from, date_to] (włącznie)."""
+    """Zwraca najnowszy snapshot w zakresie [date_from, date_to]. Preferuje 'stop' nad 'start' w tym samym dniu."""
     candidates = [s for s in snapshots if date_from <= (s.get("date") or "") <= date_to]
     if not candidates:
         return None
-    return max(candidates, key=lambda s: s.get("date", ""))
+    # stop = 1, start = 0 – wybierz najpierw stop
+    return max(candidates, key=lambda s: (s.get("date", ""), 1 if s.get("kind") == "stop" else 0))
 
 
 @app.post("/api/report/snapshot")
 def api_report_create_snapshot():
-    """Tworzy snapshot stanu na dziś (Europe/Warsaw) i zapisuje do pliku."""
-    snapshot = create_snapshot_now()
+    """Tworzy snapshot stanu na dziś. Body JSON: {"kind": "start"} lub {"kind": "stop"} (domyślnie stop)."""
+    kind = "stop"
+    if request.get_data():
+        try:
+            data = request.get_json(force=True, silent=True) or {}
+            k = (data.get("kind") or "").strip().lower()
+            if k in ("start", "stop"):
+                kind = k
+        except Exception:
+            pass
+    snapshot = create_snapshot_now(kind=kind)
     return jsonify({"ok": True, "snapshot": snapshot})
 
 

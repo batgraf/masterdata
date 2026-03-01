@@ -1382,7 +1382,9 @@
                 <label class="btn btn-outline-secondary btn-sm" for="reportPeriodMonth">Miesięczny</label>
               </div>
               <button type="button" class="btn btn-primary btn-sm" id="reportRefreshBtn">Odśwież</button>
-              <button type="button" class="btn btn-success btn-sm" id="reportSnapshotBtn">Zapisz snapshot dziś</button>
+              <button type="button" class="btn btn-success btn-sm" id="reportStartBtn" title="Zapis stanu na początek pracy">Start</button>
+              <button type="button" class="btn btn-danger btn-sm" id="reportStopBtn" title="Zapis stanu na koniec pracy">Stop</button>
+              <button type="button" class="btn btn-outline-secondary btn-sm" id="reportCopyBtn" title="Kopiuj raport do schowka (np. do maila)">Kopiuj</button>
             </div>
             <div id="reportContent">
               <p class="text-muted mb-0">Wybierz okres i kliknij Odśwież.</p>
@@ -2785,14 +2787,18 @@
         const reportModal = document.getElementById("reportModal");
         const reportModalBody = document.getElementById("reportContent");
         const reportRefreshBtn = document.getElementById("reportRefreshBtn");
-        const reportSnapshotBtn = document.getElementById("reportSnapshotBtn");
+        const reportStartBtn = document.getElementById("reportStartBtn");
+        const reportStopBtn = document.getElementById("reportStopBtn");
+        const reportCopyBtn = document.getElementById("reportCopyBtn");
+        let lastReportPlainText = "";
         function getReportPeriod() {
           const r = document.querySelector('input[name="reportPeriod"]:checked');
           return (r && r.value) ? r.value : "day";
         }
         function renderReportContent(data) {
+          lastReportPlainText = "";
           if (!data) {
-            reportModalBody.innerHTML = "<p class=\"text-muted mb-0\">Brak danych. Zapisz snapshot (Zapisz snapshot dziś) i odśwież.</p>";
+            reportModalBody.innerHTML = "<p class=\"text-muted mb-0\">Brak danych. Kliknij Start na początek pracy, Stop na koniec – potem Odśwież.</p>";
             return;
           }
           const cur = data.current || null;
@@ -2800,42 +2806,59 @@
           const deltas = data.deltas || {};
           const recordsChanged = data.records_changed != null ? data.records_changed : 0;
           const changesCount = data.changes_count != null ? data.changes_count : 0;
+          const periodLabel = (data.period === "week" ? "Raport tygodniowy" : data.period === "month" ? "Raport miesięczny" : "Raport dzienny");
+          const kindLabel = cur && cur.kind === "start" ? " (start)" : cur && cur.kind === "stop" ? " (stop)" : "";
           let html = "";
+          let lines = [];
           if (cur) {
-            html += "<div class=\"mb-3\"><h6 class=\"text-secondary mb-2\">Stan z dnia " + (cur.date || "") + "</h6>";
+            html += "<div class=\"mb-3\"><h6 class=\"text-secondary mb-2\">Stan z dnia " + (cur.date || "") + kindLabel + "</h6>";
+            lines.push(periodLabel);
+            lines.push("Stan z dnia " + (cur.date || "") + kindLabel);
+            lines.push("Rekordów w bazie: " + (cur.total_count ?? "—"));
             html += "<p class=\"mb-1\"><strong>Rekordów w bazie:</strong> " + (cur.total_count ?? "—") + "</p>";
             if (deltas.total_diff != null) {
               const sign = deltas.total_diff > 0 ? "+" : "";
               html += "<p class=\"mb-1\"><strong>Różnica vs poprzedni okres:</strong> " + sign + deltas.total_diff + "</p>";
+              lines.push("Różnica vs poprzedni okres: " + sign + deltas.total_diff);
             }
+            lines.push("Do uzupełnienia: " + (cur.count_do_uzupelnienia ?? "—"));
             html += "<p class=\"mb-1\"><strong>Do uzupełnienia:</strong> " + (cur.count_do_uzupelnienia ?? "—") + "</p>";
             if (deltas.do_uzupelnienia_diff != null) {
               const sign = deltas.do_uzupelnienia_diff > 0 ? "+" : "";
               html += "<p class=\"mb-1\"><strong>Różnica (do uzupełnienia):</strong> " + sign + deltas.do_uzupelnienia_diff + "</p>";
+              lines.push("Różnica (do uzupełnienia): " + sign + deltas.do_uzupelnienia_diff);
             }
+            lines.push("Rekordów zmieniono (w okresie): " + recordsChanged);
+            lines.push("Zmian naniesiono (w okresie): " + changesCount);
+            lines.push("Zmodyfikowane (łącznie): " + (cur.modified_count ?? "—"));
             html += "<p class=\"mb-1\"><strong>Rekordów zmieniono (w okresie):</strong> " + recordsChanged + "</p>";
             html += "<p class=\"mb-1\"><strong>Zmian naniesiono (w okresie):</strong> " + changesCount + "</p>";
             html += "<p class=\"mb-0\"><strong>Zmodyfikowane (łącznie):</strong> " + (cur.modified_count ?? "—") + "</p></div>";
           } else {
-            html += "<p class=\"text-muted mb-3\">Brak snapshotu dla wybranego okresu. Kliknij „Zapisz snapshot dziś”, aby zapisać stan.</p>";
+            html += "<p class=\"text-muted mb-3\">Brak snapshotu dla wybranego okresu. Kliknij Start na początek pracy, Stop na koniec – potem Odśwież.</p>";
           }
           if (cur && (cur.block4_params || []).length) {
             html += "<h6 class=\"text-secondary mb-2\">Parametry (jest / brak)</h6>";
+            lines.push("");
+            lines.push("Parametry (jest / brak)");
             html += "<table class=\"table table-sm table-bordered\"><thead><tr><th>Parametr</th><th>Jest</th><th>Brak</th>";
             if (deltas.block4_params && deltas.block4_params.length) html += "<th>Δ jest</th><th>Δ brak</th>";
             html += "</tr></thead><tbody>";
             (cur.block4_params || []).forEach(function(p, i) {
               const d = (deltas.block4_params || [])[i];
-              html += "<tr><td>" + (p.label || p.key) + "</td><td>" + (p.jest ?? "—") + "</td><td>" + (p.brak ?? "—") + "</td>";
+              let jd = "", bd = "";
               if (d) {
-                const jd = d.jest_diff != null ? (d.jest_diff > 0 ? "+" : "") + d.jest_diff : "—";
-                const bd = d.brak_diff != null ? (d.brak_diff > 0 ? "+" : "") + d.brak_diff : "—";
-                html += "<td>" + jd + "</td><td>" + bd + "</td>";
+                jd = d.jest_diff != null ? (d.jest_diff > 0 ? "+" : "") + d.jest_diff : "—";
+                bd = d.brak_diff != null ? (d.brak_diff > 0 ? "+" : "") + d.brak_diff : "—";
+                html += "<tr><td>" + (p.label || p.key) + "</td><td>" + (p.jest ?? "—") + "</td><td>" + (p.brak ?? "—") + "</td><td>" + jd + "</td><td>" + bd + "</td></tr>";
+              } else {
+                html += "<tr><td>" + (p.label || p.key) + "</td><td>" + (p.jest ?? "—") + "</td><td>" + (p.brak ?? "—") + "</td></tr>";
               }
-              html += "</tr>";
+              lines.push((p.label || p.key) + "\tJest: " + (p.jest ?? "—") + "\tBrak: " + (p.brak ?? "—") + (d ? "\tΔ jest: " + jd + "\tΔ brak: " + bd : ""));
             });
             html += "</tbody></table>";
           }
+          lastReportPlainText = lines.join("\n");
           reportModalBody.innerHTML = html;
         }
         function loadReport() {
@@ -2866,22 +2889,40 @@
         document.querySelectorAll('input[name="reportPeriod"]').forEach(function(radio) {
           radio.addEventListener("change", loadReport);
         });
-        if (reportSnapshotBtn) {
-          reportSnapshotBtn.addEventListener("click", function() {
-            reportSnapshotBtn.disabled = true;
-            fetch("/api/report/snapshot", { method: "POST", headers: { "Content-Type": "application/json" } })
-              .then((r) => r.json())
-              .then((data) => {
-                if (data.ok) {
-                  loadReport();
-                } else {
-                  reportModalBody.innerHTML = "<p class=\"text-muted mb-0\">" + (data.error || "Nie udało się zapisać snapshotu.") + "</p>";
-                }
-              })
-              .catch(() => {
-                reportModalBody.innerHTML = "<p class=\"text-muted mb-0\">Błąd zapisu snapshotu.</p>";
-              })
-              .finally(function() { reportSnapshotBtn.disabled = false; });
+        function saveReportSnapshot(kind) {
+          const btn = kind === "start" ? reportStartBtn : reportStopBtn;
+          if (btn) btn.disabled = true;
+          fetch("/api/report/snapshot", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ kind: kind })
+          })
+            .then((r) => r.json())
+            .then((data) => {
+              if (data.ok) {
+                loadReport();
+              } else {
+                reportModalBody.innerHTML = "<p class=\"text-muted mb-0\">" + (data.error || "Nie udało się zapisać snapshotu.") + "</p>";
+              }
+            })
+            .catch(() => {
+              reportModalBody.innerHTML = "<p class=\"text-muted mb-0\">Błąd zapisu snapshotu.</p>";
+            })
+            .finally(function() { if (btn) btn.disabled = false; });
+        }
+        if (reportStartBtn) reportStartBtn.addEventListener("click", function() { saveReportSnapshot("start"); });
+        if (reportStopBtn) reportStopBtn.addEventListener("click", function() { saveReportSnapshot("stop"); });
+        if (reportCopyBtn) {
+          reportCopyBtn.addEventListener("click", function() {
+            if (!lastReportPlainText) {
+              if (typeof showMessage === "function") showMessage("Kopiowanie", "Najpierw odśwież raport (Odśwież), potem kliknij Kopiuj.", "info");
+              return;
+            }
+            navigator.clipboard.writeText(lastReportPlainText).then(function() {
+              if (typeof showMessage === "function") showMessage("Kopiowanie", "Raport skopiowany do schowka. Możesz wkleić np. do maila.", "success");
+            }).catch(function() {
+              if (typeof showMessage === "function") showMessage("Kopiowanie", "Nie udało się skopiować.", "error");
+            });
           });
         }
 
