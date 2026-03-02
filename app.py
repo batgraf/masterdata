@@ -748,8 +748,6 @@ def _compute_dashboard_stats(products: List[Dict[str, Any]], modified_count: int
         ("EAN", "EAN"),
         ("SKU", "SKU"),
         ("Cena Zak.", "Cena_zakupu"),
-        ("Cena Sprz.", "Cena_sprzedazy"),
-        ("Waga", "Waga_brutto"),
         ("Wymiary", "Wymiary"),
         ("opakowanie", "Rodzaj_opakowania"),
     ]
