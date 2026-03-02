@@ -654,6 +654,11 @@ def _compute_dashboard_stats(products: List[Dict[str, Any]], modified_count: int
         )
 
     def _has_required_all(p):
+        """Rekord kompletny wg aktualnych wymagań użytkownika.
+
+        Wymagane: Nazwa, Producent, Grupa, EAN, SKU, Cena Zakupu, Wymiary, Rodzaj opakowania.
+        Waga i Cena Sprzedaży nie są już wymagane do kompletności.
+        """
         if not isinstance(p, dict):
             return False
         return (
@@ -663,14 +668,13 @@ def _compute_dashboard_stats(products: List[Dict[str, Any]], modified_count: int
             and not is_missing(p.get("EAN"))
             and not is_missing(p.get("SKU"))
             and _has_purchase_price(p)
-            and _has_sale_price(p)
-            and _is_positive_number(p.get("Waga_brutto"))
             and _has_dimensions_all(p)
             and not is_missing(p.get("Rodzaj_opakowania"))
         )
 
     # Brak wszystkich = brak każdego z wymaganych elementów kompletności
     def _has_required_none(p):
+        """Rekord bez każdego z wymaganych elementów kompletności (wg aktualnych reguł)."""
         if not isinstance(p, dict):
             return True
         return (
@@ -680,8 +684,6 @@ def _compute_dashboard_stats(products: List[Dict[str, Any]], modified_count: int
             and is_missing(p.get("EAN"))
             and is_missing(p.get("SKU"))
             and not _has_purchase_price(p)
-            and not _has_sale_price(p)
-            and not _is_positive_number(p.get("Waga_brutto"))
             and not (
                 _is_positive_number(p.get("Dlugosc"))
                 or _is_positive_number(p.get("Szerokosc"))

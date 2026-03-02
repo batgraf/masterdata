@@ -111,3 +111,4 @@
 108. 2026-02-21 18:15 - reguła: przy dużych zmianach zawsze push na serwer i restart masterdata.service (restart-po-zmianach.mdc)
 109. 2026-02-21 18:45 - raport: przyciski Start (początek pracy) i Stop (koniec), snapshot z kind start/stop; przycisk Kopiuj do schowka (np. do maila)
 110. 2026-03-01 12:00 - synchronizacja: VERSION, report_snapshots.json, column_views (dla drugiego kompa)
+111. 2026-03-02 20:23 - kompletność liczników bez Wagi/Ceny sprzedaży + nagłówki Waga i Cena sprzedaży brutto wróciły do domyślnego koloru
