@@ -1,0 +1,13 @@
+---
+description: Gdy użytkownik pyta o "nową funkcję automatyzacji" – chodzi o Cursor Automations
+alwaysApply: true
+---
+
+# Nowa funkcja automatyzacji (Cursor Automations)
+
+Gdy użytkownik pyta o **„nową funkcję automatyzacji”**, **„automatyzację w Cursorze”** lub **„Try Automations”** – chodzi o funkcję **Cursor Automations** (popup „Now Available – Automations”):
+
+- **Scheduled and Triggered Runs** – agenci w chmurze uruchamiani według harmonogramu lub zdarzeń z GitHub, Slack, Linear, PagerDuty, webhooks.
+- **Custom Tools** – agenci z instrukcjami użytkownika, MCP i wybranymi modelami.
+
+**Dostęp:** cursor.com/automations, cursor.com/automations/new, przycisk „Try Automations” w popupie. Rozliczane według cloud agent pricing.

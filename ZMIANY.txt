@@ -113,3 +113,4 @@
 110. 2026-03-01 12:00 - synchronizacja: VERSION, report_snapshots.json, column_views (dla drugiego kompa)
 111. 2026-03-02 20:23 - kompletność liczników bez Wagi/Ceny sprzedaży + nagłówki Waga i Cena sprzedaży brutto wróciły do domyślnego koloru
 112. 2026-03-02 20:25 - tabelka statystyk: usunięte kolumny Cena Sprz. i Waga (pozostały Produkt, Dostawca, Kategoria, EAN, SKU, Cena Zak., Wymiary, opakowanie)
+113. 2026-03-07 - reguła: gdy użytkownik pyta o „nową funkcję automatyzacji” = Cursor Automations (nowa-funkcja-automatyzacji.mdc)
