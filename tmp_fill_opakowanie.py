@@ -17,6 +17,14 @@ from db import get_connection
 RULES = [
     # (wzorzec – szukany w Nazwa, Nazwa_producenta, Grupa_produktu; wartość opakowania)
     ("%bellanti%", "karton"),
+    ("%pergola%", "karton"),
+    ("%mirador%", "karton"),
+    ("%skyline%", "karton"),
+    ("%roleta%", "karton"),
+    ("%panel żaluzjowy%", "karton"),
+    ("%meble%", "karton"),
+    ("%krzesła%", "karton"),
+    ("%krzesło%", "karton"),
     ("%ceramika%", "paczka"),
     ("%peronda%", "paczka"),
 ]
