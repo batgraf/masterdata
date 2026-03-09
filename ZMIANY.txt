@@ -131,3 +131,4 @@
 124. 2026-03-09 - tmp_batch_ean.py: dodanie 22 produktów (Imers, Paradyż, Gamrat, Arbiton, Lemar, Comad, Nordeck, Nordvic, Mirador, Peronda, Swiss Krono)
 125. 2026-03-09 - tmp_batch_ean.py: dodanie 25 produktów (Mirador, Gamrat, Arbiton, Comad, Imers, Nordeck, Bellanti aluminiowe – 1 bez EAN)
 126. 2026-03-09 - tmp_batch_ean.py: dodanie 4 produktów (Nordeck, Mirador)
+127. 2026-03-09 - tmp_extract_sizes.py: ekstrakcja rozmiarów z nazw (Dlugosc, Szerokosc, Wysokosc)
