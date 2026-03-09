@@ -118,3 +118,5 @@
 114. 2026-03-07 - aktualizacja AsortymentyMasterData.json (nowe dane produktowe)
 
 115. 2026-03-07 - uzupełnienie Grupa_produktu dla 20 produktów bez kategorii
+
+116. 2026-03-07 - zmiana grupy 15 produktów zawory z GRZEJNIKI na Akcesoria do grzejników
