@@ -116,3 +116,5 @@
 113. 2026-03-07 - reguła: gdy użytkownik pyta o „nową funkcję automatyzacji” = Cursor Automations (nowa-funkcja-automatyzacji.mdc)
 
 114. 2026-03-07 - aktualizacja AsortymentyMasterData.json (nowe dane produktowe)
+
+115. 2026-03-07 - uzupełnienie Grupa_produktu dla 20 produktów bez kategorii
