@@ -135,3 +135,4 @@
 128. 2026-03-09 - tmp_extract_sizes --do: uzupełniono 6340 pól wymiarów w bazie, eksport do AsortymentyMasterData.json
 129. 2026-03-09 - statystyki wizyt: IP, przeglądarka, czas; przycisk stat obok Kopia; wykluczenie IP przez EXCLUDED_IPS w .env
 130. 2026-03-09 - tmp_fill_opakowanie.py: uzupełnienie Rodzaj_opakowania=karton dla Bellanti (8 produktów)
+131. 2026-03-09 - tmp_fill_opakowanie: ceramika, peronda → paczka (337 produktów)

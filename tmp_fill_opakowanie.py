@@ -15,8 +15,10 @@ except ImportError:
 from db import get_connection
 
 RULES = [
-    # (wzorzec w NAZwie produktu (LIKE), wartość opakowania)
+    # (wzorzec – szukany w Nazwa, Nazwa_producenta, Grupa_produktu; wartość opakowania)
     ("%bellanti%", "karton"),
+    ("%ceramika%", "paczka"),
+    ("%peronda%", "paczka"),
 ]
 
 
@@ -24,19 +26,23 @@ def main():
     with get_connection() as conn:
         with conn.cursor() as cur:
             total = 0
-            for name_pattern, value in RULES:
+            for pattern, value in RULES:
                 cur.execute(
                     """
                     UPDATE products
                     SET "Rodzaj_opakowania" = %s
-                    WHERE LOWER(TRIM(COALESCE("Nazwa", ''))) LIKE LOWER(%s)
-                      AND ("Rodzaj_opakowania" IS NULL OR TRIM(COALESCE("Rodzaj_opakowania", '')) = '')
+                    WHERE (
+                      LOWER(COALESCE("Nazwa", '')) LIKE LOWER(%s)
+                      OR LOWER(COALESCE("Nazwa_producenta", '')) LIKE LOWER(%s)
+                      OR LOWER(COALESCE("Grupa_produktu", '')) LIKE LOWER(%s)
+                    )
+                    AND ("Rodzaj_opakowania" IS NULL OR TRIM(COALESCE("Rodzaj_opakowania", '')) = '')
                     """,
-                    (value, name_pattern),
+                    (value, pattern, pattern, pattern),
                 )
                 n = cur.rowcount
                 total += n
-                print(f"Zaktualizowano {n} (producent → {value})")
+                print(f"Zaktualizowano {n} ({pattern} → {value})")
     print(f"Razem: {total} rekordów")
 
 
