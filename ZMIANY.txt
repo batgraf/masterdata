@@ -124,3 +124,4 @@
 117. 2026-03-09 - reguła user-arek (użytkownik Arek, asystent Ewa)
 118. 2026-03-07 - tmp_batch_ean.py: podmiana RAW_JSON na 44 produkty (grzejniki SOLEN/SYNTIA/TIOMAN, panele Swiss Krono, lampy PASTELO, Bellanti itd.)
 119. 2026-03-09 - tmp_batch_ean.py: dodanie 39 produktów (Bellanti Pienza/Livorno/Firenze/Carrara/Siena/Bucine/Arezzo/Prato/Certaldo, Peronda, Lemar, Mirador, Amazonas)
+120. 2026-03-09 - tmp_batch_ean.py: dodanie 21 produktów (Bellanti Carrara Ciemny Beż, Duisburg, Lemar, Mirpol, Peronda, Sollux, Light Prestige, Stellar, Mirador, Imers, Keter, Instal Projekt, Swiss Krono)
