@@ -1296,6 +1296,7 @@
       </div>
       <div class="row mt-2">
         <div class="col-12">
+          <button type="button" id="visitStatsBtn" class="btn btn-sm btn-outline-secondary me-1" title="Statystyki wizyt (IP, przeglądarka, czas)">stat</button>
           <button type="button" id="restoreFromBackupBtn" class="btn btn-sm btn-outline-secondary" title="Załaduj z najnowszej kopii (awaryjnie)">Kopia</button>
         </div>
       </div>
@@ -1320,6 +1321,21 @@
           <div class="modal-footer border-0 justify-content-center pt-0">
             <button type="button" class="btn btn-sm btn-secondary px-3 me-2" data-bs-dismiss="modal">Anuluj</button>
             <button type="button" class="btn btn-sm btn-danger px-3" id="confirmDeleteBtn">Usuń</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal statystyk wizyt -->
+    <div class="modal fade" id="visitStatsModal" tabindex="-1" aria-labelledby="visitStatsModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="visitStatsModalLabel">Statystyki wizyt</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Zamknij"></button>
+          </div>
+          <div class="modal-body" id="visitStatsModalBody">
+            <p class="text-muted mb-0">Ładowanie…</p>
           </div>
         </div>
       </div>
@@ -2715,6 +2731,45 @@
             }
             if (typeof loadWorkFiles === "function") loadWorkFiles();
             if (typeof loadSavedBasesList === "function") loadSavedBasesList();
+          });
+        }
+
+        // Rejestracja wizyty przy ładowaniu strony
+        fetch("/api/visit", { method: "POST", headers: { "Content-Type": "application/json" } }).catch(() => {});
+
+        // Statystyki wizyt – przycisk "stat"
+        const visitStatsBtn = document.getElementById("visitStatsBtn");
+        const visitStatsModal = document.getElementById("visitStatsModal");
+        const visitStatsModalBody = document.getElementById("visitStatsModalBody");
+        const IP_COLORS = ["#e63946", "#2a9d8f", "#e9c46a", "#264653", "#9b5de5", "#00bbf9", "#fee440", "#f15bb5", "#00f5d4", "#7b2cbf", "#06d6a0"];
+        if (visitStatsBtn && visitStatsModal && visitStatsModalBody) {
+          visitStatsBtn.addEventListener("click", () => {
+            visitStatsModalBody.innerHTML = "<p class=\"text-muted mb-0\">Ładowanie…</p>";
+            const modalInstance = new bootstrap.Modal(visitStatsModal);
+            modalInstance.show();
+            fetch("/api/visit-stats")
+              .then((r) => r.json())
+              .then((data) => {
+                const visits = data.visits || [];
+                if (visits.length === 0) {
+                  visitStatsModalBody.innerHTML = "<p class=\"text-muted mb-0\">Brak wizyt do wyświetlenia.</p>";
+                  return;
+                }
+                const ips = [...new Set(visits.map((v) => v.ip || "").trim())].filter(Boolean);
+                const ipToColor = {};
+                ips.forEach((ip, i) => { ipToColor[ip] = IP_COLORS[i % IP_COLORS.length]; });
+                let html = "<div class=\"table-responsive\"><table class=\"table table-sm table-hover\"><thead><tr><th>Data i czas</th><th>IP</th><th>Przeglądarka</th></tr></thead><tbody>";
+                visits.forEach((v) => {
+                  const color = ipToColor[v.ip || ""] || "#6c757d";
+                  const bg = color + "22";
+                  html += "<tr style=\"border-left:4px solid " + color + ";background:" + bg + "\"><td>" + (v.ts || "").replace(/</g, "&lt;") + "</td><td><span class=\"badge\" style=\"background-color:" + color + ";color:#fff\">" + (v.ip || "?").replace(/</g, "&lt;") + "</span></td><td>" + (v.browser || "?").replace(/</g, "&lt;") + "</td></tr>";
+                });
+                html += "</tbody></table></div>";
+                visitStatsModalBody.innerHTML = html;
+              })
+              .catch(() => {
+                visitStatsModalBody.innerHTML = "<p class=\"text-muted mb-0\">Błąd ładowania statystyk.</p>";
+              });
           });
         }
 

@@ -20,7 +20,20 @@ DATA_FILE = BASE_DIR / "AsortymentyMasterData.json"
 VIEWS_DIR = BASE_DIR / "column_views"
 STATS_FILE = BASE_DIR / "stats.json"
 REPORTS_SNAPSHOTS_FILE = BASE_DIR / "report_snapshots.json"
+VISITS_FILE = BASE_DIR / "visit_stats.json"
 VERSION_FILE = BASE_DIR / "VERSION.txt"
+
+# IP do wykluczenia ze statystyk wizyt (np. właściciela) – .env EXCLUDED_IPS=ip1,ip2
+_EXCLUDED_IPS: Optional[set] = None
+
+
+def _get_excluded_ips() -> set:
+    global _EXCLUDED_IPS
+    if _EXCLUDED_IPS is None:
+        import os
+        val = (os.environ.get("EXCLUDED_IPS") or "").strip()
+        _EXCLUDED_IPS = {ip.strip() for ip in val.split(",") if ip.strip()}
+    return _EXCLUDED_IPS
 
 app = Flask(__name__)
 # Zwiększ limit uploadu do 50MB (domyślnie Flask ma 16MB)
@@ -1219,6 +1232,75 @@ def reset_modified_count():
     stats["modified_count"] = 0
     save_stats(stats)
     return jsonify({"modified_count": 0})
+
+
+# --- Statystyki wizyt (IP, przeglądarka, czas) ---
+
+def _get_client_ip() -> str:
+    """Pobiera IP klienta (uwzględnia proxy)."""
+    if request.headers.get("X-Forwarded-For"):
+        return request.headers.get("X-Forwarded-For", "").split(",")[0].strip()
+    return request.remote_addr or ""
+
+
+def _parse_browser(ua: str) -> str:
+    """Uproszczone wyciągnięcie nazwy przeglądarki z User-Agent."""
+    if not ua:
+        return "?"
+    ua = ua.lower()
+    if "edg/" in ua or "edge/" in ua:
+        return "Edge"
+    if "opr/" in ua or "opera" in ua:
+        return "Opera"
+    if "chrome/" in ua and "chromium" not in ua:
+        return "Chrome"
+    if "firefox/" in ua or "fxios" in ua:
+        return "Firefox"
+    if "safari/" in ua and "chrome" not in ua:
+        return "Safari"
+    return "Inna"
+
+
+def _load_visits() -> List[Dict[str, Any]]:
+    if not VISITS_FILE.exists():
+        return []
+    try:
+        data = json.loads(VISITS_FILE.read_text(encoding="utf-8"))
+        return data if isinstance(data, list) else []
+    except Exception:
+        return []
+
+
+def _save_visits(visits: List[Dict[str, Any]]) -> None:
+    VISITS_FILE.write_text(json.dumps(visits[-5000:], ensure_ascii=False, indent=0), encoding="utf-8")
+
+
+@app.post("/api/visit")
+def api_record_visit():
+    """Rejestruje wizytę: IP, przeglądarka, data i czas."""
+    ip = _get_client_ip()
+    ua = request.headers.get("User-Agent", "")
+    browser = _parse_browser(ua)
+    try:
+        from zoneinfo import ZoneInfo
+        now = datetime.now(ZoneInfo("Europe/Warsaw"))
+    except Exception:
+        now = datetime.now()
+    ts = now.strftime("%Y-%m-%d %H:%M:%S")
+    visits = _load_visits()
+    visits.append({"ip": ip, "browser": browser, "ts": ts})
+    _save_visits(visits)
+    return jsonify({"ok": True})
+
+
+@app.get("/api/visit-stats")
+def api_visit_stats():
+    """Zwraca listę wizyt (bez wykluczonych IP), najnowsze first."""
+    excluded = _get_excluded_ips()
+    visits = _load_visits()
+    filtered = [v for v in visits if (v.get("ip") or "").strip() not in excluded]
+    filtered.reverse()
+    return jsonify({"visits": filtered})
 
 
 # --- Raporty okresowe (snapshoty + API) ---
