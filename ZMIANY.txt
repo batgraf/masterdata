@@ -129,3 +129,4 @@
 122. 2026-03-09 - tmp_batch_ean.py: dodanie 24 produktów (Imers, Instal Projekt, Paradyż, Lemar, AGT, Peronda, Keter, Mirador, Swiss Krono, Comad)
 123. 2026-03-09 - tmp_export_db_to_json.py: eksport bazy do AsortymentyMasterData.json (odświeżenie pliku)
 124. 2026-03-09 - tmp_batch_ean.py: dodanie 22 produktów (Imers, Paradyż, Gamrat, Arbiton, Lemar, Comad, Nordeck, Nordvic, Mirador, Peronda, Swiss Krono)
+125. 2026-03-09 - tmp_batch_ean.py: dodanie 25 produktów (Mirador, Gamrat, Arbiton, Comad, Imers, Nordeck, Bellanti aluminiowe – 1 bez EAN)
