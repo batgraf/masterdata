@@ -122,3 +122,4 @@
 116. 2026-03-07 - zmiana grupy 15 produktów zawory z GRZEJNIKI na Akcesoria do grzejników
 
 117. 2026-03-09 - reguła user-arek (użytkownik Arek, asystent Ewa)
+118. 2026-03-07 - tmp_batch_ean.py: podmiana RAW_JSON na 44 produkty (grzejniki SOLEN/SYNTIA/TIOMAN, panele Swiss Krono, lampy PASTELO, Bellanti itd.)
