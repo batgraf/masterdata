@@ -241,6 +241,10 @@ RAW_JSON = [
     {"id": 101713, "nazwa": "BELLANTI Zestaw Empoli Beige 4-os Aluminiowy", "sku": "ZS4BELLALU_EMP_B", "ean": "5907367280463", "producent": "Bellanti"},
     {"id": 101714, "nazwa": "BELLANTI Zestaw Siena Dark Grey 5-os Aluminiowy", "sku": "ZS5BELLALU_SIE_DG", "ean": "5907367280302", "producent": "Bellanti"},
     {"id": 101715, "nazwa": "BELLANTI Zestaw Carrara Beige 4-os Aluminiowy", "sku": "ZS4BELLALU_CAR_B", "ean": "5907367280319", "producent": "Bellanti"},
+    {"id": 101506, "nazwa": "NORDECK Wspornik regulowany pod legar 66-145mm", "sku": "FTW-66-145", "ean": "5905167731529", "producent": "Nordeck"},
+    {"id": 101507, "nazwa": "NORDECK Wspornik regulowany pod legar 140-220mm", "sku": "FTW-140-220", "ean": "5905167731536", "producent": "Nordeck"},
+    {"id": 101525, "nazwa": "MIRADOR 80 Solid 3x4 + Roleta 3m", "sku": "ZSMIRADOR3X4_R3", "ean": "5905167736036", "producent": "Mirador"},
+    {"id": 101670, "nazwa": "MIRADOR Solid80_3x4 + ROLETA 4M ZESTAW (1)", "sku": "ZESTAW_4X3_ROLETA(1)", "ean": "5905167736050", "producent": "Mirador"},
 ]
 
 
