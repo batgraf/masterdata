@@ -136,3 +136,8 @@
 129. 2026-03-09 - statystyki wizyt: IP, przeglądarka, czas; przycisk stat obok Kopia; wykluczenie IP przez EXCLUDED_IPS w .env
 130. 2026-03-09 - tmp_fill_opakowanie.py: uzupełnienie Rodzaj_opakowania=karton dla Bellanti (8 produktów)
 131. 2026-03-09 - tmp_fill_opakowanie: ceramika, peronda → paczka (337 produktów)
+132. 2026-03-07 22:00 - n8n API: skrypt n8n-api.sh (list/get/backup/create/update/activate/deactivate), N8N_API.md, .env.example i .gitignore pod klucz API
+133. 2026-03-14 22:06 - n8n-api.sh v2: walidacja HTTP, paginacja nextCursor, backup przed delete + aktualizacja dokumentacji
+134. 2026-03-14 - n8n: N8N_DEFAULT_LOCALE=pl, GENERIC_TIMEZONE=Europe/Warsaw w docker-compose; N8N_LOCALE.md
+135. 2026-03-14 - n8n: wyjasnienie dlaczego UI jest en (brak pl w n8n), usuniecie N8N_DEFAULT_LOCALE=pl, zostawiono GENERIC_TIMEZONE
+136. 2026-03-14 - n8n: workflow testowy TEST - webhook status (Webhook + Code + Respond), plik do importu + instrukcja
